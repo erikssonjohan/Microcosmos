@@ -1,2 +1,2 @@
 # TNM094-Media-navigering
-Media-navigering genom materiella gränssnitt
+Medietekniskt kandidatprojekt: Media-navigering genom materiella gränssnitt
