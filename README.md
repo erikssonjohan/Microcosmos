@@ -6,8 +6,8 @@ Medietekniskt kandidatprojekt: Media-navigering genom materiella gränssnitt
 
 ####Building with CMake and Visual Studio
 1. Build with CMake 
-..* Set SDL2_INCLUDE_DIR to sdl2/include
-..* Set SDL2_LIBRARY to sdl2/lib/x86 for 32bit or sdl2/lib/x64 for 64bit
+  * Set SDL2_INCLUDE_DIR to sdl2/include
+  * Set SDL2_LIBRARY to sdl2/lib/x86 for 32bit or sdl2/lib/x64 for 64bit
 2. Generate files and open with Visual Studio
 3. Under coniguration properties, VC++ Directories set Include Directories to your SDL2 Include directory
 4. Set VC++ Library Directories to your SDL2 lib x86 or x64 folder depending on your CMake build settings
