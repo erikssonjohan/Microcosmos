@@ -5,6 +5,13 @@ project(${PROJECT_NAME_STR} C CXX)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${PROJECT_SOURCE_DIR}/cmake")
 
 
+# Set default compile flags for GCC
+if(CMAKE_COMPILER_IS_GNUCXX)
+    message(STATUS "GCC detected, adding compile flags")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++98 -pedantic -Wall -Wextra")
+endif(CMAKE_COMPILER_IS_GNUCXX)
+
+
 #Set up the include
 include(ExternalProject)
 
@@ -27,7 +34,10 @@ if( CMAKE_BINARY_DIR MATCHES " " )
     message( "Your Build Directory contains spaces. If you experience problems when compiling, this can be the cause." )
 endif()
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -pedantic -std=c++11")
+if (UNIX)
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -pedantic -std=c++11")
+endif (UNIX)
+
 #set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -w")
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS} ${CMAKE_CXX_FLAGS_DEBUG} -g")
 set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS} ${CMAKE_CXX_FLAGS_RELEASE} -O2")
@@ -51,6 +61,9 @@ endif()
 #find_package (SDL2 REQUIRED)
 #include_directories (${SDL2_INCLUDE_DIR})
 find_package(OpenGL REQUIRED)
+
+
+
 
 
 if (MINGW)
@@ -135,4 +148,3 @@ add_executable(${PROJECT_NAME_STR}
 target_link_libraries(${PROJECT_NAME_STR}
         ${ALL_LIBS}
         )
-
