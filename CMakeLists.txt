@@ -75,7 +75,7 @@ if (MINGW)
 
 else()
     find_package(SDL2 REQUIRED)
-    #find_package(SDL2_mixer REQUIRED)
+    find_package(SDL2_image REQUIRED)
 endif(MINGW)
 
 
@@ -126,7 +126,7 @@ set(ext_libs
 include_directories(
         ${ext_libs}
         ${SDL2_INCLUDE_DIR}
-        #${SDL2MIXER_INCLUDE_DIR}
+        ${SDL2_IMAGE_INCLUDE_DIR}
         ${PROJECT_INCLUDE_DIR}
         ${PROJECT_EXT_DIR}
 )
@@ -136,7 +136,7 @@ set(ALL_LIBS
         GLEW
         #LinearMath
         ${SDL2_LIBRARY}
-        #${SDL2MIXER_LIBRARY}
+        ${SDL2_IMAGE_LIBRARY}
         )
 
 file(GLOB PROJECT_CXX_FILES ${PROJECT_CXX_DIR}/*.cpp)
