@@ -3,7 +3,7 @@ and may not be redistributed without written permission.*/
 
 //Using SDL, SDL_image, standard IO, and, strings
 #include <SDL.h>
-#include <SDL_image.h>
+//#include <SDL_image.h>
 #include <stdio.h>
 #include <string>
 #include <string.h>
@@ -85,10 +85,7 @@ bool init()
 
 void close()
 {
-    //Free loaded images
-    gPinchCloseTexture.free();
-    gPinchOpenTexture.free();
-    gRotateTexture.free();
+
 
     //Destroy window
     SDL_DestroyRenderer( gRenderer );
@@ -97,7 +94,6 @@ void close()
     gRenderer = NULL;
 
     //Quit SDL subsystems
-    IMG_Quit();
     SDL_Quit();
 }
 
