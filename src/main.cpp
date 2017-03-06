@@ -99,6 +99,11 @@ void close()
 
 int main( int argc, char* args[] )
 {
+    int count = 0;
+
+    int* hight = NULL;
+    int* width = NULL;
+
     //Start up SDL and create window
     if( !init() )
     {
@@ -107,7 +112,9 @@ int main( int argc, char* args[] )
     else
     {
 
-            //Main loop flag
+        SDL_GetWindowSize(gWindow, width, hight);
+
+        //Main loop flag
             bool quit = false;
 
             //Event handler
@@ -142,8 +149,19 @@ int main( int argc, char* args[] )
                         }
                     }
                         else if(e.type == SDL_FINGERDOWN){
-                        std::cout << "(x,y): " << e.tfinger.x << ", " << e.tfinger.y << std::endl;
+                        std::cout << "(x,y): " << e.tfinger.x   << ", " << e.tfinger.y << std::endl;
+                        SDL_SetRenderDrawColor(gRenderer, 0x00, 0xFF, 0xFF, 0xFF);
+                        /*count++;
+                        if (count %2 != 0) {
+                            SDL_SetRenderDrawColor(gRenderer, 0x00, 0xFF, 0xFF, 0xFF);
+                        }
+                        else{
+                            SDL_SetRenderDrawColor(gRenderer, 0xFF, 0xFF, 0xFF, 0xFF);
+                        }*/
 
+                    }
+                    else if(e.type == SDL_FINGERUP){
+                        SDL_SetRenderDrawColor(gRenderer, 0xFF, 0xFF, 0xFF, 0xFF);
                     }
 
 
@@ -181,7 +199,7 @@ int main( int argc, char* args[] )
                 }
 
                 //Clear screen
-                SDL_SetRenderDrawColor( gRenderer, 0xFF, 0xFF, 0xFF, 0xFF );
+                //SDL_SetRenderDrawColor( gRenderer, 0xFF, 0xFF, 0xFF, 0xFF );
                 SDL_RenderClear( gRenderer );
 
                 //Update screen
