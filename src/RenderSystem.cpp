@@ -2,7 +2,7 @@
 // Created by Oscar Nord on 2017-03-08.
 //
 
-#include "RenderSystem.h"
+#include "../include/RenderSystem.h"
 
 RenderSystem::RenderSystem() {}
 

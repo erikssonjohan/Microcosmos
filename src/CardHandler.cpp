@@ -2,7 +2,7 @@
 // Created by Oscar Nord on 2017-03-08.
 //
 
-#include "CardHandler.h"
+#include "../include/CardHandler.h"
 
 CardHandler::CardHandler() {}
 
