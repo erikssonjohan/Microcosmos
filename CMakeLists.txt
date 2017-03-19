@@ -111,7 +111,7 @@ endif(MINGW)
 
 set(GLEW_SOURCE
         ${PROJECT_EXT_DIR}/glew/src/glew.c
-        )
+        external/tinyxml2/tinyxml2.cpp external/tinyxml2/tinyxml2.h)
 add_library(GLEW STATIC
         ${GLEW_SOURCE}
         ${GLEW_INCLUDE})

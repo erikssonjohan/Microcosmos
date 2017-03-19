@@ -1,14 +1,22 @@
 
 //include SDL
+#include <string>
+#include <iostream>
 #include "SDL.h"
 //include GLEW
 #include "GL/glew.h"
+#include "tinyxml2/tinyxml2.h"
+
+// TODO::Put where it fits better
+void xml(const char *file );
 
 //Screen dimension constants
 const int SCREEN_WIDTH = 640;
 const int SCREEN_HEIGHT = 480;
 
+
 int main(int argc, char* args[]) {
+
 
 	//SDL Window
 	SDL_Window* window = nullptr;
@@ -53,4 +61,62 @@ int main(int argc, char* args[]) {
 
 	return 0;
 	
+}
+
+
+// TODO::Put where it fits better
+void xml(const char *file) {
+    tinyxml2::XMLDocument doc;
+    doc.LoadFile(file);
+    if(doc.ErrorID() != 0 ){
+        std::cout << "failed to open xml file" << std::endl;
+    }
+    else {
+        std::cout << "Loaded XML" << std::endl;
+        tinyxml2::XMLElement* mediaElement = doc.FirstChildElement( "media" );
+        //const char* title = mediaElement->;
+        //std::cout << "name: " << title << std::endl;
+        for(tinyxml2::XMLElement* child = doc.FirstChildElement("content")->FirstChildElement("media");
+            child != 0; child = child->NextSiblingElement())
+        {
+            if(child->Attribute("path")) {
+                std::cout << "path = " << child->Attribute("path") << std::endl;
+            }
+            if(child->Attribute("scale_exp")) {
+                std::cout << "scale_exp = " << child->Attribute("scale_exp") << std::endl;
+            }
+            if(child->FirstChildElement("category")) {
+                std::cout << "category_name = " << child->FirstChildElement("category")->Attribute("name") << std::endl;
+                if(child->FirstChildElement("category")->NextSiblingElement("category")){
+                    for(tinyxml2::XMLElement* categ = child->FirstChildElement("category")->NextSiblingElement("category"); categ != 0; categ = categ->NextSiblingElement("category")) {
+                        std::cout << "category_name = "
+                                  << categ->Attribute("name")
+                                  << std::endl;
+                    }
+                }
+            }
+            if(child->FirstChildElement("se")->FirstChildElement("header")->GetText()) {
+                std::cout << "header_se = " << child->FirstChildElement("se")->FirstChildElement("header")->GetText()
+                          << std::endl;
+            }
+            if(child->FirstChildElement("se")->FirstChildElement("text")->GetText()) {
+                std::cout << "text_se = " << child->FirstChildElement("se")->FirstChildElement("text")->GetText()
+                          << std::endl;
+            }
+            if(child->FirstChildElement("en")->FirstChildElement("header")->GetText()) {
+                std::cout << "header_en = " << child->FirstChildElement("en")->FirstChildElement("header")->GetText()
+                          << std::endl;
+            }
+            if(child->FirstChildElement("en")->FirstChildElement("text")->GetText()) {
+                std::cout << "text_en = " << child->FirstChildElement("en")->FirstChildElement("text")->GetText()
+                          << std::endl;
+            }
+            std::cout << std::endl;
+
+        }
+
+
+
+    }
+
 }
