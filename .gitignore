@@ -377,3 +377,4 @@ __pycache__/
 # !tools/packages.config
 
 # End of https://www.gitignore.io/api/jetbrains,visualstudio,cmake,c++
+/build/sdl_test

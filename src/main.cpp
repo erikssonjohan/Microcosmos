@@ -1,14 +1,37 @@
 
+#include <string>
+#include <iostream>
+#include <vector>
+
 //include SDL
 #include "SDL.h"
 //include GLEW
 #include "GL/glew.h"
+//Include classes
+#include "CardHandler.h"
+#include "functions.h"
+
 
 //Screen dimension constants
 const int SCREEN_WIDTH = 640;
 const int SCREEN_HEIGHT = 480;
 
+
 int main(int argc, char* args[]) {
+
+
+    //TODO::here ?!
+    //creats objects from xml and displays them... from->
+    /*std::vector<CardHandler> cards;
+    functions::xml("write.xml", cards);
+    std::cout << cards.size() << std::endl;
+    for (int i = 0; i < cards.size() ; ++i) {
+        cards[i].displayContent();
+        std::cout << std::endl;
+    }*/
+    //<-to
+
+
 
 	//SDL Window
 	SDL_Window* window = nullptr;
@@ -41,7 +64,7 @@ int main(int argc, char* args[]) {
 			SDL_UpdateWindowSurface(window);
 
 			//Wait two seconds
-			SDL_Delay(10000);
+			SDL_Delay(3000);
 		}
 	}
 
