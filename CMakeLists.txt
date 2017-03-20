@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8)
-set(PROJECT_NAME_STR sdl_test)
+set(PROJECT_NAME_STR mikrokosmos)
 project(${PROJECT_NAME_STR} C CXX)
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${PROJECT_SOURCE_DIR}/cmake")
