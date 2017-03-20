@@ -22,13 +22,13 @@ int main(int argc, char* args[]) {
 
     //TODO::here ?!
     //creats objects from xml and displays them... from->
-    std::vector<CardHandler> cards;
+    /*std::vector<CardHandler> cards;
     functions::xml("write.xml", cards);
     std::cout << cards.size() << std::endl;
     for (int i = 0; i < cards.size() ; ++i) {
         cards[i].displayContent();
         std::cout << std::endl;
-    }
+    }*/
     //<-to
 
 
