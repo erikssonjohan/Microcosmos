@@ -26,7 +26,7 @@ CardHandler::CardHandler(std::string path, float scale, std::vector<std::string>
     std::cout << "path: " << _path << std::endl;
     std::cout << "scale: " << _scale << std::endl;
     std::cout << "categories: ";
-    for (int i = 0; i < _categories.size(); ++i) {
+    for (unsigned long i = 0; i < _categories.size(); ++i) {
         if(i == _categories.size()-1){
             std::cout << _categories[i] << std::endl;
         }
