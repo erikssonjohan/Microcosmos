@@ -8,6 +8,7 @@
 //include glm
 #include "glm/glm.hpp"
 
+
 #ifndef SDL_TEST_RENDERSYSTEM_H
 #define SDL_TEST_RENDERSYSTEM_H
 
@@ -31,6 +32,8 @@ public:
 private:
     int width;
     int height;
+
+
 
 };
 
