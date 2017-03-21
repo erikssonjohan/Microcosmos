@@ -35,7 +35,7 @@ distribution.
 
 #endif
 
-#if defined(_MSC_VER) && (_MSC_VER >= 1400 ) && (!defined WINCE)
+#if WIN_32
 // Microsoft Visual Studio, version 2005 and higher. Not WinCE.
 	/*int _snprintf_s(
 	   char *buffer,
@@ -61,42 +61,15 @@ distribution.
 
 	#define TIXML_VSCPRINTF	_vscprintf
 	#define TIXML_SSCANF	sscanf_s
-#elif defined _MSC_VER
-// Microsoft Visual Studio 2003 and earlier or WinCE
-	#define TIXML_SNPRINTF	_snprintf
-	#define TIXML_VSNPRINTF _vsnprintf
-	#define TIXML_SSCANF	sscanf
-	#if (_MSC_VER < 1400 ) && (!defined WINCE)
-		// Microsoft Visual Studio 2003 and not WinCE.
-		#define TIXML_VSCPRINTF   _vscprintf // VS2003's C runtime has this, but VC6 C runtime or WinCE SDK doesn't have.
-	#else
-		// Microsoft Visual Studio 2003 and earlier or WinCE.
-		static inline int TIXML_VSCPRINTF( const char* format, va_list va )
-		{
-			int len = 512;
-			for (;;) {
-				len = len*2;
-				char* str = new char[len]();
-				const int required = _vsnprintf(str, len, format, va);
-				delete[] str;
-				if ( required != -1 ) {
-					TIXMLASSERT( required >= 0 );
-					len = required;
-					break;
-				}
-			}
-			TIXMLASSERT( len >= 0 );
-			return len;
-		}
-	#endif
 #else
+
 // GCC version 3 and higher
 //#warning( "Using sn* functions." )
-#define TIXML_SNPRINTF	_snprintf
-#define TIXML_VSNPRINTF	_vsnprintf
+#define TIXML_SNPRINTF	snprintf
+#define TIXML_VSNPRINTF	vsnprintf
 static inline int TIXML_VSCPRINTF( const char* format, va_list va )
 {
-    int len = _vsnprintf( 0, 0, format, va );
+    int len = vsnprintf( 0, 0, format, va );
     TIXMLASSERT( len >= 0 );
     return len;
 }
