@@ -20,18 +20,25 @@ must not be misrepresented as being the original software.
 3. This notice may not be removed or altered from any source
 distribution.
 */
-
+#include <stdio.h>
 #include "tinyxml2.h"
+<<<<<<< HEAD
 #include <stdio.h>
 
 
+=======
+>>>>>>> refs/remotes/origin/master
 #include <new>		// yes, this one new style header, is in the Android SDK.
 #if defined(ANDROID_NDK) || defined(__BORLANDC__) || defined(__QNXNTO__)
 #   include <stddef.h>
 #   include <stdarg.h>
+
 #else
 #   include <cstddef>
 #   include <cstdarg>
+#include <cstdio>
+#include <stdio.h>
+
 #endif
 
 #if defined(_MSC_VER) && (_MSC_VER >= 1400 ) && (!defined WINCE)
@@ -91,11 +98,11 @@ distribution.
 #else
 // GCC version 3 and higher
 //#warning( "Using sn* functions." )
-#define TIXML_SNPRINTF	snprintf
-#define TIXML_VSNPRINTF	vsnprintf
+#define TIXML_SNPRINTF	_snprintf
+#define TIXML_VSNPRINTF	_vsnprintf
 static inline int TIXML_VSCPRINTF( const char* format, va_list va )
 {
-    int len = vsnprintf( 0, 0, format, va );
+    int len = _vsnprintf( 0, 0, format, va );
     TIXMLASSERT( len >= 0 );
     return len;
 }

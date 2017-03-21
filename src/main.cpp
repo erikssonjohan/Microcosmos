@@ -131,6 +131,7 @@ int main(int argc, char* args[]) {
 
 
 
+<<<<<<< HEAD
 
 
 
@@ -158,19 +159,60 @@ void init() {
         if (window == NULL) {
             SDL_GetError();
         } else {
+=======
+    //SDL Window
+    SDL_Window* window = nullptr;
+
+    //The surface contained by the window
+    SDL_Surface* screenSurface = nullptr;
+
+    //Initialize SDL
+    if (SDL_Init(SDL_INIT_VIDEO) < 0)
+    {
+        SDL_GetError();
+    }
+    else
+    {
+        //Create window
+        window = SDL_CreateWindow("SDL", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
+        if (window == nullptr)
+        {
+            SDL_GetError();
+        }
+        else
+        {
+>>>>>>> refs/remotes/origin/master
             //Get window surface
             screenSurface = SDL_GetWindowSurface(window);
 
             //Fill the surface white
+<<<<<<< HEAD
             SDL_FillRect(screenSurface, NULL, SDL_MapRGB(screenSurface->format, 0xFF00, 0xFF, 0xFF));
+=======
+            SDL_FillRect(screenSurface, nullptr, SDL_MapRGB(screenSurface->format, 0xFF, 0xFF, 0xFF));
+>>>>>>> refs/remotes/origin/master
 
             //Update the surface
             SDL_UpdateWindowSurface(window);
 
             //Wait two seconds
+<<<<<<< HEAD
             SDL_Delay(100);
         }
     }
 
+=======
+            SDL_Delay(3000);
+        }
+    }
+
+    //Destroy window
+    SDL_DestroyWindow(window);
+
+    //Quit SDL subsystems
+    SDL_Quit();
+
+    return 0;
+>>>>>>> refs/remotes/origin/master
 
 }
