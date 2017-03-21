@@ -4,7 +4,6 @@
 
 #include <vector>
 #include "../include/CardHandler.h"
-#include <stdio.h>
 
 
 
@@ -20,29 +19,9 @@ CardHandler::CardHandler(std::string path, float scale, std::vector<std::string>
     _text_se = text_se;
     _header_en = header_en;
     _text_en = text_en;
-
 }
 
-
-CardHandler::CardHandler(Uint32 color,int x, int y) {
-
-    image = SDL_CreateRGBSurface(0, 48, 64, 32, 0, 0, 0, 0);
-    SDL_FillRect(image, NULL, color);
-
-    origin_x = 0;
-    origin_y = 0;
-
-    rect = image->clip_rect;
-    rect.x = x - origin_x;
-    rect.y = y - origin_y;
-
-
-
-
-}
-
-
-void CardHandler::displayContent(){
+    void CardHandler::displayContent(){
 
     std::cout << "path: " << _path << std::endl;
     std::cout << "scale: " << _scale << std::endl;
@@ -83,47 +62,3 @@ void CardHandler::rotation() {
 void CardHandler::render() {
 
 }
-
-void CardHandler::draw(SDL_Surface* destination, SDL_Window* window){
-
-    SDL_BlitSurface(image, NULL, destination, &rect);
-    SDL_UpdateWindowSurface(window);
-
-
-}
-
-
-void CardHandler::changeColor(int r, int g, int b){
-
-    SDL_FillRect(image, NULL, SDL_MapRGB(image->format, r, g, b));
-
-}
-
-
-int CardHandler::getPosX(){
-
-    return rect.x;
-}
-
-
-int CardHandler::getPosY(){
-
-    return rect.y;
-}
-
-void CardHandler::changePos(int x, int y){
-    rect.x = rect.x + x;
-    rect.y = rect.y + y;
-
-}
-
-SDL_Rect* CardHandler::getRect(){
-
-    return &rect;
-
-}
-
-
-
-
-

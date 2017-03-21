@@ -3,7 +3,6 @@
 //
 
 #include "../include/RenderSystem.h"
-#include <stdio.h>
 
 RenderSystem::RenderSystem() {}
 

@@ -11,7 +11,6 @@
 #include <string>
 #include <iostream>
 #include <vector>
-#include <stdio.h>
 
 #ifndef SDL_TEST_CARDHANDLER_H
 #define SDL_TEST_CARDHANDLER_H
@@ -22,8 +21,6 @@ public:
     CardHandler();
 
     CardHandler(std::string path, float scale, std::vector<std::string> categories, std::string header_se, std::string text_se, std::string header_en, std::string text_en );
-
-    CardHandler(Uint32 color, int x, int y);
 
     virtual ~CardHandler();
 
@@ -39,25 +36,10 @@ public:
 
     void render();
 
-    void draw(SDL_Surface* destination,SDL_Window* window);
-
-    void changeColor(int r, int g, int b);
-
-    int getPosX();
-
-    int getPosY();
-
-    void changePos(int x, int y);
-
-    SDL_Rect* getRect();
-
 private:
     glm::vec3 position;
-    int card_width = 48;
-    int card_height = 64;
-    SDL_Surface* image;
-    SDL_Rect rect;
-    int origin_x, origin_y;
+    int card_width;
+    int card_height;
     std::string _path;
     float _scale;
     std::vector<std::string> _categories;
