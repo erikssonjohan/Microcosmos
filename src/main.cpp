@@ -42,9 +42,10 @@ int main(int argc, char* args[]) {
     //<-to
 
     init();
+
     bool running = true;
     SDL_Event event;
-    int cards_size = 0;
+    int cards_size = 6;
 
 
     Uint32 red = SDL_MapRGB(screenSurface->format, 255, 0, 0);
@@ -70,7 +71,7 @@ int main(int argc, char* args[]) {
     Cards.push_back(&obj5);
     Cards.push_back(&obj6);
 
-    cards_size = 6;
+
 
 
 
@@ -95,7 +96,7 @@ int main(int argc, char* args[]) {
 
                         if (Cards[i]->getPosX() <= x && Cards[i]->getPosY() <= y && Cards[i]->getPosX() >= x - 48 &&
                             Cards[i]->getPosY() >= y - 64) {
-                            //Cards[i]->changeColor(0, 250, 0);
+                            Cards[i]->changeColor(0, 250, 0);
                             Cards[i]->changePos(event.motion.xrel,event.motion.yrel);
                             //SDL_UpdateWindowSurface(window);
                         }
@@ -134,6 +135,7 @@ int main(int argc, char* args[]) {
 
 
 
+
 	//Destroy window
 	SDL_DestroyWindow(window);
 
@@ -158,19 +160,32 @@ void init() {
         if (window == NULL) {
             SDL_GetError();
         } else {
-            //Get window surface
-            screenSurface = SDL_GetWindowSurface(window);
 
-            //Fill the surface white
-            SDL_FillRect(screenSurface, NULL, SDL_MapRGB(screenSurface->format, 0xFF00, 0xFF, 0xFF));
 
-            //Update the surface
-            SDL_UpdateWindowSurface(window);
 
-            //Wait two seconds
-            SDL_Delay(100);
+
+                    //Get window surface
+                    screenSurface = SDL_GetWindowSurface(window);
+
+                    //Fill the surface white
+
+                    SDL_FillRect(screenSurface, NULL, SDL_MapRGB(screenSurface->format, 0xFF00, 0xFF, 0xFF));
+
+
+
+
+                    //Update the surface
+                    SDL_UpdateWindowSurface(window);
+
+                    //Wait two seconds
+
+                    SDL_Delay(100);
+                }
+            }
+
         }
-    }
 
 
-}
+
+
+
