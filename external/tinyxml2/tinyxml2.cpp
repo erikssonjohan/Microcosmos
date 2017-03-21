@@ -22,12 +22,6 @@ distribution.
 */
 #include <stdio.h>
 #include "tinyxml2.h"
-<<<<<<< HEAD
-#include <stdio.h>
-
-
-=======
->>>>>>> refs/remotes/origin/master
 #include <new>		// yes, this one new style header, is in the Android SDK.
 #if defined(ANDROID_NDK) || defined(__BORLANDC__) || defined(__QNXNTO__)
 #   include <stddef.h>
