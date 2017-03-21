@@ -110,11 +110,16 @@ endif(MINGW)
 
 
 set(GLEW_SOURCE
-        ${PROJECT_EXT_DIR}/glew/src/glew.c
-        external/tinyxml2/tinyxml2.cpp external/tinyxml2/tinyxml2.h)
+        ${PROJECT_EXT_DIR}/glew/src/glew.c)
+
+set(XML_SOURCE
+        ${PROJECT_EXT_DIR}/tinyxml2/tinyxml2.cpp
+        ${PROJECT_EXT_DIR}/tinyxml2/tinyxml2.h)
+
 add_library(GLEW STATIC
         ${GLEW_SOURCE}
-        ${GLEW_INCLUDE})
+        ${GLEW_INCLUDE}
+        ${XML_SOURCE})
 
 target_link_libraries(GLEW
         ${OPENGL_LIBRARY}
@@ -142,8 +147,7 @@ set(ALL_LIBS
 file(GLOB PROJECT_CXX_FILES ${PROJECT_CXX_DIR}/*.cpp)
 
 add_executable(${PROJECT_NAME_STR}
-        ${PROJECT_CXX_FILES}
-        src/functions.cpp include/functions.h)
+        ${PROJECT_CXX_FILES})
 
 target_link_libraries(${PROJECT_NAME_STR}
         ${ALL_LIBS}
