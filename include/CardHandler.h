@@ -22,7 +22,8 @@ class CardHandler {
 public:
     CardHandler();
 
-    CardHandler(std::string path, float scale, std::vector<std::string> categories, std::string header_se, std::string text_se, std::string header_en, std::string text_en );
+    CardHandler(std::string path, float scale, std::vector<std::string> categories, std::string header_se,
+                std::string text_se, std::string header_en, std::string text_en );
 
     CardHandler(Uint32 color, int x, int y);
 

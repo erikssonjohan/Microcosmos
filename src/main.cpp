@@ -12,11 +12,9 @@
 #include "CardHandler.h"
 #include "functions.h"
 
-
 //Screen dimension constants
 const int SCREEN_WIDTH = 640;
 const int SCREEN_HEIGHT = 480;
-
 
 // Global Variables
 //SDL Window
@@ -28,7 +26,6 @@ SDL_Surface* screenSurface = NULL;
 void init();
 
 int main(int argc, char* args[]) {
-
 
     //TODO::here ?!
     //creats objects from xml and displays them... from->
@@ -43,8 +40,6 @@ int main(int argc, char* args[]) {
 
     init();
     bool running = true;
-
-
     SDL_Event event;
     int cards_size = 6;
 
@@ -54,7 +49,6 @@ int main(int argc, char* args[]) {
     Uint32 cyan = SDL_MapRGB(screenSurface->format, 0, 255, 255);
     Uint32 magenta = SDL_MapRGB(screenSurface->format, 255, 0, 255);
     Uint32 yellow = SDL_MapRGB(screenSurface->format, 255, 255, 0);
-
 
     CardHandler obj1(red, SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
     CardHandler obj2(blue, SCREEN_WIDTH / 4, SCREEN_HEIGHT / 2);
@@ -73,13 +67,7 @@ int main(int argc, char* args[]) {
 
     cards_size = 6;
 
-
-
-
-
     while (running) {
-
-
         while (SDL_PollEvent(&event)) {
             switch (event.type) {
 
@@ -93,22 +81,14 @@ int main(int argc, char* args[]) {
                     SDL_GetMouseState(&x, &y);
 
                     for (int i = 0; i < cards_size; i++) {
-
                         if (Cards[i]->getPosX() <= x && Cards[i]->getPosY() <= y && Cards[i]->getPosX() >= x - 48 &&
                             Cards[i]->getPosY() >= y - 64) {
                             //Cards[i]->changeColor(0, 250, 0);
                             Cards[i]->changePos(event.motion.xrel,event.motion.yrel);
                             //SDL_UpdateWindowSurface(window);
                         }
-
                     }
-
-
                 }
-
-
-
-
             }
 
             for(int i = 0; i < cards_size;i++)
@@ -120,38 +100,19 @@ int main(int argc, char* args[]) {
                 Cards[i]->draw(screenSurface,window);
 
             }
-
-
         }
-
-
-
-
-
     }
 
+    //Destroy window
+    SDL_DestroyWindow(window);
 
+    //Quit SDL subsystems
+    SDL_Quit();
 
-
-
-
-
-	//Destroy window
-	SDL_DestroyWindow(window);
-
-	//Quit SDL subsystems
-	SDL_Quit();
-
-	return 0;
-	
+    return 0;
 }
 
-
-
-
 void init() {
-
-
     //Initialize SDL
     if (SDL_Init(SDL_INIT_VIDEO) < 0) {
         SDL_GetError();
@@ -164,29 +125,11 @@ void init() {
         }
         else
         {
-
             //Get window surface
             screenSurface = SDL_GetWindowSurface(window);
 
             //Fill the surface white
-
             SDL_FillRect(screenSurface, NULL, SDL_MapRGB(screenSurface->format, 0xFF00, 0xFF, 0xFF));
-
-
-
-            //Wait two seconds
-
-            SDL_Delay(100);
         }
     }
-
-
-
-        }
-
-
-
-
-
-
-
+}

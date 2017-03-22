@@ -89,7 +89,7 @@ if(MINGW)
             ${CMAKE_DL_LIBS})
 
 
-    elseif(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+elseif(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
     set(OPENGL_LIBRARY
             ${OPENGL_LIBRARY}
             #	-lGL -lGLU -lXrandr -lXext -lX11 -lrt
