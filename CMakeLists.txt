@@ -62,9 +62,7 @@ endif()
 #find_package (SDL2 REQUIRED)
 #include_directories (${SDL2_INCLUDE_DIR})
 find_package(OpenGL REQUIRED)
-
-
-
+find_package(FFMPEG REQUIRED)
 
 
 if (MINGW)
@@ -108,8 +106,6 @@ elseif(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
 endif(MINGW)
 
 
-
-
 set(GLEW_SOURCE
         ${PROJECT_EXT_DIR}/glew/src/glew.c)
 
@@ -117,17 +113,23 @@ set(XML_SOURCE
         ${PROJECT_EXT_DIR}/tinyxml2/tinyxml2.cpp
         ${PROJECT_EXT_DIR}/tinyxml2/tinyxml2.h)
 
+set(FFMPEG_SOURCE
+        ${PROJECT_EXT_DIR}/ffmpeg/ffmpeg.c)
+
 add_library(GLEW STATIC
         ${GLEW_SOURCE}
         ${GLEW_INCLUDE}
-        ${XML_SOURCE})
+        ${XML_SOURCE}
+        ${FFMPEG_SOURCE})
 
 target_link_libraries(GLEW
         ${OPENGL_LIBRARY}
-        ${EXTRA_LIBS})
+        ${EXTRA_LIBS}
+        ${FFMPEG_LIBRARIES})
 
 set(ext_libs
-        ${CMAKE_SOURCE_DIR}/external/glew/include/)
+        ${CMAKE_SOURCE_DIR}/external/glew/include/
+        ${CMAKE_SOURCE_DIR}/external/ffmpeg/)
 
 include_directories(
         ${ext_libs}
@@ -135,6 +137,7 @@ include_directories(
         #${SDL2MIXER_INCLUDE_DIR}
         ${PROJECT_INCLUDE_DIR}
         ${PROJECT_EXT_DIR}
+        ${FFMPEG_INCLUDE_DIR}
 )
 
 set(ALL_LIBS
