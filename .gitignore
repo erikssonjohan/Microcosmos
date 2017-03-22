@@ -378,3 +378,5 @@ __pycache__/
 
 # End of https://www.gitignore.io/api/jetbrains,visualstudio,cmake,c++
 /build/sdl_test
+
+external/ffmpeg/
