@@ -1,3 +1,6 @@
+# Dependencies:
+# GLEW, SDL2, FFMPEG
+
 cmake_minimum_required(VERSION 2.8)
 set(PROJECT_NAME_STR mikrokosmos)
 project(${PROJECT_NAME_STR} C CXX)
