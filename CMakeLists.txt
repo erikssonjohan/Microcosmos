@@ -12,7 +12,7 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${PROJECT_SOURCE_DIR}/cmake")
 # Set default compile flags for GCC
 if(CMAKE_COMPILER_IS_GNUCXX)
     message(STATUS "GCC detected, adding compile flags")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -pedantic -Wall -Wextra")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -pedantic -Wall -Wextra ")
 endif(CMAKE_COMPILER_IS_GNUCXX)
 
 
@@ -42,7 +42,6 @@ if (UNIX)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -pedantic -std=c++11")
 endif (UNIX)
 
-#set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -w")
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS} ${CMAKE_CXX_FLAGS_DEBUG} -g")
 set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS} ${CMAKE_CXX_FLAGS_RELEASE} -O2")
 
@@ -100,13 +99,17 @@ elseif(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 
 elseif(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
 
-    SET(EXTRA_LIBS "-framework Cocoa -framework OpenGL -framework IOKit -framework Foundation -framework AppKit")
+    SET(EXTRA_LIBS "-framework Cocoa -framework OpenGL -framework IOKit -framework Foundation -framework AppKit -framework VideoToolbox")
 
     if(CMAKE_GENERATOR STREQUAL Xcode)
         add_definitions(-D_MACOSX -ObjC++)
     endif()
 
 endif(MINGW)
+
+
+include_directories(/usr/local/Cellar/ffmpeg/3.2.4/include/)
+link_directories(/usr/local/Cellar/ffmpeg/3.2.4/lib/)
 
 
 set(GLEW_SOURCE
@@ -117,22 +120,27 @@ set(XML_SOURCE
         ${PROJECT_EXT_DIR}/tinyxml2/tinyxml2.h)
 
 set(FFMPEG_SOURCE
-        ${PROJECT_EXT_DIR}/ffmpeg/ffmpeg.c)
+        ${PROJECT_EXT_DIR}/ffmpeg/ffmpeg.c
+        )
 
 add_library(GLEW STATIC
         ${GLEW_SOURCE}
         ${GLEW_INCLUDE}
         ${XML_SOURCE}
-        ${FFMPEG_SOURCE})
+        ${FFMPEG_SOURCE}
+        )
 
-target_link_libraries(GLEW
+target_link_libraries(
+        GLEW
         ${OPENGL_LIBRARY}
         ${EXTRA_LIBS}
-        ${FFMPEG_LIBRARIES})
+        ${FFMPEG_LIBRARIES}
+)
 
 set(ext_libs
         ${CMAKE_SOURCE_DIR}/external/glew/include/
-        ${CMAKE_SOURCE_DIR}/external/ffmpeg/)
+        ${CMAKE_SOURCE_DIR}/external/ffmpeg/
+        )
 
 include_directories(
         ${ext_libs}
@@ -148,14 +156,24 @@ set(ALL_LIBS
         GLEW
         #LinearMath
         ${SDL2_LIBRARY}
+        ${FFMPEG_LIBRARIES}
+        avcodec
+        avdevice
+        avfilter
+        avformat
+        avresample
+        avutil
+        postproc
+        swresample
+        swscale
         #${SDL2MIXER_LIBRARY}
         )
 
 file(GLOB PROJECT_CXX_FILES ${PROJECT_CXX_DIR}/*.cpp)
 
 add_executable(${PROJECT_NAME_STR}
-        ${PROJECT_CXX_FILES})
+        ${PROJECT_CXX_FILES}
+        )
 
 target_link_libraries(${PROJECT_NAME_STR}
-        ${ALL_LIBS}
-        )
+        ${ALL_LIBS})
