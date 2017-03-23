@@ -4,7 +4,7 @@ Medietekniskt kandidatprojekt: Media-navigering genom materiella gränssnitt
 
 
 
-####Building with CMake and Visual Studio
+#### Building with CMake and Visual Studio
 1. Build with CMake 
   * Use available compiler (14 2015 64bit)
   * Set SDL2_INCLUDE_DIR to sdl2/include
