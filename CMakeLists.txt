@@ -1,5 +1,6 @@
 # Dependencies:
-# GLEW, SDL2, FFMPEG
+# GLEW, SDL2,SDL2_IMAGE, SDL2_TTF, (FFMPEG)
+
 
 cmake_minimum_required(VERSION 2.8)
 set(PROJECT_NAME_STR mikrokosmos)
@@ -63,8 +64,10 @@ endif()
 
 #find_package (SDL2 REQUIRED)
 #include_directories (${SDL2_INCLUDE_DIR})
+#find_package(FFMPEG REQUIRED)
+
 find_package(OpenGL REQUIRED)
-find_package(FFMPEG REQUIRED)
+
 
 
 if (MINGW)
@@ -76,6 +79,8 @@ if (MINGW)
 
 else()
     find_package(SDL2 REQUIRED)
+    find_package(SDL2_image REQUIRED)
+    find_package(SDL2_ttf REQUIRED)
     #find_package(SDL2_mixer REQUIRED)
 endif(MINGW)
 
@@ -108,8 +113,8 @@ elseif(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
 endif(MINGW)
 
 
-include_directories(/usr/local/Cellar/ffmpeg/3.2.4/include/)
-link_directories(/usr/local/Cellar/ffmpeg/3.2.4/lib/)
+#include_directories(/usr/local/Cellar/ffmpeg/3.2.4/include/)
+#link_directories(/usr/local/Cellar/ffmpeg/3.2.4/lib/)
 
 
 set(GLEW_SOURCE
@@ -127,19 +132,19 @@ add_library(GLEW STATIC
         ${GLEW_SOURCE}
         ${GLEW_INCLUDE}
         ${XML_SOURCE}
-        ${FFMPEG_SOURCE}
+        # ${FFMPEG_SOURCE}
         )
 
 target_link_libraries(
         GLEW
         ${OPENGL_LIBRARY}
         ${EXTRA_LIBS}
-        ${FFMPEG_LIBRARIES}
+        #${FFMPEG_LIBRARIES}
 )
 
 set(ext_libs
         ${CMAKE_SOURCE_DIR}/external/glew/include/
-        ${CMAKE_SOURCE_DIR}/external/ffmpeg/
+        #${CMAKE_SOURCE_DIR}/external/ffmpeg/
         )
 
 include_directories(
@@ -148,7 +153,9 @@ include_directories(
         #${SDL2MIXER_INCLUDE_DIR}
         ${PROJECT_INCLUDE_DIR}
         ${PROJECT_EXT_DIR}
-        ${FFMPEG_INCLUDE_DIR}
+        #${FFMPEG_INCLUDE_DIR}
+        ${SDL2_IMAGE_INCLUDE_DIR}
+        ${SDL2_TTF_INCLUDE_DIR}
 )
 
 set(ALL_LIBS
@@ -156,16 +163,18 @@ set(ALL_LIBS
         GLEW
         #LinearMath
         ${SDL2_LIBRARY}
-        ${FFMPEG_LIBRARIES}
-        avcodec
-        avdevice
-        avfilter
-        avformat
-        avresample
-        avutil
-        postproc
-        swresample
-        swscale
+        #${FFMPEG_LIBRARIES}
+        ${SDL2_IMAGE_LIBRARIES}
+        ${SDL2_TTF_LIBRARIES}
+        #[[ avcodec
+         avdevice
+         avfilter
+         avformat
+         avresample
+         avutil
+         postproc
+         swresample
+         swscale]]
         #${SDL2MIXER_LIBRARY}
         )
 
