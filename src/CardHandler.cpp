@@ -24,20 +24,15 @@ CardHandler::CardHandler(std::string path, float scale, std::vector<std::string>
 }
 
 
-CardHandler::CardHandler(Uint32 color,int x, int y) {
+CardHandler::CardHandler(int x, int y, int r, int g, int b) {
+    R = r;
+    G = g;
+    B = b;
 
-    image = SDL_CreateRGBSurface(0, 48, 64, 32, 0, 0, 0, 0);
-    SDL_FillRect(image, NULL, color);
-
-    origin_x = 0;
-    origin_y = 0;
-
-    rect = image->clip_rect;
-    rect.x = x - origin_x;
-    rect.y = y - origin_y;
-
-
-
+    rect.x = x;
+    rect.y = y;
+    rect.w = card_width;
+    rect.h = card_height;
 
 }
 
@@ -80,15 +75,20 @@ void CardHandler::rotation() {
 
 }
 
-void CardHandler::render() {
+void CardHandler::render(SDL_Renderer* renderer) {
+
+        SDL_SetRenderDrawColor(renderer,0,0,255,255);
+        SDL_RenderClear(renderer);
+
+
 
 }
 
-void CardHandler::draw(SDL_Surface* destination, SDL_Window* window){
+void CardHandler::draw(SDL_Renderer* renderer){
 
-    SDL_BlitSurface(image, NULL, destination, &rect);
-    SDL_UpdateWindowSurface(window);
+    SDL_SetRenderDrawColor(renderer,R,G,B,255);
 
+    SDL_RenderFillRect(renderer,&rect);
 
 }
 

@@ -25,7 +25,7 @@ public:
     CardHandler(std::string path, float scale, std::vector<std::string> categories, std::string header_se,
                 std::string text_se, std::string header_en, std::string text_en );
 
-    CardHandler(Uint32 color, int x, int y);
+    CardHandler(int x, int y,int r, int g, int b);
 
     virtual ~CardHandler();
 
@@ -39,9 +39,9 @@ public:
 
     void rotation();
 
-    void render();
+    void render(SDL_Renderer* renderer);
 
-    void draw(SDL_Surface* destination,SDL_Window* window);
+    void draw(SDL_Renderer* renderer);
 
     void changeColor(int r, int g, int b);
 
@@ -67,7 +67,7 @@ private:
     std::string _text_se;
     std::string _header_en;
     std::string _text_en;
-
+    int R,G,B;
 };
 
 
