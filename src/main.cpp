@@ -4,23 +4,16 @@
 #include <vector>
 #include <stdio.h>
 #include <RenderSystem.h>
-
+#include <CardHandler.h>
+#include <functions.h>
 //include SDL
 #include "SDL.h"
 //include GLEW
 #include "GL/glew.h"
-//Include classes
-#include "CardHandler.h"
-#include "RenderSystem.h"
-#include "functions.h"
 
 //Screen dimension constants
 const int SCREEN_WIDTH = 640;
 const int SCREEN_HEIGHT = 480;
-
-
-
-
 
 int main(int argc, char* args[]) {
 
@@ -66,7 +59,6 @@ int main(int argc, char* args[]) {
                     running = false;
                     break;
                 }
-
                 case (SDL_MOUSEMOTION): {
                     int x, y;
                     SDL_GetMouseState(&x, &y);
@@ -74,9 +66,7 @@ int main(int argc, char* args[]) {
                     for (int i = 0; i < cards_size; i++) {
                         if (Cards[i]->getPosX() <= x && Cards[i]->getPosY() <= y && Cards[i]->getPosX() >= x - 48 &&
                             Cards[i]->getPosY() >= y - 64) {
-
                             Cards[i]->changePos(event.motion.xrel,event.motion.yrel);
-
                         }
                     }
                 }

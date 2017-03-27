@@ -40,15 +40,12 @@ public:
     void destroy();
 
 private:
-    int width;
-    int height;
+    const int SCREEN_WIDTH = 640;
+    const int SCREEN_HEIGHT = 480;
+
     SDL_Window* window = NULL;
     SDL_Surface* screenSurface = NULL;
     SDL_Renderer* Renderer = NULL;
-
-
-
-
 };
 
 
