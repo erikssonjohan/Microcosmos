@@ -132,7 +132,7 @@ add_library(GLEW STATIC
         ${GLEW_SOURCE}
         ${GLEW_INCLUDE}
         ${XML_SOURCE}
-        # ${FFMPEG_SOURCE}
+        #${FFMPEG_SOURCE}
         )
 
 target_link_libraries(
@@ -151,9 +151,12 @@ include_directories(
         ${ext_libs}
         ${SDL2_INCLUDE_DIR}
         #${SDL2MIXER_INCLUDE_DIR}
+
         ${PROJECT_INCLUDE_DIR}
         ${PROJECT_EXT_DIR}
+
         #${FFMPEG_INCLUDE_DIR}
+
         ${SDL2_IMAGE_INCLUDE_DIR}
         ${SDL2_TTF_INCLUDE_DIR}
 )
@@ -161,11 +164,12 @@ include_directories(
 set(ALL_LIBS
         ${OPENGL_LIBRARY}
         GLEW
-        #LinearMath
         ${SDL2_LIBRARY}
         #${FFMPEG_LIBRARIES}
+
         ${SDL2_IMAGE_LIBRARIES}
         ${SDL2_TTF_LIBRARIES}
+
         #[[ avcodec
          avdevice
          avfilter
@@ -177,6 +181,10 @@ set(ALL_LIBS
          swscale]]
         #${SDL2MIXER_LIBRARY}
         )
+
+# TEST MESSAGE
+message( "SDL2_img: " ${SDL2_IMAGE_LIBRARIES})
+message( "SDL2_ttf: " ${SDL2_IMAGE_LIBRARIES})
 
 file(GLOB PROJECT_CXX_FILES ${PROJECT_CXX_DIR}/*.cpp)
 
