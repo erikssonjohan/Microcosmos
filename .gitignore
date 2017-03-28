@@ -380,3 +380,7 @@ __pycache__/
 /build/sdl_test
 
 external/ffmpeg/
+
+*.cbp
+
+build/mikrokosmos
