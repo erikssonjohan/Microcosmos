@@ -8,6 +8,7 @@
 #include <functions.h>
 //include SDL
 #include "SDL.h"
+#include "SDL_image.h"
 //include GLEW
 #include "GL/glew.h"
 
@@ -15,6 +16,7 @@
 #include "CardHandler.h"
 #include "functions.h"
 #include "touchHandler.h"
+
 
 
 //Screen dimension constants
@@ -50,6 +52,14 @@ int main(int argc, char* args[]) {
     bool running = true;
     SDL_Event event;
     int cards_size = 6;
+
+    //Initialize PNG loading
+    int imgFlags = IMG_INIT_PNG;
+    if( !( IMG_Init( imgFlags ) & imgFlags ) )
+    {
+        printf( "SDL_image could not initialize! SDL_image Error: %s\n", IMG_GetError() );
+        running = false;
+    }
 
     CardHandler obj1(20, 160,255,0,0);
     CardHandler obj2(160, 160,0,255,0);
