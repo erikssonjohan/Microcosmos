@@ -190,7 +190,7 @@ file(GLOB PROJECT_CXX_FILES ${PROJECT_CXX_DIR}/*.cpp)
 
 add_executable(${PROJECT_NAME_STR}
         ${PROJECT_CXX_FILES}
-        )
+        src/touchHandler.cpp include/touchHandler.h)
 
 target_link_libraries(${PROJECT_NAME_STR}
         ${ALL_LIBS})

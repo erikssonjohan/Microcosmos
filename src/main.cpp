@@ -11,6 +11,7 @@
 //Include classes
 #include "CardHandler.h"
 #include "functions.h"
+#include "touchHandler.h"
 
 //Screen dimension constants
 const int SCREEN_WIDTH = 640;
@@ -24,6 +25,7 @@ SDL_Window* window = NULL;
 SDL_Surface* screenSurface = NULL;
 
 void init();
+
 
 int main(int argc, char* args[]) {
 
@@ -67,15 +69,16 @@ int main(int argc, char* args[]) {
 
     cards_size = 6;
 
+    touchHandler touchH;
+
     while (running) {
         while (SDL_PollEvent(&event)) {
             switch (event.type) {
 
-                case (SDL_QUIT): {
+                case SDL_QUIT: {
                     running = false;
                     break;
                 }
-
                 case (SDL_MOUSEMOTION): {
                     int x, y;
                     SDL_GetMouseState(&x, &y);
@@ -88,10 +91,27 @@ int main(int argc, char* args[]) {
                             //SDL_UpdateWindowSurface(window);
                         }
                     }
+                    break;
                 }
+                case SDL_FINGERDOWN: {
+                    // Add finger to the vector of active touch points
+                    // If the finger is a card it will be handled inside touchHandler
+                    touchH.addFinger(event.tfinger);
+                    break;
+                }
+                case SDL_FINGERUP:{
+                    // remove SDL_TouchFingerEvent with id fingerId and card if card
+                    touchH.removeFinger(event.tfinger.fingerId);
+                    break;
+                }
+                case SDL_FINGERMOTION:{
+                    touchH.updateFinger(event.tfinger);
+                    break;
+                }
+                default: break;
             }
 
-            for(int i = 0; i < cards_size;i++)
+          /*  for(int i = 0; i < cards_size;i++)
             {
                 SDL_FillRect(screenSurface, NULL, blue);
                 for(int x = 0;x<cards_size; x++)
@@ -99,7 +119,7 @@ int main(int argc, char* args[]) {
 
                 Cards[i]->draw(screenSurface,window);
 
-            }
+            }*/
         }
     }
 
