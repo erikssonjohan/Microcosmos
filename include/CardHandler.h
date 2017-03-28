@@ -2,6 +2,7 @@
 // Created by Oscar Nord on 2017-03-08.
 //
 
+
 //include SDL
 #include "SDL.h"
 //include GLEW
@@ -13,22 +14,38 @@
 #include <vector>
 #include <stdio.h>
 
-
 #ifndef SDL_TEST_CARDHANDLER_H
 #define SDL_TEST_CARDHANDLER_H
 
-
 class CardHandler {
 public:
+    /*!
+     * a constructor of some sort that might not be used ? idk...
+     */
     CardHandler();
 
+    /*!
+     *
+     * A constructor for the CardHandler just based on the XML
+     *
+     * @param path - path to the media (image/film)
+     * @param scale - scaling of the media
+     * @param categories - the contents categories
+     * @param header_se - the header/name of the content (se)
+     * @param text_se - the text of the content (se)
+     * @param header_en he header/name of the content (en)
+     * @param text_en - the text of the content (en)
+     */
     CardHandler(std::string path, float scale, std::vector<std::string> categories, std::string header_se,
                 std::string text_se, std::string header_en, std::string text_en );
 
-    CardHandler(Uint32 color, int x, int y);
+    CardHandler(int x, int y,int r, int g, int b);
 
     virtual ~CardHandler();
 
+    /*!
+     * Prints the @p path, @p scale, @p categories, @p header_se, @p text_se, @p header_en and @p text_en in the console
+     */
     void displayContent();
 
     void eventHandler();
@@ -39,9 +56,9 @@ public:
 
     void rotation();
 
-    void render();
+    void render(SDL_Renderer* renderer);
 
-    void draw(SDL_Surface* destination,SDL_Window* window);
+    void draw(SDL_Renderer* renderer);
 
     void changeColor(int r, int g, int b);
 
@@ -67,7 +84,7 @@ private:
     std::string _text_se;
     std::string _header_en;
     std::string _text_en;
-
+    int R,G,B;
 };
 
 

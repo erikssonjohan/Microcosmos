@@ -13,9 +13,20 @@
 //include tinyxml2
 #include "tinyxml2/tinyxml2.h"
 namespace functions {
-    //CardHandler objects from file and puts it in the cards vector
+    /*!
+     *
+     * creates CardHandler objects from XML-file and puts it in the cards vector
+     *
+     * @param file - a XML-file (with the right structure)
+     * @param cards - a vector of CardHandler where new CardHandlers can be created
+     */
     void xml(const char *file, std::vector<CardHandler> &cards);
-    // displays the content in the predefined tags
+    /*!
+     *
+     * Displays the content in the XML-file with the folowing tags:
+     *
+     * @param file - a XML-file (with the right structure)
+     */
     void displayxml(const char *file);
 
 

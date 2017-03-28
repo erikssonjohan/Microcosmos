@@ -79,8 +79,8 @@ if (MINGW)
 
 else()
     find_package(SDL2 REQUIRED)
-    find_package(SDL2_image REQUIRED)
-    find_package(SDL2_ttf REQUIRED)
+    #find_package(SDL2_image REQUIRED)
+    #find_package(SDL2_ttf REQUIRED)
     #find_package(SDL2_mixer REQUIRED)
 endif(MINGW)
 
@@ -157,8 +157,8 @@ include_directories(
 
         #${FFMPEG_INCLUDE_DIR}
 
-        ${SDL2_IMAGE_INCLUDE_DIR}
-        ${SDL2_TTF_INCLUDE_DIR}
+       # ${SDL2_IMAGE_INCLUDE_DIR}
+       # ${SDL2_TTF_INCLUDE_DIR}
 )
 
 set(ALL_LIBS
@@ -167,8 +167,8 @@ set(ALL_LIBS
         ${SDL2_LIBRARY}
         #${FFMPEG_LIBRARIES}
 
-        ${SDL2_IMAGE_LIBRARIES}
-        ${SDL2_TTF_LIBRARIES}
+        #${SDL2_IMAGE_LIBRARIES}
+       # ${SDL2_TTF_LIBRARIES}
 
         #[[ avcodec
          avdevice
