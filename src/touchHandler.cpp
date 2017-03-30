@@ -4,7 +4,8 @@
 
 #include "touchHandler.h"
 
-// Handle a FINGERDOWN event
+
+
 void touchHandler::addFinger(SDL_TouchFingerEvent & tfe)
 {
     vec.push_back(tfe);
@@ -20,7 +21,7 @@ void touchHandler::addFinger(SDL_TouchFingerEvent & tfe)
     std::cout << "Added id " << tfe.fingerId << std::endl;
 }
 
-// Handle a FINGERMOTION event
+
 void touchHandler::updateFinger(SDL_TouchFingerEvent &tfe)
 {
     //update x,y,dx and dy for tfe
@@ -33,7 +34,7 @@ void touchHandler::updateFinger(SDL_TouchFingerEvent &tfe)
             vec[i].x = tfe.x;
             vec[i].y = tfe.y;
 
-            std::cout << "Updated id " << tfe.fingerId << std::endl;
+            //std::cout << "Updated id " << tfe.fingerId << std::endl;
             return;
         }
     }
@@ -48,8 +49,6 @@ void touchHandler::updateFinger(SDL_TouchFingerEvent &tfe)
 
 }
 
-// Handle a FINGERUP event
-//Function to remove tfe from the vector using fingerId
 void touchHandler::removeFinger( SDL_FingerID fid) {
 
     // If the finger is linked to a card: (inside touchHandler?)

@@ -25,19 +25,6 @@ CardHandler::CardHandler(std::string path, float scale, std::vector<std::string>
 }
 
 
-CardHandler::CardHandler(int x, int y, int r, int g, int b) {
-
-    R = r;
-    G = g;
-    B = b;
-
-    rect.x = x;
-    rect.y = y;
-    rect.w = card_width;
-    rect.h = card_height;
-}
-
-
 void CardHandler::displayContent(){
 
     std::cout << "path: " << _path << std::endl;
@@ -61,7 +48,6 @@ void CardHandler::displayContent(){
 };
 
 
-
 void CardHandler::eventHandler() {
 
 }
@@ -78,47 +64,7 @@ void CardHandler::rotation() {
 
 }
 
-void CardHandler::render(SDL_Renderer* renderer) {
-
-        SDL_SetRenderDrawColor(renderer,0,0,255,255);
-        SDL_RenderClear(renderer);
-}
-
-void CardHandler::draw(SDL_Renderer* renderer){
-
-    SDL_SetRenderDrawColor(renderer,R,G,B,255);
-    SDL_RenderFillRect(renderer,&rect);
-}
-
-
-void CardHandler::changeColor(int r, int g, int b){
-
-    SDL_FillRect(image, NULL, SDL_MapRGB(image->format, r, g, b));
-
-}
-
-
-int CardHandler::getPosX(){
-
-    return rect.x;
-}
-
-
-int CardHandler::getPosY(){
-
-    return rect.y;
-}
-
 void CardHandler::changePos(int x, int y){
-
-    rect.x = rect.x + x;
-    rect.y = rect.y + y;
-
-}
-
-SDL_Rect* CardHandler::getRect(){
-
-    return &rect;
 
 }
 

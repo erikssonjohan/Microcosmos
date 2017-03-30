@@ -19,19 +19,12 @@
 
 
 
-//Screen dimension constants
-const int SCREEN_WIDTH = 640;
-const int SCREEN_HEIGHT = 480;
-
-
 // Global Variables
 //SDL Window
 SDL_Window* window = NULL;
 
 //The surface contained by the window
 SDL_Surface* screenSurface = NULL;
-
-void init();
 
 
 int main(int argc, char* args[]) {
@@ -51,32 +44,6 @@ int main(int argc, char* args[]) {
     renderSystem.init();
     bool running = true;
     SDL_Event event;
-    int cards_size = 6;
-
-    //Initialize PNG loading
-    int imgFlags = IMG_INIT_PNG;
-    if( !( IMG_Init( imgFlags ) & imgFlags ) )
-    {
-        printf( "SDL_image could not initialize! SDL_image Error: %s\n", IMG_GetError() );
-        running = false;
-    }
-
-    CardHandler obj1(20, 160,255,0,0);
-    CardHandler obj2(160, 160,0,255,0);
-    CardHandler obj3(260, 160,255,255,0);
-    CardHandler obj4(340, 160,50,50,255);
-    CardHandler obj5(480, 160,255,255,255);
-    CardHandler obj6(620, 160,0,255,0);
-
-    std::vector<CardHandler *> Cards;
-    Cards.push_back(&obj1);
-    Cards.push_back(&obj2);
-    Cards.push_back(&obj3);
-    Cards.push_back(&obj4);
-    Cards.push_back(&obj5);
-    Cards.push_back(&obj6);
-
-    cards_size = 6;
 
     touchHandler touchH;
 
@@ -86,18 +53,6 @@ int main(int argc, char* args[]) {
 
                 case SDL_QUIT: {
                     running = false;
-                    break;
-                }
-                case (SDL_MOUSEMOTION): {
-                    int x, y;
-                    SDL_GetMouseState(&x, &y);
-
-                    for (int i = 0; i < cards_size; i++) {
-                        if (Cards[i]->getPosX() <= x && Cards[i]->getPosY() <= y && Cards[i]->getPosX() >= x - 48 &&
-                            Cards[i]->getPosY() >= y - 64) {
-                            Cards[i]->changePos(event.motion.xrel,event.motion.yrel);
-                        }
-                    }
                     break;
                 }
                 case SDL_FINGERDOWN: {
@@ -116,17 +71,6 @@ int main(int argc, char* args[]) {
                     break;
                 }
                 default: break;
-            }
-
-            for(int i = 0; i < cards_size;i++)
-            {
-                Cards[i]->render(renderSystem.get_Renderer());
-
-                for(int x = 0;x<cards_size; x++)
-                    Cards[x]->draw(renderSystem.get_Renderer());
-
-                SDL_RenderPresent(renderSystem.get_Renderer());
-
             }
         }
     }

@@ -39,8 +39,6 @@ public:
     CardHandler(std::string path, float scale, std::vector<std::string> categories, std::string header_se,
                 std::string text_se, std::string header_en, std::string text_en );
 
-    CardHandler(int x, int y,int r, int g, int b);
-
     virtual ~CardHandler();
 
     /*!
@@ -48,34 +46,52 @@ public:
      */
     void displayContent();
 
+    /*!
+     *
+     */
     void eventHandler();
 
+    /*!
+     *
+     */
     void mediaContent();
 
+    /*!
+     *
+     */
     void textContent();
 
+    /*!
+     *
+     */
     void rotation();
 
-    void render(SDL_Renderer* renderer);
 
-    void draw(SDL_Renderer* renderer);
-
-    void changeColor(int r, int g, int b);
-
+    /*!
+     *
+     * @return
+     */
     int getPosX();
 
+    /*!
+     *
+     * @return
+     */
     int getPosY();
 
+    /*!
+     *
+     * @param x
+     * @param y
+     */
     void changePos(int x, int y);
 
-    SDL_Rect* getRect();
-
 private:
+
+
     glm::vec3 position;
     int card_width = 48;
     int card_height = 64;
-    SDL_Surface* image;
-    SDL_Rect rect;
     int origin_x, origin_y;
     std::string _path;
     float _scale;

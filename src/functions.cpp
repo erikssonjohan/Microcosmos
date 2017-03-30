@@ -22,7 +22,7 @@ void functions::xml(const char *file, std::vector<CardHandler> &cards) {
                 path = child->Attribute("path");
             }
             if (child->Attribute("scale_exp")) {
-                float scale = std::atof(child->Attribute("scale_exp"));
+                scale = std::atof(child->Attribute("scale_exp"));
                 //f(float) std::stod(child->Attribute("scale_exp"));
             }
             if (child->FirstChildElement("category")) {
