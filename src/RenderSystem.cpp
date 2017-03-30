@@ -52,7 +52,7 @@ void RenderSystem::init() {
             screenSurface = SDL_GetWindowSurface(window);
 
             //Fill the surface white
-            SDL_FillRect(screenSurface, NULL, SDL_MapRGB(screenSurface->format, 0xFF00, 0xFF, 0xFF));
+            SDL_FillRect(screenSurface, NULL, SDL_MapRGB(screenSurface->format, 0xFF, 0xFF, 0xFF));
 
             SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
             Renderer = renderer;

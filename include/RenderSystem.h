@@ -15,28 +15,68 @@
 
 class RenderSystem {
 public:
+
+    /*!
+     *
+     */
     RenderSystem();
 
+    /*!
+     *
+     */
     virtual ~RenderSystem();
 
+    /*!
+     *
+     */
     void renderer();
 
+    /*!
+     *
+     */
     void texture();
 
+    /*!
+     *
+     */
     void cardIdentifier();
 
+    /*!
+     *
+     */
     void setRealCard();
 
+    /*!
+     *
+     */
     void InitShader();
 
+    /*!
+     *
+     */
     void init();
 
+    /*!
+     *
+     * @return
+     */
     SDL_Surface* get_Surface();
 
+    /*!
+     *
+     * @return
+     */
     SDL_Window* get_Window();
 
+    /*!
+     *
+     * @return
+     */
     SDL_Renderer* get_Renderer();
 
+    /*!
+     *
+     */
     void destroy();
 
 private:
