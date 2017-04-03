@@ -12,11 +12,10 @@ void touchHandler::addFinger(SDL_TouchFingerEvent & tfe)
 
     //if placed on virtual card
     if( 1 == 0) {
-        // Add touchpoint to CardHandler?
+        // Add touchpoint to VirtualCard?
     }
     else if( 1 == 1 ) { //Belongs to real card
-        // Create new RealCard
-        // Add touchpoint to RealCard?
+        // Show RealCard with updated position for card and virtual cards
     }
     std::cout << "Added id " << tfe.fingerId << std::endl;
 }
