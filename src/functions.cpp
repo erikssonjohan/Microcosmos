@@ -18,6 +18,7 @@ void functions::xml(const char *file, std::vector<CardHandler> &cards) {
         float scale = 1.0f;
         for (tinyxml2::XMLElement *child = doc.FirstChildElement("content")->FirstChildElement("media");
              child != 0; child = child->NextSiblingElement()) {
+            categories = {};
             if (child->Attribute("path")) {
                 path = child->Attribute("path");
             }
