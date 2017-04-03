@@ -12,11 +12,9 @@
 #include "GL/glew.h"
 
 //Include classes
-#include "CardHandler.h"
 #include "functions.h"
 #include "touchHandler.h"
 #include "RealCard.h"
-#include "VirtualCard.h"
 
 
 // Global Variables

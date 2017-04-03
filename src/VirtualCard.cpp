@@ -1,5 +1,5 @@
 //
-// Created by Ola Rossing on 03/04/17.
+// Created by Ingela Rossing on 03/04/17.
 //
 
 #include "VirtualCard.h"
