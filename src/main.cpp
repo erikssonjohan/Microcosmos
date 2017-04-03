@@ -37,7 +37,7 @@ int main(int argc, char* args[]) {
 
     std::vector<RealCard> realCards;
 
-    //realCards.push_back();
+    //loop that creates a real card for all categories
 
     std::cout << cards.size() << std::endl;
     for (int i = 0; i < cards.size() ; ++i) {
