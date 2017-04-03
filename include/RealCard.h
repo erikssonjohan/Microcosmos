@@ -12,16 +12,18 @@
 
 class RealCard {
 public:
-
+    //called in init
     RealCard(std::string category, std::vector<CardHandler>& cards);
+
+    //card is placed on table -> give position, make visible
+    Place(float x, float y);
+
 
 private:
     glm::vec3 position;
     bool onTable;
     std::string category;
-    std::vector<VirtualCard> VC;
-
-
+    std::vector<CardHandler> CH;
 
 };
 
