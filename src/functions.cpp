@@ -5,7 +5,7 @@
 #include "functions.h"
 #include <iostream>
 
-void functions::xml(const char *file, std::vector<CardHandler> &cards) {
+void functions::xml(const char *file, std::vector<VirtualCard> &cards) {
     //TODO:: add checks if for example the path has spaces or other thing that we don't want
     tinyxml2::XMLDocument doc;
     doc.LoadFile(file);
@@ -46,7 +46,7 @@ void functions::xml(const char *file, std::vector<CardHandler> &cards) {
             if (child->FirstChildElement("en")->FirstChildElement("text")->GetText()) {
                 text_en = child->FirstChildElement("en")->FirstChildElement("text")->GetText();
             }
-            CardHandler someNewObject =  CardHandler(path, scale, categories, header_se, text_se, header_en, text_en);
+            VirtualCard someNewObject =  VirtualCard(path, scale, categories, header_se, text_se, header_en, text_en);
             cards.push_back(someNewObject);
         }
     }

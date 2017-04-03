@@ -16,8 +16,9 @@ public:
     RealCard(std::string category, std::vector<CardHandler>& cards);
 
     //card is placed on table -> give position, make visible
-    Place(float x, float y);
+    void place(float x, float y);
 
+    void moveCard(float newX, float newY); //Depending on method we might use dx and dy instead.
 
 private:
     glm::vec3 position;

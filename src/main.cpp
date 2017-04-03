@@ -8,7 +8,6 @@
 #include <functions.h>
 //include SDL
 #include "SDL.h"
-#include "SDL_image.h"
 //include GLEW
 #include "GL/glew.h"
 
@@ -17,7 +16,7 @@
 #include "functions.h"
 #include "touchHandler.h"
 #include "RealCard.h"
-
+#include "VirtualCard.h"
 
 
 // Global Variables
@@ -32,12 +31,12 @@ int main(int argc, char* args[]) {
 
     //TODO::here ?!
     //creats objects from xml and displays them... from->
-    std::vector<CardHandler> cards;
+    std::vector<VirtualCard> cards;
     functions::xml("write.xml", cards);
 
     std::vector<RealCard> realCards;
 
-    //realCards.push_back();
+    //realCards.push_back(RealCard(category, cards));
 
     std::cout << cards.size() << std::endl;
     for (int i = 0; i < cards.size() ; ++i) {

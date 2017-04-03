@@ -1,0 +1,771 @@
+<?xml version="1.0" encoding="utf-8"?>
+<content>
+    <category name="proteiner" tex_se="Proteiner" tex_en="Proteins" path="demo/00.jpg"/>
+    <category name="virus" tex_se="Virus" tex_en="Viruses" path="demo/00.jpg"/>
+    <category name="celler" tex_se="Celler" tex_en="Cells" path="demo/00.jpg"/>
+
+    <category name="molekyler" tex_se="Molekyler" tex_en="Molecules" path="demo/00.jpg"/>
+    <category name="gener" tex_se="Gener" tex_en="Genes" path="demo/00.jpg"/>
+
+    <category name="livsprocesser" tex_se="Livsprocesser" tex_en="Life Processes" path="demo/00.jpg"/>
+    <category name="sjukdomar" tex_se="Sjukdomar" tex_en="Diseases" path="demo/00.jpg"/>
+    
+   <media path='media/10-Ribosome_figure.jpg' scale_exp='1'>
+      <category name='proteiner'/>
+      <category name='livsprocesser'/>
+      <se>
+         <header>Ribosom</header>
+         <text>Ribosomer kallas ofta proteinfabriker, eftersom de "översätter" genetisk information till proteiner. De består av två subenheter: en stor subenhet (till höger), och en liten subenhet (till vänster). När ett protein ska bildas, förenas de två subenheterna runt en mRNA-sträng. Subenheterna består själva av RNA-strängar, som här visas i orange och gult, med ett antal proteinkedjor på olika positioner, i blått.[newline][newline]Källa: Illustration av David Goodsell, Scripps</text>
+      </se>
+      <en>
+         <header>Ribosome</header>
+         <text>Ribosomes are often called protein factories because they translate genetic information into proteins. They are compIosed of two subunits: a large subunit shown on the right, and a small subunit shown on the left. When a protein is synthesized, the two subunits come together around a messenger RNA. The subunits are themselves composed of long strands of RNA, shown here in orange (tan) and yellow, with multiple protein chains, shown in blue, in different positions.[newline][newline]Source: Illustration by David Goodsell, Scripps</text>
+      </en>
+   </media>
+   <media path='media/101-Prions-2rnm.jpg' scale_exp='1'>
+      <category name='sjukdomar'/>
+      <category name='proteiner'/>
+      <se>
+         <header>Prionprotein</header>
+         <text>Prion är det protein som orsakar galna ko-sjukan. Proteinet finns vanligen i en helt ofarlig form, men det kan även ändras till en sjukdomsalstrande form. I denna form bildar det sk fibriller, en slags proteinfibrer. På bilden visas en bit av en fibrill bestående av fem prionproteiner (i olika färger). När ett prionprotein väl har ändrats till den sjuka formen, kan det sedan omvandla friska prioner så att dessa också antar den sjuka formen. På så sätt förökas den farliga formen av proteinet, trots att det inte är en cell eller ett virus som i andra infektionssjukdomar.[newline]Källa: Illustration av David Goddsell, Scripps</text>
+      </se>
+      <en>
+         <header>Prion protein</header>
+         <text>Prion is the protein that causes mad-cow disease. The protein usually exists in a non-dangerous (normal) form, but can change into a disease-causing form. It can then form fibrills, which is a kind of protein fibres. The picture shows part of a fibril that consists of five prion proteins (in different colors). Prion proteins in the sick form can transform other "healthy" prions into sick (deformed/infectious) ones. In this way, the disease-causing form of the protein multiplies, even though it is not a cell or a virus as in other infectious diseases. [newline]Source: Illustration by David Goddsell, Scripps </text>
+      </en>
+   </media>
+   <media path='media/1010760_30792274.jpg' scale_exp='1'>
+      <category name='gener'/>
+      <category name='molekyler'/>
+      <se>
+         <header>DNA-molekyl</header>
+         <text>En förenklad illustration av en bit av en DNA molekyl.[newline]DNA är den kemiska förening som utgör den ärftliga informationen i kroppens celler består av, det så kallade genomet. Molekylen består av en kedja av sammanlänkade byggstenar. Byggstenarna finns i fyra olika varianter, vilket indikeras av färger i bilden. DNA har oftast formen av en dubbelspiral, där byggstenarna paras ihop två och två. En gen är en bit av DNA-molekylen, där sekvensen av byggstenar, bestämmer hur ett visst protein ska se ut. Genomet bestämmer alltså hur alla proteinerna i en organism skall byggas upp.[newline]Källa: SXC.hu, HAAP Media</text>
+      </se>
+      <en>
+         <header>DNA molecule </header>
+         <text>DNA is the chemical substance that the inheritable information in the body`s cells is made of, the so called genome. The molecule comprises of a chain of interlinked building blocks. There are four types of blocks, as indicated by different colours in the figure. DNA usually forms a double helix, in which the building blocks are paired. A gene is a region of the DNA molecule, where the sequence of the building blocks determine how a specific protein will look. Thus, the genome determines how each protein in an organism is formed.[newline]Source: SXC.hu, HAAP Media[newline]</text>
+      </en>
+   </media>
+   <media path='media/1037189_46236490.jpg' scale_exp='1'>
+      <category name='gener'/>
+      <se>
+         <header>Genetiskt fingeravtryck</header>
+         <text>Bilden visar ett så kallat genetiskt fingeravtryck, som kan användas för att ta fram en DNA-profil. Tekniken uppfanns 1985, och används idag för att identifiera individer utifrån deras DNA. Trots att 99,9% av de mänskliga DNA-sekvenserna är identiska hos alla människor, så finns det tillräckligt mycket variation för att individer ska kunna skiljas från varandra.[newline][newline]Källa: SXC.hu, HAAP Media </text>
+      </se>
+      <en>
+         <header>Genetic fingerprint</header>
+         <text>The image shows a so-called genetic fingerprint, which can be used to create a DNA profile. This technique was invented in 1985, and is used today to identify individuals based on their respective DNA. Although 99.9% of human DNA sequences are identical between persons, there is still enough variation in the DNA to allow individuals to distinguish individuals from each other.[newline][newline]Source: SXC.hu, HAAP Media </text>
+      </en>
+   </media>
+   <media path='media/109-TobaccoMosaicVirus_2tmv_composite.jpg' scale_exp='1'>
+      <category name='virus'/>
+      <se>
+         <header>Växtvirus</header>
+         <text>Tobaksmosaikvirus (TMV) är ett litet virus som angriper växter som är besläktade med tobak, som till exempel tomat och petunia. De orsakar gröna eller vita långsmala döda fläckar på bl.a. blad och frukter. Viruset överförs via redskap, kläder, döda växtdelar och kan även finns i frön och blomvatten.[newline][newline]Källa: Illustration av David Goddsell, Scripps</text>
+      </se>
+      <en>
+         <header>Plant virus</header>
+         <text>Tobacco mosaic virus (TMV) is a small virus that infects plants related to tobacco, such as tomato and petunia. It produces a green or white mottled (filiform) appearance on the leaves and fruit. The virus is transmitted via contact (tools, clothes, etc.) during cultivation and maintenance. It is also present in seeds, root water and plant debris, so great care must be taken to avoid spreading infection.[newline][newline]Källa: Illustration by David Goddsell, Scripps</text>
+      </en>
+   </media>
+   <media path='media/1153649_90044930.jpg' scale_exp='1'>
+      <category name='celler'/>
+      <se>
+         <header>Röda blodkroppar</header>
+         <text>Röda blodkroppar är en celltyp som finns i blodet. Cellerna är röda därför att de innehåller stora mängder av proteinet hemoglobin, som enbart reflekterar rött ljus. Hemoglobinet binder syremolekyler och hjälper på så sätt till att frakta syret i blodet från lungorna ut till muskler och andra vävnader. De röda blodkropparna är platta och små i jämförelse med andra celler, och innehåller varken cellkärna, ribosomer eller mitokondrier.[newline][newline]Källa: SXC.hu, HAAP Media</text>
+      </se>
+      <en>
+         <header>Red blood cells</header>
+         <text>The red blood cell is the main cellular constituent of blood. The cells are red because they contain large amounts of the protein hemoglobin, which only reflects emits red light. Hemoglobin binds to oxygen molecules and facilitates the transport of oxygen from the lungs to muscles and other tissues. Red blood cells are flat and small in comparison with other cells and do not contain a cell nucleus, ribosomes or mitochondria.[newline][newline]Source: SXC.hu, HAAP Media</text>
+      </en>
+   </media>
+   <media path='media/14-Insulin-porcine-human.jpg' scale_exp='1'>
+      <category name='proteiner'/>
+      <category name='sjukdomar'/>
+      <se>
+         <header>Insulin</header>
+         <text>Insulin är ett hormon som påverkar blodsockernivån. Efter en måltid är denna nivå hög, och insulin frisätts som en signal till bl.a. levern och musklerna om att de ska ta upp socker från blodet in  i cellerna. Om insulin av någon anledning saknas ökar sockernivån i blodet till farliga nivåer, vilket leder till diabetes. [newline]Tidigare fick diabetiker insulin framställt från bukspottkörtel av gris. Det är inte helt identiskt med det humana, utan skiljer på en aminosyra av totalt 51. Bilden visar den tredimensionella strukturen av mänskligt insulin och grisinsulin och insikerar den aminosyra som skiljer dem åt (Threonin respektive Alanin). I dag ges istället rekombinant humant insulin, tillverkat av genetiskt modiferade bakterier.[newline]Källa: Illustration by David Goodsell, Scripps </text>
+      </se>
+      <en>
+         <header>Insulin</header>
+         <text>Insulin is a hormone (a small protein) that affects the uptake of blood sugar into cells. Following a meal when the level of blood sugar (glucose) is high insulin is released as a signal to the liver and muscle cells to absorb glucose from the blood. If Insulin is low for some reason, the blood sugar level can increase to dangerous levels. This is a condition that develops during diabetes. Earlier, diabetes was treated with porcine insulin. The human and porcine (pig) insulin differs in only one out of 51 amino acids, Threonine in human and Alanine in pig insulin. The tree-dimensional structure of human and pig insulin is shown in the picture. Today human insulin is produced in genetically modified bacteria. [newline]Source: Illustration by David Goodsell, Scripps</text>
+      </en>
+   </media>
+   <media path='media/15-TransferRNA-two-trna.jpg' scale_exp='1'>
+      <category name='gener'/>
+      <category name='proteiner'/>
+      <se>
+         <header>Transfer-RNA (tRNA)</header>
+         <text>Transfer-RNA (tRNA) är en molekyl som överför aminosyror till den växande proteinkedjan under proteinsyntesen i cellen. tRNA innehåller en region med tre baser, ett så kallat antikodon (baserna anges med bokstäver i bilden) som är komplementärt till en motsvarande region på mRNA (kodon). Antikodonet och kodonet paras ihop under proteinsyntesen. Det finns specifika tRNA för var och en av de 20 olika aminosyror som bygger upp alla proteiner i levande organismer. I bilden visas tRNA för fenylalanin och asparaginsyra. Själva aminosyran (vid pilen) sitter fast på tRNA tills den överförs till proteinet som byggs upp. [newline][newline]Källa: Illustration av David Godsell, Scripps</text>
+      </se>
+      <en>
+         <header>Transfer RNA (tRNA)</header>
+         <text>Transfer RNA (tRNA) is a molecule that transfers a specific amino acid to a growing polypeptide chain at the ribosomal site of protein synthesis. tRNA contains a three base region, a so called anticodon (the bases are designated by letters in the image) that can pair complementarily to a corresponding region (a codon) on the messenger RNA during protein synthesis. Each type of tRNA molecule can be attached to only one of the 20 different amino acids that are the building blocks of all proteins. The image shows tRNA for phenylalanine and aspartate. The amino acid (indicated by arrow) is attached to the tRNA until it is transferred to the growing protein.[newline][newline]Source: Illustration by David Godsell, Scripps </text>
+      </en>
+   </media>
+   <media path='media/1IGT_H2O.jpg' scale_exp='1'>
+      <category name='proteiner'/>
+      <category name='molekyler'/>
+      <category name='sjukdomar'/>
+      <se>
+         <header>Antikropp och vattenmolekyl</header>
+         <text>Flera olika typer av antikroppar ingår i immunsystemet. Bilden visar en IgG-antikropp från människa. På spetsarna av molekylens två övre domäner finns ytorna som binder till främmande substanser, såsom virus eller bakterier. Som storleksjämförelse visas en vattenmolekyl till vänster om antikroppen.[newline][newline]Källa: Linköpings Universitet, skapad med QuteMol</text>
+      </se>
+      <en>
+         <header>Antibody and water molecule</header>
+         <text>Several types of antibodies exist as part of the immune system. The image shows a human IgG antibody. At the left and right ends of the "arms" of the molecule are the areas that bind to foreign substances such as viruses and bacteria. For a relative comparison of size, a water molecule appears just to the left of the antibody.[newline][newline]Source: Linköping University, created using QuteMol</text>
+      </en>
+   </media>
+   <media path='media/2-BacteriophagephiX174-1cd3.jpg' scale_exp='1'>
+      <category name='virus'/>
+      <se>
+         <header>Bakterievirus</header>
+         <text>Virus som attackerar bakterier kallas för bakteriofager. Just detta virus attackerar en vanlig bakterie hos människan. Den infekterar en cell genom att injicera sitt DNA, och sedan får viruset bakterien att tillverka nya virus. Det består av ett proteinskal med ringformat DNA inuti. Skalet består av 420 proteinkedjor, av endast fyra olika sorter vilka har olika färg i bilden.[newline][newline]Källa: Illustration av David Goodsell, Scripps</text>
+      </se>
+      <en>
+         <header> Bacterial virus</header>
+         <text>Viruses that attack bacteria are called bacteriophages. This particular virus attacks a common human bacteria. It infects a cell by injecting its DNA, and then it induces the bacteria to produce new viruses. It consists of a protein coat with a circle of DNA molecule squeezed inside. The coat is composed of 420 protein chains, of four different kinds, shown in different colours in the image.[newline][newline]Source: Illustration av David Goodsell, Scripps</text>
+      </en>
+   </media>
+   <media path='media/20070207_virus.jpg' scale_exp='1'>
+      <category name='virus'/>
+      <se>
+         <header>Bakterievirus</header>
+         <text>Virus som angriper bakterier kallas för bakteriofager. Bilden visar bakteriofag T4, som infekterar tarmbakterien Escherichia coli (E. coli). Den innehåller ett yttre proteinhölje i vilket det genetiska materialet ligger (i detta fall DNA). Fagen har fibrer som gör att den kan fästa på en värdcell. Infektion av en värdcell sker genom att fagens DNA injiceras i värdcellen via en ihålig struktur som kallas för svansen.[newline][newline]Källa: Dr. LEE Dong-Yup </text>
+      </se>
+      <en>
+         <header>Bacterial virus</header>
+         <text>Viruses that infect bacteria are called bacteriophages. The picture shows bacteriophage T4, which infects the intestinal bacteria Escherichia coli (E. coli). The genetic material (in this case DNA) is contained in a protein shell. The bacterium has fibres that allow attachment to a host cell. Infection of a host cell is accomplished by injecting the phage DNA into the host cell through a hollow structure known as the tail.[newline][newline]Source: Dr. LEE Dong-Yup </text>
+      </en>
+   </media>
+   <media path='media/21-Antibodies-hyhel-overlap.jpg' scale_exp='1'>
+      <category name='proteiner'/>
+      <se>
+         <header>Antikroppar binder till främmande protein</header>
+         <text>Antikroppar är en del av immunförsvaret, och bildas av vissa speciella immunceller. De är proteiner som binder till främmande ämnen, och skyddar på så sätt kroppen mot bl.a. infektioner. Bilden visar hur tre antikroppar binder till ett protein (grönt i mitten). Varje antikropp binder med en av sina två "armar", som visas skarpt i bilden. Antikropparnas övriga delar antyds längs kanterna av bilden. [newline][newline]Källa: Illustration av David Goodsell</text>
+      </se>
+      <en>
+         <header>Antibodies binding to foreign protein</header>
+         <text>Antibodies are part of the immune defense, and are produced by a special type of immune system cells. They are proteins that bind to unfamiliar substances, and thus protect the body against  infections. The picture shows three antibodies binding to a protein (green in the middle). Each antibody bind with one of its "arms", shown sharply (distinctly) in the picture. The other parts of the antibodies are indicated along the edges of the picture.[newline][newline]Source: Illustration by David Goodsell, Scripps</text>
+      </en>
+   </media>
+   <media path='media/EC_SOD_karl.jpg' scale_exp='1'>
+      <category name='proteiner'/>
+      <category name='sjukdomar'/>
+      <se>
+         <header>EC-SOD - skyddar celler mot syreradikaler</header>
+         <text>EC-SOD skyddar utsidan av våra celler mot angrepp av fria syreradikaler. Bilden visar att detta protein sitter längs med väggarna i ett blodkärl, samt på vissa omgivande celler.[newline]Bilden är tagen med ett fluorescensmikroskop.[newline][newline]Källa: Lena Tibell och Lucyna Neuger, Linköpings universitet och Umeå universitet </text>
+      </se>
+      <en>
+         <header>EC-SOD - protect cells from oxygen radical damage</header>
+         <text>EC-SOD (the protein Extracellular superoxide dismutase) define protects the outside of our cells from free oxygen radicals. The image shows that this protein is situated along the walls of a blood vessel and in certain surrounding cells. The image is produced with a fluorescence microscopy.[newline][newline]Source: Lena Tibell and Lucyna Neuger, Linköping University and Umeå University.</text>
+      </en>
+   </media>
+   <media path='media/Eykariotic_cell.jpg' scale_exp='1'>
+      <category name='celler'/>
+      <se>
+         <header>Eukarot cell</header>
+         <text>Cellerna hos djur, växter och svampar är så kallade eukaryota celler. Detta innebär att de har en cellkärna, och även en mängd olika delar som kallas organeller. Detta skiljer eukaryota celler från prokaryota celler (till exempel bakterier). Bilden visar en djurcell med cellkärna innehållande kromosomer, samt mitokondrier och endoplasmatiskt retikulum (ER). [newline][newline]Källa: Animech, www.animech.com</text>
+      </se>
+      <en>
+         <header>Eykarotic cell</header>
+         <text>The cells in animals, plants and fungi are eukaryotic cells. This means that they have a cell nucelus, and other organelles. This fact separates eukaryotic cells from prokaryotic cells (for example bacteria). The picture shows an animal cell with a nucleus that contains chromosomes, and also mithocondria and the endoplasmatic reticulum (ER). [newline][newline]Source: Animech, www.animech.com </text>
+      </en>
+   </media>
+   <media path='media/Goodsell_capsidformation.jpg' scale_exp='1'>
+      <category name='proteiner'/>
+      <category name='virus'/>
+      <se>
+         <header>Bildande av poliovirus</header>
+         <text>Här visas processen då poliovirus bildas inne i en infekterad cell. Bilden är uppbyggd så att de första stegen i processen visas nedtill i bilden, och längst upp i bilden visas det kompletta viruset. Processen börjar med att virusets arvsmassa, som består av RNA, bildas (gula strängar). I mitten av bilden bildas virusets proteiner (röda) av cellens ribosomer (blå). Proteinerna och RNA:t bildar sedan kompletta virus.[newline][newline]Källa: David Goodsell, Scripps </text>
+      </se>
+      <en>
+         <header>Poliovirus formation</header>
+         <text>Here, the formation of poliovirus inside an infected cell is shown. The picture is structured so that the first steps of the process are shown at the bottom of the picture, while the completed virus is shown at the top. The process starts when the viral genome, which consists of RNA is synthesized (yellow strings). In the middle section, viral proteins (red) are formed by the cell`s ribosomes (blue). Finally, the proteins and the RNA combine to form complete viruses. [newline][newline]Source: David Goodsell, Scripps</text>
+      </en>
+   </media>
+   <media path='media/H1N1_influenza_virus.jpg' scale_exp='1'>
+      <category name='virus'/>
+      <se>
+         <header>Svininfluensa virus (H1N1)</header>
+         <text>Elektronmikroskopibild av influensaviruset (betecknat H1N1) som orsakar den så kallade svininfluensan. [newline][newline]Källa: Centers for Disease Control and Prevention Influenza Laboratory</text>
+      </se>
+      <en>
+         <header>Swine flu virus (H1N1)</header>
+         <text>Electron microscope image of the influenza virus (designated H1N1) that causes the swine flu. [newline][newline]Source: Centers for Disease Control and Prevention Influenza Laboratory </text>
+      </en>
+   </media>
+   <media path='media/HIV-budding-Color.jpg' scale_exp='1'>
+      <category name='sjukdomar'/>
+      <category name='virus'/>
+      <se>
+         <header>HIV virus tränger ut ur infekterad cell</header>
+         <text>Elektronmikroskopbild som visar när HIV tränger ut (grönt) ur en immuncell (lymfocyt). Bilden har färgbehandlats för att tydliggöra viktiga delar. De gröna runda upphöjningarna på cellens yta motsvarar platser där virus sätts samman och lösgörs.[newline][newline]Källa: Centers for Disease Control and Prevention</text>
+      </se>
+      <en>
+         <header>HIV virus budding from a cell</header>
+         <text>Scanning electron micrograph of HIV-1 (in green) budding  from an immune cell (a lymphocyte). This image has been coloured to highlight important features. Multiple round bumps  on the cell surface indicates sites of assembly and budding of virions.[newline][newline]Source: Centers for Disease Control and Prevention</text>
+      </en>
+   </media>
+   <media path='media/HIV.jpg' scale_exp='1'>
+      <category name='proteiner'/>
+      <category name='virus'/>
+      <se>
+         <header>HIV-virus</header>
+         <text>Human immunodeficiency virus (HIV) finns bl.a. i blodet hos smittade individer. Bilden visar HIV (rödaktig sfär) med antikroppar (gula Y-formade) bundna till virusets yta. [newline][newline]Källa: David Goodsell, Scripps</text>
+      </se>
+      <en>
+         <header>HIV virus</header>
+         <text>This illustration shows HIV (the large spherical object in pink) under attack by the immune system. Small Y-shaped antibodies (yellow) are binding to its surface.[newline][newline]Source: David Goodsell, Scripps</text>
+      </en>
+   </media>
+   <media path='media/Manskliga_embryonala_stamceller.jpg' scale_exp='1'>
+      <category name='celler'/>
+      <se>
+         <header>Stamcell</header>
+         <text>Bilden visar embryonala stamceller som växer på ett lager av bindvävsceller från mus.[newline][newline]Källa: National Institutes of Health </text>
+      </se>
+      <en>
+         <header>Stem cell</header>
+         <text>The image shows stem cells from an embryo that are growing on connective tissue cells from a mouse.[newline][newline]Source: National Institutes of Health</text>
+      </en>
+   </media>
+   <media path='media/Poliovirus.jpg' scale_exp='1'>
+      <category name='virus'/>
+      <category name='sjukdomar'/>
+      <se>
+         <header>Poliovirus med mänsklig cellreceptor</header>
+         <text>Ett poliovirus visas här i blått och grönt. Polioinfektion inleds när ett virus binder till en mänsklig cellreceptor. I bilden visas hur cellreceptorer, i rött, binder till virusets yta. De flesta är vaccinerade mot polioinfektion, eftersom det kan leda till förlamning (poliomyelit).[newline][newline]Källa: (c) Theoretical and Computational Biophysics Group, Beckman Institute, University of Illinois. Skapad med VMD.</text>
+      </se>
+      <en>
+         <header> Poliovirus with human cell receptors  </header>
+         <text>A poliovirus is shown in blue and green. Human infection begins when a virus binds to a receptor on a human cell. The image shows how cell receptors, in red, bind to the virus surface. Since the poliovirus can cause paralysis (polio myelitis) most people are vaccinated.[newline][newline]Source: (c) Theoretical and Computational Biophysics Group, Beckman Institute, University of Illinois.. Created with VMD</text>
+      </en>
+   </media>
+   <media path='media/SOD.jpg' scale_exp='1'>
+      <category name='proteiner'/>
+      <category name='sjukdomar'/>
+      <se>
+         <header>SOD skyddar mot syreradikaler</header>
+         <text>Superoxiddismutas (SOD) är ett protein som finns inuti i stort sett alla celler. Det tar hand om superoxid och skyddar därmed cellen från denna skadliga syreradikal. Mutationer i genen för SOD har kopplats till nervsjukdomen ALS (amyotrofisk lateralscleros).[newline][newline]Källa: Lena Tibell, Linköpings universitet</text>
+      </se>
+      <en>
+         <header>SOD protect us against oxygen radicals</header>
+         <text>Superoxide dismutase (SOD) is a protein in the cell cytoplasm that protects the cell against potentially damaging superoxide (an oxygen radical). Mutations in the gene for SOD have been coupled to ALS (amyotrophic lateral sclerosis).[newline][newline]Source: Lena Tibell, Linköping University</text>
+      </en>
+   </media>
+   <media path='media/Virus HIV che invadono una cellula.jpg' scale_exp='1'>
+      <category name='celler'/>
+      <category name='virus'/>
+      <category name='sjukdomar'/>
+      <se>
+         <header>HIV-virus infekterar en cell</header>
+         <text>Bild tagen med elektronmikroskop och visar hur HIV infekterar en vit blodkropp.[newline][newline]Källa: Centers for Disease Control and Prevention</text>
+      </se>
+      <en>
+         <header>HIV virus infecting a cell</header>
+         <text>Image captured with an electron microscope showing HIV infecting a lymphocyte.[newline][newline]Source: Centers for Disease Control and Prevention</text>
+      </en>
+   </media>
+   <media path='media/biosites-cytoplasm.jpg' scale_exp='1'>
+      <category name='celler'/>
+      <se>
+         <header>Cytoplasma</header>
+         <text>En cells cytoplasma är det som finns innanför cellmembranet, men utanför t.ex. cellkärnan. Inne i cytoplasman finns cytoskelettet, som bl.a. ger cellen sin form. Bilden visar en liten del av cytoplasman, med tre typer av filament som utgör cystoskelettet: den största är en mikrotubili, den böjda är ett intermediärt filament, och de två smala är aktin-filament. De stora blå molekylerna är ribosomer som bygger proteiner.[newline][newline]Källa: llustration av David Goodsell, Scripps</text>
+      </se>
+      <en>
+         <header>Cytoplasm</header>
+         <text>Cellular shape is maintained by the cytoskeleton, which is located in the cell cytoplasm. The image shows a small portion of cytoplasm, with three types of filaments that make up the cytoskeleton: the largest is a microtubule, the curved is an intermediate filament and the two thin are actin filaments. The large blue molecules are ribosomes, key players in the building of proteins.[newline][newline]Source: llustration by David Goodsell, Scripps</text>
+      </en>
+   </media>
+   <media path='media/Just_Seyet.mov' scale_exp='1'>
+      <category name='virus'/>
+      <category name='celler'/>
+      <se>
+         <header>Bakteriofag T4</header>
+         <text>En visualisering av Bakteriofagen T4 baserad på Cryo-EM data av viruset. Animationen visar infektionsprocessen då en E.coli cell infekteras av ett T4-virus. Samtliga vetenskapliga data är hämtade från Michael Rossmann Laboratory (Purdue University).</text>
+      </se>
+      <en>
+         <header>Bacteriophage T4</header>
+         <text>An accurate visualization of the Bacteriophage T4 based on Cryo Eleectron Microscope datasets of the virus. The scope of the animation is to show the infection process of T4 into an E. coli cell. All scientific data sets and motion are based on research from Michael Rossmann Laboratory (Purdue University).</text>
+      </en>
+   </media>
+   <media path='media/biosites-muscle.jpg' scale_exp='1'>
+      <category name='proteiner'/>
+      <se>
+         <header>Muskelsarkom</header>
+         <text>Muskelfibrer består av många olika proteiner. Bilden visar en del av muskelsarkomeret, som är muskelfibrernas minsta enhet. De blå filamenten är uppbyggda av proteinet aktin, medan proteinet myosin är rött. De långa gula proteinerna är titin, som ger muskelfibrerna struktur och stabilitet.[newline][newline]Källa: David Goodsell, Scripps</text>
+      </se>
+      <en>
+         <header>Muscle sarcomere</header>
+         <text>Muscle fibres are composed of several different proteins. The picture shows a part of the muscle sarcomere, the basic unit of muscle fibre. The blue filaments are composed of the protein actin, while the myosin protein is dark orange. The long yellow proteins are titin, which provide structure and stability to the muscle fibres. [newline][newline]Source: David Goodsell, Scripps </text>
+      </en>
+   </media>
+   <media path='media/biosites-nucleus.jpg' scale_exp='1'>
+      <category name='gener'/>
+      <se>
+         <header>Inne i cellkärnan</header>
+         <text>Människans kromosomer finns i cellkärnan, och innehåller tätt packat DNA. Packningen sker kring proteiner som kallas nukleosomer, vilket i bilden ser ut lite grand som ett pärlband. Nukleosomerna med DNA runt packas sedan hårdare till kromatinfibrer, de långsträckta strukturerna i bilden. När gener ska läsas av packas de upp för att RNA-polymeras ska komma åt DNAt.[newline][newline]Källa: David Goodsell, Scripps </text>
+      </se>
+      <en>
+         <header>Inside the nucleus</header>
+         <text>Human chromosomes are found in the cell nucleus, and contain densely packed DNA. The DNA is wrapped around proteins called nucleosomes, giving the impression of beads on a string. The nucleosome-wrapped DNA is then further packed into chromatin fibres, shown as long straight structures in the picture. When genes are to be "read" they are first unpacked so that the RNA polymerase can access the DNA.[newline][newline]Source: David Goodsell, Scripps</text>
+      </en>
+   </media>
+   <media path='media/blood.jpg' scale_exp='1'>
+      <category name='celler'/>
+      <se>
+         <header>Blod</header>
+         <text>Denna illustration visar en utsnitt av blodet, med blodserum i övre halvan och en del av en röd blodkropp i undre delen. I serumet kan man bland annat se antikroppar (Y-formade) och ett stort antal molekyler av proteinet albumin. Den röda blodkroppen är fylld av stora mängder hemoglobin (rött). Membranet (lila) runt cellen är förstärkt på insidan av långa spektrinkedjor, som är kopplade till en aktinfiber.   [newline][newline]Källa: David Goodsell, Scripps</text>
+      </se>
+      <en>
+         <header>Blood</header>
+         <text>This illustration shows a cross-section through the blood, with blood serum in the upper half and a red blood cell in the lower half. In the serum, look for Y-shaped antibodies and a large number of albumin proteins. The red blood cell is filled with hemoglobin, in red. The cell wall, in purple, is braced on the inner surface by long spectrin chains connected at one end to a small segment of actin filament. [newline][newline]Source: David Goodsell, Scripps</text>
+      </en>
+   </media>
+   <media path='media/dna.jpg' scale_exp='1'>
+      <category name='gener'/>
+      <se>
+         <header>DNA kristaller</header>
+         <text>DNA genomgår en rad kristallina faser då det komprimeras och packas samman i cellkärnan till kromosomer. Mikroskopbilden visar kalvtymus DNA (650 mg/ml). Hoffman modulerad kontrastmanipulation och polarisering av ljus genererar denna vackra och informativa bild.[newline][newline]Källa: Michael W. Davidson and The Florida State University.[newline]</text>
+      </se>
+      <en>
+         <header>Liquid Crystalline DNA</header>
+         <text>DNA undergoes a series of liquid crystalline phase transitions when it is compressed in vivo into chromosome-sized packages. The photomicrograph depicts high molecular weight calf thymus DNA at concentrations of approximately 650 milligrams/milliliter. Hoffman modulated contrast and polarized light render this image both beautiful and informative.[newline][newline]Source: Michael W. Davidson and The Florida State University.</text>
+      </en>
+   </media>
+   <media path='media/dont_ask_what_atp_can_do_for_you6_box.jpg' scale_exp='1'>
+      <category name='molekyler'/>
+      <se>
+         <header>Energikarta över bakterieenzym</header>
+         <text>Bakterien som orsakar tuberkulos får livsnödvändigt svavel genom att ett enzym hos bakterien bryter ned en molekyl som innehåller svavel. Bilden visar en sådan molekyl, tillsammans med en energi-karta över enzymet. Själva enzymet är osynligt i bilden, men färgerna i kartan visar hur molekyler växelverkar med enzymet. Nedbrytningen av molekylen i bilden är nödvändig för tuberkulos-bakteriens överlevnad. Däremot förekommer inte motsvarande reaktion hos människor. Energikartan kan användas för att skapa mediciner mot tuberkulos som binder till enzymet, så att nedbrytningen förhindras hos bakterien.[newline][newline]Källa: Stefano Forli, Arthur Olson[newline]Molecular Graphics Lab[newline]The Scripps Research Institute[newline]La Jolla, USA</text>
+      </se>
+      <en>
+         <header>Energy map of bacterial enzyme</header>
+         <text>The bacteria that causes tuberculosis obtains sulfur by breaking down a sulfur-containing molecule using an enzyme. In the picture, the molecule is shown together with an energy map of the enzyme. The enzyme is invisible, but the energy map uses colour to indicate how molecules interact with the enzyme. The breakdown of the molecule is needed for the survival of tuberculosis-causing bacteria. However, the reaction does not occur in humans. Such energy maps can be used to design drugs against tuberculosis that bind to the enzyme so that the breakdown is inhibited in the bacteria.[newline][newline]Source: Stefano Forli, Arthur Olson[newline]Molecular Graphics Lab[newline]The Scripps Research Institute[newline]La Jolla, USA</text>
+      </en>
+   </media>
+   <media path='media/ecoli.jpg' scale_exp='1'>
+      <category name='celler'/>
+      <category name='proteiner'/>
+      <se>
+         <header>Escherichia coli</header>
+         <text>Bilden visar en del av en E. coli cell, en mycket vanlig bakterie. En stor flagellmotor sträcker sig över cellväggen, i grönt. Denna motor vrider flagellen utanför cellen, vilket ger bakterien rörlighet. Ribosomer visas i lila medan olika enzymer (proteiner) visas i blått. De vita strängarna är mRNA. Den kompakta DNA-ringen visas i gult.[newline][newline]Källa: David Goodsell, Scripps</text>
+      </se>
+      <en>
+         <header>Escherichia coli</header>
+         <text> A part of the cell of E. coli, a common bacteria, is shown. A large flagellar motor crosses the cell wall, shown in green. This motor turns the flagellum that extends outside the surface, allowing the bacterium to move. Ribosomes are shown in purple and various enzymes in blue. The white strands depict mRNA. The compacted circular DNA is shown in yellow. [newline][newline]Source: David Goodsell, Scripps </text>
+      </en>
+   </media>
+   <media path='media/gpcr_1.jpg' scale_exp='1'>
+      <category name='proteiner'/>
+      <se>
+         <header>Adenosinreceptor</header>
+         <text>Detta protein spelar en viktigt roll vid utvidgning av kärlväggar. Det bildar en kanal genom cellmembranet mellan utsidan (uppåt i bilden) och insidan (nedåt) av cellen. Många substanser, däribland koffein påverkar om kanalen är öppen eller stängd. Aminosyrorna i proteinet bildar sju spiralformade (så kallade helixar) delar.[newline][newline]Källa: Stefano Forli, Arthur Olson[newline]Molecular Graphics Lab[newline]The Scripps Research Institute[newline]La Jolla, USA</text>
+      </se>
+      <en>
+         <header>Adenosine receptor</header>
+         <text>The adenosine receptor protein represented here plays an important role in the control of the dilatation of coronary arteries, and therefore, is an important therapy target. The amino-acids (colored ball-and-stick) of the adenosine receptor form seven helices (blue ribbons in the picture) that group themselves to form a channel (the blue surface) through the cell membrane between the outside (top) and the inside (bottom) of the cell. Many substances, such as caffeine  regulate the opening and closing of the channel.[newline][newline]Source: Stefano Forli, Arthur Olson[newline]Molecular Graphics Lab[newline]The Scripps Research Institute[newline]La Jolla, USA</text>
+      </en>
+   </media>
+   <media path='media/hug_me_tight2.jpg' scale_exp='1'>
+      <category name='gener'/>
+      <category name='proteiner'/>
+      <category name='molekyler'/>
+      <se>
+         <header>Protein-DNA-interaktion</header>
+         <text>Bilden föreställer ett endonukleas, ett enzym som "klipper" upp DNA på specifika punkter. Denna egenskap gör det till ett viktigt redskap inom gentekniken. Enzymets förenklade 3D-struktur visas i vitt, medan DNAt visas med en molekylmodell färgad efter atomtyp (t.ex. är kol-grått, kväve-blått, syre-rött). Den färgade "dimman" representerar interaktionsenergier, i en skala från blått (mycket fördelaktigt) till rött (mycket ofördelaktigt).[newline][newline]Källa: Stefano Forli, Arthur Olson[newline]Molecular Graphics Lab[newline]The Scripps Research Institute[newline]La Jolla, USA</text>
+      </se>
+      <en>
+         <header>Protein-DNA interaction</header>
+         <text>This picture represents the structure of an endonuclease, an enzyme that cleaves DNA at specific points. Therefore, this enzyme is one of the main tools used by genetic engineers. The simplified 3D structure of the enzyme is shown as white ribbons, the ball-and-stick model is the DNA double-helix present in the enzymatic site. The rainbow halo represents interaction energies, that range from blue (very favorable) to dark orange (very unfavorable).[newline][newline]Source: Stefano Forli, Arthur Olson[newline]Molecular Graphics Lab[newline]The Scripps Research Institute[newline]La Jolla, USA</text>
+      </en>
+   </media>
+   <media path='media/membrane-waterchannels-print-300dpi.jpg' scale_exp='1'>
+      <category name='livsprocesser'/>
+      <category name='proteiner'/>
+      <se>
+         <header>Vattenkanal för proteiner</header>
+         <text>Vattenkanaler som kallas aquaporiner är viktiga för upprätthållandet av vattenhalten i celler, genom att de underlättar vattentransporten. Vattenporerna släpper igenom vatten men inte laddade substanser. Här visas aquaporin med olikfärgade stavar för de ingående protein-enheterna. Membranet består av ett dubbelt lager fosfolipider, i rött. De blå V-formade molekylerna är vatten.[newline][newline]Källa: (c) Theoretical and Computational Biophysics Group, Beckman Institute, University of Illinois at Urbana-Champaign. Skapad med VMD.</text>
+      </se>
+      <en>
+         <header>Water transport channel</header>
+         <text>Water channels called aquaporins play a critical role in controlling the water content of cells, by facilitating the transport of water. The water pores are completely impermeable to charged species. Here, the aquaporin is shown using differently coloured `rods` to indicate the four protein units. The membrane consists of two layers of phospholipids, shown using red `sticks`. The blue V-shaped molecules represent water.[newline]Source: (c) Theoretical and Computational Biophysics Group, Beckman Institute, University of Illinois at Urbana-Champaign. Created with VMD.[newline]</text>
+      </en>
+   </media>
+   <media path='media/nrm0102_cover.jpg' scale_exp='1'>
+      <category name='celler'/>
+      <category name='proteiner'/>
+      <se>
+         <header>Celldelning</header>
+         <text>Målningen visar inledningen av en celldelnings-cykel, med inspiration från den Maya-indianska berättelsen om hjältetvillingarna Hunahpu och Xbalnque. Det är den första i en serie målningar.[newline][newline]Källa: Julie Newdoll, www.brushwithscience.com/Winter2002.html</text>
+      </se>
+      <en>
+         <header>Cell division</header>
+         <text>The first in a series, this painting shows the beginning of a cell divsion cycle juxtaposed with a Mayan story about the hero twins Hunahpu and Xbalnque.[newline][newline]Source: Julie Newdoll, www.brushwithscience.com/Winter2002.html</text>
+      </en>
+   </media>
+   <media path='media/plant-cell.jpg' scale_exp='1'>
+      <category name='celler'/>
+      <se>
+         <header>Växtcell</header>
+         <text>Växtceller är eukaryota celler, dvs de innehåller en cellkärna med kromosomer, samt olika organeller med specialiserade funktioner. Till skillnad från djurceller har de kloroplaster (med klorofyll), en  vakuol, samt en cellvägg, bestående av cellulosa.[newline][newline]Källa: Russell Kightley Media</text>
+      </se>
+      <en>
+         <header>Plant cell</header>
+         <text>A plant cell is an eucaryotic cell with a nucleus (that houses the chromosomes), and organells with specialized functions. In addition, a plant cell contains a cell wall made of cellulose, chloroplasts (with chlorophyll) and a large vacuole.[newline][newline]Source: Russell Kightley Media</text>
+      </en>
+   </media>
+   <media path='media/sleeping_dna2.jpg' scale_exp='1'>
+      <category name='gener'/>
+      <category name='proteiner'/>
+      <se>
+         <header>DNA binder till ett protein</header>
+         <text>DNA utsätts för många påfrestningar under en cells liv. En del skador kan vara dödliga för cellen, eller leda till okontrollerad tillväxt som till slut kan leda till cancer. Endonukleaser är enzymer som skyddar cellerna från sådana skador, genom att klippa ut skadade delar av DNAt. Under denna process binder DNA till proteinet på en viss region av ytan. I bilden visas DNA och en energikarta för proteinet, som kan användas för att förstå interaktionen mellan molekylerna.[newline][newline]Källa: Stefano Forli, Arthur Olson[newline]Molecular Graphics Lab[newline]The Scripps Research Institute[newline]La Jolla, USA</text>
+      </se>
+      <en>
+         <header>DNA binding to a protein</header>
+         <text>Despite being rather stable, DNA is subjected to numerous assaults during a cell`s life. Some damage could be lethal for the cell or lead to unregulated growth that can eventually develop into cancer. Endonucleases are enzymes that protect DNA from such damage. They unfold the double helix and cleave the sequence containing the error. When undergoing this process, the DNA binds to the protein by attaching onto its surface in specific regions. These regions can be studied by calculating how they interact with water molecules.[newline][newline]Source: Stefano Forli, Arthur Olson[newline]Molecular Graphics Lab[newline]The Scripps Research Institute[newline]La Jolla, USA</text>
+      </en>
+   </media>
+   <media path='media/staph_81518_6.6kxneg.jpg' scale_exp='1'>
+      <category name='celler'/>
+      <category name='sjukdomar'/>
+      <se>
+         <header>Stafylokock</header>
+         <text>Staphylococcus aureus är en vanlig bakterie, som även kallas "gul stafylokocker". Mellan 25-30% av befolkningen bär på bakterien, som i de flesta fall inte orsakar någon skada. Den kan dock orsaka infektion i de flesta vävnader, och är en mycket vanlig orsak till matförgiftning, variga hud- och sårinfektioner, skelettinfektioner och infektion i hjärtklaffarna. Bilden är tagen med ett transmissionselektronmikroskop (TEM). [newline][newline]Källa: University of Dartmouth</text>
+      </se>
+      <en>
+         <header>Staphylococcus</header>
+         <text>Staphylococcus aureus is a common bacteria also known as `yellow staph`. Between 25-30% of the world`s population carry the bacteria, which in most cases does not cause any harm. However, it can infect most tissues, and is a very common cause of food poisoning, as well as skin and wound infections and skeletal infections. The image was captured using transmission electron microscopy (TEM).[newline]Source: University of Dartmouth[newline]</text>
+      </en>
+   </media>
+   <media path='media/virus.jpg' scale_exp='1'>
+      <category name='virus'/>
+      <se>
+         <header>Virus</header>
+         <text>Alla virus har ett skal av proteiner runt sitt DNA. Proteinskalet på många virus har det lite kantiga utseende som visas på bilden. Formen kallas ikosahedrisk, och anledningen till att den är så vanlig är att den är enkel och inte kräver så många sorters proteiner. Eftersom viruset därmed inte behöver så många gener klarar det sig med mindre DNA. Denna effektiva användning av DNAt har gynnats av evolutionen.[newline][newline]Källa: Animech, www.animech.com</text>
+      </se>
+      <en>
+         <header>Virus</header>
+         <text>All viruses have a protein shell around their DNA. The protein shell of many viruses has a characteristic shape that is shown in the picture (known as an icosahedron). This shape exists as a common form because it is simple and does not require many proteins to be formed to constitute it. As a consequence the virus does not need as many genes and a small genome is enough. This efficient use of DNA carries an evolutionary advantage.[newline][newline]Source: Animech, www.animech.com</text>
+      </en>
+   </media>
+   <media path='media/warp_space1.jpg' scale_exp='1'>
+      <category name='proteiner'/>
+      <category name='molekyler'/>
+      <se>
+         <header>Inne i ett protein</header>
+         <text>Denna förvridna vy representerar hur det skulle se ut om det gick att titta på ett protein från en punkt inne i proteinet med ett grodperspektiv. Proteinets atomer är färgade efter atomtyp: kol är grått, syre är rött, kväve är blått, väte är vitt och så vidare. [newline][newline]Källa: Stefano Forli, Arthur Olson[newline]Molecular Graphics Lab[newline]The Scripps Research Institute[newline]La Jolla, USA</text>
+      </se>
+      <en>
+         <header>Inside a protein</header>
+         <text>This interesting view is a representation of what would be seen if it would be possible to look from a point within a protein using a fish-eye lens. Protein atoms are represented using colours to denote atom type: carbons are grey, oxygens are red, nitrogens are blue, hydrogens are white, and so on. [newline][newline]Source: Stefano Forli, Arthur Olson[newline]Molecular Graphics Lab[newline]The Scripps Research Institute[newline]La Jolla, USA</text>
+      </en>
+   </media> 
+   <media path='media/The Inner_Life of the Cell short.mov' scale_exp='1'>
+      <category name='celler'/>
+      <category name='livsprocesser'/>
+      <se>
+         <header>Cellens inre liv</header>
+         <text>Cellens inre liv (The Inner Life of the Cell) är en 3D-animation från Harvard som visar de olika biologiska mekanismer som sker i en vit blodkropp i människokroppen. Strukturella delar av cytoskelettet och cellmatrisen har lyfts fram särskilt i filmen.[newline][newline]Källa:Harvard University, © 2008 The President and Fellows of Harvard College, created Robert Lue and Alain Viel, Harvard University, John Liebler, XVIVO, LCC.</text>
+      </se>
+      <en>
+         <header>The Inner Life of the Cell</header>
+         <text>The Inner Life of the Cell is a  3D computer graphics animation demonstrating various biological mechanisms that occur within a white blood cell in the human body.[newline]The animation depicts the molecular players and signaling processes underlying leukocyte migration, adhesion and extravasation. Structural components of the cytoskeleton and the extracellular matrix, in particular, are highlighted.[newline][newline]Source: Harvard University, © 2008 The President and Fellows of Harvard College, created Robert Lue and Alain Viel, Harvard University, John Liebler, XVIVO, LCC. </text>
+      </en>
+   </media>
+   <media path='media/ATPasHela.mov' scale_exp='1'>
+      <category name='livsprocesser'/>
+      <se>
+         <header>Mat blir användbar energi i kroppen</header>
+         <text>Animationen visar den del av cellmetabolismen där födoämnesmolekyler blir till användbar energi i cellen.[newline]Nedbrytningen av födoämnen (vår mat) genererar en ojämn fördelning av vätejoner över innermembranet i mitokondrien i cellen. Naturen strävar att utjämna koncentrationsskillnader, och enda vägen för vätejonerna är genom proteinet ATPas. Strömmen av vätejoner genom ATPas sätter igång en rotordel av proteinet som i sin tur driver bildningen av molekylen ATP. ATP används av cellen som energi då cellen lever och växer. [newline][newline]Källa: Graham Johnson</text>
+      </se>
+      <en>
+         <header>Food is converted to usable energy</header>
+         <text>The animation shows the process where energy from food molecules is transformed into the "energy currency" of the cell, the ATP molecule. Breakdown of food molecules in the cell generates a proton gradient across the mitochondrial membrane in the cell. The only way through the membrane for the protons is the ATPase protein complex. This proton flow drives a rotor protein, which in turn, drives the formation of ATP. The energy provided by ATP is utilized by the cell to live and grow.  [newline][newline]Source: Graham Johnson</text>
+      </en>
+   </media>
+   <media path='media/CentralDogma_Part2.mov' scale_exp='1'>
+      <category name='gener'/>
+      <se>
+         <header>Translationen - översättningen</header>
+         <text>mRNA är en identisk kopia av den del av DNA molekylen som utgör en gen. Kopieringen har redan skettsker i cellens kärna då animationen startar och man ser först hur mRNA komer ut genom en por i kärmnembranet. Väl ute i cellen (i cytoplasman) startar tillverkningen av det protein som mRNA-molekylen kodar för. Här visas alltså hur ett mRNA blir översatt till det protein som det kodar för med hjälp av ett stort molekylkomplex, ribosomen. [newline][newline]Källa: Drew Berry, 2003, [newline]The Walter and Eliza Hall Institute of Medical Research </text>
+      </se>
+      <en>
+         <header>Translation</header>
+         <text>mRNA is a copy of a section of the DNA molecule that constitutes a gene. The copying is already complete when the animation starts. The first thing you see in the animation is an mRNA molecule entering the cell (cytoplasm) through a pore in the membrane of the nucleus. When in the cytoplams, the translation of the message contained in mRNA into a the specific protein begins by means of a multimolecular complex, the ribosome.[newline][newline]Source: Drew Berry, 2003, [newline]The Walter and Eliza Hall Institute of Medical Research </text>
+      </en>
+   </media>
+   <media path='media/DNA_DrewBerry.mov' scale_exp='1'>
+      <category name='gener'/>
+      <category name='livsprocesser'/>
+      <se>
+         <header>DNA i närbild</header>
+         <text>Del 1 av animationen försöker förklara hur det kan vara möjligt att rymma 1,8 m DNA i en mikrometerstor kärna. DNA-helixens diameter är  mycket tunn, cirka 2 nm. DNAt ryms genom att packa ihop sig i snoddar som i sin bildar snoddar i flera nivåer. Slutstadiet är kromosomerna, som kan ses med ett vanligt ljusmikroskop strax innan celldelningen.[newline]Del 2 visar det molekylära maskineri som tillverkar två identiska kopior av varje DNA-molekyl inför celldelningen. Resultatet blir två identiska uppsättningar av kromosomerna. Maskineriet utgörs huvudsakligen av ett komplex bestående av proteiner med olika funktioner.[newline][newline]Källa: Drew Berry, 2003, [newline]The Walter and Eliza Hall Institute of Medical Research</text>
+      </se>
+      <en>
+         <header>DNA - Close Up</header>
+         <text>Part 1 of the animation shows how the 1,8 m long DNA can be contained in the micrometer sized cell nucleus. The diameter of a DNA helix is very thin small, about 2 nm. The packing, in several levels of helix formation, is the explanation to the formidable packing . The most tightly packed form of DNA is the chromosomes, which are formed just before cell division. [newline]Part 2 shows the remarkable protein machinery that synthesizes two identical copies of the DNA in each cell after division.[newline][newline]Source: Drew Berry, 2003, [newline]The Walter and Eliza Hall Institute of Medical Research</text>
+      </en>
+   </media>
+   <media path='media/EcoRI_Edit.mov' scale_exp='1'>
+      <category name='gener'/>
+      <se>
+         <header>Genteknik - Rekombination</header>
+         <text>Genteknik använder sig av samma komponenter och processer som sker naturligt i cellerna. [newline]Här visas DNA rekombination - alltså hur en plasmid (en liten kromosom i bakterier) "klipps" upp på ett speciellt ställe med hjälp av enzymet (proteinet) ecoRI och hur en gen (en bit nytt DNA) sätts in i plasmiden mha DNA ligas - ett annat enzym som lagar det uppkomna brottet.  [newline][newline]Källa: Drew Berry, 2003, [newline]The Walter and Eliza Hall Institute of Medical Research </text>
+      </se>
+      <en>
+         <header>Gene technology - Recombination</header>
+         <text>Gene technology uses the same components and processes as the cell itself.[newline]This animation depicts DNA recombination - a process where a plasmid (a small bacterial chromosome) is first digested with the restriction endonuclease enzyme ecoRI. Then, a piece of DNA encoding a gene is inserted into the plasmid by DNA ligase.[newline][newline]Source: Drew Berry, 2003, [newline]The Walter and Eliza Hall Institute of Medical Research </text>
+      </en>
+   </media>
+   <media path='media/FAdynamics.mov' scale_exp='1'>
+      <category name='molekyler'/>
+      <category name='celler'/>
+      <se>
+         <header>Ett biologiskt membran är dynamiskt</header>
+         <text>Ett biologiskt membran består till största delen av fett (lipider). Animationen visar hur lipiderna i membranet rör sig och hur de byts ut mot fria lipider av olika slag som finns i omgivningen, eller hur de helt enkelt absorberas av membranet. På detta sätt förändrar membranet sin sammansättning beroende av vilka lipider som finns i omgivningen.[newline][newline]Källa: Janet Iwasa</text>
+      </se>
+      <en>
+         <header>A biological membran is dynamic</header>
+         <text>A biological membrane consists to a large proportion of fat (lipids). The animation shows how lipids in the membrane move and interchange positions with surrounding lipids. In this way, the composition of the membrane changes depending on the assembly of lipids in the immediate surroundings.   [newline][newline]Source: Janet Iwasa</text>
+      </en>
+   </media>
+   <media path='media/HIVcode.mov' scale_exp='1'>
+      <category name='sjukdomar'/>
+      <category name='virus'/>
+      <se>
+         <header>HIV virus infekterar en cell</header>
+         <text>Då HIV (human deficiency virus) angriper immunsystemet utvecklas AIDS (acquired immuno deficiency syndrome). På mänskliga immunceller finns receptorer som HIV-virus känner igen och binder till. Detta leder till att virus-RNA och virusproteiner injiceras i cellen. Väl inne i cellen översätts  virus-RNA till DNA, som i sin tur transporteras in i  cellkärnan där det sätts in i och blir en del av cellens egna DNA. Nya virus RNA och virus proteiner kodas från detta DNA och de nya virus RNA och proteinmolekylerna organiserar sig till nya HIV-virus.  [newline][newline]Källa: Animech, www.animech.com</text>
+      </se>
+      <en>
+         <header>HIV virus infects a cell</header>
+         <text>HIV, human deficiency virus, affects the immune system and results in the development of AIDS. There are receptors on human cells to which the viruses attach. The viral RNA and viral enzymes are injected into the cell and the viral RNA is translated into DNA, which in turn, enters the cell nucleus. Here it fuses with the cells own DNA. New viral RNA and proteins are coded from the modified DNA and assemble into new HIV viruses.    [newline][newline]Source: Animech, www.animech.com</text>
+      </en>
+   </media>
+   <media path='media/Haemaglobin_Edit.mov' scale_exp='1'>
+      <category name='sjukdomar'/>
+      <category name='livsprocesser'/>
+      <se>
+         <header>Hemoglobin och Sickle cell anemi</header>
+         <text>Del I. Denna animation visar hur syremolekyler, O2, (blå) binder till proteinet hemoglobin i de röda blodkropparna.[newline]Del II. Sickle cell anemi orsakas av en mutation av en enda bas i genen för  hemoglobin. Denna mutation leder till att en av aminosyrorna i hemoglobin, glutaminsyra nummer 6, byts ut mot valin (grön i animationen). Detta aminosyrautbyte medför att hemoglobin, som normalt är ett lösligt globulärt potein, vid låg syre koncentration klumpar ihop sig till långa, styva olösliga fibrer, som i sin tur deformerar de röda blodkropparna på ett sätt som är typiskt för sicke cell anemi. [newline][newline]Källa: Drew Berry, 2003, The Walter and Eliza Hall Institute of Medical Research</text>
+      </se>
+      <en>
+         <header>Haemoglobin and Sickle Cell Anaemia 
+
+</header>
+         <text>Part I: This animation depicts haemoglobin molecules binding to oxygen (in blue). [newline]Part II: Sickle cell anemia is caused by mutation of one base in the gene for haemoglobin, which in turn, results in a change of one amino acid (glutamic acid to valine at position 6) in the haemoglobin molecule. This mutation is shown in green. The amino acid change causes the normally soluble globular protein at low oxygen concentration to assemble into long stiff protein fibers that deform red blood cells that is characteristic of the disease. [newline][newline]Source: Drew Berry, 2003, The Walter and Eliza Hall Institute of Medical Research</text>
+      </en>
+   </media>
+   <media path='media/HumanHost_Sound-H.264 for Apple TV.mov' scale_exp='1'>
+      <category name='sjukdomar'/>
+      <se>
+         <header>Malarias livscykel</header>
+         <text>Animationen visar hur ett barn blir infekterat av Malaria genom ett myggbett. Alla visualiseringar är skalenliga, inklusive myggan, blodkärl, mänskliga celler och parasiter.[newline][newline]Källa: Drew Berry, 2003, [newline]The Walter and Eliza Hall Institute of Medical Research</text>
+      </se>
+      <en>
+         <header>Malaria Life cycle</header>
+         <text>This visualization reconstructs an infection of a human child thorugh a mosquito bite, showing subsequent invasion of cellular tissues including the liver and blood. All features are to scale, including the mosquito, blood vessels, human cells and parasites. [newline][newline]Source: Drew Berry, 2003, [newline]The Walter and Eliza Hall Institute of Medical Research</text>
+      </en>
+   </media>
+   <media path='media/WaterTransportAnim1.mov' scale_exp='1'>
+      <category name='livsprocesser'/>
+      <se>
+         <header>Transport av vatten in i cellen</header>
+         <text>Redan i mitten av 1800-talet kände man till att det måste finnas speciella öppningar i cellmembranet för att vatten skall kunna passera in i cellen, men det var inte förrän 1992 som vattentransportproteinet, aquaporin, identifierades. År 2000 kom de första högupplösta bilderna av den tredimensionella stukturen. Dettta gjorde det möjligt att i detalj beskriva hur vattenkanalen i aquaporin fungerar. Tusentals miljoner vattenmolekyler per sekund passerar genom en enda kanal! Animationen visar hur vattenmolekyler slingrar sig genom den trånga kanalen och orienteras rätt av det lokala elektriska fältet som bildas av atomerna i kanalens väggar. [newline][newline]Källa: Tajkhorshid, E., Nollert, P., Jensen, M.O., Miercke, L.J., O`Connell, J., Stroud, R.M., and Schulten, K. (2002). Science 296, 525-530)</text>
+      </se>
+      <en>
+         <header>Water transport into a cell</header>
+         <text>As early as the middle of the nineteenth century it was understood that there must be openings (pores) in the cell membrane to permit a rapid water flow. However, not until 1992 the water-channel protein, aquaporin, was identified.  In 2000, the first high-resolution images of the three-dimensional structure were reported, which made it possible to map in detail how a water channel functions. Billions of water molecules pass through one single channel per second! Water molecules worm their way through the narrow channel by orienting themselves in the local electrical field that are formed by the atoms of the channel wall.[newline][newline]Source: Tajkhorshid, E., Nollert, P., Jensen, M.O., Miercke, L.J., O`Connell, J., Stroud, R.M., and Schulten, K. (2002). Science 296, 525-530)</text>
+      </en>
+   </media>
+   <media path='media/etsuko_diabetes.mov' scale_exp='1'>
+      <category name='sjukdomar'/>
+      <se>
+         <header>Diabetes</header>
+         <text>Denna animation visar hur kroppen producerar insulin och hur produktionen förstörs i diabetestyp 1. Ungefär 25 miljoner mänskor över hela världen lider av diabetes. Det finns idag inget botemedel mot sjukdomen varför man måste injicera insulin dagligen.[newline][newline]Källa: Etsuko Uno and Drew Berry, 2009, The Walter and Eliza Hall Institute of Medical Research</text>
+      </se>
+      <en>
+         <header>Diabetes</header>
+         <text>This animation illustrates how insulin is normally produced in the body and how its production is destroyed in type 1 diabetes. Approximately 25 million people worldwide, many of them children, suffer from this disease. There is currently no cure for diabetes and those affected with this disease must endure daily insulin injections for the duration of their lives.[newline][newline]Source: Etsuko Uno and Drew Berry, 2009, The Walter and Eliza Hall Institute of Medical Research</text>
+      </en>
+   </media>
+   <media path='media/human_emb_dev-lg.mov' scale_exp='1'>
+      <category name='livsprocesser'/>
+      <category name='celler'/>
+      <se>
+         <header>Från befruktning till foster</header>
+         <text>Animationen visar utvecklingen från befruktning till dess att ett foster utvecklats.  I och med befruktningen blandas spermiens och äggets genmaterial och cellen omprogrammeras. De tidiga celldelningsstadierna fram till bildningen av Blastocyststadiet äger rum i äggledaren (tar cirka 5 dagar). Blastocysten binder till livmoderväggen och själva havandeskapet inleds. [newline]Den inre delen av blastocysten kommer att ge upphov till själva fostret medan de yttre delarna bildar moderkakan. I detta läge bildar de inre cellerna (blå) en disk inuti blastocycten och celldelning och cellvandring resulterar i bildning av nervröret och så småningom bl.a. de utskott som kommer att vidareutvecklas till huvud, armar och ben. [newline][newline]Källa: Howard Hughes Medical Institute</text>
+      </se>
+      <en>
+         <header>Embryo Development</header>
+         <text>This animation shows the development from fertilization to the developed embryo. Upon fertilization, the genetic material of the sperm and the egg is fused and the fertilized egg is reprogrammed. Early cell division results after about 5 days in formation of the blastocyst, which binds to the wall of the uterus - pregnancy is initiated. The inner cell mass of the blastocyst will form the embryo, while the outer layer will form the placenta. [newline]At this stage, the inner cells of the blastocyst (in blue) will form a disc and as they divide, grow and migrate as the disc transforms. A neural tube is formed and appendises start to bud out which form the head, eyes, arms and legs etc.[newline][newline]Source: Howard Hughes Medical Institute</text>
+      </en>
+   </media>
+   <media path='media/keller_DOSanimation.mov' scale_exp='1'>
+      <category name='molekyler'/>
+      <se>
+         <header>Fastfassyntes av molekylära bibliotek</header>
+         <text>Animationen visar hur det går till att syntetisera molekyler genom att göra reaktionen på porösa kulor (beads) av exempelvis polystyren. Syntesen blir effektiv och kontrollerad och de framställda molekylerna (som sitter fast på beads) kan lätt separeras från andra molekyler i reaktionslösningen. På detta sätt byggs molekylbibliotek för forskning och utveckling av läkemedel. [newline][newline]Källa: Copyright 2003, Eric Keller[newline]</text>
+      </se>
+      <en>
+         <header>Synthesis of molecular libraries on solid phase</header>
+         <text>The animation shows solid-phase synthesis of molecules on porous beads (e.g. polystyrene). The synthesis is both efficient and controlled and the synthesized molecules (attached to the beads) can easily be separated from contaminating molecules  present in the reaction solution. Molecular libraries are constructed using this synthesis[ method for research and drug development.[newline][newline]Source: Copyright 2003, Eric Keller</text>
+      </en>
+   </media>
+   <media path='media/DNAi_transcription_vo1-lg.mov' scale_exp='1'>
+      <category name='gener'/>
+      <category name='livsprocesser'/>
+      <se>
+         <header>Transkriptionen</header>
+         <text>Den här animationen visar en process som sker just nu i nästan varje cell i din kropp - transkriptionen. Det hela startar med att ett antal proteiner ansamlas vid genens start på DNA, och så - 3, 2, 1, GÅ - startar processen. [newline]Den blå proteinklumpen som skyndar längs DNA strängen öppnar dubbelspiralen samtidigt som den läser av koden på den ena av DNA strängarna. Den gula kedjan som ormar ut från toppen är en kopia av det genetiska budskapet i genen - mRNA. [newline]Det är mRNA som i ett senare skede (visas ej i denna animation) skall används som mönster för att göra det protein som genen kodar för.[newline]Källa: Drew Berry, The Walter and Eliza Hall Institute of Medical Research[newline]</text>
+      </se>
+      <en>
+         <header>Transcription</header>
+         <text>This animation shows a process that happens in almost every cell in your body -  Transcription. It all starts with a bundle of proteins that assemble at the start of the gene on the DNA, and so 3, 2, 1, GO - the process begins.[newline]The blue protein molecule assembly racing along DNA is reading the gene. It is unzipping the double-helix and copying one of the two strands. The yellow chain snaking out of the top is a copy of the genetic message - mRNA.[newline]mRNA is used later (not shown in this animation) as a template for the protein that is the  product of the gene.  [newline]Source: Drew Berry, The Walter and Eliza Hall Institute of Medical Research</text>
+      </en>
+   </media>
+   <media path='media/hiv_life_cycle-lg.mov' scale_exp='1'>
+      <category name='virus'/>
+      <category name='sjukdomar'/>
+      <se>
+         <header>Ett HIV virus infekterar en cell</header>
+         <text>Animationen visar i detalj vad vi i dag vet om hur det går till då HIV infekterar en cell. HIV är ett typiskt retrovirus med ett yttre membranhölje och som innehåller två RNA-molekyler som bär på virusets gener.[newline]HIV infekterar T-hjälparceller (celler i vårt immunförsvar) genom att binda till receptorer som bara finns på dessa celler. Virushöljet och cellmembranet smälter samman och innehållet i viruset kommer på så sätt in i T-hjälparcellen. HIV- RNA molekylerna översätts till DNA och smälter samman med T-hjälparcellens eget DNA. På så sätt kommer infektionen att bli livslång. Genom en komplex process förökar sig nu viruset inuti cellen. De nya virusen kan, då de kommit ut ur cellen, infektera nya T-hjälparceller.[newline][newline]Källa: Howard Hughes Medical Institute[newline]</text>
+      </se>
+      <en>
+         <header>HIV virus infects a cell</header>
+         <text>The animation shows in detail how HIV infects a T-helper cell. HIV is a typical retrovirus, with an outer membrane envelope, and two RNA molecules carrying that carry the viral genes. [newline]HIV infects T-helper cells through by binding to receptors unique to these cells. The outer envelope fuses with the cell membrane, and the content of the virus is now becomes part of the cell. The HIV-RNA is translated into DNA, which in turn, is inserted into the DNA of the T-helper cell. In this way, a life-long infection is established. Through a complex process the T-cell is forced to produce new HIV particles, which are ready to infect new T-helper cells.[newline][newline]Source: Howard Hughes Medical Institute[newline]</text>
+      </en>
+   </media>
+   <media path='media/MS-H264.mov' scale_exp='1'>
+      <category name='celler'/>
+      <category name='sjukdomar'/>
+      <se>
+         <header>MS - Multipel skleros</header>
+         <text>MS är en inflammatorisk sjukdom som förstör myelinet kring axonerna i det centrala nervsystemet.[newline]Första delen av animationen visar nervsignalernas väg i en frisk hjärna. Myelinskidan skyddar axonerna och nervsignalen går från en neuron till en annan via neurotransmittorer.  [newline]Vid MS är blod-hjärnbarriären defekt och inflammatoriska celler kan passera in i centrala nervsystemet. Väl där aktiveras immunsystemet som i sin tur gör att det angriper och förstör det skyddande myelinet kring axonerna . Därigenom försämrar nervsignalöverföringen.[newline][newline]Källa: Gardenia Gonzalez Gil / Living Pixels</text>
+      </se>
+      <en>
+         <header>MS - Multiple sclerosis</header>
+         <text>MS is an inflammatory disease of the central nervous system.[newline]The first part of the animation shows the functioning of a normal brain. Myelin sheaths protect axons from damage and allow healthy conditions for nerves. Nerve impulses travel in the neurons and are transmitted from one neuron to another through nerve transmitters.[newline]In MS, the blood-brain barrier is defective and allows transmigration of inflammatory cells into the central nervous system.  The immune system is activated and attacks and destroys the myelin. Demyelation of the axons results in defective signal transduction.[newline][newline]Source: Gardenia Gonzalez Gil / Living Pixels</text>
+      </en>
+   </media>
+   <media path='media/IN VIVO LCP.mov' scale_exp='1'>
+      <category name='sjukdomar'/>
+      <category name='molekyler'/>
+      <category name='proteiner'/>
+      <se>
+         <header>Alzheimer - Bildning av amyloida plack i hjärnvävnad</header>
+         <text>Mikroskopifilm av p-FTAA (fluorescerande) infärgning av senila amyloid plack. Först syns bara fluorescensen (grön färg) i blodkärlen och efter 6 minuter uppkommer fluorescens från senila amyloid plack i hjärnans cortex. Infärgningen av senila plack ökar med tiden.[newline][newline]Källa: Aslund A, Sigurdson CJ, Klingstedt T, Grathwohl S, Bolmont T, Dickstein DL, Glimsdal E, Prokop S, Lindgren M, Konradsson P, Holtzman DM, Hof PR, Heppner FL, Gandy S, Jucker M, Aguzzi A, Hammarström P, Nilsson KP. ACS Chem Biol. 2009 Aug 21;4(8):673-84.</text>
+      </se>
+      <en>
+         <header>Alzheimer - Formation of amyloid plaque in brain tissue</header>
+         <text>Real-time imaging of a small molecule, p-FTAA,  labelling of senile amyloid plaque. First the molecule fluoresces (green color) in the blood vessels. After 6 minutes senile amyloid plaque in the brain cortex starts to fluoresce. The labelling of plaques increases over time. [newline][newline]Source: Aslund A, Sigurdson CJ, Klingstedt T, Grathwohl S, Bolmont T, Dickstein DL, Glimsdal E, Prokop S, Lindgren M, Konradsson P, Holtzman DM, Hof PR, Heppner FL, Gandy S, Jucker M, Aguzzi A, Hammarström P, Nilsson KP. ACS Chem Biol. 2009 Aug 21;4(8):673-84.</text>
+      </en>
+   </media>
+   <media path='media/Translation Bacterial.mov' scale_exp='1'>
+      <category name='livsprocesser'/>
+      <category name='proteiner'/>
+      <se>
+         <header>Ribosomen - cellens proteinfabrik</header>
+         <text>Denna animation åskådliggör 2009 års Nobelpris i kemi och visar detaljerat hur proteinsyntesen går till. Alla steg i processen visas; Initieringsprocessen där de komponenter som behövs självorganiseras; Elongeringen där mRNA blir "översatt" till aminosyrakedja (protein). Sist visas Termineringen där det nya  färdiga proteinet lossnar och hela komplexet "löses upp" i sina beståndsdelar. [newline][newline]Källa: Copyright MRC Laboratory of Molecular Biology[newline][newline][newline]</text>
+      </se>
+      <en>
+         <header>The ribosome - the protein factory </header>
+         <text>This animation visualizes the topic of the Nobel prize 2009 in Chemistry. It covers all the central steps in prokaryotic translation including initiation, elongation and termination steps with many of the individual protein factors that are involved.[newline]Source: Copyright MRC Laboratory of Molecular Biology[newline]</text>
+      </en>
+   </media>
+   <media path='media/rj-p-0,8-2.mov' scale_exp='1'>
+      <category name='celler'/>
+      <category name='livsprocesser'/>
+      <se>
+         <header>Vita blodkroppar som rullar</header>
+         <text>Neutrofiler är en typ av vita blodkroppar som attackerar främmande ämnen som råkat komma in i kroppen. Neutrofilerna binder till celler via ett protein på cellernas yta, Selektin. Filmen visar denna interaktion  i en speciell flödescell som täckts med selektin. I mikroskopet kan man se hur neutrofiler fångas in och rullar över ytan. Antalet rullande celler och rullningshastighet kan mätas på detta sätt.[newline][newline]Källa: Peter Påhlsson, IKE, Linköpings universitet[newline]</text>
+      </se>
+      <en>
+         <header>Rolling Neutrophiles</header>
+         <text>A neutrophil is a type of white blood cell which attacks foreign invaders. Neutrophils recognize a special protein, seletin,  on cell surfaces. In this film, the interaction of individual neutrophils with selectins under constant flow are studied using a flow chamber system with coated selectin. In the microscope you can see how the neutropjls are trapped and roll over the surface. The number of rolling cells as well as the rolling velocity can be measured. [newline][newline]Source: Peter Påhlsson, IKE, Linköpings universitet[newline]</text>
+      </en>
+   </media>
+   <media path='media/pFTAA.jpg' scale_exp='1'>
+      <category name='molekyler'/>
+      <category name='sjukdomar'/>
+      <se>
+         <header>Specifik bindarmolekyl for fluorescensmikroskopi.</header>
+         <text>Stickmodell av en negativt laddad (anjon) pentamerisk tiofenmolekyl (p-FTAA). Syre=röd, svavel=gul, kol=grå.[newline]p-FTAA används som specifik bindare vid fluorescensmikroskopi och kommer att lysa upp (fluorescera) om den binder till amyloida fibrer  ex vid Alzheimers sjukdom.[newline][newline]Källa: Peter Konradsson/ Peter Nilsson Lab, IFM, Linköpings universitet.[newline]</text>
+      </se>
+      <en>
+         <header>Specific binder  for fluorescence microscopy</header>
+         <text>Stick model of an anionic (negatively charged) pentameric thiophene molecule (oxygen=red sticks, yellow=sulphur, grey=carbon), called p-FTAA. This molecule is useful as a specific ligand for amyloid imaging by fluorescence, for example to visualize fiber formation in Alzheimer disease. [newline][newline]Source: Peter Konradsson / Peter Nilsson Lab, IFM, Linköping University.</text>
+      </en>
+   </media>
+   <media path='media/AlzheimerBeta40 fibrils.jpg' scale_exp='1'>
+      <category name='sjukdomar'/>
+      <category name='proteiner'/>
+      <se>
+         <header>Elektronmikroskopibild av amyloida fibriller. </header>
+         <text>Proteinmolekyler felveckas och klistras samman till fibrillära strukturer (ett fåtal nanometer breda), så kallade amyloida fibriller. Dessa ansamlas i hjärnan och bygger mikrometerstora så kallade senila plack vid Alzheimers sjukdom.[newline][newline]Källa:Per Hammarström och Peter Nilsson, IFM, Linköpings Universitet[newline][newline]</text>
+      </se>
+      <en>
+         <header>Electron micrograph of amyloid fibrils</header>
+         <text>Protein molecules have misfolded and assembled into fibrillar structures, known as amyloid fibrils (a few nanometers in width). Amyloid fibrils are deposited in the brain and compose micrometer size senile plaques in Alzheimer`s disease. Source: Hammarström/Nilsson labs LiU.[newline][newline]Source: Per Hammarström och Peter Nilsson, IFM, Linköping University[newline]</text>
+      </en>
+   </media>
+   <media path='media/transport_over_cell_membrane.mov' scale_exp='1'>
+      <category name='livsprocesser'/>
+      <category name='celler'/>
+      <se>
+         <header>Transport över ett cellmembran </header>
+         <text>Ett cellmembran avgränsar cellen från omgivningen.[newline]Animationen visar hur fyra olika sorters molekyler- vätejoner, kaliumjoner, vatten, och laktat- selektivt passerar igenom membranets lipidlager, från ut- till insidan av en cell. Dessa molekyler kan inte passera genom lipidlagret utan endast genom sitt respektive specifika transportprotein. Den femte molekylen är en signalmolekyl (adenosin) som specifikt binder till sin receptor. Alla molekyler visas i rätt storlek i förhållande till varandra.[newline]Källa:C-research, C-studio, Linköping university[newline]</text>
+      </se>
+      <en>
+         <header>Transport  over a cell membrane</header>
+         <text>A cell membrane functions as a barrier that divides the cell interior from the surroundings.[newline]The animation shows four transport proteins and one receptor protein embedded in a biological lipid bilayer. Protons, potassium ions, water and lactate can only traverse the membrane into the cell interior through their respective and very specific  transport channels (protein). Adenosine does not traverse the membrane, instead it binds specifically to its receptor. Chloride ions cannot pass through the membrane at all because they are a charged species. All molecules are shown in scale. [newline]Source: C-research, C-sturio, Linköping university[newline]</text>
+      </en>
+   </media>
+   <media path='media/c93837df015e517e5976c3bfdd62.jpg' scale_exp='1'>
+      <category name='celler'/>
+      <se>
+         <header>E Coli bakterie</header>
+         <text>Bakterier är encelliga mikroorganismer utan cellkärna och andra organeller. Bilden är tagen med ett elektronmikropskop och visar Escheria coli (E. coli). E. coli är en av många bakteriearter som lever i de nedre delarna av tarmarna hos varmblodiga djur, inklusive fåglar och däggdjur och är nödvändig för normal matsmältning, på samma gång som den kan kan orsaka olika typer av infektioner. [newline][newline]Källa: David Gregory och Debbie Marshall, Wellcome Images </text>
+      </se>
+      <en>
+         <header>E Coli bacteria</header>
+         <text>Bacteria are a large group of unicellular, prokaryote, microorganisms. The image is an electron micrograph of Escherichia coli,  (E.coli) close-up. E. coli is commonly found in the lower intestine of warm-blooded organisms, including birds and warm-blooded animals and is  necessary for normal digestion. At the same time as they may also cause different types of infections.[newline][newline]Source: David Gregory and Debbie Marshall, Wellcome Images </text>
+      </en>
+   </media>
+   <media path='media/celldelning.jpg' scale_exp='1'>
+      <category name='celler'/>
+      <se>
+         <header>Celldelning</header>
+         <text>Elektronmikroskopibild av en mänsklig endotelcell under celldelning. Cellen är infärgad med fluorescerande antikroppar. Cellkärnan är infärgad i rött.[newline][newline]Källa: Wellcome Images</text>
+      </se>
+      <en>
+         <header>Cell division</header>
+         <text>Electron micrograph of a cell undergoing division stained with fluorescent antibodies. The nucleus is coloured  red. [newline][newline]Source: Wellcome Images</text>
+      </en>
+   </media>
+   <media path='media/d9ce8b1a1ca881ab96f2083e02ca.jpg' scale_exp='1'>
+      <category name='virus'/>
+      <category name='sjukdomar'/>
+      <se>
+         <header>HIV virus</header>
+         <text>HIV-viruspartiklar är alldeles för små för att kunna ses i ett vanligt mikroskop. Men om man använder ett elektronmikroskop kan man se dem klart. En del av de mRNA som en HIV-infekterad cell producerar är fullständiga kopior av HIV-virusets arvsmassa. Dessa samlas tillsammans med nybildade HIV-proteiner och enzymer och bildar nya viruspartiklar som därefter släpps ut ur cellen. [newline][newline]Källa: Wellcome Images</text>
+      </se>
+      <en>
+         <header>Hiv virus</header>
+         <text>HIV particles are too small to be seen through an ordinary microscope. However they can be clearly seen with an electron microscope. Among the strands of messenger RNA produced by an HIV infected cell are complete copies of HIV genetic material. These gather together with newly made HIV proteins and enzymes to form new viral particles, which are then released from the cell.[newline][newline]Source: Wellcome Images</text>
+      </en>
+   </media>
+   <media path='media/stamcell.jpg' scale_exp='1'>
+      <category name='celler'/>
+      <se>
+         <header>Stamcell från människa</header>
+         <text>Bilden tagen med ett sk svepelektronmikroskop och visar en stamcell från människa (guldfärgad) som växer på ett lager av bindvävsceller. En stamcell är en omogen cell som kan genomgå ett obegränsat antal celldelningar och mogna till flera olika celltyper. Eftersom stamceller har potential att mogna ut till specialiserade celltyper finns stora förhoppningar om deras medicinska användning.[newline][newline]Källa: Wellcome Images</text>
+      </se>
+      <en>
+         <header>Human stem cell</header>
+         <text>Scanning electron micrograph of a human embryonic stem cell (gold) growing on a layer of supporting cells (fibroblasts). Stem cells are cells found in most multi-cellular organisms. They can differentiate into a diverse range of specialized cell types. In a developing embryo, stem cells can differentiate into all of the specialized embryonic tissues. Stem cells can be grown in cell culture and be transformed into specialized cells such as muscles or nerves. Embryonic cells have also been proposed as promising candidates for future therapies.[newline][newline]Source: Wellcome Images</text>
+      </en>
+   </media>
+</content>

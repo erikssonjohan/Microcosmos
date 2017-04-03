@@ -17,10 +17,18 @@ RealCard::RealCard(std::string category, std::vector<CardHandler> &cards)
 }
 
 //card is placed on table -> give position, make visible
-RealCard::Place(float x, float y)
+void RealCard::place(float x, float y)
 {
     position.x = x;
     position.y = y;
     onTable = true;
+}
+
+void RealCard::moveCard(float newX, float newY)
+{
+    position.x = newX;
+    position.y = newY;
+
+    //If the virtual cards positions are relative to RealCard position they don't have to be updated :D
 }
 

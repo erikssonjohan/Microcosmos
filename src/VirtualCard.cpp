@@ -1,19 +1,9 @@
 //
-// Created by Oscar Nord on 2017-03-08.
+// Created by Ola Rossing on 03/04/17.
 //
 
-#include <vector>
-#include "../include/CardHandler.h"
-#include <stdio.h>
-
-
-
-CardHandler::CardHandler() {}
-
-CardHandler::~CardHandler() {}
-
-/* //Moved to Virtual card
-CardHandler::CardHandler(std::string path, float scale, std::vector<std::string> categories, std::string header_se,
+#include "VirtualCard.h"
+VirtualCard::VirtualCard(std::string path, float scale, std::vector<std::string> categories, std::string header_se,
                          std::string text_se, std::string header_en, std::string text_en){
     _path = path;
     _scale = scale;
@@ -25,8 +15,7 @@ CardHandler::CardHandler(std::string path, float scale, std::vector<std::string>
 
 }
 
-
-void CardHandler::displayContent(){
+void VirtualCard::displayContent(){
 
     std::cout << "path: " << _path << std::endl;
     std::cout << "scale: " << _scale << std::endl;
@@ -45,31 +34,4 @@ void CardHandler::displayContent(){
     std::cout << "text_se: " << _text_se << std::endl;
     std::cout << "header_en: " << _header_en << std::endl;
     std::cout << "text_en: " << _text_en << std::endl;
-
 };
-*/
-
-void CardHandler::eventHandler() {
-
-}
-
-void CardHandler::mediaContent() {
-
-}
-
-void CardHandler::textContent() {
-
-}
-
-void CardHandler::rotation() {
-
-}
-
-void CardHandler::changePos(int x, int y){
-
-}
-
-
-
-
-

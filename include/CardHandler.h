@@ -13,6 +13,7 @@
 #include <iostream>
 #include <vector>
 #include <stdio.h>
+#include "VirtualCard.h"
 
 #ifndef SDL_TEST_CARDHANDLER_H
 #define SDL_TEST_CARDHANDLER_H
@@ -89,7 +90,7 @@ public:
 private:
 
     glm::vec3 position;
-    virtualCard* vc;
+    VirtualCard* vc;
     float scale; //size of card
     //float angle; //not yet
 
