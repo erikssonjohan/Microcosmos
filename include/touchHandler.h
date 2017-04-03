@@ -47,6 +47,7 @@ public:
 
 private:
     std::vector<SDL_TouchFingerEvent> vec;
+
 };
 
 

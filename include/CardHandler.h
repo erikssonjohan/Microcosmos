@@ -26,7 +26,7 @@ public:
     /*!
      * Constructor used in init
      */
-    CardHandler(int x, int y, VirtualCard* virCard );
+    CardHandler( VirtualCard* virCard );
 
     /*!
      *
@@ -45,7 +45,9 @@ public:
      * @param x
      * @param y
      */
-    void changePos(int x, int y);
+    void changePos(float x, float y);
+
+    bool touchOnCard(float x, float y);
 
 private:
 

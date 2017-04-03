@@ -32,6 +32,8 @@ public:
     */
     void displayContent();
 
+    bool containsCategory(std::string c);
+
 private:
     std::string _path;
     float _scale;

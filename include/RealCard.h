@@ -13,7 +13,7 @@
 class RealCard {
 public:
     //called in init
-    RealCard(std::string category, std::vector<CardHandler>& cards);
+    RealCard(std::string category, std::vector<VirtualCard>& cards);
 
     //card is placed on table -> give position, make visible
     void place(float x, float y);

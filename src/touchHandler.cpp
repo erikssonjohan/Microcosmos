@@ -23,7 +23,7 @@ void touchHandler::addFinger(SDL_TouchFingerEvent & tfe)
 
 void touchHandler::updateFinger(SDL_TouchFingerEvent &tfe)
 {
-    //update x,y,dx and dy for tfe
+    //update in x,y,dx and dy in vector for tfe
     for(size_t i = 0; i < vec.size(); i++)
     {
         if(tfe.fingerId == vec[i].fingerId)

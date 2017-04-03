@@ -34,4 +34,13 @@ void VirtualCard::displayContent(){
     std::cout << "text_se: " << _text_se << std::endl;
     std::cout << "header_en: " << _header_en << std::endl;
     std::cout << "text_en: " << _text_en << std::endl;
-};
+}
+
+bool VirtualCard::containsCategory(std::string c)
+{
+    for(int i = 0; i < _categories.size(); i++)
+        if(_categories[i].compare(c))
+            return true;
+    return false;
+
+}

@@ -6,16 +6,19 @@
 #include "CardHandler.h"
 
 
-
-void CardHandler::changePos(int x, int y){
-
+//Simplest way to give new position, can be changed later
+void CardHandler::changePos(float x,float y)
+{
+    position.x = x;
+    position.y = y;
 }
 
-CardHandler::CardHandler(int x, int y, VirtualCard* virCard )
- : position(glm::vec3(x,y,0)), vc(virCard), scale(0.0f)
+CardHandler::CardHandler(VirtualCard* virCard )
+ : position(glm::vec3(0,0,0)), vc(virCard), scale(1.0f)
 {
 
 };
+
 
 
 
