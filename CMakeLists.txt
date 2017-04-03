@@ -79,15 +79,15 @@ if (MINGW)
     set(SDL2_LIBRARY ${SDL2MAIN_LIBRARY} ${SDL2_LIBRARY_TEMP})
 
     #Library setup for SDL2_image
-    set(SDL2_IMAGE_INCLUDE_DIR ${PROJECT_SOURCE_DIR}/external/sdl2_image/i686-w64-mingw32/include/SDL2)
-    set(SDL2_IMAGEMAIN_LIBRARY "${PROJECT_SOURCE_DIR}/external/sdl2_image/i686-w64-mingw32/lib/libSDL2_image.a")
-    set(SDL2_IMAGE_LIBRARY_TEMP "${PROJECT_SOURCE_DIR}/external/sdl2_image/i686-w64-mingw32/lib/libSDL2_image.dll.a")
-    set(SDL2_IMAGE_LIBRARY_TEMP2 "${PROJECT_SOURCE_DIR}/external/sdl2_image/i686-w64-mingw32/bin/libjpeg-9.dll")
-    set(SDL2_IMAGE_LIBRARY ${SDL2_IMAGEMAIN_LIBRARY} ${SDL2_IMAGE_LIBRARY_TEMP} ${SDL2_IMAGE_LIBRARY_TEMP2} )
+   # set(SDL2_IMAGE_INCLUDE_DIR ${PROJECT_SOURCE_DIR}/external/sdl2_image/i686-w64-mingw32/include/SDL2)
+    #set(SDL2_IMAGEMAIN_LIBRARY "${PROJECT_SOURCE_DIR}/external/sdl2_image/i686-w64-mingw32/lib/libSDL2_image.a")
+    #set(SDL2_IMAGE_LIBRARY_TEMP "${PROJECT_SOURCE_DIR}/external/sdl2_image/i686-w64-mingw32/lib/libSDL2_image.dll.a")
+    #set(SDL2_IMAGE_LIBRARY_TEMP2 "${PROJECT_SOURCE_DIR}/external/sdl2_image/i686-w64-mingw32/bin/libjpeg-9.dll")
+    #set(SDL2_IMAGE_LIBRARY ${SDL2_IMAGEMAIN_LIBRARY} ${SDL2_IMAGE_LIBRARY_TEMP} ${SDL2_IMAGE_LIBRARY_TEMP2} )
 
 else()
     find_package(SDL2 REQUIRED)
-    find_package(SDL2_image REQUIRED)
+    #find_package(SDL2_image REQUIRED)
     #find_package(SDL2_ttf REQUIRED)
     #find_package(SDL2_mixer REQUIRED)
 endif(MINGW)
@@ -165,7 +165,7 @@ include_directories(
 
         #${FFMPEG_INCLUDE_DIR}
 
-       ${SDL2_IMAGE_INCLUDE_DIR}
+      # ${SDL2_IMAGE_INCLUDE_DIR}
        # ${SDL2_TTF_INCLUDE_DIR}
 )
 
@@ -175,7 +175,7 @@ set(ALL_LIBS
         ${SDL2_LIBRARY}
         #${FFMPEG_LIBRARIES}
 
-        ${SDL2_IMAGE_LIBRARY}
+        #${SDL2_IMAGE_LIBRARY}
        # ${SDL2_TTF_LIBRARIES}
 
         #[[ avcodec
