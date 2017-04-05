@@ -1,6 +1,5 @@
 # Dependencies:
-# GLEW, SDL2,SDL2_IMAGE, SDL2_TTF, (FFMPEG)
-
+# GLEW, SDL2, SDL2_TTF, (FFMPEG)
 
 cmake_minimum_required(VERSION 2.8)
 set(PROJECT_NAME_STR mikrokosmos)
@@ -9,13 +8,11 @@ set (CMAKE_CXX_STANDARD 11)
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${PROJECT_SOURCE_DIR}/cmake")
 
-
 # Set default compile flags for GCC
 if(CMAKE_COMPILER_IS_GNUCXX)
     message(STATUS "GCC detected, adding compile flags")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -pedantic -Wall -Wextra ")
 endif(CMAKE_COMPILER_IS_GNUCXX)
-
 
 #Set up the include
 include(ExternalProject)
@@ -46,7 +43,6 @@ endif (UNIX)
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS} ${CMAKE_CXX_FLAGS_DEBUG} -g")
 set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS} ${CMAKE_CXX_FLAGS_RELEASE} -O2")
 
-
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
@@ -62,13 +58,8 @@ if(CMAKE_COMPILER_IS_GNUCXX)
     )
 endif()
 
-#find_package (SDL2 REQUIRED)
-#include_directories (${SDL2_INCLUDE_DIR})
 #find_package(FFMPEG REQUIRED)
-
 find_package(OpenGL REQUIRED)
-
-
 
 if (MINGW)
     #Library setup for SDL2
@@ -87,11 +78,8 @@ if (MINGW)
 
 else()
     find_package(SDL2 REQUIRED)
-    #find_package(SDL2_image REQUIRED)
     #find_package(SDL2_ttf REQUIRED)
-    #find_package(SDL2_mixer REQUIRED)
 endif(MINGW)
-
 
 if(MINGW)
     set(OPENGL_LIBRARY
@@ -101,11 +89,10 @@ if(MINGW)
             -lmingw32 -lm -ldinput8 -ldxguid -ldxerr8 -luser32 -lgdi32 -lwinmm -limm32 -lole32 -loleaut32 -lshell32 -lversion -luuid
             ${CMAKE_DL_LIBS})
 
-
 elseif(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
     set(OPENGL_LIBRARY
             ${OPENGL_LIBRARY}
-            #	-lGL -lGLU -lXrandr -lXext -lX11 -lrt
+            #-lGL -lGLU -lXrandr -lXext -lX11 -lrt
             ${CMAKE_DL_LIBS})
 
     add_definitions(-D_UNIX -DSDL2=ON)
@@ -120,7 +107,7 @@ elseif(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
 
 endif(MINGW)
 
-
+#ONLY FOR MACOS NEEDS FIX
 #include_directories(/usr/local/Cellar/ffmpeg/3.2.4/include/)
 #link_directories(/usr/local/Cellar/ffmpeg/3.2.4/lib/)
 
@@ -158,15 +145,10 @@ set(ext_libs
 include_directories(
         ${ext_libs}
         ${SDL2_INCLUDE_DIR}
-        #${SDL2MIXER_INCLUDE_DIR}
-
         ${PROJECT_INCLUDE_DIR}
         ${PROJECT_EXT_DIR}
-
         #${FFMPEG_INCLUDE_DIR}
-
-      # ${SDL2_IMAGE_INCLUDE_DIR}
-       # ${SDL2_TTF_INCLUDE_DIR}
+        #${SDL2_TTF_INCLUDE_DIR}
 )
 
 set(ALL_LIBS
@@ -174,10 +156,7 @@ set(ALL_LIBS
         GLEW
         ${SDL2_LIBRARY}
         #${FFMPEG_LIBRARIES}
-
-        #${SDL2_IMAGE_LIBRARY}
-       # ${SDL2_TTF_LIBRARIES}
-
+        #${SDL2_TTF_LIBRARIES}
         #[[ avcodec
          avdevice
          avfilter
@@ -187,18 +166,12 @@ set(ALL_LIBS
          postproc
          swresample
          swscale]]
-        #${SDL2MIXER_LIBRARY}
         )
-
-# TEST MESSAGE
-message( "SDL2_img: " ${SDL2_IMAGE_LIBRARY})
-message( "SDL2_ttf: " ${SDL2_IMAGE_LIBRARIES})
 
 file(GLOB PROJECT_CXX_FILES ${PROJECT_CXX_DIR}/*.cpp)
 
 add_executable(${PROJECT_NAME_STR}
-        ${PROJECT_CXX_FILES}
-        src/touchHandler.cpp include/touchHandler.h src/RealCard.cpp include/RealCard.h src/VirtualCard.cpp include/VirtualCard.h)
+        ${PROJECT_CXX_FILES})
 
 target_link_libraries(${PROJECT_NAME_STR}
         ${ALL_LIBS})
