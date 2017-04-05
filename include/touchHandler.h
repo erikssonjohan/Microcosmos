@@ -8,10 +8,12 @@
 #include <algorithm>
 #include <iostream>
 #include "SDL.h"
+#include "RealCard.h"
+#include "VirtualCard.h"
+
 
 class touchHandler {
 public:
-
 
     /*!
      *
@@ -19,7 +21,7 @@ public:
      *
      * @param tfe -
      */
-    void addFinger(SDL_TouchFingerEvent & tfe); //FINGERDOWN
+    void addFinger(SDL_TouchFingerEvent & tfe,std::vector<VirtualCard> &vc,  std::vector<RealCard>  &rc); //FINGERDOWN
 
 
     /*!
@@ -28,7 +30,7 @@ public:
      *
      * @param tfe -
      */
-    void updateFinger(SDL_TouchFingerEvent &tfe); //FINGERMOTION
+    void updateFinger(SDL_TouchFingerEvent &tfe, std::vector<RealCard>  &rc); //FINGERMOTION
 
     /*!
      *
@@ -36,7 +38,7 @@ public:
      * Function to remove tfe from the vector using fingerId
      * @param fid -
      */
-    void removeFinger(SDL_FingerID fid); //FINGERUP
+    void removeFinger(SDL_FingerID fid, std::vector<RealCard>  &rc); //FINGERUP
 
     /*!
      *
@@ -47,6 +49,7 @@ public:
 
 private:
     std::vector<SDL_TouchFingerEvent> vec;
+
 };
 
 

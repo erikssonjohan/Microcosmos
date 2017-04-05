@@ -5,7 +5,7 @@
 #ifndef SDL_TEST_FUNCTIONS_H
 #define SDL_TEST_FUNCTIONS_H
 
-#include "CardHandler.h"
+#include "VirtualCard.h"
 #include <string>
 #include <iostream>
 #include <vector>
@@ -20,7 +20,7 @@ namespace functions {
      * @param file - a XML-file (with the right structure)
      * @param cards - a vector of CardHandler where new CardHandlers can be created
      */
-    void xml(const char *file, std::vector<CardHandler> &cards);
+    void xml(const char *file, std::vector<VirtualCard> &cards);
     /*!
      *
      * Displays the content in the XML-file with the folowing tags:
