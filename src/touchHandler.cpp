@@ -5,8 +5,7 @@
 #include "touchHandler.h"
 
 
-
-void touchHandler::addFinger(SDL_TouchFingerEvent & tfe)
+void touchHandler::addFinger(SDL_TouchFingerEvent & tfe,std::vector<VirtualCard> &vc,  std::vector<RealCard>  &rc)
 {
     vec.push_back(tfe);
 
@@ -18,10 +17,11 @@ void touchHandler::addFinger(SDL_TouchFingerEvent & tfe)
         // Show RealCard with updated position for card and virtual cards
     }
     std::cout << "Added id " << tfe.fingerId << std::endl;
+    rc[0].place(tfe.x,tfe.y);
 }
 
 
-void touchHandler::updateFinger(SDL_TouchFingerEvent &tfe)
+void touchHandler::updateFinger(SDL_TouchFingerEvent &tfe, std::vector<RealCard>  &rc)
 {
     //update in x,y,dx and dy in vector for tfe
     for(size_t i = 0; i < vec.size(); i++)
@@ -48,7 +48,7 @@ void touchHandler::updateFinger(SDL_TouchFingerEvent &tfe)
 
 }
 
-void touchHandler::removeFinger( SDL_FingerID fid) {
+void touchHandler::removeFinger( SDL_FingerID fid, std::vector<RealCard>  &rc) {
 
     // If the finger is linked to a card: (inside touchHandler?)
     // remove touchpoint from virtual card?

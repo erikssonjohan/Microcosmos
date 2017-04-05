@@ -34,7 +34,9 @@ int main(int argc, char* args[]) {
 
     std::vector<RealCard> realCards;
 
-    //realCards.push_back(RealCard(category, cards));
+    touchHandler touchH;
+
+    realCards.push_back(RealCard("virus", cards));
 
     //loop that creates a real card for all categories
 
@@ -51,7 +53,6 @@ int main(int argc, char* args[]) {
     bool running = true;
     SDL_Event event;
 
-    touchHandler touchH;
 
     while (running) {
         while (SDL_PollEvent(&event)) {
@@ -64,16 +65,16 @@ int main(int argc, char* args[]) {
                 case SDL_FINGERDOWN: {
                     // Add finger to the vector of active touch points
                     // If the finger is a card it will be handled inside touchHandler
-                    touchH.addFinger(event.tfinger);
+                    touchH.addFinger(event.tfinger,cards, realCards);
                     break;
                 }
                 case SDL_FINGERUP:{
                     // remove SDL_TouchFingerEvent with id fingerId and card if card
-                    touchH.removeFinger(event.tfinger.fingerId);
+                    touchH.removeFinger(event.tfinger.fingerId, realCards);
                     break;
                 }
                 case SDL_FINGERMOTION:{
-                    touchH.updateFinger(event.tfinger);
+                    touchH.updateFinger(event.tfinger, realCards);
                     break;
                 }
                 default: break;

@@ -39,8 +39,10 @@ void VirtualCard::displayContent(){
 bool VirtualCard::containsCategory(std::string c)
 {
     for(int i = 0; i < _categories.size(); i++)
+    {
         if(_categories[i].compare(c))
             return true;
+    }
     return false;
 
 }
