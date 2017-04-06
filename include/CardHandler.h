@@ -23,22 +23,26 @@
 class CardHandler {
 public:
 
+
+
     /*!
      * Constructor used in init
+     *
+     * @param virCard
      */
     CardHandler( VirtualCard* virCard );
 
     /*!
      *
-     * @return
+     * @return - the x-position
      */
     int getPosX() {return position.x;};
 
     /*!
      *
-     * @return
+     * @return - the y-position
      */
-    int getPosY() {return position.x;};
+    int getPosY() {return position.y;};
 
     /*!
      *
@@ -47,6 +51,12 @@ public:
      */
     void changePos(float x, float y);
 
+    /*!
+     *
+     * @param x
+     * @param y
+     * @return
+     */
     bool touchOnCard(float x, float y);
 
 private:

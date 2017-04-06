@@ -31,8 +31,18 @@ public:
     * Prints the @p path, @p scale, @p categories, @p header_se, @p text_se, @p header_en and @p text_en in the console
     */
     void displayContent();
+
+    /*!
+     *
+     * @return
+     */
     std::string getHeader(){return _header_en;};
 
+    /*!
+     *
+     * @param c
+     * @return
+     */
     bool containsCategory(std::string c);
 
 

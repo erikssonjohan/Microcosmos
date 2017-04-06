@@ -12,14 +12,40 @@
 
 class RealCard {
 public:
-    //called in init
+
+    /*!
+     *
+     * called in init
+     *
+     * @param category
+     * @param cards
+     */
     RealCard(std::string category, std::vector<VirtualCard>& cards);
 
-    //card is placed on table -> give position, make visible
+
+
+    /*!
+     *
+     * card is placed on table -> give position, make visible
+     *
+     * @param x
+     * @param y
+     */
     void place(float x, float y);
+
+    /*!
+     *
+     */
     void pick_up() {onTable = false;};
 
-    void moveCard(float newX, float newY); //Depending on method we might use dx and dy instead.
+    /*!
+     *
+     * Depending on method we might use dx and dy instead.
+     *
+     * @param newX
+     * @param newY
+     */
+    void moveCard(float newX, float newY);
 
 
 
