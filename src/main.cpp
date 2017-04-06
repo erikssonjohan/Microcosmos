@@ -33,21 +33,18 @@ int main(int argc, char* args[]) {
     functions::xml("write.xml", cards);
 
     std::vector<RealCard> realCards;
+    realCards.push_back(RealCard("virus", cards)); //empty vector is not good for debug!
+    realCards.push_back(RealCard("gener", cards));
+    //loop that creates a real card for all categories..
 
     touchHandler touchH;
-
-    realCards.push_back(RealCard("virus", cards));
-
-    //loop that creates a real card for all categories
-
-
+/*
     std::cout << cards.size() << std::endl;
     for (int i = 0; i < cards.size() ; ++i) {
         cards[i].displayContent();
         std::cout << std::endl;
     }
-    //<-to
-
+*/
     RenderSystem renderSystem;
     renderSystem.init();
     bool running = true;

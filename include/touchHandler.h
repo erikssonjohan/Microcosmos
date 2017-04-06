@@ -11,6 +11,25 @@
 #include "RealCard.h"
 #include "VirtualCard.h"
 
+struct TouchPoint {
+    Uint32 timestamp;
+    SDL_FingerID fingerId;
+    float x, y, dx, dy;
+    int RealCard_id; //if connected to a realcard or/and its cardhandler, save vector indices
+    int CardHandler_id;
+
+    TouchPoint(SDL_TouchFingerEvent &tfe)
+    {
+        timestamp = tfe.timestamp;
+        fingerId = tfe.fingerId;
+        x = tfe.x;
+        y = tfe.y;
+        dx = tfe.dx;
+        dy = tfe.dy;
+        int RealCard_id = -1; //not connected to cards yet
+        int CardHandler_id = -1;
+    }
+};
 
 class touchHandler {
 public:
@@ -49,7 +68,7 @@ public:
 
 private:
     std::vector<SDL_TouchFingerEvent> vec;
-
+    std::vector<TouchPoint> v;
 };
 
 

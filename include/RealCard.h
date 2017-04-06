@@ -17,15 +17,20 @@ public:
 
     //card is placed on table -> give position, make visible
     void place(float x, float y);
+    void pick_up() {onTable = false;};
 
     void moveCard(float newX, float newY); //Depending on method we might use dx and dy instead.
 
-private:
-    glm::vec3 position;
-    bool onTable;
-    std::string category;
-    std::vector<CardHandler> CH;
 
+
+private:
+    glm::vec3 position;             // Position of RealCard center point
+    bool onTable;                   // Tells if we draw everything connected to this RealCard
+    std::string category;           // Every RealCard has a category
+    std::vector<CardHandler> CH;    // The cards surrounding the RealCard
+                                    // Each of CardHandlers handles a virtual card connected to the category
+
+    // If we have only one touch point on the card we can choose save the SDL_TouchId
 };
 
 

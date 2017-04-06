@@ -4,7 +4,8 @@
 
 #include "VirtualCard.h"
 VirtualCard::VirtualCard(std::string path, float scale, std::vector<std::string> categories, std::string header_se,
-                         std::string text_se, std::string header_en, std::string text_en){
+                         std::string text_se, std::string header_en, std::string text_en)
+{
     _path = path;
     _scale = scale;
     _categories = categories;
@@ -13,6 +14,7 @@ VirtualCard::VirtualCard(std::string path, float scale, std::vector<std::string>
     _header_en = header_en;
     _text_en = text_en;
 
+    //std::cout << "VirtualCard " << _header_en << " is connected to " << _categories.size() << " categories" << std::endl;
 }
 
 void VirtualCard::displayContent(){
@@ -38,11 +40,13 @@ void VirtualCard::displayContent(){
 
 bool VirtualCard::containsCategory(std::string c)
 {
-    for(int i = 0; i < _categories.size(); i++)
+    for(int i = 0; i < _categories.size(); ++i)
     {
-        if(_categories[i].compare(c))
+        if(!_categories[i].compare(c)) // I don't know why it's not the other way around
+        {
+            //std::cout << _categories[i] << c << std::endl;
             return true;
+        }
     }
     return false;
-
 }
