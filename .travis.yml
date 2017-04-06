@@ -1,8 +1,10 @@
 language: cpp
 
-os: osx
+os: 
+  - osx
+  #- linux
 
-compiler:
+compiler: 
   - gcc
   #- clang
 
@@ -12,11 +14,32 @@ before_install:
   - if [[ $TRAVIS_OS_NAME == "osx" ]]; then brew install SDL2   ; fi
   - if [[ $TRAVIS_OS_NAME == "osx" ]]; then brew install GLEW   ; fi
   - if [[ $TRAVIS_OS_NAME == "osx" ]]; then brew install ffmpeg ; fi
+  # LINUX ->
+  - if [[ $TRAVIS_OS_NAME == "linux" ]]; then sudo apt-get update ; fi
+  # CMake, require newer version, than in Travis
+  - if [[ $TRAVIS_OS_NAME == "linux" ]]; then sudo apt-get install libXxf86vm-dev cmake ; fi
+  #GLEW
+  - if [[ $TRAVIS_OS_NAME == "linux" ]]; then sudo apt-get install libglew-dev ; fi
+  # SDL2
+  - if [[ $TRAVIS_OS_NAME == "linux" ]]; then curl -O http://www.libsdl.org/release/SDL2-2.0.0.tar.gz ; fi
+  - if [[ $TRAVIS_OS_NAME == "linux" ]]; then tar -xzvf SDL2-2.0.0.tar.gz ; fi
+  - if [[ $TRAVIS_OS_NAME == "linux" ]]; then (cd SDL2-2.0.0 && ./configure && make && sudo make install) ; fi
+  # GLEW
+  - if [[ $TRAVIS_OS_NAME == "linux" ]]; then sudo apt-get install ffmpeg ; fi
+  
+
+#install:
+  # CMake, require newer version, than in Travis
+  #- sudo apt-get install libXxf86vm-dev cmake
+  # SDL2
+  #- curl -O http://www.libsdl.org/release/SDL2-2.0.0.tar.gz
+  #- tar -xzvf SDL2-2.0.0.tar.gz
+  #- (cd SDL2-2.0.0 && ./configure && make && sudo make install)
 
 before_script:
     - mkdir build
     - cd build
     - cmake ..
-
+    
 script:
 - make
