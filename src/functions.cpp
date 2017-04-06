@@ -106,3 +106,42 @@ void functions::displayxml(const char *file) {
     }
 
 }
+
+void functions::uniqueCategories(const char *file, std::vector<std::string> &categories){
+    tinyxml2::XMLDocument doc;
+    doc.LoadFile(file);
+    if (doc.ErrorID() != 0) {
+        std::cout << "failed to open xml file" << std::endl;
+    } else {
+        std::cout << "Loaded XML" << std::endl;
+        std::string path, header_se, text_se, header_en, text_en;
+        for (tinyxml2::XMLElement *child = doc.FirstChildElement("content")->FirstChildElement("media");
+             child != 0; child = child->NextSiblingElement()) {
+            if (child->FirstChildElement("category")) {
+                if(!functions::stringInVector(child->FirstChildElement("category")->Attribute("name"), categories)){
+                    categories.push_back(child->FirstChildElement("category")->Attribute("name"));
+                }
+
+                if (child->FirstChildElement("category")->NextSiblingElement("category")) {
+                    for (tinyxml2::XMLElement *categ = child->FirstChildElement("category")->NextSiblingElement(
+                            "category"); categ != 0; categ = categ->NextSiblingElement("category")) {
+                        if(!functions::stringInVector(categ->Attribute("name"), categories)){
+                            categories.push_back(categ->Attribute("name"));
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+bool functions::stringInVector(std::string category, std::vector<std::string> categories){
+
+    for (int i = 0; i < categories.size(); ++i) {
+        if(categories[i]==category)
+            return true;
+    }
+
+    return false;
+}

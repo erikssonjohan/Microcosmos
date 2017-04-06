@@ -45,6 +45,12 @@ int main(int argc, char* args[]) {
         std::cout << std::endl;
     }
 */
+    std::vector<std::string> categories;
+    functions::uniqueCategories("write.xml", categories);
+    for (int i = 0; i < categories.size() ; ++i) {
+        std::cout << categories[i] << std::endl;
+    }
+
     RenderSystem renderSystem;
     renderSystem.init();
     bool running = true;

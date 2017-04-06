@@ -29,6 +29,25 @@ namespace functions {
      */
     void displayxml(const char *file);
 
+    /*!
+     *
+     * Get unique Categories in the xml file and put it in a vector of strings(Categories)
+     *
+     * @param file - a XML-file (with the right structure)
+     * @param categorys - vector of unique categories
+     */
+    void uniqueCategories(const char *file, std::vector<std::string> &categories);
+
+    /*!
+     *
+     * Checks if the category is in categories
+     *
+     * @param category - the category to check
+     * @param categories - the vector
+     * @return - returns true or false if category is in categories or not
+     */
+    bool stringInVector(std::string category, std::vector<std::string> categories);
+
 
 
 };
