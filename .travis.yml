@@ -37,7 +37,7 @@ before_install:
   #- (cd SDL2-2.0.0 && ./configure && make && sudo make install)
 
 before_script:
-    - mkdir build
+    #- mkdir build
     - cd build
     - cmake ..
     
