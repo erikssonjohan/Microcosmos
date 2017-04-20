@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<content>
+    
+    <media path='media/10-Ribosome_figure.jpg' scale_exp='1'>
+        <category name='proteiner'/>
+        <category name='livsprocesser'/>
+        <se>
+            <header>Ribosom</header>
+            <text>Ribosomer kallas ofta proteinfabriker, eftersom de "översätter" genetisk information till proteiner. De består av två subenheter: en stor subenhet (till höger), och en liten subenhet (till vänster). När ett protein ska bildas, förenas de två subenheterna runt en mRNA-sträng. Subenheterna består själva av RNA-strängar, som här visas i orange och gult, med ett antal proteinkedjor på olika positioner, i blått.[newline][newline]Källa: Illustration av David Goodsell, Scripps</text>
+        </se>
+        <en>
+            <header>Ribosome</header>
+            <text>Ribosomes are often called protein factories because they translate genetic information into proteins. They are compIosed of two subunits: a large subunit shown on the right, and a small subunit shown on the left. When a protein is synthesized, the two subunits come together around a messenger RNA. The subunits are themselves composed of long strands of RNA, shown here in orange (tan) and yellow, with multiple protein chains, shown in blue, in different positions.[newline][newline]Source: Illustration by David Goodsell, Scripps</text>
+        </en>
+    </media>
+    <media path='media/101-Prions-2rnm.jpg' scale_exp='1'>
+        <category name='sjukdomar'/>
+        <category name='proteiner'/>
+        <se>
+            <header>Prionprotein</header>
+            <text>Prion är det protein som orsakar galna ko-sjukan. Proteinet finns vanligen i en helt ofarlig form, men det kan även ändras till en sjukdomsalstrande form. I denna form bildar det sk fibriller, en slags proteinfibrer. På bilden visas en bit av en fibrill bestående av fem prionproteiner (i olika färger). När ett prionprotein väl har ändrats till den sjuka formen, kan det sedan omvandla friska prioner så att dessa också antar den sjuka formen. På så sätt förökas den farliga formen av proteinet, trots att det inte är en cell eller ett virus som i andra infektionssjukdomar.[newline]Källa: Illustration av David Goddsell, Scripps</text>
+        </se>
+        <en>
+            <header>Prion protein</header>
+            <text>Prion is the protein that causes mad-cow disease. The protein usually exists in a non-dangerous (normal) form, but can change into a disease-causing form. It can then form fibrills, which is a kind of protein fibres. The picture shows part of a fibril that consists of five prion proteins (in different colors). Prion proteins in the sick form can transform other "healthy" prions into sick (deformed/infectious) ones. In this way, the disease-causing form of the protein multiplies, even though it is not a cell or a virus as in other infectious diseases. [newline]Source: Illustration by David Goddsell, Scripps </text>
+        </en>
+    </media>
+    <media path='media/1010760_30792274.jpg' scale_exp='1'>
+        <category name='gener'/>
+        <category name='molekyler'/>
+        <se>
+            <header>DNA-molekyl</header>
+            <text>En förenklad illustration av en bit av en DNA molekyl.[newline]DNA är den kemiska förening som utgör den ärftliga informationen i kroppens celler består av, det så kallade genomet. Molekylen består av en kedja av sammanlänkade byggstenar. Byggstenarna finns i fyra olika varianter, vilket indikeras av färger i bilden. DNA har oftast formen av en dubbelspiral, där byggstenarna paras ihop två och två. En gen är en bit av DNA-molekylen, där sekvensen av byggstenar, bestämmer hur ett visst protein ska se ut. Genomet bestämmer alltså hur alla proteinerna i en organism skall byggas upp.[newline]Källa: SXC.hu, HAAP Media</text>
+        </se>
+        <en>
+            <header>DNA molecule </header>
+            <text>DNA is the chemical substance that the inheritable information in the body`s cells is made of, the so called genome. The molecule comprises of a chain of interlinked building blocks. There are four types of blocks, as indicated by different colours in the figure. DNA usually forms a double helix, in which the building blocks are paired. A gene is a region of the DNA molecule, where the sequence of the building blocks determine how a specific protein will look. Thus, the genome determines how each protein in an organism is formed.[newline]Source: SXC.hu, HAAP Media[newline]</text>
+        </en>
+    </media>
+    <media path='media/1037189_46236490.jpg' scale_exp='1'>
+        <category name='gener'/>
+        <se>
+            <header>Genetiskt fingeravtryck</header>
+            <text>Bilden visar ett så kallat genetiskt fingeravtryck, som kan användas för att ta fram en DNA-profil. Tekniken uppfanns 1985, och används idag för att identifiera individer utifrån deras DNA. Trots att 99,9% av de mänskliga DNA-sekvenserna är identiska hos alla människor, så finns det tillräckligt mycket variation för att individer ska kunna skiljas från varandra.[newline][newline]Källa: SXC.hu, HAAP Media </text>
+        </se>
+        <en>
+            <header>Genetic fingerprint</header>
+            <text>The image shows a so-called genetic fingerprint, which can be used to create a DNA profile. This technique was invented in 1985, and is used today to identify individuals based on their respective DNA. Although 99.9% of human DNA sequences are identical between persons, there is still enough variation in the DNA to allow individuals to distinguish individuals from each other.[newline][newline]Source: SXC.hu, HAAP Media </text>
+        </en>
+    </media>
+</content>

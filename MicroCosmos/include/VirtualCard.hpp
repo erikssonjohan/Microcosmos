@@ -12,6 +12,7 @@
 #include "cinder/app/App.h"
 #include "cinder/app/RendererGl.h"
 #include "cinder/gl/gl.h"
+#include "cinder/Rand.h"
 using namespace ci;
 using namespace ci::app;
 using namespace std;
@@ -54,8 +55,12 @@ public:
     float rightBX , rightBY;
     
     std::vector<uint32_t> touchId;
+    void setPos(vec2 pos);
+    
+    vec2 trans = {0, 0};
     
 private:
+    
     std::string _path;
     float _scale;
     std::vector<std::string> _categories;
@@ -63,6 +68,7 @@ private:
     std::string _text_se;
     std::string _header_en;
     std::string _text_en;
+    gl::Texture2dRef mTex;
     
 };
 

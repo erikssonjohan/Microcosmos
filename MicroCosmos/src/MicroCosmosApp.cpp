@@ -32,7 +32,7 @@ void MicroCosmosApp::loadXML(const char *file, std::vector<VirtualCard> &cards)
     std::string text_en;
     //float scale;
     
-    XmlTree doc( loadFile( file ) );
+    XmlTree doc(  loadAsset( file ) );
     for( XmlTree::Iter track = doc.begin("content/media"); track != doc.end(); ++track ){
         //console() << track->getAttribute("path").getValue() << endl;
         path = track->getAttribute("path").getValue();
@@ -75,8 +75,9 @@ void prepareSettings( MicroCosmosApp::Settings *settings )
 
 void MicroCosmosApp::setup()
 {
+    cinder::app::setFullScreen();
     
-    loadXML("/Users/johaneriksson/CinderProjectXML/assets/write.xml", cards);
+    loadXML("demo.xml", cards);
 }
 
 
@@ -89,8 +90,10 @@ void MicroCosmosApp::touchesBegan( TouchEvent event )
     //CI_LOG_I( event );
     
     for( const auto &touch : event.getTouches() ) {
-        if(cards[0].isPointInShape(touch.getX(), touch.getY())){
-            cards[0].touchId.push_back(touch.getId());
+        for (int i = 0; i < cards.size(); ++i) {
+            if(cards[i].isPointInShape(touch.getX(), touch.getY())){
+                cards[i].touchId.push_back(touch.getId());
+            }
         }
     }
 }
@@ -99,9 +102,11 @@ void MicroCosmosApp::touchesMoved( TouchEvent event )
 {
     //CI_LOG_I( event );
     for( const auto &touch : event.getTouches() ) {
-        cards[0].moveCard(touch.getPrevPos(), touch.getPos());
-        
-        
+        for (int i = 0; i < cards.size(); ++i) {
+            if ( cards[i].touchIdInCard(touch.getId()) ) {
+                cards[i].moveCard(touch.getPrevPos(), touch.getPos());
+            }
+        }
     }
 }
 
@@ -109,12 +114,14 @@ void MicroCosmosApp::touchesEnded( TouchEvent event )
 {
     //CI_LOG_I( event );
     for( const auto &touch : event.getTouches() ) {
-        if(cards[0].touchIdInCard(touch.getId())){
-            cards[0].removeTouchId(touch.getId());
+        for (int i = 0; i < cards.size(); ++i) {
+            if(cards[i].touchIdInCard(touch.getId())){
+                cards[i].removeTouchId(touch.getId());
+            }
         }
-        
     }
 }
+
 
 
 void MicroCosmosApp::update()
@@ -124,18 +131,20 @@ void MicroCosmosApp::update()
 void MicroCosmosApp::draw()
 {
     gl::clear( Color( 0, 0, 0 ) );
-    cards[0].draw();
+    for (int i = 0; i<cards.size(); ++i) {
+        //gl::pushModelMatrix();
+        //gl::pushMatrices();
+        //gl::translate(cards[i].trans);
+        cards[i].draw();
+        //gl::popModelMatrix();
+        //gl::popMatrices();
+    }
     
     // draw yellow circles at the active touch points
-    gl::color( Color( 1, 1, 0 ) );
+    gl::clearColor( Color( 1, 1, 0 ) );
     for( const auto &touch : getActiveTouches
         () ){
         gl::drawStrokedCircle( touch.getPos(), 20 );
-        //std::cout << "pos: " << touch.getX() << ", " << touch.getY() << std::endl;
-        
-        /*if(x.isPointInShape(touch.getX(), touch.getY()) ){
-         std::cout << "hej " << std::endl;
-         }*/
     }
 }
 

@@ -8,6 +8,8 @@
 
 #include "VirtualCard.hpp"
 
+
+
 VirtualCard::VirtualCard(std::string path, float scale, std::vector<std::string> categories, std::string header_se,
                          std::string text_se, std::string header_en, std::string text_en)
 {
@@ -19,12 +21,19 @@ VirtualCard::VirtualCard(std::string path, float scale, std::vector<std::string>
     _header_en = header_en;
     _text_en = text_en;
     
+    
     cinder::gl::TextureRef mFrameTexture;
     cinder::gl::TextureRef texture;
-    leftTX = 40.0f, leftTY = 40.0f;
-    rightBX = 150.0f, rightBY = 150.0f;
+    
+    float x = Rand::randFloat(1, 700);
+    float y = Rand::randFloat(1, 700);
+    
+    leftTX = 40.0f+x, leftTY = 40.0f+y;
+    rightBX = 300.0f+x, rightBY = 300.0f+y;
     mediaRect = Rectf( leftTX, leftTY, rightBX, rightBY );
     cardOutline = Rectf( leftTX, leftTY, rightBX, rightBY );
+    auto img = loadImage( loadAsset( _path ) );
+    mTex = gl::Texture2d::create( img );
     
 }
 
@@ -66,8 +75,11 @@ void VirtualCard::displayContent(){
 void VirtualCard::moveCard(vec2 pPos, vec2 pos){
     float moveX = pPos[0] - pos[0];
     float moveY = pPos[1] - pos[1];
-    leftTX += moveX; rightBX += moveX;
-    leftTY += moveY; rightBY += moveY;
+    trans[0] -= moveX;
+    trans[1] -= moveY;
+    leftTX -= moveX; rightBX -= moveX;
+    leftTY -= moveY; rightBY -= moveY;
+    cardOutline = Rectf( leftTX, leftTY, rightBX, rightBY );
     
 }
 
@@ -81,6 +93,7 @@ bool VirtualCard::touchIdInCard(uint32_t id){
     return false;
 }
 
+
 void VirtualCard::removeTouchId(uint32_t id){
     for (int i = 0; i<touchId.size(); ++i) {
         if(touchId[i] == id){
@@ -93,7 +106,8 @@ void VirtualCard::removeTouchId(uint32_t id){
 
 
 void VirtualCard::draw(){
-    gl::color(1, 0, 0);
-    gl::drawStrokedRect(cardOutline);
+    //gl::color(0, 0, 0);
+    //gl::drawStrokedRect(cardOutline);
+    gl::draw(mTex, ci::Area(cardOutline.getCenteredFit(mTex->getBounds(), true)), cardOutline);
     
 }
