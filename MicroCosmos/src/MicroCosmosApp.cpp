@@ -77,13 +77,6 @@ void MicroCosmosApp::setup()
 {
     
     loadXML("/Users/johaneriksson/CinderProjectXML/assets/write.xml", cards);
-    /*
-     XmlTree doc( loadFile( "/Users/johaneriksson/CinderProjectXML/assets/library.xml" ) );
-     XmlTree musicLibrary = doc.getChild( "library" );
-     console() << musicLibrary.getChild( "owner/city" ).getValue() << std::endl;
-     XmlTree firstAlbum = doc.getChild( "library/album" );
-     for( XmlTree::Iter child = firstAlbum.begin(); child != firstAlbum.end(); ++child )
-     console() << "Tag: " << child->getTag() <<"  Value: " << child->getValue() << endl;*/
 }
 
 
@@ -116,7 +109,9 @@ void MicroCosmosApp::touchesEnded( TouchEvent event )
 {
     //CI_LOG_I( event );
     for( const auto &touch : event.getTouches() ) {
-        
+        if(cards[0].touchIdInCard(touch.getId())){
+            cards[0].removeTouchId(touch.getId());
+        }
         
     }
 }
