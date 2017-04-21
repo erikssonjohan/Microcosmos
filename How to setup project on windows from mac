@@ -1,4 +1,4 @@
-if asked to upgrade the vc2013 project to match vc2015 press "OK"
+If asked to upgrade the vc2013 project to match vc2015 press "OK"
 
 Right click your project and go to Properties and set Configuration to "All Configurations" and Platform to "x64"
 
