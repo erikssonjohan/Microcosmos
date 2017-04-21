@@ -10,10 +10,10 @@ using namespace ci::app;
 using namespace std;
 
 class MicroCosmosApp : public App {
-  public:
+public:
     void setup() override;
     void mouseDown( MouseEvent event ) override;
-	void keyDown(KeyEvent event) override;
+    void keyDown(KeyEvent event) override;
     void touchesBegan( TouchEvent event ) override;
     void touchesMoved( TouchEvent event ) override;
     void touchesEnded( TouchEvent event ) override;
@@ -88,17 +88,17 @@ void MicroCosmosApp::mouseDown( MouseEvent event )
 
 void MicroCosmosApp::keyDown(KeyEvent event)
 {
-	if (event.getChar() == 'f') {
-		// Toggle full screen when the user presses the 'f' key.
-		setFullScreen(!isFullScreen());
-	}
-	else if (event.getCode() == KeyEvent::KEY_ESCAPE) {
-		// Exit full screen, or quit the application, when the user presses the ESC key.
-		if (isFullScreen())
-			setFullScreen(false);
-		else
-			quit();
-	}
+    if (event.getChar() == 'f') {
+        // Toggle full screen when the user presses the 'f' key.
+        setFullScreen(!isFullScreen());
+    }
+    else if (event.getCode() == KeyEvent::KEY_ESCAPE) {
+        // Exit full screen, or quit the application, when the user presses the ESC key.
+        if (isFullScreen())
+            setFullScreen(false);
+        else
+            quit();
+    }
 }
 
 void MicroCosmosApp::touchesBegan( TouchEvent event )

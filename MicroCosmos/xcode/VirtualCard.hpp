@@ -2,7 +2,7 @@
 //  VirtualCard.hpp
 //  MicroCosmos
 //
-//  Created by Johan Eriksson on 2017-04-12.
+//  Created by Oscar Nord on 2017-04-21.
 //
 //
 
@@ -77,3 +77,4 @@ private:
 
 
 #endif /* VirtualCard_hpp */
+

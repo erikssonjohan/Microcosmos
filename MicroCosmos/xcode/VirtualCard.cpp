@@ -2,7 +2,7 @@
 //  VirtualCard.cpp
 //  MicroCosmos
 //
-//  Created by Johan Eriksson on 2017-04-12.
+//  Created by Oscar Nord on 2017-04-21.
 //
 //
 
@@ -36,7 +36,7 @@ VirtualCard::VirtualCard(std::string path, float scale, std::vector<std::string>
     mTex = gl::Texture2d::create( img );
     trans[0] += x;
     trans[1] += y;
-
+    
     
 }
 
@@ -117,3 +117,4 @@ void VirtualCard::draw(){
     gl::draw(mTex, ci::Area(cardOutline.getCenteredFit(mTex->getBounds(), true)), cardOutline);
     
 }
+
