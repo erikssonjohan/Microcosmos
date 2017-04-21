@@ -25,25 +25,28 @@ VirtualCard::VirtualCard(std::string path, float scale, std::vector<std::string>
     cinder::gl::TextureRef mFrameTexture;
     cinder::gl::TextureRef texture;
     
-    float x = Rand::randFloat(1, 700);
-    float y = Rand::randFloat(1, 700);
+    float x = Rand::randFloat(1, 800);
+    float y = Rand::randFloat(1, 800);
     
-    leftTX = 40.0f+x, leftTY = 40.0f+y;
-    rightBX = 300.0f+x, rightBY = 300.0f+y;
+    leftTX = 0.0f, leftTY = 0.0f;
+    rightBX = 300.0f, rightBY = 300.0f;
     mediaRect = Rectf( leftTX, leftTY, rightBX, rightBY );
     cardOutline = Rectf( leftTX, leftTY, rightBX, rightBY );
     auto img = loadImage( loadAsset( _path ) );
     mTex = gl::Texture2d::create( img );
+    trans[0] += x;
+    trans[1] += y;
+
     
 }
 
 bool VirtualCard::isPointInShape(float x, float y) {
     bool inX = false;
     bool inY = false;
-    if (x > leftTX && x < rightBX)
+    if (x > leftTX+trans[0] && x < rightBX+trans[0])
         inX = true;
     
-    if (y > leftTY && y < rightBY)
+    if (y > leftTY+trans[1] && y < rightBY+trans[1])
         inY = true;
     if(inX && inY)
         std::cout << "!!!" << std::endl;
@@ -77,16 +80,19 @@ void VirtualCard::moveCard(vec2 pPos, vec2 pos){
     float moveY = pPos[1] - pos[1];
     trans[0] -= moveX;
     trans[1] -= moveY;
-    leftTX -= moveX; rightBX -= moveX;
-    leftTY -= moveY; rightBY -= moveY;
-    cardOutline = Rectf( leftTX, leftTY, rightBX, rightBY );
-    
+    //leftTX -= moveX; rightBX -= moveX;
+    //leftTY -= moveY; rightBY -= moveY;
+    //cardOutline = Rectf( leftTX, leftTY, rightBX, rightBY );
+}
+
+void VirtualCard::scaleCard(vec2 fingerPos1, vec2 fingerPos2){
+    float scale = 1;
 }
 
 bool VirtualCard::touchIdInCard(uint32_t id){
     for (int i = 0; i<touchId.size(); ++i) {
         if(touchId[i] == id){
-            std::cout << id <<" is in card" << std::endl;
+            //std::cout << id <<" is in card" << std::endl;
             return true;
         }
     }

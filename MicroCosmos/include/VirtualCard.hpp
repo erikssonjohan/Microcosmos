@@ -45,6 +45,7 @@ public:
     bool isPointInShape(float x, float y);
     
     void moveCard(vec2 pPos, vec2 pos);
+    void scaleCard(vec2 fingerPos1, vec2 fingerPos2);
     
     bool touchIdInCard(uint32_t id);
     void removeTouchId(uint32_t id);
@@ -56,8 +57,8 @@ public:
     
     std::vector<uint32_t> touchId;
     void setPos(vec2 pos);
-    
     vec2 trans = {0, 0};
+    float radAngle = 0.0f;
     
 private:
     

@@ -133,11 +133,14 @@ void MicroCosmosApp::draw()
     gl::clear( Color( 0, 0, 0 ) );
     for (int i = 0; i<cards.size(); ++i) {
         //gl::pushModelMatrix();
-        //gl::pushMatrices();
-        //gl::translate(cards[i].trans);
+        gl::pushMatrices();
+        gl::translate(cards[i].trans);
+        gl::rotate(cards[i].radAngle);
+        
+        
         cards[i].draw();
         //gl::popModelMatrix();
-        //gl::popMatrices();
+        gl::popMatrices();
     }
     
     // draw yellow circles at the active touch points
