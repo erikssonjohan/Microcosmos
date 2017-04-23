@@ -27,6 +27,7 @@
 		D074DDFE79CE4B159419CAF9 /* poTextBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0E86B0038981470A8CC0A2EF /* poTextBox.cpp */; };
 		D33321FB519D404C981062AF /* poScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1889B9D767644840A2B29AD4 /* poScene.cpp */; };
 		D7B5818A285A4614B7D2DBF7 /* poImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5DA4A9ED36214D8B8D4A1259 /* poImage.cpp */; };
+		DF09D85A1EACDE8400E67B60 /* MicroCosmos.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DF09D8581EACDE8400E67B60 /* MicroCosmos.cpp */; };
 		DF18A94EE1D946AC966E2995 /* poEvents.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C3BF087AE39741B7B794D4DF /* poEvents.cpp */; };
 		E2ECDFB895614A5E98E655B7 /* poNodeContainer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FD7AC1400D5F42F1AEA95DC6 /* poNodeContainer.cpp */; };
 		F5456D95A36349958442582A /* CinderApp.icns in Resources */ = {isa = PBXBuildFile; fileRef = 9DBFB139560A462DB225DADB /* CinderApp.icns */; };
@@ -70,6 +71,8 @@
 		C3D91F0E2FD4477689C2F76C /* MicroCosmos_Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = "\"\""; path = MicroCosmos_Prefix.pch; sourceTree = "<group>"; };
 		D809D129E095433D8980481C /* poMatrixSet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = poMatrixSet.h; path = ../blocks/poScene/src/poScene/poMatrixSet.h; sourceTree = "<group>"; };
 		DBEEBE14705646E1BB632F8C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DF09D8581EACDE8400E67B60 /* MicroCosmos.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MicroCosmos.cpp; path = ../src/MicroCosmos.cpp; sourceTree = "<group>"; };
+		DF09D8591EACDE8400E67B60 /* MicroCosmos.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = MicroCosmos.hpp; path = ../include/MicroCosmos.hpp; sourceTree = "<group>"; };
 		E170202DCF4A479BA319C4F4 /* MicroCosmosApp.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; name = MicroCosmosApp.cpp; path = ../src/MicroCosmosApp.cpp; sourceTree = "<group>"; };
 		FBA4AE17EF8442FC967BECFF /* poEventCenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = poEventCenter.h; path = ../blocks/poScene/src/poScene/poEventCenter.h; sourceTree = "<group>"; };
 		FD7AC1400D5F42F1AEA95DC6 /* poNodeContainer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; name = poNodeContainer.cpp; path = ../blocks/poScene/src/poScene/poNodeContainer.cpp; sourceTree = "<group>"; };
@@ -109,6 +112,7 @@
 		080E96DDFE201D6D7F000001 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				DF09D8581EACDE8400E67B60 /* MicroCosmos.cpp */,
 				E170202DCF4A479BA319C4F4 /* MicroCosmosApp.cpp */,
 				553810741EAA05730024A61D /* VirtualCard.cpp */,
 			);
@@ -166,6 +170,7 @@
 		29B97315FDCFA39411CA2CEA /* Headers */ = {
 			isa = PBXGroup;
 			children = (
+				DF09D8591EACDE8400E67B60 /* MicroCosmos.hpp */,
 				1062C7EF4202416D9118E1B1 /* Resources.h */,
 				C3D91F0E2FD4477689C2F76C /* MicroCosmos_Prefix.pch */,
 				553810751EAA05730024A61D /* VirtualCard.hpp */,
@@ -307,6 +312,7 @@
 				D33321FB519D404C981062AF /* poScene.cpp in Sources */,
 				553810761EAA05730024A61D /* VirtualCard.cpp in Sources */,
 				42816B9656594B63B28480F9 /* poShape.cpp in Sources */,
+				DF09D85A1EACDE8400E67B60 /* MicroCosmos.cpp in Sources */,
 				D074DDFE79CE4B159419CAF9 /* poTextBox.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

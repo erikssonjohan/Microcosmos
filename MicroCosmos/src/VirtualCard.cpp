@@ -9,9 +9,14 @@
 #include "VirtualCard.hpp"
 
 
+#include "poShape.h"
+
+using namespace po::scene;
+
+
 
 VirtualCard::VirtualCard(std::string path, float scale, std::vector<std::string> categories, std::string header_se,
-                         std::string text_se, std::string header_en, std::string text_en)
+               std::string text_se, std::string header_en, std::string text_en)
 {
     _path = path;
     _scale = scale;
@@ -25,71 +30,81 @@ VirtualCard::VirtualCard(std::string path, float scale, std::vector<std::string>
     cinder::gl::TextureRef mFrameTexture;
     cinder::gl::TextureRef texture;
     
-    float x = Rand::randFloat(1, 800);
-    float y = Rand::randFloat(1, 800);
-    
-    leftTX = 0.0f, leftTY = 0.0f;
-    rightBX = 300.0f, rightBY = 300.0f;
-    mediaRect = Rectf( leftTX, leftTY, rightBX, rightBY );
-    cardOutline = Rectf( leftTX, leftTY, rightBX, rightBY );
-    auto img = loadImage( loadAsset( _path ) );
-    mTex = gl::Texture2d::create( img );
-    trans[0] += x;
-    trans[1] += y;
+    x = ci::Rand::randFloat(1, 800);
+    y = ci::Rand::randFloat(1, 800);
     
     
 }
 
-bool VirtualCard::isPointInShape(float x, float y) {
-    bool inX = false;
-    bool inY = false;
-    if (x > leftTX+trans[0] && x < rightBX+trans[0])
-        inX = true;
-    
-    if (y > leftTY+trans[1] && y < rightBY+trans[1])
-        inY = true;
-    if(inX && inY)
-        std::cout << "!!!" << std::endl;
-    
-    return (inX && inY);
+VirtualCardRef VirtualCard::create( ci::Color color, std::string path, float scale, std::vector<std::string> categories, std::string header_se,
+                         std::string text_se, std::string header_en, std::string text_en)
+{
+    VirtualCardRef ref (new VirtualCard(path, scale, categories, header_se,
+                              text_se, header_en, text_en ));
+    ref->setup(color);
+    return ref;
 }
 
-void VirtualCard::displayContent(){
+
+
+
+void VirtualCard::setup(ci::Color color)
+{
+    mStartPos = ci::vec2();
+    mEndPos = ci::vec2();
+    mInitialPos = ci::vec2();
+    mIsPressed=false;
+    //  create and add the shape to the node container
+    mBaseShape = Shape::createRect(500, 500);
+    mBaseColor = color;
+    mBaseShape->setFillColor(color);
+    //mBaseShape->setRotation(45.f);
+    ci::gl::TextureRef img =  ci::gl::Texture::create(ci::loadImage(ci::app::loadAsset(_path) ));
+    mBaseShape->setTexture(img);
+    addChild(mBaseShape);
     
-    std::cout << "path: " << _path << std::endl;
-    std::cout << "scale: " << _scale << std::endl;
-    std::cout << "categories: ";
     
-    for (unsigned long i = 0; i < _categories.size(); ++i) {
-        if(i == _categories.size()-1){
-            std::cout << _categories[i] << std::endl;
-        }
-        else{
-            std::cout << _categories[i] << ", ";
-        }
+    getSignal(po::scene::TouchEvent::BEGAN_INSIDE).connect(std::bind(&VirtualCard::onTouchDown, this, std::placeholders::_1));
+    getSignal(po::scene::TouchEvent::MOVED_INSIDE).connect(std::bind(&VirtualCard::onTouchDragged, this, std::placeholders::_1));
+    getSignal(po::scene::TouchEvent::MOVED).connect(std::bind(&VirtualCard::onTouchDragged, this, std::placeholders::_1));
+    getSignal(po::scene::TouchEvent::ENDED_INSIDE).connect(std::bind(&VirtualCard::onTouchUp, this, std::placeholders::_1));
+    getSignal(po::scene::TouchEvent::ENDED).connect(std::bind(&VirtualCard::onTouchUp, this, std::placeholders::_1));
+    
+    //  add a signal to all mouse clicks to activate label
+    //getSignal(MouseEvent::DOWN_INSIDE).connect(std::bind(&Square::showIndicator, this));
+    
+}
+
+void VirtualCard::onTouchDown(po::scene::TouchEvent &event){
+    if (!idInCard(event.getId())) {
+        std::cout << "tryck " << event.getId() << std::endl;
+        mIsPressed = true;
+        touchId.push_back(event.getId());
+        
+        mInitialPos = getPosition();
+        mStartPos = getParent()->windowToLocal(event.getWindowPos());
+        mEndPos = getParent()->windowToLocal(event.getWindowPos());
     }
-    
-    std::cout << "header_se: " << _header_se << std::endl;
-    std::cout << "text_se: " << _text_se << std::endl;
-    std::cout << "header_en: " << _header_en << std::endl;
-    std::cout << "text_en: " << _text_en << std::endl;
 }
 
-void VirtualCard::moveCard(vec2 pPos, vec2 pos){
-    float moveX = pPos[0] - pos[0];
-    float moveY = pPos[1] - pos[1];
-    trans[0] -= moveX;
-    trans[1] -= moveY;
-    //leftTX -= moveX; rightBX -= moveX;
-    //leftTY -= moveY; rightBY -= moveY;
-    //cardOutline = Rectf( leftTX, leftTY, rightBX, rightBY );
+//	Touch dragged event handler
+void VirtualCard::onTouchDragged(po::scene::TouchEvent &event){
+    if (idInCard(event.getId())) {
+        mEndPos = getParent()->windowToLocal(event.getWindowPos());
+        ci::vec2 newPosition = mInitialPos + (mEndPos - mStartPos);
+        setPosition(newPosition);
+    }
 }
 
-void VirtualCard::scaleCard(vec2 fingerPos1, vec2 fingerPos2){
-    float scale = 1;
+//	Touch up event handler
+void VirtualCard::onTouchUp(po::scene::TouchEvent &event){
+    if (idInCard(event.getId())) {
+        mIsPressed = false;
+        removeTouchId(event.getId());
+    }
 }
 
-bool VirtualCard::touchIdInCard(uint32_t id){
+bool VirtualCard::idInCard(uint32_t id){
     for (int i = 0; i<touchId.size(); ++i) {
         if(touchId[i] == id){
             //std::cout << id <<" is in card" << std::endl;
@@ -99,22 +114,13 @@ bool VirtualCard::touchIdInCard(uint32_t id){
     return false;
 }
 
-
 void VirtualCard::removeTouchId(uint32_t id){
     for (int i = 0; i<touchId.size(); ++i) {
         if(touchId[i] == id){
             touchId.erase(touchId.begin()+i);
-            std::cout << "removing id" << std::endl;
+            std::cout << "removing id " << id << std::endl;
         }
     }
-    
-}
-
-
-void VirtualCard::draw(){
-    //gl::color(0, 0, 0);
-    //gl::drawStrokedRect(cardOutline);
-    gl::draw(mTex, ci::Area(cardOutline.getCenteredFit(mTex->getBounds(), true)), cardOutline);
     
 }
 
