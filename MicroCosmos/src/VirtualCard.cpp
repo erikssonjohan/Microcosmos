@@ -83,20 +83,10 @@ void VirtualCard::onTouchDown(po::scene::TouchEvent &event){
         mIsPressed = true;
         touchId.push_back(event.getId());
         
-        
-        //std::cout << "hjk" << getName() << std::endl;
-
+        // Moves the card to drawn at the front
         getParent()->moveChildToFront(getParent()->getChildByName(this->getName()));
-        
-       // std::cout << getDrawOrder() << std::endl;
-        //getParent()->moveChildToFront((NodeRef) (this));
-        /*for (int i = 0; i <; <#increment#>) {
-         
-            <#statements#>
-        }
-        getParent->moveChildBackward(<#NodeRef node#>)*/
-        
-        
+
+        // Update the position of the card
         mInitialPos = getPosition();
         mStartPos = getParent()->windowToLocal(event.getWindowPos());
         mEndPos = getParent()->windowToLocal(event.getWindowPos());
