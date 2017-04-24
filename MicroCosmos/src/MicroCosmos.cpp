@@ -23,7 +23,7 @@ void MicroCosmos::setup(){
     
     for (int i = 0; i<cards.size(); ++i) {
         cards[i]->setPosition(ci::vec2(cards[i]->x, cards[i]->y));
-        addChild(cards[i]);
+        addChild(cards[i]);        
         std::cout << "add" << std::endl;
     }
     
