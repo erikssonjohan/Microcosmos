@@ -28,8 +28,11 @@ class VirtualCard
 public:
     
     static VirtualCardRef create(ci::Color color, std::string path, float scale, std::vector<std::string> categories, std::string header_se, std::string text_se, std::string header_en, std::string text_en);
+
+    //sets upp det card
     void setup(ci::Color color);
-    
+
+    //Constructor for the card
     VirtualCard(std::string path, float scale, std::vector<std::string> categories, std::string header_se, std::string text_se, std::string header_en, std::string text_en );
     
     float x, y;
@@ -58,8 +61,10 @@ private:
     
     //	Keep track of the initial, start and end position to use for dragging
     ci::vec2 mStartPos, mEndPos, mInitialPos;
-    
+
+    //removes touch id from card
     void removeTouchId(uint32_t id);
+    // Checks if card has the touch id
     bool idInCard(uint32_t id);
     
     

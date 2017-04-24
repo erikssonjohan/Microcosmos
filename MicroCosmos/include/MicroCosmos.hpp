@@ -31,8 +31,14 @@ public:
 protected:
     
 private:
+
     std::vector<VirtualCardRef> cards;
-    
+
+    void onTouchDown(po::scene::TouchEvent &event);
+
+    //	Touch up event handler
+    void onTouchUp(po::scene::TouchEvent &event);
+
     
 };
 

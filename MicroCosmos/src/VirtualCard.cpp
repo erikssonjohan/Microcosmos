@@ -54,13 +54,20 @@ void VirtualCard::setup(ci::Color color)
     mEndPos = ci::vec2();
     mInitialPos = ci::vec2();
     mIsPressed=false;
+
+    ci::gl::TextureRef img =  ci::gl::Texture::create(ci::loadImage(ci::app::loadAsset(_path) ));
+
     //  create and add the shape to the node container
-    mBaseShape = Shape::createRect(500, 500);
+    mBaseShape = Shape::createRect(img->getWidth(), img->getHeight());
     mBaseColor = color;
     mBaseShape->setFillColor(color);
     //mBaseShape->setRotation(45.f);
-    ci::gl::TextureRef img =  ci::gl::Texture::create(ci::loadImage(ci::app::loadAsset(_path) ));
+
     mBaseShape->setTexture(img);
+
+    //Just so it dosent take all of the screen...
+    mBaseShape->setScale(0.6, 0.6);
+
     addChild(mBaseShape);
     setName(_header_se);
 
@@ -90,6 +97,7 @@ void VirtualCard::onTouchDown(po::scene::TouchEvent &event){
         mInitialPos = getPosition();
         mStartPos = getParent()->windowToLocal(event.getWindowPos());
         mEndPos = getParent()->windowToLocal(event.getWindowPos());
+
     }
 }
 
@@ -100,6 +108,7 @@ void VirtualCard::onTouchDragged(po::scene::TouchEvent &event){
         ci::vec2 newPosition = mInitialPos + (mEndPos - mStartPos);
         setPosition(newPosition);
     }
+
 }
 
 //	Touch up event handler

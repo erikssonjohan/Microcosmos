@@ -26,9 +26,11 @@ void MicroCosmos::setup(){
         addChild(cards[i]);        
         std::cout << "add" << std::endl;
     }
-    
-    
-    
+
+   // getSignal(po::scene::TouchEvent::BEGAN).connect(std::bind(&MicroCosmos::onTouchDown, this, std::placeholders::_1));
+   // getSignal(po::scene::TouchEvent::ENDED).connect(std::bind(&MicroCosmos::onTouchUp, this, std::placeholders::_1));
+
+
 }
 
 void MicroCosmos::loadXML(const char *file, std::vector<VirtualCardRef> &cards)
@@ -69,4 +71,20 @@ void MicroCosmos::loadXML(const char *file, std::vector<VirtualCardRef> &cards)
         cards.push_back(ref);
         ci::app::console() << std::endl;
     }
+}
+
+
+void MicroCosmos::onTouchDown(po::scene::TouchEvent &event){
+
+
+    //touch down
+
+
+
+}
+
+void MicroCosmos::onTouchUp(po::scene::TouchEvent &event) {
+
+    // touch up
+
 }
