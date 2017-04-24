@@ -68,7 +68,7 @@ void VirtualCard::setup(ci::Color color)
 
     // text
     // TODO:: make it less static and might need some fixes. just did it to test, not sure if its the best way // JE
-    auto textFig = Shape::createRect(400, img->getHeight()+border*2);
+    textFig = Shape::createRect(400, img->getHeight()+border*2);
     textFig->setFillColor(0,0,0, 0.8);
     textFig->setPosition(img->getWidth()+border*2, 0);
     ci::TextBox ciTextBox = ci::TextBox();
@@ -78,7 +78,7 @@ void VirtualCard::setup(ci::Color color)
     ciTextBox.text(_text_se);
     ciTextBox.alignment(ci::TextBox::Alignment::LEFT);
     ciTextBox.font(ci::Font("Arial", 20));
-    TextBoxRef textContent = po::scene::TextBox::create(ciTextBox);
+    textContent = po::scene::TextBox::create(ciTextBox);
     textContent->setPosition(img->getWidth()+border*6, 100);
 
 
@@ -91,6 +91,8 @@ void VirtualCard::setup(ci::Color color)
     addChild(textContent);
     setName(_header_se);
 
+    textFig->setVisible(false);
+    textContent->setVisible(false);
     
     
     getSignal(po::scene::TouchEvent::BEGAN_INSIDE).connect(std::bind(&VirtualCard::onTouchDown, this, std::placeholders::_1));
@@ -107,9 +109,14 @@ void VirtualCard::onTouchDown(po::scene::TouchEvent &event){
         std::cout << "tryck " << event.getId() << std::endl;
         mIsPressed = true;
         touchId.push_back(event.getId());
-        
+
+        textFig->setVisible(true);
+        textContent->setVisible(true);
+
         // Moves the card to drawn at the front
         getParent()->moveChildToFront(getParent()->getChildByName(this->getName()));
+
+
 
         // Update the position of the card
         mInitialPos = getPosition();

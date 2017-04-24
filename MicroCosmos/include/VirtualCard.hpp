@@ -44,11 +44,14 @@ private:
 
     float border = 10;
 
+
+
     po::scene::ShapeRef mBaseShape;
     ci::vec2            mBasePosition;
     ci::Color           mBaseColor;
     std::vector<uint32_t> touchId;
-    
+    po::scene::ShapeRef textFig;
+    po::scene::TextBoxRef textContent;
     
     float radAngle = 0.0f;
     std::string _path;
