@@ -58,17 +58,37 @@ void VirtualCard::setup(ci::Color color)
     ci::gl::TextureRef img =  ci::gl::Texture::create(ci::loadImage(ci::app::loadAsset(_path) ));
 
     //  create and add the shape to the node container
-    mBaseShape = Shape::createRect(img->getWidth(), img->getHeight());
+    mBaseShape = Shape::createRect(img->getWidth()+border*2, img->getHeight()+border*2);
     mBaseColor = color;
     mBaseShape->setFillColor(color);
-    //mBaseShape->setRotation(45.f);
+    auto textur = Shape::createRect(img->getWidth(), img->getHeight());
+    textur->setTexture(img);
+    textur->setPosition(border, border);
 
-    mBaseShape->setTexture(img);
+
+    // text
+    // TODO:: make it less static and might need some fixes. just did it to test, not sure if its the best way // JE
+    auto textFig = Shape::createRect(400, img->getHeight()+border*2);
+    textFig->setFillColor(0,0,0, 0.8);
+    textFig->setPosition(img->getWidth()+border*2, 0);
+    ci::TextBox ciTextBox = ci::TextBox();
+    auto textB = po::scene::TextBox::create(ciTextBox);
+    ciTextBox.size(300, 500);
+    ciTextBox.color(ci::Color(1, 1, 1));
+    ciTextBox.text(_text_se);
+    ciTextBox.alignment(ci::TextBox::Alignment::LEFT);
+    ciTextBox.font(ci::Font("Arial", 20));
+    TextBoxRef textContent = po::scene::TextBox::create(ciTextBox);
+    textContent->setPosition(img->getWidth()+border*6, 100);
+
 
     //Just so it dosent take all of the screen...
-    mBaseShape->setScale(0.6, 0.6);
+    setScale(0.6, 0.6);
 
     addChild(mBaseShape);
+    addChild(textur);
+    addChild(textFig);
+    addChild(textContent);
     setName(_header_se);
 
     
@@ -78,9 +98,7 @@ void VirtualCard::setup(ci::Color color)
     getSignal(po::scene::TouchEvent::MOVED).connect(std::bind(&VirtualCard::onTouchDragged, this, std::placeholders::_1));
     getSignal(po::scene::TouchEvent::ENDED_INSIDE).connect(std::bind(&VirtualCard::onTouchUp, this, std::placeholders::_1));
     getSignal(po::scene::TouchEvent::ENDED).connect(std::bind(&VirtualCard::onTouchUp, this, std::placeholders::_1));
-    
-    //  add a signal to all mouse clicks to activate label
-    //getSignal(MouseEvent::DOWN_INSIDE).connect(std::bind(&Square::showIndicator, this));
+
     
 }
 

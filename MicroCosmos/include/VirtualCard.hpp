@@ -15,6 +15,7 @@
 #include "poNodeContainer.h"
 #include "poShape.h"
 #include "cinder/Rand.h"
+#include "poTextBox.h"
 using namespace ci;
 using namespace ci::app;
 using namespace std;
@@ -40,6 +41,9 @@ public:
 protected:
     
 private:
+
+    float border = 10;
+
     po::scene::ShapeRef mBaseShape;
     ci::vec2            mBasePosition;
     ci::Color           mBaseColor;
