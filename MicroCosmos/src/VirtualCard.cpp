@@ -72,7 +72,7 @@ void VirtualCard::setup(ci::Color color)
     textFig->setFillColor(0,0,0, 0.8);
     textFig->setPosition(img->getWidth()+border*2, 0);
     ci::TextBox ciTextBox = ci::TextBox();
-    auto textB = po::scene::TextBox::create(ciTextBox);
+    //auto textB = po::scene::TextBox::create(ciTextBox);
     ciTextBox.size(300, 500);
     ciTextBox.color(ci::Color(1, 1, 1));
     ciTextBox.text(_text_se);
@@ -117,22 +117,26 @@ void VirtualCard::onTouchDown(po::scene::TouchEvent &event){
         getParent()->moveChildToFront(getParent()->getChildByName(this->getName()));
 
 
+        if(touchId.size() == 1) {
+            // Update the position of the card
+            mInitialPos = getPosition();
+            mStartPos = getParent()->windowToLocal(event.getWindowPos());
+            mEndPos = getParent()->windowToLocal(event.getWindowPos());
+        }
 
-        // Update the position of the card
-        mInitialPos = getPosition();
-        mStartPos = getParent()->windowToLocal(event.getWindowPos());
-        mEndPos = getParent()->windowToLocal(event.getWindowPos());
 
     }
 }
 
 //	Touch dragged event handler
 void VirtualCard::onTouchDragged(po::scene::TouchEvent &event){
-    if (idInCard(event.getId())) {
+    if (idInCard(event.getId()) && touchId[0] == event.getId()) {
         mEndPos = getParent()->windowToLocal(event.getWindowPos());
         ci::vec2 newPosition = mInitialPos + (mEndPos - mStartPos);
         setPosition(newPosition);
     }
+
+
 
 }
 
