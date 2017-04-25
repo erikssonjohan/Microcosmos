@@ -14,6 +14,7 @@
 #include "poNodeContainer.h"
 #include "VirtualCard.hpp"
 #include "cinder/Xml.h"
+#include "RealCard.h"
 
 class MicroCosmos;
 typedef std::shared_ptr<MicroCosmos> MicroCosmosRef;
@@ -25,8 +26,7 @@ public:
     static MicroCosmosRef create();
     
     void setup();
-    void loadXML(const char *file, std::vector<VirtualCardRef> &cards);
-    
+        
     
 protected:
     
