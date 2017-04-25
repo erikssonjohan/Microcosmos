@@ -53,7 +53,7 @@ void VirtualCard::setup(ci::Color color)
     mStartPos = ci::vec2();
     mEndPos = ci::vec2();
     mInitialPos = ci::vec2();
-    mIsPressed=false;
+    mIsPressed = false;
 
     ci::gl::TextureRef img =  ci::gl::Texture::create(ci::loadImage(ci::app::loadAsset(_path) ));
 
@@ -69,7 +69,7 @@ void VirtualCard::setup(ci::Color color)
     // text
     // TODO:: make it less static and might need some fixes. just did it to test, not sure if its the best way // JE
     textFig = Shape::createRect(400, img->getHeight()+border*2);
-    textFig->setFillColor(0,0,0, 0.8);
+    textFig->setFillColor(0,0,0,0.8);
     textFig->setPosition(img->getWidth()+border*2, 0);
     ci::TextBox ciTextBox = ci::TextBox();
     //auto textB = po::scene::TextBox::create(ciTextBox);
@@ -109,13 +109,14 @@ void VirtualCard::onTouchDown(po::scene::TouchEvent &event){
         std::cout << "tryck " << event.getId() << std::endl;
         mIsPressed = true;
         touchId.push_back(event.getId());
+        events.push_back(event);
 
         textFig->setVisible(true);
         textContent->setVisible(true);
 
+
         // Moves the card to drawn at the front
         getParent()->moveChildToFront(getParent()->getChildByName(this->getName()));
-
 
         if(touchId.size() == 1) {
             // Update the position of the card
@@ -124,6 +125,9 @@ void VirtualCard::onTouchDown(po::scene::TouchEvent &event){
             mEndPos = getParent()->windowToLocal(event.getWindowPos());
         }
 
+        if(events.size() == 2) {
+            std::cout << events[0].getLocalPos() ;
+        }
 
     }
 }
@@ -145,6 +149,7 @@ void VirtualCard::onTouchUp(po::scene::TouchEvent &event){
     if (idInCard(event.getId())) {
         mIsPressed = false;
         removeTouchId(event.getId());
+        removeTouchEvent(event);
     }
 }
 
@@ -166,5 +171,14 @@ void VirtualCard::removeTouchId(uint32_t id){
         }
     }
     
+}
+
+//removes touch id from card
+void VirtualCard::removeTouchEvent(po::scene::TouchEvent tEvent){
+    for (int i = 0; i<events.size(); ++i) {
+        if(events[i].getId() == tEvent.getId()){
+            events.erase(events.begin()+i);
+        }
+    }
 }
 
