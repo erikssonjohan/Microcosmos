@@ -49,11 +49,15 @@ private:
     po::scene::ShapeRef mBaseShape;
     ci::vec2            mBasePosition;
     ci::Color           mBaseColor;
+
+    //touch vector
     std::vector<uint32_t> touchId;
+    std::vector<po::scene::TouchEvent> events;
+
     po::scene::ShapeRef textFig;
     po::scene::TextBoxRef textContent;
     
-    float radAngle = 0.0f;
+    float angle = 0.0f;
     std::string _path;
     float _scale;
     std::vector<std::string> _categories;
@@ -62,19 +66,18 @@ private:
     std::string _header_en;
     std::string _text_en;
     
-    
-    //gl::Texture2dRef mTex;
-    
-    
     //	Keep track of the initial, start and end position to use for dragging
     ci::vec2 mStartPos, mEndPos, mInitialPos;
 
     //removes touch id from card
     void removeTouchId(uint32_t id);
+
     // Checks if card has the touch id
     bool idInCard(uint32_t id);
-    
-    
+
+    //removes touch id from card
+    void removeTouchEvent(po::scene::TouchEvent tEvent);
+
     //	Keep track on pressed for dragging
     bool mIsPressed;
     
@@ -85,8 +88,8 @@ private:
     
     //	Touch up event handler
     void onTouchUp(po::scene::TouchEvent &event);
-    
-    
+
+
     
 };
 
