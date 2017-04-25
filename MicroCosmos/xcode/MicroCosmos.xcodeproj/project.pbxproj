@@ -16,21 +16,24 @@
 		00B784B60FF439BC000DE1D7 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00B784B20FF439BC000DE1D7 /* CoreAudio.framework */; };
 		00B9955A1B128DF400A5C623 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00B995581B128DF400A5C623 /* IOKit.framework */; };
 		00B9955B1B128DF400A5C623 /* IOSurface.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00B995591B128DF400A5C623 /* IOSurface.framework */; };
-		42816B9656594B63B28480F9 /* poShape.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1BE44352122F41B1BDEDA35B /* poShape.cpp */; };
+		1B24B4DE94604C479AB8ECE4 /* poEvents.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B4732F7BB49844A5AF3DD17C /* poEvents.cpp */; };
+		23DDFC87866D4CF2AF1EE034 /* poScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0518B6445ABA46AC9CC83591 /* poScene.cpp */; };
+		2D7326670CD54A5CA15A41F7 /* MicroCosmosApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7F27203C0C4F4701A8F87335 /* MicroCosmosApp.cpp */; };
+		3AB136F33D9C4EC483FEACC7 /* QuickTime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6EBAFA76A364DE88C8002B9 /* QuickTime.framework */; };
+		40FB401EC4D54F40BBFA9B43 /* OpenCL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DE73A0B937E4867BFFAA291 /* OpenCL.framework */; };
+		4895D6FBBC524357B3B86A1F /* poShape.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6FEB4880D7224A56B9EAD168 /* poShape.cpp */; };
 		5323E6B20EAFCA74003A9687 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5323E6B10EAFCA74003A9687 /* CoreVideo.framework */; };
-		553810761EAA05730024A61D /* VirtualCard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 553810741EAA05730024A61D /* VirtualCard.cpp */; };
+		83ABE15C5FDF4FEFABC19354 /* poEventCenter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65FE8FC3F8874945A27BD716 /* poEventCenter.cpp */; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
-		B3BF499BD71F4D26A3AED0C6 /* poEventCenter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 39C588B1ECA7416CBAC97E97 /* poEventCenter.cpp */; };
-		B5E9F683A5E84132B38713F4 /* poMatrixSet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B1308A4FA724C698273B11B /* poMatrixSet.cpp */; };
-		BB14D5266A694A4FB6688BFF /* poNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2ECB7E8D1CD44AC680605636 /* poNode.cpp */; };
-		C4E9D488487446C885AD83AB /* MicroCosmosApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E170202DCF4A479BA319C4F4 /* MicroCosmosApp.cpp */; };
-		D074DDFE79CE4B159419CAF9 /* poTextBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0E86B0038981470A8CC0A2EF /* poTextBox.cpp */; };
-		D33321FB519D404C981062AF /* poScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1889B9D767644840A2B29AD4 /* poScene.cpp */; };
-		D7B5818A285A4614B7D2DBF7 /* poImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5DA4A9ED36214D8B8D4A1259 /* poImage.cpp */; };
-		DF09D85A1EACDE8400E67B60 /* MicroCosmos.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DF09D8581EACDE8400E67B60 /* MicroCosmos.cpp */; };
-		DF18A94EE1D946AC966E2995 /* poEvents.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C3BF087AE39741B7B794D4DF /* poEvents.cpp */; };
-		E2ECDFB895614A5E98E655B7 /* poNodeContainer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FD7AC1400D5F42F1AEA95DC6 /* poNodeContainer.cpp */; };
-		F5456D95A36349958442582A /* CinderApp.icns in Resources */ = {isa = PBXBuildFile; fileRef = 9DBFB139560A462DB225DADB /* CinderApp.icns */; };
+		A8B4C9D28AE44F7E86D55891 /* poTextBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AA42558374454BB7BBE03406 /* poTextBox.cpp */; };
+		B4A4C49FFD914D99B3127272 /* poMatrixSet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5B725A17D9B648089971E720 /* poMatrixSet.cpp */; };
+		C1D802CFB7D049F6B04191B6 /* poImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 322968C74FA34A70AE71ACFA /* poImage.cpp */; };
+		C8868E51026543FE8A21021E /* poNodeContainer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 37D35CF55A9F4E2FB7CB0F61 /* poNodeContainer.cpp */; };
+		DF09D65C1EAF465200C3A946 /* MicroCosmos.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DF09D6591EAF465200C3A946 /* MicroCosmos.cpp */; };
+		DF09D65D1EAF465200C3A946 /* RealCard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DF09D65A1EAF465200C3A946 /* RealCard.cpp */; };
+		DF09D65E1EAF465200C3A946 /* VirtualCard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DF09D65B1EAF465200C3A946 /* VirtualCard.cpp */; };
+		E386FD87F0AF41F1A2C020E9 /* poNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 25DBFAD470704A6198BAA340 /* poNode.cpp */; };
+		E6FF5D2361A849768AEFEED4 /* CinderApp.icns in Resources */ = {isa = PBXBuildFile; fileRef = E1BCC7DCE0544A59BA5F2336 /* CinderApp.icns */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,40 +46,45 @@
 		00B784B20FF439BC000DE1D7 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		00B995581B128DF400A5C623 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		00B995591B128DF400A5C623 /* IOSurface.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOSurface.framework; path = System/Library/Frameworks/IOSurface.framework; sourceTree = SDKROOT; };
-		0E86B0038981470A8CC0A2EF /* poTextBox.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; name = poTextBox.cpp; path = ../blocks/poScene/src/poScene/poTextBox.cpp; sourceTree = "<group>"; };
+		0518B6445ABA46AC9CC83591 /* poScene.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; name = poScene.cpp; path = ../blocks/poScene/src/poScene/poScene.cpp; sourceTree = "<group>"; };
+		0F92591D42CD4A73AFFF372A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
-		1062C7EF4202416D9118E1B1 /* Resources.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Resources.h; path = ../include/Resources.h; sourceTree = "<group>"; };
-		1889B9D767644840A2B29AD4 /* poScene.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; name = poScene.cpp; path = ../blocks/poScene/src/poScene/poScene.cpp; sourceTree = "<group>"; };
-		1A3290183F5C43CAA10DE359 /* poTextBox.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = poTextBox.h; path = ../blocks/poScene/src/poScene/poTextBox.h; sourceTree = "<group>"; };
-		1BE44352122F41B1BDEDA35B /* poShape.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; name = poShape.cpp; path = ../blocks/poScene/src/poScene/poShape.cpp; sourceTree = "<group>"; };
-		21DA5B056FC44BE68F62544B /* poNodeContainer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = poNodeContainer.h; path = ../blocks/poScene/src/poScene/poNodeContainer.h; sourceTree = "<group>"; };
+		2377E19CA4E246B3B5F3898F /* MicroCosmos_Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = "\"\""; path = MicroCosmos_Prefix.pch; sourceTree = "<group>"; };
+		25DBFAD470704A6198BAA340 /* poNode.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; name = poNode.cpp; path = ../blocks/poScene/src/poScene/poNode.cpp; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
-		2ECB7E8D1CD44AC680605636 /* poNode.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; name = poNode.cpp; path = ../blocks/poScene/src/poScene/poNode.cpp; sourceTree = "<group>"; };
-		32518C66711F47D4B75F0118 /* poNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = poNode.h; path = ../blocks/poScene/src/poScene/poNode.h; sourceTree = "<group>"; };
-		39C588B1ECA7416CBAC97E97 /* poEventCenter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; name = poEventCenter.cpp; path = ../blocks/poScene/src/poScene/poEventCenter.cpp; sourceTree = "<group>"; };
-		3FF666C7CB6346F8863FA3B8 /* poTextureFit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = poTextureFit.h; path = ../blocks/poScene/src/poScene/poTextureFit.h; sourceTree = "<group>"; };
-		460BC49AD3944DC5B02C0643 /* poShape.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = poShape.h; path = ../blocks/poScene/src/poScene/poShape.h; sourceTree = "<group>"; };
+		29DB19846DCB42A0A167A816 /* poTextBox.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = poTextBox.h; path = ../blocks/poScene/src/poScene/poTextBox.h; sourceTree = "<group>"; };
+		322968C74FA34A70AE71ACFA /* poImage.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; name = poImage.cpp; path = ../blocks/poScene/src/poScene/poImage.cpp; sourceTree = "<group>"; };
+		37D35CF55A9F4E2FB7CB0F61 /* poNodeContainer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; name = poNodeContainer.cpp; path = ../blocks/poScene/src/poScene/poNodeContainer.cpp; sourceTree = "<group>"; };
+		3BF7B953BA2549CC8AFE330C /* poEventCenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = poEventCenter.h; path = ../blocks/poScene/src/poScene/poEventCenter.h; sourceTree = "<group>"; };
+		41CCC596B3AD40F88BF0B16E /* poImage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = poImage.h; path = ../blocks/poScene/src/poScene/poImage.h; sourceTree = "<group>"; };
+		4A9A7E9F35A94B5E95AF0A8A /* poNodeContainer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = poNodeContainer.h; path = ../blocks/poScene/src/poScene/poNodeContainer.h; sourceTree = "<group>"; };
+		5289C3D982B74ABB8E141582 /* poTextureFit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = poTextureFit.h; path = ../blocks/poScene/src/poScene/poTextureFit.h; sourceTree = "<group>"; };
 		5323E6B10EAFCA74003A9687 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = /System/Library/Frameworks/CoreVideo.framework; sourceTree = "<absolute>"; };
-		553810741EAA05730024A61D /* VirtualCard.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VirtualCard.cpp; path = ../src/VirtualCard.cpp; sourceTree = "<group>"; };
-		553810751EAA05730024A61D /* VirtualCard.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = VirtualCard.hpp; path = ../include/VirtualCard.hpp; sourceTree = "<group>"; };
-		5DA4A9ED36214D8B8D4A1259 /* poImage.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; name = poImage.cpp; path = ../blocks/poScene/src/poScene/poImage.cpp; sourceTree = "<group>"; };
-		7B1308A4FA724C698273B11B /* poMatrixSet.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; name = poMatrixSet.cpp; path = ../blocks/poScene/src/poScene/poMatrixSet.cpp; sourceTree = "<group>"; };
+		57305E184FE14196B5EAA150 /* Resources.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Resources.h; path = ../include/Resources.h; sourceTree = "<group>"; };
+		5B725A17D9B648089971E720 /* poMatrixSet.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; name = poMatrixSet.cpp; path = ../blocks/poScene/src/poScene/poMatrixSet.cpp; sourceTree = "<group>"; };
+		5DD7D2BC111F44CDB5C1C22F /* poScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = poScene.h; path = ../blocks/poScene/src/poScene/poScene.h; sourceTree = "<group>"; };
+		5DE73A0B937E4867BFFAA291 /* OpenCL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenCL.framework; path = System/Library/Frameworks/OpenCL.framework; sourceTree = SDKROOT; };
+		638B9E38FD7D440EBCBBA808 /* poEvents.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = poEvents.h; path = ../blocks/poScene/src/poScene/poEvents.h; sourceTree = "<group>"; };
+		65FE8FC3F8874945A27BD716 /* poEventCenter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; name = poEventCenter.cpp; path = ../blocks/poScene/src/poScene/poEventCenter.cpp; sourceTree = "<group>"; };
+		6FEB4880D7224A56B9EAD168 /* poShape.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; name = poShape.cpp; path = ../blocks/poScene/src/poScene/poShape.cpp; sourceTree = "<group>"; };
+		7F27203C0C4F4701A8F87335 /* MicroCosmosApp.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; name = MicroCosmosApp.cpp; path = ../src/MicroCosmosApp.cpp; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* MicroCosmos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MicroCosmos.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		9DBFB139560A462DB225DADB /* CinderApp.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = CinderApp.icns; path = ../resources/CinderApp.icns; sourceTree = "<group>"; };
-		A95E966ABB2D437FA7E11A02 /* poScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = poScene.h; path = ../blocks/poScene/src/poScene/poScene.h; sourceTree = "<group>"; };
-		B4B149BC10914D5EAA45891F /* poImage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = poImage.h; path = ../blocks/poScene/src/poScene/poImage.h; sourceTree = "<group>"; };
-		BEDA412A01664DDCAF8AA00F /* poVideo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = poVideo.h; path = ../blocks/poScene/src/poScene/poVideo.h; sourceTree = "<group>"; };
-		C3BF087AE39741B7B794D4DF /* poEvents.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; name = poEvents.cpp; path = ../blocks/poScene/src/poScene/poEvents.cpp; sourceTree = "<group>"; };
-		C3D91F0E2FD4477689C2F76C /* MicroCosmos_Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = "\"\""; path = MicroCosmos_Prefix.pch; sourceTree = "<group>"; };
-		D809D129E095433D8980481C /* poMatrixSet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = poMatrixSet.h; path = ../blocks/poScene/src/poScene/poMatrixSet.h; sourceTree = "<group>"; };
-		DBEEBE14705646E1BB632F8C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DF09D8581EACDE8400E67B60 /* MicroCosmos.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MicroCosmos.cpp; path = ../src/MicroCosmos.cpp; sourceTree = "<group>"; };
-		DF09D8591EACDE8400E67B60 /* MicroCosmos.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = MicroCosmos.hpp; path = ../include/MicroCosmos.hpp; sourceTree = "<group>"; };
-		E170202DCF4A479BA319C4F4 /* MicroCosmosApp.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; name = MicroCosmosApp.cpp; path = ../src/MicroCosmosApp.cpp; sourceTree = "<group>"; };
-		FBA4AE17EF8442FC967BECFF /* poEventCenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = poEventCenter.h; path = ../blocks/poScene/src/poScene/poEventCenter.h; sourceTree = "<group>"; };
-		FD7AC1400D5F42F1AEA95DC6 /* poNodeContainer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; name = poNodeContainer.cpp; path = ../blocks/poScene/src/poScene/poNodeContainer.cpp; sourceTree = "<group>"; };
-		FE41B6BE45F94E61B0D77A2F /* poEvents.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = poEvents.h; path = ../blocks/poScene/src/poScene/poEvents.h; sourceTree = "<group>"; };
+		AA42558374454BB7BBE03406 /* poTextBox.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; name = poTextBox.cpp; path = ../blocks/poScene/src/poScene/poTextBox.cpp; sourceTree = "<group>"; };
+		ABC73803E6A94D0ABD3CCEAE /* poShape.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = poShape.h; path = ../blocks/poScene/src/poScene/poShape.h; sourceTree = "<group>"; };
+		AEFF98A6A1D2442DA3178716 /* CinderOpenCV.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CinderOpenCV.h; path = ../blocks/OpenCV3/include/CinderOpenCV.h; sourceTree = "<group>"; };
+		B0E04068C68B43C5BDA6335B /* poMatrixSet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = poMatrixSet.h; path = ../blocks/poScene/src/poScene/poMatrixSet.h; sourceTree = "<group>"; };
+		B4732F7BB49844A5AF3DD17C /* poEvents.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; name = poEvents.cpp; path = ../blocks/poScene/src/poScene/poEvents.cpp; sourceTree = "<group>"; };
+		B6EBAFA76A364DE88C8002B9 /* QuickTime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickTime.framework; path = System/Library/Frameworks/QuickTime.framework; sourceTree = SDKROOT; };
+		D0ED06E1F1EF49788F097B1F /* poVideo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = poVideo.h; path = ../blocks/poScene/src/poScene/poVideo.h; sourceTree = "<group>"; };
+		DF09D6591EAF465200C3A946 /* MicroCosmos.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MicroCosmos.cpp; path = ../src/MicroCosmos.cpp; sourceTree = "<group>"; };
+		DF09D65A1EAF465200C3A946 /* RealCard.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RealCard.cpp; path = ../src/RealCard.cpp; sourceTree = "<group>"; };
+		DF09D65B1EAF465200C3A946 /* VirtualCard.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VirtualCard.cpp; path = ../src/VirtualCard.cpp; sourceTree = "<group>"; };
+		DF09D65F1EAF465E00C3A946 /* MicroCosmos.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = MicroCosmos.hpp; path = ../include/MicroCosmos.hpp; sourceTree = "<group>"; };
+		DF09D6601EAF465E00C3A946 /* RealCard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RealCard.h; path = ../include/RealCard.h; sourceTree = "<group>"; };
+		DF09D6611EAF465E00C3A946 /* VirtualCard.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = VirtualCard.hpp; path = ../include/VirtualCard.hpp; sourceTree = "<group>"; };
+		E1BCC7DCE0544A59BA5F2336 /* CinderApp.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = CinderApp.icns; path = ../resources/CinderApp.icns; sourceTree = "<group>"; };
+		E7BFADE9D03948969C25E045 /* poNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = poNode.h; path = ../blocks/poScene/src/poScene/poNode.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +103,8 @@
 				00B784B60FF439BC000DE1D7 /* CoreAudio.framework in Frameworks */,
 				00B9955A1B128DF400A5C623 /* IOKit.framework in Frameworks */,
 				00B9955B1B128DF400A5C623 /* IOSurface.framework in Frameworks */,
+				40FB401EC4D54F40BBFA9B43 /* OpenCL.framework in Frameworks */,
+				3AB136F33D9C4EC483FEACC7 /* QuickTime.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -104,7 +114,8 @@
 		01B97315FEAEA392516A2CEA /* Blocks */ = {
 			isa = PBXGroup;
 			children = (
-				872F8C7FE8364C0D8F1DAE7B /* poScene */,
+				9C4AD1A57F284F44B6DA82A0 /* OpenCV3 */,
+				ECAA483EF5B54BFAA39F0E9D /* poScene */,
 			);
 			name = Blocks;
 			sourceTree = "<group>";
@@ -112,9 +123,10 @@
 		080E96DDFE201D6D7F000001 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				DF09D8581EACDE8400E67B60 /* MicroCosmos.cpp */,
-				E170202DCF4A479BA319C4F4 /* MicroCosmosApp.cpp */,
-				553810741EAA05730024A61D /* VirtualCard.cpp */,
+				DF09D6591EAF465200C3A946 /* MicroCosmos.cpp */,
+				DF09D65A1EAF465200C3A946 /* RealCard.cpp */,
+				DF09D65B1EAF465200C3A946 /* VirtualCard.cpp */,
+				7F27203C0C4F4701A8F87335 /* MicroCosmosApp.cpp */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -170,10 +182,11 @@
 		29B97315FDCFA39411CA2CEA /* Headers */ = {
 			isa = PBXGroup;
 			children = (
-				DF09D8591EACDE8400E67B60 /* MicroCosmos.hpp */,
-				1062C7EF4202416D9118E1B1 /* Resources.h */,
-				C3D91F0E2FD4477689C2F76C /* MicroCosmos_Prefix.pch */,
-				553810751EAA05730024A61D /* VirtualCard.hpp */,
+				DF09D65F1EAF465E00C3A946 /* MicroCosmos.hpp */,
+				DF09D6601EAF465E00C3A946 /* RealCard.h */,
+				DF09D6611EAF465E00C3A946 /* VirtualCard.hpp */,
+				57305E184FE14196B5EAA150 /* Resources.h */,
+				2377E19CA4E246B3B5F3898F /* MicroCosmos_Prefix.pch */,
 			);
 			name = Headers;
 			sourceTree = "<group>";
@@ -181,8 +194,8 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				9DBFB139560A462DB225DADB /* CinderApp.icns */,
-				DBEEBE14705646E1BB632F8C /* Info.plist */,
+				E1BCC7DCE0544A59BA5F2336 /* CinderApp.icns */,
+				0F92591D42CD4A73AFFF372A /* Info.plist */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -192,51 +205,69 @@
 			children = (
 				1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */,
 				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
+				5DE73A0B937E4867BFFAA291 /* OpenCL.framework */,
+				B6EBAFA76A364DE88C8002B9 /* QuickTime.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		872F8C7FE8364C0D8F1DAE7B /* poScene */ = {
+		2D1B31E6301F47889AD348E6 /* include */ = {
 			isa = PBXGroup;
 			children = (
-				D009AD4D7B13434BADD11878 /* src */,
+				AEFF98A6A1D2442DA3178716 /* CinderOpenCV.h */,
 			);
-			name = poScene;
+			name = include;
 			sourceTree = "<group>";
 		};
-		B0ABD2CE0B344B01A0E1AA1B /* poScene */ = {
+		39728BA498F34DE09BE5BD2E /* src */ = {
 			isa = PBXGroup;
 			children = (
-				FBA4AE17EF8442FC967BECFF /* poEventCenter.h */,
-				FE41B6BE45F94E61B0D77A2F /* poEvents.h */,
-				B4B149BC10914D5EAA45891F /* poImage.h */,
-				D809D129E095433D8980481C /* poMatrixSet.h */,
-				32518C66711F47D4B75F0118 /* poNode.h */,
-				21DA5B056FC44BE68F62544B /* poNodeContainer.h */,
-				A95E966ABB2D437FA7E11A02 /* poScene.h */,
-				460BC49AD3944DC5B02C0643 /* poShape.h */,
-				1A3290183F5C43CAA10DE359 /* poTextBox.h */,
-				3FF666C7CB6346F8863FA3B8 /* poTextureFit.h */,
-				BEDA412A01664DDCAF8AA00F /* poVideo.h */,
-				39C588B1ECA7416CBAC97E97 /* poEventCenter.cpp */,
-				C3BF087AE39741B7B794D4DF /* poEvents.cpp */,
-				5DA4A9ED36214D8B8D4A1259 /* poImage.cpp */,
-				7B1308A4FA724C698273B11B /* poMatrixSet.cpp */,
-				2ECB7E8D1CD44AC680605636 /* poNode.cpp */,
-				FD7AC1400D5F42F1AEA95DC6 /* poNodeContainer.cpp */,
-				1889B9D767644840A2B29AD4 /* poScene.cpp */,
-				1BE44352122F41B1BDEDA35B /* poShape.cpp */,
-				0E86B0038981470A8CC0A2EF /* poTextBox.cpp */,
-			);
-			name = poScene;
-			sourceTree = "<group>";
-		};
-		D009AD4D7B13434BADD11878 /* src */ = {
-			isa = PBXGroup;
-			children = (
-				B0ABD2CE0B344B01A0E1AA1B /* poScene */,
+				E659E14EAE934061BF2F73A8 /* poScene */,
 			);
 			name = src;
+			sourceTree = "<group>";
+		};
+		9C4AD1A57F284F44B6DA82A0 /* OpenCV3 */ = {
+			isa = PBXGroup;
+			children = (
+				2D1B31E6301F47889AD348E6 /* include */,
+			);
+			name = OpenCV3;
+			sourceTree = "<group>";
+		};
+		E659E14EAE934061BF2F73A8 /* poScene */ = {
+			isa = PBXGroup;
+			children = (
+				3BF7B953BA2549CC8AFE330C /* poEventCenter.h */,
+				638B9E38FD7D440EBCBBA808 /* poEvents.h */,
+				41CCC596B3AD40F88BF0B16E /* poImage.h */,
+				B0E04068C68B43C5BDA6335B /* poMatrixSet.h */,
+				E7BFADE9D03948969C25E045 /* poNode.h */,
+				4A9A7E9F35A94B5E95AF0A8A /* poNodeContainer.h */,
+				5DD7D2BC111F44CDB5C1C22F /* poScene.h */,
+				ABC73803E6A94D0ABD3CCEAE /* poShape.h */,
+				29DB19846DCB42A0A167A816 /* poTextBox.h */,
+				5289C3D982B74ABB8E141582 /* poTextureFit.h */,
+				D0ED06E1F1EF49788F097B1F /* poVideo.h */,
+				65FE8FC3F8874945A27BD716 /* poEventCenter.cpp */,
+				B4732F7BB49844A5AF3DD17C /* poEvents.cpp */,
+				322968C74FA34A70AE71ACFA /* poImage.cpp */,
+				5B725A17D9B648089971E720 /* poMatrixSet.cpp */,
+				25DBFAD470704A6198BAA340 /* poNode.cpp */,
+				37D35CF55A9F4E2FB7CB0F61 /* poNodeContainer.cpp */,
+				0518B6445ABA46AC9CC83591 /* poScene.cpp */,
+				6FEB4880D7224A56B9EAD168 /* poShape.cpp */,
+				AA42558374454BB7BBE03406 /* poTextBox.cpp */,
+			);
+			name = poScene;
+			sourceTree = "<group>";
+		};
+		ECAA483EF5B54BFAA39F0E9D /* poScene */ = {
+			isa = PBXGroup;
+			children = (
+				39728BA498F34DE09BE5BD2E /* src */,
+			);
+			name = poScene;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -291,7 +322,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F5456D95A36349958442582A /* CinderApp.icns in Resources */,
+				E6FF5D2361A849768AEFEED4 /* CinderApp.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,18 +333,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C4E9D488487446C885AD83AB /* MicroCosmosApp.cpp in Sources */,
-				B3BF499BD71F4D26A3AED0C6 /* poEventCenter.cpp in Sources */,
-				DF18A94EE1D946AC966E2995 /* poEvents.cpp in Sources */,
-				D7B5818A285A4614B7D2DBF7 /* poImage.cpp in Sources */,
-				B5E9F683A5E84132B38713F4 /* poMatrixSet.cpp in Sources */,
-				BB14D5266A694A4FB6688BFF /* poNode.cpp in Sources */,
-				E2ECDFB895614A5E98E655B7 /* poNodeContainer.cpp in Sources */,
-				D33321FB519D404C981062AF /* poScene.cpp in Sources */,
-				553810761EAA05730024A61D /* VirtualCard.cpp in Sources */,
-				42816B9656594B63B28480F9 /* poShape.cpp in Sources */,
-				DF09D85A1EACDE8400E67B60 /* MicroCosmos.cpp in Sources */,
-				D074DDFE79CE4B159419CAF9 /* poTextBox.cpp in Sources */,
+				2D7326670CD54A5CA15A41F7 /* MicroCosmosApp.cpp in Sources */,
+				83ABE15C5FDF4FEFABC19354 /* poEventCenter.cpp in Sources */,
+				1B24B4DE94604C479AB8ECE4 /* poEvents.cpp in Sources */,
+				C1D802CFB7D049F6B04191B6 /* poImage.cpp in Sources */,
+				B4A4C49FFD914D99B3127272 /* poMatrixSet.cpp in Sources */,
+				E386FD87F0AF41F1A2C020E9 /* poNode.cpp in Sources */,
+				C8868E51026543FE8A21021E /* poNodeContainer.cpp in Sources */,
+				DF09D65D1EAF465200C3A946 /* RealCard.cpp in Sources */,
+				23DDFC87866D4CF2AF1EE034 /* poScene.cpp in Sources */,
+				DF09D65E1EAF465200C3A946 /* VirtualCard.cpp in Sources */,
+				DF09D65C1EAF465200C3A946 /* MicroCosmos.cpp in Sources */,
+				4895D6FBBC524357B3B86A1F /* poShape.cpp in Sources */,
+				A8B4C9D28AE44F7E86D55891 /* poTextBox.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,7 +371,27 @@
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
-				OTHER_LDFLAGS = "\"$(CINDER_PATH)/lib/macosx/$(CONFIGURATION)/libcinder.a\"";
+				OTHER_LDFLAGS = (
+					"\"$(CINDER_PATH)/lib/macosx/$(CONFIGURATION)/libcinder.a\"",
+					../blocks/OpenCV3/lib/macosx/libopencv_calib3d.a,
+					../blocks/OpenCV3/lib/macosx/libopencv_core.a,
+					../blocks/OpenCV3/lib/macosx/libopencv_features2d.a,
+					../blocks/OpenCV3/lib/macosx/libopencv_flann.a,
+					../blocks/OpenCV3/lib/macosx/libopencv_hal.a,
+					../blocks/OpenCV3/lib/macosx/libopencv_imgproc.a,
+					../blocks/OpenCV3/lib/macosx/libopencv_ml.a,
+					../blocks/OpenCV3/lib/macosx/libopencv_objdetect.a,
+					../blocks/OpenCV3/lib/macosx/libopencv_photo.a,
+					../blocks/OpenCV3/lib/macosx/libopencv_shape.a,
+					../blocks/OpenCV3/lib/macosx/libopencv_stitching.a,
+					../blocks/OpenCV3/lib/macosx/libopencv_superres.a,
+					../blocks/OpenCV3/lib/macosx/libopencv_video.a,
+					../blocks/OpenCV3/lib/macosx/libopencv_ts.a,
+					../blocks/OpenCV3/lib/macosx/libopencv_videoio.a,
+					../blocks/OpenCV3/lib/macosx/libopencv_videostab.a,
+					../blocks/OpenCV3/lib/macosx/libippicv.a,
+					"\"-lz\"",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.libcinder.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = MicroCosmos;
 				SYMROOT = ./build;
@@ -367,7 +419,27 @@
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
-				OTHER_LDFLAGS = "\"$(CINDER_PATH)/lib/macosx/$(CONFIGURATION)/libcinder.a\"";
+				OTHER_LDFLAGS = (
+					"\"$(CINDER_PATH)/lib/macosx/$(CONFIGURATION)/libcinder.a\"",
+					../blocks/OpenCV3/lib/macosx/libopencv_calib3d.a,
+					../blocks/OpenCV3/lib/macosx/libopencv_core.a,
+					../blocks/OpenCV3/lib/macosx/libopencv_features2d.a,
+					../blocks/OpenCV3/lib/macosx/libopencv_flann.a,
+					../blocks/OpenCV3/lib/macosx/libopencv_hal.a,
+					../blocks/OpenCV3/lib/macosx/libopencv_imgproc.a,
+					../blocks/OpenCV3/lib/macosx/libopencv_ml.a,
+					../blocks/OpenCV3/lib/macosx/libopencv_objdetect.a,
+					../blocks/OpenCV3/lib/macosx/libopencv_photo.a,
+					../blocks/OpenCV3/lib/macosx/libopencv_shape.a,
+					../blocks/OpenCV3/lib/macosx/libopencv_stitching.a,
+					../blocks/OpenCV3/lib/macosx/libopencv_superres.a,
+					../blocks/OpenCV3/lib/macosx/libopencv_video.a,
+					../blocks/OpenCV3/lib/macosx/libopencv_ts.a,
+					../blocks/OpenCV3/lib/macosx/libopencv_videoio.a,
+					../blocks/OpenCV3/lib/macosx/libopencv_videostab.a,
+					../blocks/OpenCV3/lib/macosx/libippicv.a,
+					"\"-lz\"",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.libcinder.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = MicroCosmos;
 				STRIP_INSTALLED_PRODUCT = YES;
@@ -380,7 +452,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CINDER_PATH = ../../Cinder;
+				CINDER_PATH = ../../github/Cinder;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++11";
 				CLANG_CXX_LIBRARY = "libc++";
 				ENABLE_TESTABILITY = YES;
@@ -390,7 +462,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
-				USER_HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/include\" ../include ../blocks/poScene/src/poScene";
+				USER_HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/include\" ../include ../blocks/OpenCV3/include ../blocks/poScene/src/poScene ../blocks/QuickTime/include";
 			};
 			name = Debug;
 		};
@@ -398,7 +470,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CINDER_PATH = ../../Cinder;
+				CINDER_PATH = ../../github/Cinder;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++11";
 				CLANG_CXX_LIBRARY = "libc++";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -406,7 +478,7 @@
 				HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/include\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				SDKROOT = macosx;
-				USER_HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/include\" ../include ../blocks/poScene/src/poScene";
+				USER_HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/include\" ../include ../blocks/OpenCV3/include ../blocks/poScene/src/poScene ../blocks/QuickTime/include";
 			};
 			name = Release;
 		};

@@ -13,16 +13,22 @@
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
     </Filter>
     <Filter Include="Blocks">
-      <UniqueIdentifier>{825C60B7-3CB0-4ED5-89DE-D585DC9CC18E}</UniqueIdentifier>
+      <UniqueIdentifier>{0C9016E6-1807-4728-B09F-C9960EF31945}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Blocks\OpenCV3">
+      <UniqueIdentifier>{DF6BC4BC-6C76-47C4-A7F8-A9BC329C6193}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Blocks\OpenCV3\include">
+      <UniqueIdentifier>{FBCC03A9-17F7-40F9-9036-AD4197BCE72A}</UniqueIdentifier>
     </Filter>
     <Filter Include="Blocks\poScene">
-      <UniqueIdentifier>{3D175652-E36A-4114-BF47-CF76C95124EA}</UniqueIdentifier>
+      <UniqueIdentifier>{2ED9C4F1-2990-49E0-9C7A-222A8310A379}</UniqueIdentifier>
     </Filter>
     <Filter Include="Blocks\poScene\src">
-      <UniqueIdentifier>{02847959-231F-4930-AAA9-9B007513CE5D}</UniqueIdentifier>
+      <UniqueIdentifier>{2AFE90AC-3357-463B-8017-7A51B1915A6C}</UniqueIdentifier>
     </Filter>
     <Filter Include="Blocks\poScene\src\poScene">
-      <UniqueIdentifier>{B1B77498-F688-48AA-96E2-798DCF9332C1}</UniqueIdentifier>
+      <UniqueIdentifier>{7113F58F-8033-4AB2-A3D2-39D27DA5293C}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -34,6 +40,9 @@
     </ClCompile>
     <ClInclude Include="..\include\Resources.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\blocks\OpenCV3\include\CinderOpenCV.h">
+      <Filter>Blocks\OpenCV3\include</Filter>
     </ClInclude>
     <ClInclude Include="..\blocks\poScene\src\poScene\poEventCenter.h">
       <Filter>Blocks\poScene\src\poScene</Filter>
