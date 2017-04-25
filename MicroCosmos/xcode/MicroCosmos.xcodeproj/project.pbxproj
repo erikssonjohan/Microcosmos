@@ -16,6 +16,14 @@
 		00B784B60FF439BC000DE1D7 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00B784B20FF439BC000DE1D7 /* CoreAudio.framework */; };
 		00B9955A1B128DF400A5C623 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00B995581B128DF400A5C623 /* IOKit.framework */; };
 		00B9955B1B128DF400A5C623 /* IOSurface.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00B995591B128DF400A5C623 /* IOSurface.framework */; };
+		0C73B5A61EAF48D300AEBA90 /* markerdetector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0C73B59F1EAF48D300AEBA90 /* markerdetector.cpp */; };
+		0C73B5A71EAF48D300AEBA90 /* marker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0C73B5A01EAF48D300AEBA90 /* marker.cpp */; };
+		0C73B5A81EAF48D300AEBA90 /* cvdrawingutils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0C73B5A11EAF48D300AEBA90 /* cvdrawingutils.cpp */; };
+		0C73B5A91EAF48D300AEBA90 /* cameraparameters.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0C73B5A21EAF48D300AEBA90 /* cameraparameters.cpp */; };
+		0C73B5AA1EAF48D300AEBA90 /* boarddetector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0C73B5A31EAF48D300AEBA90 /* boarddetector.cpp */; };
+		0C73B5AB1EAF48D300AEBA90 /* board.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0C73B5A41EAF48D300AEBA90 /* board.cpp */; };
+		0C73B5AC1EAF48D300AEBA90 /* arucofidmarkers.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0C73B5A51EAF48D300AEBA90 /* arucofidmarkers.cpp */; };
+		0C73B5AE1EAF48F200AEBA90 /* CMakeLists.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0C73B5AD1EAF48F200AEBA90 /* CMakeLists.txt */; };
 		1B24B4DE94604C479AB8ECE4 /* poEvents.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B4732F7BB49844A5AF3DD17C /* poEvents.cpp */; };
 		23DDFC87866D4CF2AF1EE034 /* poScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0518B6445ABA46AC9CC83591 /* poScene.cpp */; };
 		2D7326670CD54A5CA15A41F7 /* MicroCosmosApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7F27203C0C4F4701A8F87335 /* MicroCosmosApp.cpp */; };
@@ -47,6 +55,14 @@
 		00B995581B128DF400A5C623 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		00B995591B128DF400A5C623 /* IOSurface.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOSurface.framework; path = System/Library/Frameworks/IOSurface.framework; sourceTree = SDKROOT; };
 		0518B6445ABA46AC9CC83591 /* poScene.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; name = poScene.cpp; path = ../blocks/poScene/src/poScene/poScene.cpp; sourceTree = "<group>"; };
+		0C73B59F1EAF48D300AEBA90 /* markerdetector.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = markerdetector.cpp; path = ../src/aruco/src/markerdetector.cpp; sourceTree = "<group>"; };
+		0C73B5A01EAF48D300AEBA90 /* marker.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = marker.cpp; path = ../src/aruco/src/marker.cpp; sourceTree = "<group>"; };
+		0C73B5A11EAF48D300AEBA90 /* cvdrawingutils.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = cvdrawingutils.cpp; path = ../src/aruco/src/cvdrawingutils.cpp; sourceTree = "<group>"; };
+		0C73B5A21EAF48D300AEBA90 /* cameraparameters.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = cameraparameters.cpp; path = ../src/aruco/src/cameraparameters.cpp; sourceTree = "<group>"; };
+		0C73B5A31EAF48D300AEBA90 /* boarddetector.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = boarddetector.cpp; path = ../src/aruco/src/boarddetector.cpp; sourceTree = "<group>"; };
+		0C73B5A41EAF48D300AEBA90 /* board.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = board.cpp; path = ../src/aruco/src/board.cpp; sourceTree = "<group>"; };
+		0C73B5A51EAF48D300AEBA90 /* arucofidmarkers.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = arucofidmarkers.cpp; path = ../src/aruco/src/arucofidmarkers.cpp; sourceTree = "<group>"; };
+		0C73B5AD1EAF48F200AEBA90 /* CMakeLists.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = CMakeLists.txt; path = ../src/aruco/src/CMakeLists.txt; sourceTree = "<group>"; };
 		0F92591D42CD4A73AFFF372A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		2377E19CA4E246B3B5F3898F /* MicroCosmos_Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = "\"\""; path = MicroCosmos_Prefix.pch; sourceTree = "<group>"; };
@@ -123,12 +139,35 @@
 		080E96DDFE201D6D7F000001 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				0C73B5AF1EAF48F600AEBA90 /* aruco */,
 				DF09D6591EAF465200C3A946 /* MicroCosmos.cpp */,
 				DF09D65A1EAF465200C3A946 /* RealCard.cpp */,
 				DF09D65B1EAF465200C3A946 /* VirtualCard.cpp */,
 				7F27203C0C4F4701A8F87335 /* MicroCosmosApp.cpp */,
 			);
 			name = Source;
+			sourceTree = "<group>";
+		};
+		0C73B5AF1EAF48F600AEBA90 /* aruco */ = {
+			isa = PBXGroup;
+			children = (
+				0C73B5B01EAF48FC00AEBA90 /* src */,
+			);
+			name = aruco;
+			sourceTree = "<group>";
+		};
+		0C73B5B01EAF48FC00AEBA90 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				0C73B59F1EAF48D300AEBA90 /* markerdetector.cpp */,
+				0C73B5A01EAF48D300AEBA90 /* marker.cpp */,
+				0C73B5A11EAF48D300AEBA90 /* cvdrawingutils.cpp */,
+				0C73B5A21EAF48D300AEBA90 /* cameraparameters.cpp */,
+				0C73B5A31EAF48D300AEBA90 /* boarddetector.cpp */,
+				0C73B5A41EAF48D300AEBA90 /* board.cpp */,
+				0C73B5A51EAF48D300AEBA90 /* arucofidmarkers.cpp */,
+			);
+			name = src;
 			sourceTree = "<group>";
 		};
 		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
@@ -169,6 +208,7 @@
 		29B97314FDCFA39411CA2CEA /* MicroCosmos */ = {
 			isa = PBXGroup;
 			children = (
+				0C73B5AD1EAF48F200AEBA90 /* CMakeLists.txt */,
 				01B97315FEAEA392516A2CEA /* Blocks */,
 				29B97315FDCFA39411CA2CEA /* Headers */,
 				080E96DDFE201D6D7F000001 /* Source */,
@@ -322,6 +362,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C73B5AE1EAF48F200AEBA90 /* CMakeLists.txt in Resources */,
 				E6FF5D2361A849768AEFEED4 /* CinderApp.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -333,6 +374,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C73B5A61EAF48D300AEBA90 /* markerdetector.cpp in Sources */,
+				0C73B5A71EAF48D300AEBA90 /* marker.cpp in Sources */,
+				0C73B5A81EAF48D300AEBA90 /* cvdrawingutils.cpp in Sources */,
+				0C73B5A91EAF48D300AEBA90 /* cameraparameters.cpp in Sources */,
+				0C73B5AA1EAF48D300AEBA90 /* boarddetector.cpp in Sources */,
+				0C73B5AB1EAF48D300AEBA90 /* board.cpp in Sources */,
+				0C73B5AC1EAF48D300AEBA90 /* arucofidmarkers.cpp in Sources */,
 				2D7326670CD54A5CA15A41F7 /* MicroCosmosApp.cpp in Sources */,
 				83ABE15C5FDF4FEFABC19354 /* poEventCenter.cpp in Sources */,
 				1B24B4DE94604C479AB8ECE4 /* poEvents.cpp in Sources */,

@@ -6,6 +6,9 @@
 
 #include "poScene.h"
 #include "MicroCosmos.hpp"
+#include "aruco/src/cvdrawingutils.h"
+#include "aruco/src/cameraparameters.h"
+
 
 using namespace ci;
 using namespace ci::app;
