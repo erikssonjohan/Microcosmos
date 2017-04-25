@@ -27,7 +27,7 @@ public:
     void keyDown(KeyEvent event) override;
     void update() override;
     void draw() override;
-    
+
     //po
     po::scene::SceneRef scene;
     //tracking
@@ -36,7 +36,7 @@ public:
 
 
 void prepareSettings( MicroCosmosApp::Settings *settings )
-{    
+{
     // By default, multi-touch is disabled on desktop and enabled on mobile platforms.
     // You enable multi-touch from the SettingsFn that fires before the app is constructed.
     settings->setMultiTouchEnabled( true );
@@ -48,6 +48,10 @@ void MicroCosmosApp::setup()
     scene = Scene::create(MicroCosmos::create());
     //search for and start camerafeed
     mTrack.setup();
+
+    getSignalUpdate().connect( [this](){
+        getWindow()->setTitle( to_string( (int) getAverageFps() ) + " fps" );
+    } );
 }
 
 
@@ -86,10 +90,10 @@ void MicroCosmosApp::draw()
             ()) {
         gl::drawStrokedCircle(touch.getPos(), 20);
     }
-    
+
     //display output from camera
     //mTrack.draw();
-     
+
 }
 
 CINDER_APP( MicroCosmosApp, RendererGl, prepareSettings )

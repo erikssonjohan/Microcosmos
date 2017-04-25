@@ -55,7 +55,7 @@ void Tracking::draw() {
 
     gl::enableAlphaBlending();
     gl::color( ColorA(1,1,1,1.0f) );
-    
+
     if( mTexture ) {
         gl::draw( mTexture );
     }

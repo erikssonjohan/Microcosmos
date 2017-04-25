@@ -16,7 +16,7 @@ using namespace po::scene;
 
 
 VirtualCard::VirtualCard(std::string path, float scale, std::vector<std::string> categories, std::string header_se,
-               std::string text_se, std::string header_en, std::string text_en)
+        std::string text_se, std::string header_en, std::string text_en)
 {
     _path = path;
     _scale = scale;
@@ -25,22 +25,22 @@ VirtualCard::VirtualCard(std::string path, float scale, std::vector<std::string>
     _text_se = text_se;
     _header_en = header_en;
     _text_en = text_en;
-    
-    
+
+
     cinder::gl::TextureRef mFrameTexture;
     cinder::gl::TextureRef texture;
-    
+
     x = ci::Rand::randFloat(1, 800);
     y = ci::Rand::randFloat(1, 800);
-    
-    
+
+
 }
 
 VirtualCardRef VirtualCard::create( ci::Color color, std::string path, float scale, std::vector<std::string> categories, std::string header_se,
-                         std::string text_se, std::string header_en, std::string text_en)
+        std::string text_se, std::string header_en, std::string text_en)
 {
     VirtualCardRef ref (new VirtualCard(path, scale, categories, header_se,
-                              text_se, header_en, text_en ));
+            text_se, header_en, text_en ));
     ref->setup(color);
     return ref;
 }
@@ -93,15 +93,15 @@ void VirtualCard::setup(ci::Color color)
 
     textFig->setVisible(false);
     textContent->setVisible(false);
-    
-    
+
+
     getSignal(po::scene::TouchEvent::BEGAN_INSIDE).connect(std::bind(&VirtualCard::onTouchDown, this, std::placeholders::_1));
     getSignal(po::scene::TouchEvent::MOVED_INSIDE).connect(std::bind(&VirtualCard::onTouchDragged, this, std::placeholders::_1));
     getSignal(po::scene::TouchEvent::MOVED).connect(std::bind(&VirtualCard::onTouchDragged, this, std::placeholders::_1));
     getSignal(po::scene::TouchEvent::ENDED_INSIDE).connect(std::bind(&VirtualCard::onTouchUp, this, std::placeholders::_1));
     getSignal(po::scene::TouchEvent::ENDED).connect(std::bind(&VirtualCard::onTouchUp, this, std::placeholders::_1));
 
-    
+
 }
 
 void VirtualCard::onTouchDown(po::scene::TouchEvent &event){
@@ -170,7 +170,7 @@ void VirtualCard::removeTouchId(uint32_t id){
             std::cout << "removing id " << id << std::endl;
         }
     }
-    
+
 }
 
 //removes touch id from card
@@ -187,8 +187,8 @@ void VirtualCard::scale(ci::vec2 pos1, ci::vec2 pPos1, ci::vec2 pos2, ci::vec2 p
     float previousDistance = sqrt(pow(pPos1[0]-pPos2[0], 2) + pow(pPos1[1]-pPos2[1], 2) );
     // Guard against division by zero
     if (previousDistance != 0) {
-    _scale *= currentDistance / previousDistance;
-    setScale(_scale);
+        _scale *= currentDistance / previousDistance;
+        setScale(_scale);
     }
 }
 
