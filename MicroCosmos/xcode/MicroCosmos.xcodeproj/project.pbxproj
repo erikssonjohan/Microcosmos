@@ -31,6 +31,7 @@
 		40FB401EC4D54F40BBFA9B43 /* OpenCL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DE73A0B937E4867BFFAA291 /* OpenCL.framework */; };
 		4895D6FBBC524357B3B86A1F /* poShape.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6FEB4880D7224A56B9EAD168 /* poShape.cpp */; };
 		5323E6B20EAFCA74003A9687 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5323E6B10EAFCA74003A9687 /* CoreVideo.framework */; };
+		55C5285E1EAF4EAB00A577CA /* Tracking.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55C5285C1EAF4EAB00A577CA /* Tracking.cpp */; };
 		83ABE15C5FDF4FEFABC19354 /* poEventCenter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65FE8FC3F8874945A27BD716 /* poEventCenter.cpp */; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 		A8B4C9D28AE44F7E86D55891 /* poTextBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AA42558374454BB7BBE03406 /* poTextBox.cpp */; };
@@ -77,6 +78,8 @@
 		4A9A7E9F35A94B5E95AF0A8A /* poNodeContainer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = poNodeContainer.h; path = ../blocks/poScene/src/poScene/poNodeContainer.h; sourceTree = "<group>"; };
 		5289C3D982B74ABB8E141582 /* poTextureFit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = poTextureFit.h; path = ../blocks/poScene/src/poScene/poTextureFit.h; sourceTree = "<group>"; };
 		5323E6B10EAFCA74003A9687 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = /System/Library/Frameworks/CoreVideo.framework; sourceTree = "<absolute>"; };
+		55C5285C1EAF4EAB00A577CA /* Tracking.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Tracking.cpp; path = ../src/Tracking.cpp; sourceTree = "<group>"; };
+		55C5285D1EAF4EAB00A577CA /* Tracking.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Tracking.hpp; path = ../src/Tracking.hpp; sourceTree = "<group>"; };
 		57305E184FE14196B5EAA150 /* Resources.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Resources.h; path = ../include/Resources.h; sourceTree = "<group>"; };
 		5B725A17D9B648089971E720 /* poMatrixSet.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; name = poMatrixSet.cpp; path = ../blocks/poScene/src/poScene/poMatrixSet.cpp; sourceTree = "<group>"; };
 		5DD7D2BC111F44CDB5C1C22F /* poScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = poScene.h; path = ../blocks/poScene/src/poScene/poScene.h; sourceTree = "<group>"; };
@@ -144,6 +147,7 @@
 				DF09D65A1EAF465200C3A946 /* RealCard.cpp */,
 				DF09D65B1EAF465200C3A946 /* VirtualCard.cpp */,
 				7F27203C0C4F4701A8F87335 /* MicroCosmosApp.cpp */,
+				55C5285C1EAF4EAB00A577CA /* Tracking.cpp */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -227,6 +231,7 @@
 				DF09D6611EAF465E00C3A946 /* VirtualCard.hpp */,
 				57305E184FE14196B5EAA150 /* Resources.h */,
 				2377E19CA4E246B3B5F3898F /* MicroCosmos_Prefix.pch */,
+				55C5285D1EAF4EAB00A577CA /* Tracking.hpp */,
 			);
 			name = Headers;
 			sourceTree = "<group>";
@@ -387,6 +392,7 @@
 				C1D802CFB7D049F6B04191B6 /* poImage.cpp in Sources */,
 				B4A4C49FFD914D99B3127272 /* poMatrixSet.cpp in Sources */,
 				E386FD87F0AF41F1A2C020E9 /* poNode.cpp in Sources */,
+				55C5285E1EAF4EAB00A577CA /* Tracking.cpp in Sources */,
 				C8868E51026543FE8A21021E /* poNodeContainer.cpp in Sources */,
 				DF09D65D1EAF465200C3A946 /* RealCard.cpp in Sources */,
 				23DDFC87866D4CF2AF1EE034 /* poScene.cpp in Sources */,
