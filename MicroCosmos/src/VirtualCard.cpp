@@ -54,16 +54,45 @@ void VirtualCard::setup(ci::Color color)
     mEndPos = ci::vec2();
     mInitialPos = ci::vec2();
     mIsPressed=false;
+
+    ci::gl::TextureRef img =  ci::gl::Texture::create(ci::loadImage(ci::app::loadAsset(_path) ));
+
     //  create and add the shape to the node container
-    mBaseShape = Shape::createRect(500, 500);
+    mBaseShape = Shape::createRect(img->getWidth()+border*2, img->getHeight()+border*2);
     mBaseColor = color;
     mBaseShape->setFillColor(color);
-    //mBaseShape->setRotation(45.f);
-    ci::gl::TextureRef img =  ci::gl::Texture::create(ci::loadImage(ci::app::loadAsset(_path) ));
-    mBaseShape->setTexture(img);
+    auto textur = Shape::createRect(img->getWidth(), img->getHeight());
+    textur->setTexture(img);
+    textur->setPosition(border, border);
+
+
+    // text
+    // TODO:: make it less static and might need some fixes. just did it to test, not sure if its the best way // JE
+    textFig = Shape::createRect(400, img->getHeight()+border*2);
+    textFig->setFillColor(0,0,0, 0.8);
+    textFig->setPosition(img->getWidth()+border*2, 0);
+    ci::TextBox ciTextBox = ci::TextBox();
+    //auto textB = po::scene::TextBox::create(ciTextBox);
+    ciTextBox.size(300, 500);
+    ciTextBox.color(ci::Color(1, 1, 1));
+    ciTextBox.text(_text_se);
+    ciTextBox.alignment(ci::TextBox::Alignment::LEFT);
+    ciTextBox.font(ci::Font("Arial", 20));
+    textContent = po::scene::TextBox::create(ciTextBox);
+    textContent->setPosition(img->getWidth()+border*6, 100);
+
+
+    //Just so it dosent take all of the screen...
+    setScale(0.6, 0.6);
+
     addChild(mBaseShape);
+    addChild(textur);
+    addChild(textFig);
+    addChild(textContent);
     setName(_header_se);
 
+    textFig->setVisible(false);
+    textContent->setVisible(false);
     
     
     getSignal(po::scene::TouchEvent::BEGAN_INSIDE).connect(std::bind(&VirtualCard::onTouchDown, this, std::placeholders::_1));
@@ -71,9 +100,7 @@ void VirtualCard::setup(ci::Color color)
     getSignal(po::scene::TouchEvent::MOVED).connect(std::bind(&VirtualCard::onTouchDragged, this, std::placeholders::_1));
     getSignal(po::scene::TouchEvent::ENDED_INSIDE).connect(std::bind(&VirtualCard::onTouchUp, this, std::placeholders::_1));
     getSignal(po::scene::TouchEvent::ENDED).connect(std::bind(&VirtualCard::onTouchUp, this, std::placeholders::_1));
-    
-    //  add a signal to all mouse clicks to activate label
-    //getSignal(MouseEvent::DOWN_INSIDE).connect(std::bind(&Square::showIndicator, this));
+
     
 }
 
@@ -82,24 +109,35 @@ void VirtualCard::onTouchDown(po::scene::TouchEvent &event){
         std::cout << "tryck " << event.getId() << std::endl;
         mIsPressed = true;
         touchId.push_back(event.getId());
-        
+
+        textFig->setVisible(true);
+        textContent->setVisible(true);
+
         // Moves the card to drawn at the front
         getParent()->moveChildToFront(getParent()->getChildByName(this->getName()));
 
-        // Update the position of the card
-        mInitialPos = getPosition();
-        mStartPos = getParent()->windowToLocal(event.getWindowPos());
-        mEndPos = getParent()->windowToLocal(event.getWindowPos());
+
+        if(touchId.size() == 1) {
+            // Update the position of the card
+            mInitialPos = getPosition();
+            mStartPos = getParent()->windowToLocal(event.getWindowPos());
+            mEndPos = getParent()->windowToLocal(event.getWindowPos());
+        }
+
+
     }
 }
 
 //	Touch dragged event handler
 void VirtualCard::onTouchDragged(po::scene::TouchEvent &event){
-    if (idInCard(event.getId())) {
+    if (idInCard(event.getId()) && touchId[0] == event.getId()) {
         mEndPos = getParent()->windowToLocal(event.getWindowPos());
         ci::vec2 newPosition = mInitialPos + (mEndPos - mStartPos);
         setPosition(newPosition);
     }
+
+
+
 }
 
 //	Touch up event handler

@@ -37,3 +37,29 @@ void MicroCosmos::setup(){
 }
 
 //Will add a function that finds all the categories and calls RealCard::create()
+
+
+   // getSignal(po::scene::TouchEvent::BEGAN).connect(std::bind(&MicroCosmos::onTouchDown, this, std::placeholders::_1));
+   // getSignal(po::scene::TouchEvent::ENDED).connect(std::bind(&MicroCosmos::onTouchUp, this, std::placeholders::_1));
+
+
+
+
+
+
+
+void MicroCosmos::onTouchDown(po::scene::TouchEvent &event){
+
+
+    //touch down
+
+
+
+}
+
+void MicroCosmos::onTouchUp(po::scene::TouchEvent &event) {
+
+    // touch up
+
+}
+

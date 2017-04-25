@@ -15,6 +15,7 @@
 #include "poNodeContainer.h"
 #include "poShape.h"
 #include "cinder/Rand.h"
+#include "poTextBox.h"
 using namespace ci;
 using namespace ci::app;
 using namespace std;
@@ -28,8 +29,11 @@ class VirtualCard
 public:
     
     static VirtualCardRef create(ci::Color color, std::string path, float scale, std::vector<std::string> categories, std::string header_se, std::string text_se, std::string header_en, std::string text_en);
+
+    //sets upp det card
     void setup(ci::Color color);
-    
+
+    //Constructor for the card
     VirtualCard(std::string path, float scale, std::vector<std::string> categories, std::string header_se, std::string text_se, std::string header_en, std::string text_en );
     
     float x, y;
@@ -37,11 +41,17 @@ public:
 protected:
     
 private:
+
+    float border = 10;
+
+
+
     po::scene::ShapeRef mBaseShape;
     ci::vec2            mBasePosition;
     ci::Color           mBaseColor;
     std::vector<uint32_t> touchId;
-    
+    po::scene::ShapeRef textFig;
+    po::scene::TextBoxRef textContent;
     
     float radAngle = 0.0f;
     std::string _path;
@@ -58,8 +68,10 @@ private:
     
     //	Keep track of the initial, start and end position to use for dragging
     ci::vec2 mStartPos, mEndPos, mInitialPos;
-    
+
+    //removes touch id from card
     void removeTouchId(uint32_t id);
+    // Checks if card has the touch id
     bool idInCard(uint32_t id);
     
     
