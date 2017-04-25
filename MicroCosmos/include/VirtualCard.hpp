@@ -88,6 +88,9 @@ private:
     
     //	Touch up event handler
     void onTouchUp(po::scene::TouchEvent &event);
+    
+    //Scale
+    void scale(ci::vec2 pos1, ci::vec2 pPos1, ci::vec2 pos2, ci::vec2 pPos2 );
 
 
     
