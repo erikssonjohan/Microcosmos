@@ -12,11 +12,13 @@ using namespace ci;
 using namespace ci::app;
 using namespace std;
 
+
 void Tracking::printDevices() {
     for( const auto &device : Capture::getDevices() ) {
         console() << "Device: " << device->getName() << " " << endl;
     }
 }
+
 
 void Tracking::setup() {
     //print cameras and init camera capture
@@ -48,28 +50,28 @@ void Tracking::update() {
 
 
 void Tracking::draw() {
+    double pos[3];
+    double rot[4];
+
     gl::enableAlphaBlending();
     gl::color( ColorA(1,1,1,1.0f) );
     
     if( mTexture ) {
         gl::draw( mTexture );
     }
-    
-    gl::color( ColorA(1,1,1,0.7f) );
-    
-    //double pos[3];
-    //double rot[4];
-    
-    for( int i=0; i<mMarkers.size(); i++) {
-        
-        for( int ii = 0; ii < mMarkers[i].size(); ii++){
+
+    for(int i=0; i<mMarkers.size(); i++) {
+        gl::color(ColorA(i*0.02,i*0.08,i*0.08,0.7f));
+
+        mMarkers[i].OgreGetPoseParameters(pos, rot);
+        cout << "MarkerId " << mMarkers[i].id << endl;
+        cout << "Pos " << "X: " << pos[1] << " Y: "  << pos[2] << " Z: " << pos[3] << endl;
+        cout << "Center: " << mMarkers[i].getCenter() << endl;
+
+        for( int ii = 0; ii < mMarkers[i].size(); ii++) {
             gl::drawSolidCircle(vec2(mMarkers[i][ii].x, mMarkers[i][ii].y), 10.0f);
-            std::cout << "Marker x: " << mMarkers[i][ii].x << " Marker y: " << mMarkers[i][ii].y << endl;
-            
+            std::cout << "Marker x: " << mMarkers[i][ii].x << " Marker y: " << mMarkers[i][ii].y << " Marker y: " << endl;
         }
-        //mMarkers[i].OgreGetPoseParameters(pos, rot);
-        //cout << "Pos " << "x: " << pos[1] << " y: "  << pos[2] << " z: " << pos[3] << endl;
-        //cout << mMarkers[i].id << endl;
-        //gl::drawSolidCircle(vec2(pos[1],pos[2]), 10.0f);
+        gl::drawSolidCircle(vec2(pos[1],pos[2]), 10.0f);
     }
 }

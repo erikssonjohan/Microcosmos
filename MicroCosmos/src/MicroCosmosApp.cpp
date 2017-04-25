@@ -77,20 +77,19 @@ void MicroCosmosApp::update()
 
 void MicroCosmosApp::draw()
 {
-   
-    gl::clear( Color( 0, 0.5, 0 ) );
+    gl::clear(Color(0, 0.5, 0));
     scene->draw();
-    
+
     // Draw yellow circles at the active touch points
-    gl::color( 1, 1, 0 );
-    for( const auto &touch : getActiveTouches
-        () ){
-        gl::drawStrokedCircle( touch.getPos(), 20 );
+    gl::color(1, 1, 0);
+    for (const auto &touch : getActiveTouches
+            ()) {
+        gl::drawStrokedCircle(touch.getPos(), 20);
     }
-    
     
     //display output from camera
     //mTrack.draw();
+     
 }
 
 CINDER_APP( MicroCosmosApp, RendererGl, prepareSettings )
