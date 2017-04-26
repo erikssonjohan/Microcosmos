@@ -26,19 +26,22 @@ public:
     static MicroCosmosRef create();
     
     void setup();
-        
+    
+    void uniqueCategories(const char *file, std::vector<std::string> &categories);
+    bool stringInVector(std::string category, std::vector<std::string> categories);
     
 protected:
     
 private:
-
-    std::vector<VirtualCardRef> cards;
-
+    
+    //std::vector<VirtualCardRef> cards;
+    std::vector<RealCardRef> rcards;
+    
     void onTouchDown(po::scene::TouchEvent &event);
-
+    
     //	Touch up event handler
     void onTouchUp(po::scene::TouchEvent &event);
-
+    
     
 };
 

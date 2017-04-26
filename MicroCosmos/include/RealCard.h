@@ -18,20 +18,18 @@ class RealCard;
 typedef std::shared_ptr<RealCard> RealCardRef;
 
 class RealCard
-	: public po::scene::NodeContainer
+: public po::scene::NodeContainer
 {
 public:
-
-	static RealCardRef create(std::string category);
-	void setup(std::string category);
-	void loadXML(const char *file, std::vector<VirtualCardRef> &cards, std::string category);
-
-	
-
+    
+    static RealCardRef create(std::string category);
+    void setup(std::string category);
+    void loadXML(const char *file, std::vector<VirtualCardRef> &cards, std::string category);
+    
 private:
-
-	std::vector<VirtualCardRef> vCards;
-
-
-
+    
+    std::vector<VirtualCardRef> vCards;
+    
+    
+    
 };
