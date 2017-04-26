@@ -83,7 +83,7 @@ void VirtualCard::setup(ci::Color color)
 
 
     //Just so it dosent take all of the screen...
-    setScale(0.6, 0.6);
+    setScale(_scale, _scale);
 
     addChild(mBaseShape);
     addChild(textur);
@@ -110,9 +110,10 @@ void VirtualCard::onTouchDown(po::scene::TouchEvent &event){
         mIsPressed = true;
         touchId.push_back(event.getId());
         events.push_back(event);
-
         textFig->setVisible(true);
         textContent->setVisible(true);
+
+        pPos.push_back(event.getScenePos());
 
 
         // Moves the card to drawn at the front
@@ -136,9 +137,14 @@ void VirtualCard::onTouchDragged(po::scene::TouchEvent &event){
         ci::vec2 newPosition = mInitialPos + (mEndPos - mStartPos);
         setPosition(newPosition);
     }
-    /*if(events.size() >= 2) {
-        scale(events[0].getLocalPos(), events[0].getLocalPos(), events[1].getLocalPos(), events[1].getLocalPos());
-    }*/
+    if(events.size() >= 2) {
+        scale(getParent()->windowToLocal(events[0].getWindowPos()), getParent()->windowToLocal(pPos[0]), getParent()->windowToLocal(events[1].getWindowPos()), getParent()->windowToLocal(pPos[1]));
+    }
+    for (int i = 0; i<events.size(); ++i) {
+        if (events[i].getId() == event.getId()){
+            pPos[i]=event.getWindowPos();
+        }
+    }
 
 
 
@@ -185,9 +191,9 @@ void VirtualCard::removeTouchEvent(po::scene::TouchEvent tEvent){
 void VirtualCard::scale(ci::vec2 pos1, ci::vec2 pPos1, ci::vec2 pos2, ci::vec2 pPos2 ){
     float currentDistance = sqrt(pow(pos1[0]-pos2[0], 2) + pow(pos1[1]-pos2[1], 2) );
     float previousDistance = sqrt(pow(pPos1[0]-pPos2[0], 2) + pow(pPos1[1]-pPos2[1], 2) );
-    // Guard against division by zero
-    if (previousDistance != 0) {
-        _scale *= currentDistance / previousDistance;
+    // Guard against division by zero & nan
+    if (previousDistance != 0 && previousDistance == previousDistance) {
+        _scale = currentDistance / previousDistance; // should be *=
         setScale(_scale);
     }
 }

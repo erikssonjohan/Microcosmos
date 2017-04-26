@@ -53,13 +53,15 @@ private:
     //touch vector
     std::vector<uint32_t> touchId;
     std::vector<po::scene::TouchEvent> events;
+    std::vector<vec2> pPos;
+
 
     po::scene::ShapeRef textFig;
     po::scene::TextBoxRef textContent;
     
     float angle = 0.0f;
     std::string _path;
-    float _scale;
+    float _scale = 0.6;
     std::vector<std::string> _categories;
     std::string _header_se;
     std::string _text_se;
