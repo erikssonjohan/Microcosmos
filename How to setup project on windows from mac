@@ -3,7 +3,7 @@ If asked to upgrade the vc2013 project to match vc2015 press "OK"
 Right click your project and go to Properties and set Configuration to "All Configurations" and Platform to "x64"
 
 then go to: C/C++ - General, and set Additional Include Directories to <..\include;"..\..\..\Cinder\include";%(AdditionalIncludeDirectories)>
-then go to: Linker - General, and set Additional Library Directories to <..\..\..\Cinder\lib\msw\$(PlatformTarget);..\..\..\Cinder\lib\msw\$(PlatformTarget)\$(Configuration)\$(PlatformToolset)>
+then go to: Linker - General, and set Additional Library Directories to <..\..\..\Cinder\lib\msw\$(PlatformTarget);..\..\..\Cinder\lib\msw\$(PlatformTarget)\$(Configuration)\$(PlatformToolset);$(OPENCV_DIR)\lib>
 then go to: Resources - General, and set Additional Include Directories to <"..\..\..\Cinder\include";..\include;%(AdditionalIncludeDirectories)>
 
 When adding a new class to a project:
