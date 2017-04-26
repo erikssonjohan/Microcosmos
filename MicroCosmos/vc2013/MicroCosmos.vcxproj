@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -33,7 +34,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
     <WholeProgramOptimization>false</WholeProgramOptimization>
   </PropertyGroup>
@@ -46,7 +47,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
@@ -56,6 +57,7 @@
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="OPENCV3_RELEASE.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
@@ -113,7 +115,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\include;"..\..\github\Cinder\include";..\blocks\OpenCV3\include;..\blocks\poScene\src\poScene;..\blocks\QuickTime\include\msw;..\blocks\QuickTime\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\include;"..\..\..\Cinder\include";..\blocks\OpenCV3\include;..\blocks\poScene\src\poScene;..\blocks\QuickTime\include\msw;..\blocks\QuickTime\include</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_WIN32_WINNT=0x0601;_WINDOWS;NOMINMAX;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -123,11 +125,11 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <ResourceCompile>
-      <AdditionalIncludeDirectories>"..\..\github\Cinder\include";..\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>"..\..\..\Cinder\include";..\include</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
       <AdditionalDependencies>cinder.lib;OpenGL32.lib;%(AdditionalDependencies);..\blocks\QuickTime\lib\msw\x86\CVClient.lib;..\blocks\QuickTime\lib\msw\x86\QTMLClient.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>"..\..\github\Cinder\lib\msw\$(PlatformTarget)";"..\..\github\Cinder\lib\msw\$(PlatformTarget)\$(Configuration)\$(PlatformToolset)\"</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\..\..\Cinder\lib\msw\$(PlatformTarget);..\..\..\Cinder\lib\msw\$(PlatformTarget)\$(Configuration)\$(PlatformToolset);$(OPENCV_DIR)\lib</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
@@ -166,7 +168,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>..\include;"..\..\github\Cinder\include";..\blocks\OpenCV3\include;..\blocks\poScene\src\poScene;..\blocks\QuickTime\include\msw;..\blocks\QuickTime\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\include;"..\..\..\Cinder\include";..\blocks\OpenCV3\include;..\blocks\poScene\src\poScene;..\blocks\QuickTime\include\msw;..\blocks\QuickTime\include</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_WIN32_WINNT=0x0601;_WINDOWS;NOMINMAX;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <PrecompiledHeader />
@@ -178,11 +180,11 @@
       <LinkLibraryDependencies>true</LinkLibraryDependencies>
     </ProjectReference>
     <ResourceCompile>
-      <AdditionalIncludeDirectories>"..\..\github\Cinder\include";..\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>"..\..\..\Cinder\include";..\include</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
       <AdditionalDependencies>cinder.lib;OpenGL32.lib;%(AdditionalDependencies);..\blocks\QuickTime\lib\msw\x86\CVClient.lib;..\blocks\QuickTime\lib\msw\x86\QTMLClient.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>"..\..\github\Cinder\lib\msw\$(PlatformTarget)\";"..\..\github\Cinder\lib\msw\$(PlatformTarget)\$(Configuration)\$(PlatformToolset)\"</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\..\..\Cinder\lib\msw\$(PlatformTarget);..\..\..\Cinder\lib\msw\$(PlatformTarget)\$(Configuration)\$(PlatformToolset);$(OPENCV_DIR)\lib</AdditionalLibraryDirectories>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <GenerateMapFile>true</GenerateMapFile>
       <SubSystem>Windows</SubSystem>
@@ -195,9 +197,19 @@
   <ItemGroup>
     <ResourceCompile Include="Resources.rc" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Text Include="..\src\aruco\src\CMakeLists.txt" />
+  </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <ClCompile Include="..\src\aruco\src\arucofidmarkers.cpp" />
+    <ClCompile Include="..\src\aruco\src\board.cpp" />
+    <ClCompile Include="..\src\aruco\src\boarddetector.cpp" />
+    <ClCompile Include="..\src\aruco\src\cameraparameters.cpp" />
+    <ClCompile Include="..\src\aruco\src\cvdrawingutils.cpp" />
+    <ClCompile Include="..\src\aruco\src\marker.cpp" />
+    <ClCompile Include="..\src\aruco\src\markerdetector.cpp" />
+    <ClCompile Include="..\src\MicroCosmos.cpp" />
     <ClCompile Include="..\src\MicroCosmosApp.cpp" />
     <ClCompile Include="..\blocks\poScene\src\poScene\poEventCenter.cpp" />
     <ClCompile Include="..\blocks\poScene\src\poScene\poEvents.cpp" />
@@ -208,8 +220,13 @@
     <ClCompile Include="..\blocks\poScene\src\poScene\poScene.cpp" />
     <ClCompile Include="..\blocks\poScene\src\poScene\poShape.cpp" />
     <ClCompile Include="..\blocks\poScene\src\poScene\poTextBox.cpp" />
+    <ClCompile Include="..\src\RealCard.cpp" />
+    <ClCompile Include="..\src\Tracking.cpp" />
+    <ClCompile Include="..\src\VirtualCard.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\include\MicroCosmos.hpp" />
+    <ClInclude Include="..\include\RealCard.h" />
     <ClInclude Include="..\include\Resources.h" />
     <ClInclude Include="..\blocks\OpenCV3\include\CinderOpenCV.h" />
     <ClInclude Include="..\blocks\poScene\src\poScene\poEventCenter.h" />
@@ -223,6 +240,17 @@
     <ClInclude Include="..\blocks\poScene\src\poScene\poTextBox.h" />
     <ClInclude Include="..\blocks\poScene\src\poScene\poTextureFit.h" />
     <ClInclude Include="..\blocks\poScene\src\poScene\poVideo.h" />
+    <ClInclude Include="..\include\VirtualCard.hpp" />
+    <ClInclude Include="..\src\aruco\src\aruco.h" />
+    <ClInclude Include="..\src\aruco\src\arucofidmarkers.h" />
+    <ClInclude Include="..\src\aruco\src\board.h" />
+    <ClInclude Include="..\src\aruco\src\boarddetector.h" />
+    <ClInclude Include="..\src\aruco\src\cameraparameters.h" />
+    <ClInclude Include="..\src\aruco\src\cvdrawingutils.h" />
+    <ClInclude Include="..\src\aruco\src\exports.h" />
+    <ClInclude Include="..\src\aruco\src\marker.h" />
+    <ClInclude Include="..\src\aruco\src\markerdetector.h" />
+    <ClInclude Include="..\src\Tracking.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />
