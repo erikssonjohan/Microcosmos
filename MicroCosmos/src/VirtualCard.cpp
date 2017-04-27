@@ -57,6 +57,7 @@ void VirtualCard::setup(ci::Color color)
 
     ci::gl::TextureRef img =  ci::gl::Texture::create(ci::loadImage(ci::app::loadAsset(_path) ));
 
+    
     //  create and add the shape to the node container
     mBaseShape = Shape::createRect(img->getWidth()+border*2, img->getHeight()+border*2);
     mBaseColor = color;
@@ -83,7 +84,9 @@ void VirtualCard::setup(ci::Color color)
 
 
     //Just so it dosent take all of the screen...
-    setScale(_scale, _scale);
+    setScale(_scale);
+    
+    setAlignment(po::scene::Alignment::CENTER_CENTER);
 
     addChild(mBaseShape);
     addChild(textur);
@@ -105,6 +108,11 @@ void VirtualCard::setup(ci::Color color)
 }
 
 void VirtualCard::onTouchDown(po::scene::TouchEvent &event){
+    
+    if (event.getLocalPos().x <= 100 && event.getLocalPos().y <=100) {
+        std::cout << "hjk" << std::endl;
+    }
+    
     if (!idInCard(event.getId())) {
         std::cout << "tryck " << event.getId() << std::endl;
         mIsPressed = true;
@@ -130,11 +138,14 @@ void VirtualCard::onTouchDown(po::scene::TouchEvent &event){
     }
 }
 
+
 //	Touch dragged event handler
 void VirtualCard::onTouchDragged(po::scene::TouchEvent &event){
     if (idInCard(event.getId()) && touchId[0] == event.getId()) {
         mEndPos = getParent()->windowToLocal(event.getWindowPos());
-        ci::vec2 newPosition = mInitialPos + (mEndPos - mStartPos);
+        ci::vec2 newPosition = (mInitialPos + (mEndPos - mStartPos));
+        //newPosition.x *=0.5;
+        //newPosition.y *=0.5;
         setPosition(newPosition);
         
     }
@@ -193,14 +204,13 @@ void VirtualCard::removeTouchEvent(po::scene::TouchEvent tEvent){
 }
 
 void VirtualCard::scale(ci::vec2 pos1, ci::vec2 pPos1, ci::vec2 pos2, ci::vec2 pPos2 ){
-    std::cout <<  "scale: -> " << pos1 << "/" << pPos1<< "/" << pos2 << "/" << pPos2 << std::endl;
+    
     float currentDistance = sqrt(pow(pos1[0]-pos2[0], 2) + pow(pos1[1]-pos2[1], 2) );
     float previousDistance = sqrt(pow(pPos1[0]-pPos2[0], 2) + pow(pPos1[1]-pPos2[1], 2) );
-    //std::cout << currentDistance << "/" << previousDistance << std::endl;
+    
     // Guard against division by zero & nan
     if (previousDistance != 0 && previousDistance == previousDistance) {
-        //std::cout << getScale() << "/" << _scale << std::endl;
-        _scale *= currentDistance/previousDistance; // should be *=
+        _scale *= currentDistance/previousDistance;
         //setScale(_scale);
     }
 }

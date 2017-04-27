@@ -61,7 +61,7 @@ private:
     
     float angle = 0.0f;
     std::string _path;
-    float _scale = 0.6;
+    float _scale = 0.4;
     std::vector<std::string> _categories;
     std::string _header_se;
     std::string _text_se;
