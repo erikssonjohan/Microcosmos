@@ -7,6 +7,8 @@
 //
 
 #include "Tracking.hpp"
+#include <iostream>
+
 
 using namespace ci;
 using namespace ci::app;
@@ -19,14 +21,39 @@ void Tracking::printDevices() {
     }
 }
 
+void Tracking::calibration(){
+    char press;
+    cout << "Calibration: y/N" << endl;
+    cin >> press;
+    if(press == 'y'){
+        cout << "YES" << endl;
+        
+        execl("/Users/DavidTran/Documents/LinkopingUniversitetSkola/TNM094-Kandidat/aruco-2.0.19/cmake-build-debug/utils_calibration/aruco_calibration", "-live", "camera_results.yml", "-size", "0.034", "-m", "aruco_calibration_board_a4.yml", (char *)NULL);
+      
+    }
+    else if(press == 'N') {
+        cout << "Continue with program.." << endl;
+    }
+    else{
+        cout << "Invalid character" << endl;
+    }
+}
+
+void Tracking::readYML(){
+    bool check = false;
+    
+    //mCamParam.readFromXMLFile("Path to YML");
+}
 
 void Tracking::setup() {
     //print cameras and init camera capture
     printDevices();
+    calibration();
     try {
         mCapture = Capture::create( 640, 480 );
         mCapture->start();
-        //mCamParam.readFromXMLFile("Path to YML");
+        
+        
     }
     catch( ci::Exception &exc ) {
         CI_LOG_EXCEPTION( "Failed to init capture ", exc );
@@ -49,7 +76,6 @@ void Tracking::update() {
     //mCamParam.resize(input.size());
     //mMarkerDetector.detect(input, mMarkers, mCamParam, 0.028f);
 }
-
 
 
 void Tracking::draw() {

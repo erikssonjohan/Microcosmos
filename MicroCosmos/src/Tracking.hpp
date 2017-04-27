@@ -35,6 +35,8 @@ public:
     void update();
     void draw();
     void printDevices();
+    void readYML();
+    void calibration();
     
 private:
     aruco::CameraParameters mCamParam;
