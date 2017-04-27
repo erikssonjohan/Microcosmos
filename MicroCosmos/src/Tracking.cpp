@@ -26,7 +26,7 @@ void Tracking::setup() {
     try {
         mCapture = Capture::create( 640, 480 );
         mCapture->start();
-        mCamParam.readFromXMLFile("Path to YML");
+        //mCamParam.readFromXMLFile("Path to YML");
     }
     catch( ci::Exception &exc ) {
         CI_LOG_EXCEPTION( "Failed to init capture ", exc );
@@ -45,9 +45,9 @@ void Tracking::update() {
     }
     
     mTexture->update(*mCapture->getSurface());
-    cv::Mat input = toOcv(Surface(Channel8u(mTexture->createSource())));
-    mCamParam.resize(input.size());
-    mMarkerDetector.detect(input, mMarkers, mCamParam, 0.028f);
+    //cv::Mat input = toOcv(Surface(Channel8u(mTexture->createSource())));
+    //mCamParam.resize(input.size());
+    //mMarkerDetector.detect(input, mMarkers, mCamParam, 0.028f);
 }
 
 
