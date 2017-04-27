@@ -67,20 +67,36 @@ void VirtualCard::setup(ci::Color color)
     textur->setPosition(border, border);
 
 
-    // text
-    // TODO:: make it less static and might need some fixes. just did it to test, not sure if its the best way // JE
-    textFig = Shape::createRect(400, img->getHeight()+border*2);
-    textFig->setFillColor(0,0,0,0.8);
-    textFig->setPosition(img->getWidth()+border*2, 0);
-    ci::TextBox ciTextBox = ci::TextBox();
-    //auto textB = po::scene::TextBox::create(ciTextBox);
-    ciTextBox.size(300, 500);
-    ciTextBox.color(ci::Color(1, 1, 1));
-    ciTextBox.text(_text_se);
-    ciTextBox.alignment(ci::TextBox::Alignment::LEFT);
-    ciTextBox.font(ci::Font("Arial", 20));
-    textContent = po::scene::TextBox::create(ciTextBox);
-    textContent->setPosition(img->getWidth()+border*6, 100);
+	// text
+	// TODO:: make it less static and might need some fixes. just did it to test, not sure if its the best way // JE
+	textFig = Shape::createRect(400, img->getHeight() + border * 2);
+	textFig->setFillColor(0, 0, 0, 0.8);
+	textFig->setPosition(img->getWidth() + border * 2, 0);
+	buttonFig = Shape::createRect(img->getWidth() / 10, img->getHeight() / 10);
+	buttonFig->setFillColor(0, 0, 0, 0.8);
+
+	ci::TextBox ciTextBox = ci::TextBox();
+	//auto textB = po::scene::TextBox::create(ciTextBox);
+	ciTextBox.size(300, 500);
+	ciTextBox.color(ci::Color(1, 1, 1));
+	ciTextBox.alignment(ci::TextBox::Alignment::LEFT);
+	ciTextBox.font(ci::Font("Arial", 20));
+	ci::TextBox ciButtonBox = ci::TextBox();
+	ciButtonBox.size(img->getWidth() / 10, img->getHeight() / 10);
+	ciButtonBox.color(ci::Color(1, 1, 1));
+	ciButtonBox.alignment(ci::TextBox::Alignment::CENTER);
+	ciButtonBox.font(ci::Font("Arial", 25));
+
+	ciTextBox.text(_text_se);
+	textContentS = po::scene::TextBox::create(ciTextBox);
+	textContentS->setPosition(img->getWidth() + border * 6, 100);
+	ciTextBox.text(_text_en);
+	textContentE = po::scene::TextBox::create(ciTextBox);
+	textContentE->setPosition(img->getWidth() + border * 6, 100);
+	ciButtonBox.text("SWE");
+	SWE = po::scene::TextBox::create(ciButtonBox);
+	ciButtonBox.text("ENG");
+	ENG = po::scene::TextBox::create(ciButtonBox);
 
 
     //Just so it dosent take all of the screen...
@@ -88,14 +104,22 @@ void VirtualCard::setup(ci::Color color)
     
     setAlignment(po::scene::Alignment::CENTER_CENTER);
 
-    addChild(mBaseShape);
-    addChild(textur);
-    addChild(textFig);
-    addChild(textContent);
-    setName(_header_se);
+	addChild(mBaseShape);
+	addChild(textur);
+	addChild(textFig);
+	addChild(textContentS);
+	addChild(textContentE);
+	setName(_header_se);
+	addChild(buttonFig);
+	addChild(SWE);
+	addChild(ENG);
 
-    textFig->setVisible(false);
-    textContent->setVisible(false);
+	textFig->setVisible(false);
+	textContentS->setVisible(false);
+	textContentE->setVisible(false);
+	buttonFig->setVisible(false);
+	SWE->setVisible(false);
+	ENG->setVisible(false);
 
 
     getSignal(po::scene::TouchEvent::BEGAN_INSIDE).connect(std::bind(&VirtualCard::onTouchDown, this, std::placeholders::_1));
@@ -118,11 +142,8 @@ void VirtualCard::onTouchDown(po::scene::TouchEvent &event){
         mIsPressed = true;
         touchId.push_back(event.getId());
         events.push_back(event);
-        textFig->setVisible(true);
-        textContent->setVisible(true);
 
         pPos.push_back(event.getScenePos());
-
 
         // Moves the card to drawn at the front
         getParent()->moveChildToFront(getParent()->getChildByName(this->getName()));
@@ -133,8 +154,6 @@ void VirtualCard::onTouchDown(po::scene::TouchEvent &event){
             mStartPos = getParent()->windowToLocal(event.getWindowPos());
             mEndPos = getParent()->windowToLocal(event.getWindowPos());
         }
-
-
     }
 }
 
@@ -166,11 +185,52 @@ void VirtualCard::onTouchDragged(po::scene::TouchEvent &event){
 
 //	Touch up event handler
 void VirtualCard::onTouchUp(po::scene::TouchEvent &event){
-    if (idInCard(event.getId())) {
-        mIsPressed = false;
-        removeTouchId(event.getId());
-        removeTouchEvent(event);
-    }
+	if (idInCard(event.getId()))
+	{
+		if (touchInButton(event))
+		{
+			//console() << "X = " << event.getLocalPos().x << ", Y =" << event.getLocalPos().y << std::endl;
+			if (textSWE)
+			{
+				textContentE->setVisible(true);
+				textContentS->setVisible(false);
+				ENG->setVisible(true);
+				SWE->setVisible(false);
+
+				textSWE = false;
+			}
+			else
+			{
+				textContentS->setVisible(true);
+				textContentE->setVisible(false);
+				SWE->setVisible(true);
+				ENG->setVisible(false);
+
+				textSWE = true;
+			}
+		}
+		else if (textVisible)
+		{
+			textFig->setVisible(false);
+			textContentS->setVisible(false);
+			textContentE->setVisible(false);
+			buttonFig->setVisible(false);
+			SWE->setVisible(false);
+			ENG->setVisible(false);
+			textVisible = false;
+		}
+		else
+		{
+			textFig->setVisible(true);
+			textContentS->setVisible(true);
+			buttonFig->setVisible(true);
+			SWE->setVisible(true);
+			textVisible = true;
+		}
+		mIsPressed = false;
+		removeTouchId(event.getId());
+		removeTouchEvent(event);
+	}
 }
 
 bool VirtualCard::idInCard(uint32_t id){
@@ -181,6 +241,12 @@ bool VirtualCard::idInCard(uint32_t id){
         }
     }
     return false;
+}
+bool VirtualCard::touchInButton(po::scene::TouchEvent event) {
+	if (event.getLocalPos().x <= 100 && event.getLocalPos().y <= 100) {
+		return true;
+	}
+	return false;
 }
 
 void VirtualCard::removeTouchId(uint32_t id){

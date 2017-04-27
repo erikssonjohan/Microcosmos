@@ -30,7 +30,7 @@ void Tracking::calibration(){
     if(press == 'y'){
         cout << "YES" << endl;
         
-        execl("/Users/oscar/Downloads/aruco-2.0.19/cmake-build-debug/utils_calibration/aruco_calibration", "aruco_calibration", "live", "camera_results.yml", "-size", "0.034", "-m", "/Users/oscar/Downloads/aruco-2.0.19/cmake-build-debug/utils_calibration/aruco_calibration_board_a4.yml", (char*)0);
+        //execl("/Users/oscar/Downloads/aruco-2.0.19/cmake-build-debug/utils_calibration/aruco_calibration", "aruco_calibration", "live", "camera_results.yml", "-size", "0.034", "-m", "/Users/oscar/Downloads/aruco-2.0.19/cmake-build-debug/utils_calibration/aruco_calibration_board_a4.yml", (char*)0);
         
         perror("execl() failure!\n\n");
 

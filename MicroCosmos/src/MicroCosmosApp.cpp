@@ -15,6 +15,7 @@
 #include "aruco/src/cameraparameters.h"
 #include "Tracking.hpp"
 
+#pragma warning( disable : 4290 )
 
 using namespace ci;
 using namespace ci::app;
@@ -92,7 +93,7 @@ void MicroCosmosApp::draw()
     }
 
     //display output from camera
-    //mTrack.draw();
+    mTrack.draw();
 
 }
 

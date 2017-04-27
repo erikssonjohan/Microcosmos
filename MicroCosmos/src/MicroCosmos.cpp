@@ -25,7 +25,7 @@ void MicroCosmos::setup(){
      //I created a demo2.xml containing all cards with images but no videos, but the images are not added to the repo
      //Good to know: inside RealCard.cpp the you also have to write the name of the xml-file, they are not liked yet
      
-     /*
+     
      std::vector<std::string> categories;
      uniqueCategories("demo.xml", categories);
      
@@ -35,8 +35,8 @@ void MicroCosmos::setup(){
      rcards[i]->setPosition(i*300, i*100);
      addChild(rcards[i]);
      }
-    */
-	initStandby();
+    
+	//initStandby();
     RealCardRef ref = RealCard::create("");
     ref->setPosition(500, 300);
     addChild(ref);

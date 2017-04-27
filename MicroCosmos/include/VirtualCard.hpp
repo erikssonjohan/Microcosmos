@@ -43,7 +43,8 @@ protected:
 private:
 
     float border = 10;
-
+	bool textVisible = false;
+	bool textSWE = true;
 
 
     po::scene::ShapeRef mBaseShape;
@@ -55,10 +56,13 @@ private:
     std::vector<po::scene::TouchEvent> events;
     std::vector<vec2> pPos;
 
+	po::scene::ShapeRef textFig;
+	po::scene::TextBoxRef textContentS;
+	po::scene::TextBoxRef textContentE;
+	po::scene::ShapeRef buttonFig;
+	po::scene::TextBoxRef SWE;
+	po::scene::TextBoxRef ENG;
 
-    po::scene::ShapeRef textFig;
-    po::scene::TextBoxRef textContent;
-    
     float angle = 0.0f;
     std::string _path;
     float _scale = 0.4;
@@ -76,6 +80,9 @@ private:
 
     // Checks if card has the touch id
     bool idInCard(uint32_t id);
+
+	//Checks if touch is in button
+	bool touchInButton(po::scene::TouchEvent event);
 
     //removes touch id from card
     void removeTouchEvent(po::scene::TouchEvent tEvent);
