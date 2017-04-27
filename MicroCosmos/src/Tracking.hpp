@@ -37,6 +37,10 @@ public:
     void printDevices();
     void calibration();
     
+    void setCorners(vec3 p0, vec3 p1, vec3 p2); //save camera coordinates for screen corners
+    vec2 getScreenCoordinates(vec3 markerPos); //convert camera coordinates to screen coordinates
+
+    
 private:
     aruco::CameraParameters mCamParam;
     aruco::MarkerDetector mMarkerDetector;
@@ -45,8 +49,15 @@ private:
     CaptureRef mCapture;
     Surface mSurf;
     gl::TextureRef mTexture;
+
     cv::Mat input;
+
     map<int, vector<double>> _markerMap;
+
+    
+    //corners of the screen in camera coordinates
+    vec3 p0,p1,p2; //p0 is (0,0) on screen, p1 is (1,0) and p2 is (0,1)
+    vec3 normX, normY; //vectors that makes calculations easier
 
 };
 

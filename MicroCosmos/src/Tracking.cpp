@@ -15,6 +15,27 @@ using namespace ci::app;
 using namespace std;
 
 
+
+//Save camera coordinates for the corners of the screen
+void Tracking::setCorners(vec3 P0, vec3 P1, vec3 P2)
+{
+    p0 = P0; p1 = P1; p2 = P2;
+    normX = normalize(p1 - p0);
+    normY = normalize(p2-p0);
+}
+
+//Returns Screen coordinates between 0 and 1
+vec2 Tracking::getScreenCoordinates(vec3 markerPos)
+{
+    
+    vec3 x = glm::dot((markerPos - p0), normX)*normX; // /glm::length(p1-p0);
+    vec3 y = glm::dot((markerPos - p0), normY)*normY; // /glm::length(p2-p0);
+    
+    //If it is not between 0 and 1 it is wrong! Try dividing with legth of X and Y
+    
+    return vec2(glm::length(x),glm::length(y));
+}
+
 void Tracking::printDevices() {
     for( const auto &device : Capture::getDevices() ) {
         console() << "Device: " << device->getName() << " " << endl;
