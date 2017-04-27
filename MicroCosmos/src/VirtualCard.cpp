@@ -136,13 +136,16 @@ void VirtualCard::onTouchDragged(po::scene::TouchEvent &event){
         mEndPos = getParent()->windowToLocal(event.getWindowPos());
         ci::vec2 newPosition = mInitialPos + (mEndPos - mStartPos);
         setPosition(newPosition);
+        
     }
     if(events.size() >= 2) {
-        scale(getParent()->windowToLocal(events[0].getWindowPos()), getParent()->windowToLocal(pPos[0]), getParent()->windowToLocal(events[1].getWindowPos()), getParent()->windowToLocal(pPos[1]));
+        scale(events[0].getScenePos(), pPos[0], events[1].getScenePos(), pPos[1]);
+        setScale(_scale);
     }
     for (int i = 0; i<events.size(); ++i) {
         if (events[i].getId() == event.getId()){
-            pPos[i]=event.getWindowPos();
+            pPos[i]=events[i].getScenePos();
+            events[i]=event;
         }
     }
 
@@ -184,17 +187,21 @@ void VirtualCard::removeTouchEvent(po::scene::TouchEvent tEvent){
     for (int i = 0; i<events.size(); ++i) {
         if(events[i].getId() == tEvent.getId()){
             events.erase(events.begin()+i);
+            pPos.erase(pPos.begin()+i);
         }
     }
 }
 
 void VirtualCard::scale(ci::vec2 pos1, ci::vec2 pPos1, ci::vec2 pos2, ci::vec2 pPos2 ){
+    std::cout <<  "scale: -> " << pos1 << "/" << pPos1<< "/" << pos2 << "/" << pPos2 << std::endl;
     float currentDistance = sqrt(pow(pos1[0]-pos2[0], 2) + pow(pos1[1]-pos2[1], 2) );
     float previousDistance = sqrt(pow(pPos1[0]-pPos2[0], 2) + pow(pPos1[1]-pPos2[1], 2) );
+    //std::cout << currentDistance << "/" << previousDistance << std::endl;
     // Guard against division by zero & nan
     if (previousDistance != 0 && previousDistance == previousDistance) {
-        _scale = currentDistance / previousDistance; // should be *=
-        setScale(_scale);
+        //std::cout << getScale() << "/" << _scale << std::endl;
+        _scale *= currentDistance/previousDistance; // should be *=
+        //setScale(_scale);
     }
 }
 
