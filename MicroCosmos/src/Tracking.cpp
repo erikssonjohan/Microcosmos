@@ -23,14 +23,19 @@ void Tracking::printDevices() {
 
 void Tracking::calibration(){
     char press;
+    
     cout << "Calibration: y/N" << endl;
     cin >> press;
+  
     if(press == 'y'){
         cout << "YES" << endl;
         
-        //execl("/Users/DavidTran/Documents/LinkopingUniversitetSkola/TNM094-Kandidat/aruco-2.0.19/cmake-build-debug/utils_calibration/aruco_calibration", "-live", "camera_results.yml", "-size", "0.034", "-m", "aruco_calibration_board_a4.yml", (char *)NULL);
-      
+        execl("/Users/oscar/Downloads/aruco-2.0.19/cmake-build-debug/utils_calibration/aruco_calibration", "aruco_calibration", "live", "camera_results.yml", "-size", "0.034", "-m", "/Users/oscar/Downloads/aruco-2.0.19/cmake-build-debug/utils_calibration/aruco_calibration_board_a4.yml", (char*)0);
+        
+        perror("execl() failure!\n\n");
+
     }
+    
     else if(press == 'N') {
         cout << "Continue with program.." << endl;
     }
@@ -39,24 +44,19 @@ void Tracking::calibration(){
     }
 }
 
-void Tracking::readYML(){
-    bool check = false;
-    
-    //mCamParam.readFromXMLFile("Path to YML");
-}
-
 void Tracking::setup() {
+    mCamParam.readFromXMLFile("/Users/oscar/Documents/TNM094-Media-navigering/MicroCosmos/assets/camera_results.yml");
+
     //print cameras and init camera capture
     printDevices();
-    calibration();
+    //calibration();
     try {
         mCapture = Capture::create( 640, 480 );
         mCapture->start();
-        
-        
     }
     catch( ci::Exception &exc ) {
         CI_LOG_EXCEPTION( "Failed to init capture ", exc );
+        exit(1);
     }
 }
 
@@ -70,37 +70,31 @@ void Tracking::update() {
         mTexture = gl::Texture::create(*mCapture->getSurface(), gl::Texture::Format().loadTopDown());
         mSurf = Surface(Channel8u(mTexture->createSource()));
     }
-    
+
+    //Read in update-loop due to resize() every frame
+    mCamParam.readFromXMLFile("/Users/oscar/Documents/TNM094-Media-navigering/MicroCosmos/assets/camera_results.yml");
+
     mTexture->update(*mCapture->getSurface());
-    //cv::Mat input = toOcv(Surface(Channel8u(mTexture->createSource())));
-    //mCamParam.resize(input.size());
-    //mMarkerDetector.detect(input, mMarkers, mCamParam, 0.028f);
+    input = toOcv(Surface(Channel8u(mTexture->createSource())));
+    mCamParam.resize(input.size());
+
+    //aruco::MarkerDetector mMarkerDetector;
+    mMarkerDetector.detect(input, mMarkers, mCamParam, 0.028f);
+    for (auto i : mMarkers) {
+        double pos[3];
+        double rot[4];
+        i.OgreGetPoseParameters(pos, rot);
+        cout << "Pos " << "X: " << pos[0] << " Y: "  << pos[1] << " Z: " << pos[2] << endl;
+    }
 }
 
 
 void Tracking::draw() {
-    double pos[3];
-    double rot[4];
 
     gl::enableAlphaBlending();
     gl::color( ColorA(1,1,1,1.0f) );
 
     if( mTexture ) {
         gl::draw( mTexture );
-    }
-
-    for(int i=0; i<mMarkers.size(); i++) {
-        gl::color(ColorA(i*0.02,i*0.08,i*0.08,0.7f));
-
-        mMarkers[i].OgreGetPoseParameters(pos, rot);
-        cout << "MarkerId " << mMarkers[i].id << endl;
-        cout << "Pos " << "X: " << pos[1] << " Y: "  << pos[2] << " Z: " << pos[3] << endl;
-        cout << "Center: " << mMarkers[i].getCenter() << endl;
-
-        for( int ii = 0; ii < mMarkers[i].size(); ii++) {
-            gl::drawSolidCircle(vec2(mMarkers[i][ii].x, mMarkers[i][ii].y), 10.0f);
-            std::cout << "Marker x: " << mMarkers[i][ii].x << " Marker y: " << mMarkers[i][ii].y << " Marker y: " << endl;
-        }
-        gl::drawSolidCircle(vec2(pos[1],pos[2]), 10.0f);
     }
 }

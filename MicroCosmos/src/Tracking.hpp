@@ -35,7 +35,6 @@ public:
     void update();
     void draw();
     void printDevices();
-    void readYML();
     void calibration();
     
 private:
@@ -46,6 +45,7 @@ private:
     CaptureRef mCapture;
     Surface mSurf;
     gl::TextureRef mTexture;
+    cv::Mat input;
 };
 
 #endif /* Tracking_hpp */
