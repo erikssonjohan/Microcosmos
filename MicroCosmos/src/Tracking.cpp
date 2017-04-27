@@ -26,6 +26,7 @@ void Tracking::setup() {
     try {
         mCapture = Capture::create( 640, 480 );
         mCapture->start();
+        mCamParam.readFromXMLFile("Path to YML");
     }
     catch( ci::Exception &exc ) {
         CI_LOG_EXCEPTION( "Failed to init capture ", exc );
@@ -34,19 +35,21 @@ void Tracking::setup() {
 
 
 void Tracking::update() {
-    if( mCapture && mCapture->checkNewFrame()) {
-        if(!mTexture) {
-            // Capture images come back as top-down, and it's more efficient to keep them that way
-            mTexture = gl::Texture::create(*mCapture->getSurface(), gl::Texture::Format().loadTopDown());
-            mSurf = Surface(Channel8u(mTexture->createSource()));
-        }
-        else {
-            mTexture->update(*mCapture->getSurface());
-            cv::Mat input = toOcv(Surface(Channel8u(mTexture->createSource())));
-            mMarkerDetector.detect(input, mMarkers);
-        }
+    if( !mCapture || !mCapture->checkNewFrame())
+        return;
+    
+    if(!mTexture) {
+        // Capture images come back as top-down, and it's more efficient to keep them that way
+        mTexture = gl::Texture::create(*mCapture->getSurface(), gl::Texture::Format().loadTopDown());
+        mSurf = Surface(Channel8u(mTexture->createSource()));
     }
+    
+    mTexture->update(*mCapture->getSurface());
+    cv::Mat input = toOcv(Surface(Channel8u(mTexture->createSource())));
+    mCamParam.resize(input.size());
+    mMarkerDetector.detect(input, mMarkers, mCamParam, 0.028f);
 }
+
 
 
 void Tracking::draw() {
