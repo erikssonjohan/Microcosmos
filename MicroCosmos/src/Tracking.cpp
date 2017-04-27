@@ -84,7 +84,14 @@ void Tracking::update() {
         double pos[3];
         double rot[4];
         i.OgreGetPoseParameters(pos, rot);
-        cout << "Pos " << "X: " << pos[0] << " Y: "  << pos[1] << " Z: " << pos[2] << endl;
+        //cout << "Pos " << "X: " << pos[0] << " Y: "  << pos[1] << " Z: " << pos[2] << endl;
+        _markerMap.insert(pair<int,vector<double>>(i.id,{pos[0],pos[1],pos[2]}));
+        }
+    
+    for (const auto t : _markerMap) {
+        cout << "ID: " << t.first << " POS: ";
+        for(auto it2 = t.second.begin(); it2 != t.second.end(); ++it2)
+            cout << *it2 << endl;
     }
 }
 

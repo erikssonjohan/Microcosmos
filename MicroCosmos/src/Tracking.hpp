@@ -46,6 +46,8 @@ private:
     Surface mSurf;
     gl::TextureRef mTexture;
     cv::Mat input;
+    map<int, vector<double>> _markerMap;
+
 };
 
 #endif /* Tracking_hpp */
