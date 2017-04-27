@@ -45,7 +45,6 @@ void Tracking::calibration(){
 }
 
 void Tracking::setup() {
-    mCamParam.readFromXMLFile("/Users/oscar/Documents/TNM094-Media-navigering/MicroCosmos/assets/camera_results.yml");
 
     //print cameras and init camera capture
     printDevices();
@@ -72,7 +71,8 @@ void Tracking::update() {
     }
 
     //Read in update-loop due to resize() every frame
-    mCamParam.readFromXMLFile("/Users/oscar/Documents/TNM094-Media-navigering/MicroCosmos/assets/camera_results.yml");
+    //mCamParam.readFromXMLFile("/Users/oscar/Documents/TNM094-Media-navigering/MicroCosmos/assets/camera_results.yml");
+    //mCamParam.readFromXMLFile("/Users/oscar/Documents/TNM094-Media-navigering/MicroCosmos/assets/camera_results.yml");
 
     mTexture->update(*mCapture->getSurface());
     input = toOcv(Surface(Channel8u(mTexture->createSource())));
@@ -84,14 +84,12 @@ void Tracking::update() {
         double pos[3];
         double rot[4];
         i.OgreGetPoseParameters(pos, rot);
-        //cout << "Pos " << "X: " << pos[0] << " Y: "  << pos[1] << " Z: " << pos[2] << endl;
         _markerMap.insert(pair<int,vector<double>>(i.id,{pos[0],pos[1],pos[2]}));
+        for (const auto t : _markerMap) {
+            cout << "ID: " << t.first << " POS: ";
+            for(auto it2 = t.second.begin(); it2 != t.second.end(); ++it2)
+                cout << *it2 << endl;
         }
-    
-    for (const auto t : _markerMap) {
-        cout << "ID: " << t.first << " POS: ";
-        for(auto it2 = t.second.begin(); it2 != t.second.end(); ++it2)
-            cout << *it2 << endl;
     }
 }
 
