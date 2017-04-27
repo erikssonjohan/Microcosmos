@@ -36,8 +36,8 @@ void MicroCosmos::setup(){
      addChild(rcards[i]);
      }
     */
-    
-    RealCardRef ref = RealCard::create("gener");
+	initStandby();
+    RealCardRef ref = RealCard::create("");
     ref->setPosition(500, 300);
     addChild(ref);
     
@@ -89,3 +89,22 @@ void MicroCosmos::onTouchUp(po::scene::TouchEvent &event) {
     
 }
 
+void MicroCosmos::initStandby() {
+
+	std::string standbyText = "WELCOME TO MICROCOSMOS!\n\n PLEASE PUT A CARD ON THE TABLE!";
+	ci::TextBox TextBox = ci::TextBox();
+	TextBox.size(300, 500);
+	TextBox.color(ci::Color(1, 1, 1));
+	TextBox.text(standbyText);
+	TextBox.alignment(ci::TextBox::Alignment::CENTER);
+	TextBox.font(ci::Font("Arial", 45));
+	standbyContent = po::scene::TextBox::create(TextBox);
+	standbyContent->setPosition(600, 50);
+	addChild(standbyContent);
+
+
+	//ci::app::timeline().apply(&standbyContent->getPositionAnim(), ci::vec2(standbyContent->getPosition().x, -standbyContent->getHeight()), 7.0f).easeFn(ci::EaseInSine()).loop();
+
+
+
+}

@@ -28,7 +28,7 @@ void Tracking::calibration(){
     if(press == 'y'){
         cout << "YES" << endl;
         
-        execl("/Users/DavidTran/Documents/LinkopingUniversitetSkola/TNM094-Kandidat/aruco-2.0.19/cmake-build-debug/utils_calibration/aruco_calibration", "-live", "camera_results.yml", "-size", "0.034", "-m", "aruco_calibration_board_a4.yml", (char *)NULL);
+        //execl("/Users/DavidTran/Documents/LinkopingUniversitetSkola/TNM094-Kandidat/aruco-2.0.19/cmake-build-debug/utils_calibration/aruco_calibration", "-live", "camera_results.yml", "-size", "0.034", "-m", "aruco_calibration_board_a4.yml", (char *)NULL);
       
     }
     else if(press == 'N') {

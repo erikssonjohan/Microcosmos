@@ -29,6 +29,7 @@ public:
     
     void uniqueCategories(const char *file, std::vector<std::string> &categories);
     bool stringInVector(std::string category, std::vector<std::string> categories);
+	void initStandby();
     
 protected:
     
@@ -41,6 +42,9 @@ private:
     
     //	Touch up event handler
     void onTouchUp(po::scene::TouchEvent &event);
+
+	po::scene::ShapeRef standByFig;
+	po::scene::TextBoxRef standbyContent;
     
     
 };
