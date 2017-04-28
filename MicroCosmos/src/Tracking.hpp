@@ -36,7 +36,7 @@ public:
     void draw();
     void printDevices();
     void calibration();
-    
+    vector<double> getCornerPos();
     void setCorners(vec3 p0, vec3 p1, vec3 p2); //save camera coordinates for screen corners
     vec2 getScreenCoordinates(vec3 markerPos); //convert camera coordinates to screen coordinates
 

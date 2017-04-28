@@ -9,32 +9,35 @@
 #include "Tracking.hpp"
 #include <iostream>
 
-
 using namespace ci;
 using namespace ci::app;
 using namespace std;
 
+//get position of specific arucomarker
+vector<double> Tracking::getCornerPos() {
+    //set marker
+    std::map<int, vector<double>>::iterator it = _markerMap.find(1);
+    return it->second;
+}
 
 
 //Save camera coordinates for the corners of the screen
-void Tracking::setCorners(vec3 P0, vec3 P1, vec3 P2)
-{
+void Tracking::setCorners(vec3 P0, vec3 P1, vec3 P2) {
     p0 = P0; p1 = P1; p2 = P2;
     normX = normalize(p1 - p0);
     normY = normalize(p2-p0);
 }
 
+
 //Returns Screen coordinates between 0 and 1
-vec2 Tracking::getScreenCoordinates(vec3 markerPos)
-{
-    
+vec2 Tracking::getScreenCoordinates(vec3 markerPos) {
     vec3 x = glm::dot((markerPos - p0), normX)*normX; // /glm::length(p1-p0);
     vec3 y = glm::dot((markerPos - p0), normY)*normY; // /glm::length(p2-p0);
     
     //If it is not between 0 and 1 it is wrong! Try dividing with legth of X and Y
-    
     return vec2(glm::length(x),glm::length(y));
 }
+
 
 void Tracking::printDevices() {
     for( const auto &device : Capture::getDevices() ) {
@@ -42,7 +45,8 @@ void Tracking::printDevices() {
     }
 }
 
-void Tracking::calibration(){
+
+void Tracking::calibration() {
     char press;
     
     cout << "Calibration: y/N" << endl;
@@ -64,6 +68,7 @@ void Tracking::calibration(){
         cout << "Invalid character" << endl;
     }
 }
+
 
 void Tracking::setup() {
 
@@ -101,6 +106,7 @@ void Tracking::update() {
 
     //aruco::MarkerDetector mMarkerDetector;
     mMarkerDetector.detect(input, mMarkers, mCamParam, 0.028f);
+    
     for (auto i : mMarkers) {
         
         double pos[3];
@@ -125,7 +131,6 @@ void Tracking::update() {
 
 
 void Tracking::draw() {
-
     gl::enableAlphaBlending();
     gl::color( ColorA(1,1,1,1.0f) );
 

@@ -136,8 +136,12 @@ void VirtualCard::setup(ci::Color color)
 }
 
 void VirtualCard::onTouchDown(po::scene::TouchEvent &event){
-	start = GetTickCount();
-	//ci::app::timeline().reset;
+	
+#ifdef _WIN32
+    start = GetTickCount();
+#endif
+    
+    //ci::app::timeline().reset;
 	//console() << ci::app::timeline().getCurrentTime() << std::endl;
     if (event.getLocalPos().x <= 100 && event.getLocalPos().y <=100) {
         std::cout << "hjk" << std::endl;
@@ -193,8 +197,12 @@ void VirtualCard::onTouchDragged(po::scene::TouchEvent &event){
 void VirtualCard::onTouchUp(po::scene::TouchEvent &event){
 	if (idInCard(event.getId()))
 	{
-		end = GetTickCount();
-		long timeTouched = (end - start);
+		
+#ifdef _WIN32
+        end = GetTickCount();
+#endif
+        
+        long timeTouched = (end - start);
 		//console() << "Time card was touched " << timeTouched << std::endl;
 		if (timeTouched < 350) {
 			handleButtonTouches(event);

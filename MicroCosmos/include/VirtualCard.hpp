@@ -9,7 +9,6 @@
 #ifndef VirtualCard_hpp
 #define VirtualCard_hpp
 #include <stdio.h>
-#include <windows.h>
 #include "cinder/app/App.h"
 #include "cinder/app/RendererGl.h"
 #include "cinder/gl/gl.h"

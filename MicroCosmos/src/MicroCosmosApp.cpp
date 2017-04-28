@@ -87,13 +87,17 @@ void MicroCosmosApp::draw()
 
     // Draw yellow circles at the active touch points
     gl::color(1, 1, 0);
-    for (const auto &touch : getActiveTouches
-            ()) {
+    for (const auto &touch : getActiveTouches()) {
         gl::drawStrokedCircle(touch.getPos(), 20);
     }
 
     //display output from camera
     mTrack.draw();
+    
+    auto mType = mTrack.getCornerPos();
+    for(auto i = mType.begin(); i != mType.end(); i++)
+        cout << "GetFunction: " << *i << endl;
+    
 
 }
 
