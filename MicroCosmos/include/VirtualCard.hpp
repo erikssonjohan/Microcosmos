@@ -9,6 +9,7 @@
 #ifndef VirtualCard_hpp
 #define VirtualCard_hpp
 #include <stdio.h>
+#include <windows.h>
 #include "cinder/app/App.h"
 #include "cinder/app/RendererGl.h"
 #include "cinder/gl/gl.h"
@@ -43,6 +44,7 @@ protected:
 private:
 
     float border = 10;
+	long int start, end;
 
 
     po::scene::ShapeRef mBaseShape;
@@ -59,7 +61,9 @@ private:
 	po::scene::TextBoxRef textContentE;
 	po::scene::ShapeRef buttonFig;
 	po::scene::TextBoxRef SWE;
+	po::scene::TextBoxRef SWEfaded;
 	po::scene::TextBoxRef ENG;
+	po::scene::TextBoxRef ENGfaded;
 	float buttonWidth = 0.0f;
 	float buttonHeigth = 0.0f;
 	bool textVisible = false;
@@ -103,6 +107,7 @@ private:
     //Scale
     void scale(ci::vec2 pos1, ci::vec2 pPos1, ci::vec2 pos2, ci::vec2 pPos2 );
 
+	//Function that handles the visibility of all the text boxes and buttons.
 	void handleButtonTouches(po::scene::TouchEvent event);
 
 

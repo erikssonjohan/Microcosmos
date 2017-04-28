@@ -71,18 +71,20 @@ void VirtualCard::setup(ci::Color color)
 	textFig = Shape::createRect(400, img->getHeight() + border * 2);
 	textFig->setFillColor(0, 0, 0, 0.8);
 	textFig->setPosition(img->getWidth() + border * 2, 0);
-	buttonWidth = img->getWidth() / 9;
-	buttonHeigth = img->getHeight() / 9;
+	buttonWidth = img->getWidth() / 8;
+	buttonHeigth = img->getHeight() / 8;
 	buttonFig = Shape::createRect(buttonWidth, buttonHeigth);
 	buttonFig->setFillColor(0, 0, 0, 0.8);
 	buttonFig->setPosition(border, border);
 
+	//Textbox
 	ci::TextBox ciTextBox = ci::TextBox();
 	//auto textB = po::scene::TextBox::create(ciTextBox);
 	ciTextBox.size(300, 500);
 	ciTextBox.color(ci::Color(1, 1, 1));
 	ciTextBox.alignment(ci::TextBox::Alignment::LEFT);
 	ciTextBox.font(ci::Font("Arial", 20));
+	//Button box
 	ci::TextBox ciButtonBox = ci::TextBox();
 	ciButtonBox.size(buttonWidth, buttonHeigth);
 	ciButtonBox.color(ci::Color(1, 1, 1));
@@ -134,7 +136,9 @@ void VirtualCard::setup(ci::Color color)
 }
 
 void VirtualCard::onTouchDown(po::scene::TouchEvent &event){
-    
+	start = GetTickCount();
+	//ci::app::timeline().reset;
+	//console() << ci::app::timeline().getCurrentTime() << std::endl;
     if (event.getLocalPos().x <= 100 && event.getLocalPos().y <=100) {
         std::cout << "hjk" << std::endl;
     }
@@ -189,7 +193,12 @@ void VirtualCard::onTouchDragged(po::scene::TouchEvent &event){
 void VirtualCard::onTouchUp(po::scene::TouchEvent &event){
 	if (idInCard(event.getId()))
 	{
-		handleButtonTouches(event);
+		end = GetTickCount();
+		long timeTouched = (end - start);
+		//console() << "Time card was touched " << timeTouched << std::endl;
+		if (timeTouched < 350) {
+			handleButtonTouches(event);
+		}
 
 		mIsPressed = false;
 		removeTouchId(event.getId());
