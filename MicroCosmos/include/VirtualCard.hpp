@@ -43,8 +43,6 @@ protected:
 private:
 
     float border = 10;
-	bool textVisible = false;
-	bool textSWE = true;
 
 
     po::scene::ShapeRef mBaseShape;
@@ -62,6 +60,10 @@ private:
 	po::scene::ShapeRef buttonFig;
 	po::scene::TextBoxRef SWE;
 	po::scene::TextBoxRef ENG;
+	float buttonWidth = 0.0f;
+	float buttonHeigth = 0.0f;
+	bool textVisible = false;
+	bool textSWE = true;
 
     float angle = 0.0f;
     std::string _path;

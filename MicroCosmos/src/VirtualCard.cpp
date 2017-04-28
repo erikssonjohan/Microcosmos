@@ -66,14 +66,16 @@ void VirtualCard::setup(ci::Color color)
     textur->setTexture(img);
     textur->setPosition(border, border);
 
-
 	// text
 	// TODO:: make it less static and might need some fixes. just did it to test, not sure if its the best way // JE
 	textFig = Shape::createRect(400, img->getHeight() + border * 2);
 	textFig->setFillColor(0, 0, 0, 0.8);
 	textFig->setPosition(img->getWidth() + border * 2, 0);
-	buttonFig = Shape::createRect(img->getWidth() / 10, img->getHeight() / 10);
+	buttonWidth = img->getWidth() / 9;
+	buttonHeigth = img->getHeight() / 9;
+	buttonFig = Shape::createRect(buttonWidth, buttonHeigth);
 	buttonFig->setFillColor(0, 0, 0, 0.8);
+	buttonFig->setPosition(border, border);
 
 	ci::TextBox ciTextBox = ci::TextBox();
 	//auto textB = po::scene::TextBox::create(ciTextBox);
@@ -82,7 +84,7 @@ void VirtualCard::setup(ci::Color color)
 	ciTextBox.alignment(ci::TextBox::Alignment::LEFT);
 	ciTextBox.font(ci::Font("Arial", 20));
 	ci::TextBox ciButtonBox = ci::TextBox();
-	ciButtonBox.size(img->getWidth() / 10, img->getHeight() / 10);
+	ciButtonBox.size(buttonWidth, buttonHeigth);
 	ciButtonBox.color(ci::Color(1, 1, 1));
 	ciButtonBox.alignment(ci::TextBox::Alignment::CENTER);
 	ciButtonBox.font(ci::Font("Arial", 25));
@@ -127,7 +129,7 @@ void VirtualCard::setup(ci::Color color)
     getSignal(po::scene::TouchEvent::MOVED).connect(std::bind(&VirtualCard::onTouchDragged, this, std::placeholders::_1));
     getSignal(po::scene::TouchEvent::ENDED_INSIDE).connect(std::bind(&VirtualCard::onTouchUp, this, std::placeholders::_1));
     getSignal(po::scene::TouchEvent::ENDED).connect(std::bind(&VirtualCard::onTouchUp, this, std::placeholders::_1));
-
+	//buttonFig->getSignal(po::scene::TouchEvent::Type::ENDED_INSIDE).connect(std::bind(&VirtualCard::onTouchUp, this, std::placeholders::_1));
 
 }
 
@@ -187,7 +189,7 @@ void VirtualCard::onTouchDragged(po::scene::TouchEvent &event){
 void VirtualCard::onTouchUp(po::scene::TouchEvent &event){
 	if (idInCard(event.getId()))
 	{
-		if (touchInButton(event))
+		if (touchInButton(event) && textVisible)
 		{
 			//console() << "X = " << event.getLocalPos().x << ", Y =" << event.getLocalPos().y << std::endl;
 			if (textSWE)
@@ -243,7 +245,7 @@ bool VirtualCard::idInCard(uint32_t id){
     return false;
 }
 bool VirtualCard::touchInButton(po::scene::TouchEvent event) {
-	if (event.getLocalPos().x <= 100 && event.getLocalPos().y <= 100) {
+	if (event.getLocalPos().x >= border && event.getLocalPos().x <= (border + buttonWidth) &&  event.getLocalPos().y >= border && event.getLocalPos().y <= border + buttonHeigth) {
 		return true;
 	}
 	return false;
