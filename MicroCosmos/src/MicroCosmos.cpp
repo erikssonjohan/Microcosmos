@@ -8,7 +8,6 @@
 
 #include "MicroCosmos.hpp"
 
-
 using namespace po::scene;
 
 MicroCosmosRef MicroCosmos::create(){
@@ -24,7 +23,7 @@ void MicroCosmos::setup(){
      //This works but we have alot of cards!
      //I created a demo2.xml containing all cards with images but no videos, but the images are not added to the repo
      //Good to know: inside RealCard.cpp the you also have to write the name of the xml-file, they are not liked yet
-     
+    
      
      std::vector<std::string> categories;
      uniqueCategories("demo.xml", categories);
@@ -79,8 +78,7 @@ void MicroCosmos::onTouchDown(po::scene::TouchEvent &event){
     
     //touch down
     
-    
-    
+     
 }
 
 void MicroCosmos::onTouchUp(po::scene::TouchEvent &event) {
