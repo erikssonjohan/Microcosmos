@@ -189,46 +189,8 @@ void VirtualCard::onTouchDragged(po::scene::TouchEvent &event){
 void VirtualCard::onTouchUp(po::scene::TouchEvent &event){
 	if (idInCard(event.getId()))
 	{
-		if (touchInButton(event) && textVisible)
-		{
-			//console() << "X = " << event.getLocalPos().x << ", Y =" << event.getLocalPos().y << std::endl;
-			if (textSWE)
-			{
-				textContentE->setVisible(true);
-				textContentS->setVisible(false);
-				ENG->setVisible(true);
-				SWE->setVisible(false);
+		handleButtonTouches(event);
 
-				textSWE = false;
-			}
-			else
-			{
-				textContentS->setVisible(true);
-				textContentE->setVisible(false);
-				SWE->setVisible(true);
-				ENG->setVisible(false);
-
-				textSWE = true;
-			}
-		}
-		else if (textVisible)
-		{
-			textFig->setVisible(false);
-			textContentS->setVisible(false);
-			textContentE->setVisible(false);
-			buttonFig->setVisible(false);
-			SWE->setVisible(false);
-			ENG->setVisible(false);
-			textVisible = false;
-		}
-		else
-		{
-			textFig->setVisible(true);
-			textContentS->setVisible(true);
-			buttonFig->setVisible(true);
-			SWE->setVisible(true);
-			textVisible = true;
-		}
 		mIsPressed = false;
 		removeTouchId(event.getId());
 		removeTouchEvent(event);
@@ -283,6 +245,48 @@ void VirtualCard::scale(ci::vec2 pos1, ci::vec2 pPos1, ci::vec2 pos2, ci::vec2 p
     }
 }
 
+void VirtualCard::handleButtonTouches(po::scene::TouchEvent event) {
+	if (touchInButton(event) && textVisible)
+	{
+		//console() << "X = " << event.getLocalPos().x << ", Y =" << event.getLocalPos().y << std::endl;
+		if (textSWE)
+		{
+			textContentE->setVisible(true);
+			textContentS->setVisible(false);
+			ENG->setVisible(true);
+			SWE->setVisible(false);
+
+			textSWE = false;
+		}
+		else
+		{
+			textContentS->setVisible(true);
+			textContentE->setVisible(false);
+			SWE->setVisible(true);
+			ENG->setVisible(false);
+
+			textSWE = true;
+		}
+	}
+	else if (textVisible)
+	{
+		textFig->setVisible(false);
+		textContentS->setVisible(false);
+		textContentE->setVisible(false);
+		buttonFig->setVisible(false);
+		SWE->setVisible(false);
+		ENG->setVisible(false);
+		textVisible = false;
+	}
+	else
+	{
+		textFig->setVisible(true);
+		textContentS->setVisible(true);
+		buttonFig->setVisible(true);
+		SWE->setVisible(true);
+		textVisible = true;
+	}
+}
 
 
 

@@ -103,6 +103,8 @@ private:
     //Scale
     void scale(ci::vec2 pos1, ci::vec2 pPos1, ci::vec2 pos2, ci::vec2 pPos2 );
 
+	void handleButtonTouches(po::scene::TouchEvent event);
+
 
     
 };
