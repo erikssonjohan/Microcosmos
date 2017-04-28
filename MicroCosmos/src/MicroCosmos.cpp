@@ -76,7 +76,14 @@ bool MicroCosmos::stringInVector(std::string category, std::vector<std::string> 
 void MicroCosmos::onTouchDown(po::scene::TouchEvent &event){
     
     
-    //touch down
+	touchId.push_back(event.getId());
+	events.push_back(event);
+
+	if (touchId.size() >= 3)//if three fingers(or more) are placed on the screen, a realcard is shown at that position
+	{
+		rcards[3]->setVisible(true);
+		rcards[3]->setPosition(events[touchId.size() - 1].getWindowPos());
+	}
     
      
 }

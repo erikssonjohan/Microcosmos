@@ -37,6 +37,9 @@ private:
     
     //std::vector<VirtualCardRef> cards;
     std::vector<RealCardRef> rcards;
+
+	std::vector<uint32_t> touchId;
+	std::vector<po::scene::TouchEvent> events;
     
     void onTouchDown(po::scene::TouchEvent &event);
     
