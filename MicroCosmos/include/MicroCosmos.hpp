@@ -32,6 +32,7 @@ public:
 	void initStandby();
 	void invisibleStandby();
 	void visibleStandby();
+	void update();
     
 protected:
     
@@ -56,6 +57,7 @@ private:
 	po::scene::ShapeRef standbyShape1;
 	po::scene::ShapeRef standbyShape2;
 	po::scene::ShapeRef standbyShape3;
+	double time1, time2;
     
 };
 

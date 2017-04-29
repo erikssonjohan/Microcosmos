@@ -41,6 +41,7 @@ void MicroCosmos::setup(){
     addChild(ref);
     
 	initStandby();
+	invisibleStandby();
 
 	
 }
@@ -88,9 +89,7 @@ void MicroCosmos::onTouchDown(po::scene::TouchEvent &event){
 		rcards[3]->setPosition(events[touchId.size() - 1].getWindowPos());
 		invisibleStandby();
 	}
-	else {
-		visibleStandby();
-	}
+	
      
 }
 
@@ -153,9 +152,19 @@ void MicroCosmos::invisibleStandby() {
 }
 
 void MicroCosmos::visibleStandby() {
+	standbyContent->setVisible(true);
 	standbyShape1->setVisible(true);
 	standbyShape2->setVisible(true);
 	standbyShape3->setVisible(true);
+
+
+}
+
+void MicroCosmos::update() {
+	time2 = getElapsedSeconds();
+	if (time2 - time1 > 10)
+		visibleStandby();
+
 
 
 }
