@@ -16,33 +16,33 @@ using namespace po::scene;
 
 
 VirtualCard::VirtualCard(std::string path, float scale, std::vector<std::string> categories, std::string header_se,
-        std::string text_se, std::string header_en, std::string text_en)
+	std::string text_se, std::string header_en, std::string text_en)
 {
-    _path = path;
-    _scale = scale;
-    _categories = categories;
-    _header_se = header_se;
-    _text_se = text_se;
-    _header_en = header_en;
-    _text_en = text_en;
+	_path = path;
+	_scale = scale;
+	_categories = categories;
+	_header_se = header_se;
+	_text_se = text_se;
+	_header_en = header_en;
+	_text_en = text_en;
 
 
-    cinder::gl::TextureRef mFrameTexture;
-    cinder::gl::TextureRef texture;
+	cinder::gl::TextureRef mFrameTexture;
+	cinder::gl::TextureRef texture;
 
-    x = ci::Rand::randFloat(1, 800);
-    y = ci::Rand::randFloat(1, 800);
+	x = ci::Rand::randFloat(1, 800);
+	y = ci::Rand::randFloat(1, 800);
 
 
 }
 
-VirtualCardRef VirtualCard::create( ci::Color color, std::string path, float scale, std::vector<std::string> categories, std::string header_se,
-        std::string text_se, std::string header_en, std::string text_en)
+VirtualCardRef VirtualCard::create(ci::Color color, std::string path, float scale, std::vector<std::string> categories, std::string header_se,
+	std::string text_se, std::string header_en, std::string text_en)
 {
-    VirtualCardRef ref (new VirtualCard(path, scale, categories, header_se,
-            text_se, header_en, text_en ));
-    ref->setup(color);
-    return ref;
+	VirtualCardRef ref(new VirtualCard(path, scale, categories, header_se,
+		text_se, header_en, text_en));
+	ref->setup(color);
+	return ref;
 }
 
 
@@ -50,21 +50,22 @@ VirtualCardRef VirtualCard::create( ci::Color color, std::string path, float sca
 
 void VirtualCard::setup(ci::Color color)
 {
-    mStartPos = ci::vec2();
-    mEndPos = ci::vec2();
-    mInitialPos = ci::vec2();
-    mIsPressed = false;
+	mStartPos = ci::vec2();
+	mEndPos = ci::vec2();
+	mInitialPos = ci::vec2();
+	mIsPressed = false;
 
-    ci::gl::TextureRef img =  ci::gl::Texture::create(ci::loadImage(ci::app::loadAsset(_path) ));
+	ci::gl::TextureRef img = ci::gl::Texture::create(ci::loadImage(ci::app::loadAsset(_path)));
+	//ci::gl::TextureRef buttonImg = ci::gl::Texture::create(ci::loadImage(ci::app::loadAsset("sweeng.png")));
 
-    
-    //  create and add the shape to the node container
-    mBaseShape = Shape::createRect(img->getWidth()+border*2, img->getHeight()+border*2);
-    mBaseColor = color;
-    mBaseShape->setFillColor(color);
-    auto textur = Shape::createRect(img->getWidth(), img->getHeight());
-    textur->setTexture(img);
-    textur->setPosition(border, border);
+
+	//  create and add the shape to the node container
+	mBaseShape = Shape::createRect(img->getWidth() + border * 2, img->getHeight() + border * 2);
+	mBaseColor = color;
+	mBaseShape->setFillColor(color);
+	auto textur = Shape::createRect(img->getWidth(), img->getHeight());
+	textur->setTexture(img);
+	textur->setPosition(border, border);
 
 	// text
 	// TODO:: make it less static and might need some fixes. just did it to test, not sure if its the best way // JE
@@ -72,10 +73,11 @@ void VirtualCard::setup(ci::Color color)
 	textFig->setFillColor(0, 0, 0, 0.8);
 	textFig->setPosition(img->getWidth() + border * 2, 0);
 	buttonWidth = img->getWidth() / 8;
-	buttonHeigth = img->getHeight() / 8;
-	buttonFig = Shape::createRect(buttonWidth, buttonHeigth);
-	buttonFig->setFillColor(0, 0, 0, 0.8);
-	buttonFig->setPosition(border, border);
+	buttonHeight = img->getHeight() / 10;
+	buttonFig = Shape::createRect(buttonWidth, buttonHeight);
+	buttonFig->setFillColor(0, 0, 0, 0.3);
+	buttonPos = ci::vec2(img->getWidth() + border * 2, img->getHeight() + border * 2 - buttonHeight);
+	buttonFig->setPosition(buttonPos.x, buttonPos.y);
 
 	//Textbox
 	ci::TextBox ciTextBox = ci::TextBox();
@@ -86,7 +88,7 @@ void VirtualCard::setup(ci::Color color)
 	ciTextBox.font(ci::Font("Arial", 20));
 	//Button box
 	ci::TextBox ciButtonBox = ci::TextBox();
-	ciButtonBox.size(buttonWidth, buttonHeigth);
+	ciButtonBox.size(buttonWidth, buttonHeight);
 	ciButtonBox.color(ci::Color(1, 1, 1));
 	ciButtonBox.alignment(ci::TextBox::Alignment::CENTER);
 	ciButtonBox.font(ci::Font("Arial", 25));
@@ -97,16 +99,17 @@ void VirtualCard::setup(ci::Color color)
 	ciTextBox.text(_text_en);
 	textContentE = po::scene::TextBox::create(ciTextBox);
 	textContentE->setPosition(img->getWidth() + border * 6, 100);
-	ciButtonBox.text("SWE");
+	ciButtonBox.text("SWE/ENG");
 	SWE = po::scene::TextBox::create(ciButtonBox);
-	ciButtonBox.text("ENG");
+	SWE->setPosition(buttonPos.x, buttonPos.y);
+	ciButtonBox.text("ENG/SWE");
 	ENG = po::scene::TextBox::create(ciButtonBox);
+	ENG->setPosition(buttonPos.x, buttonPos.y);
 
+	//Just so it dosent take all of the screen...
+	setScale(_scale);
 
-    //Just so it dosent take all of the screen...
-    setScale(_scale);
-    
-    setAlignment(po::scene::Alignment::CENTER_CENTER);
+	setAlignment(po::scene::Alignment::CENTER_CENTER);
 
 	addChild(mBaseShape);
 	addChild(textur);
@@ -126,85 +129,72 @@ void VirtualCard::setup(ci::Color color)
 	ENG->setVisible(false);
 
 
-    getSignal(po::scene::TouchEvent::BEGAN_INSIDE).connect(std::bind(&VirtualCard::onTouchDown, this, std::placeholders::_1));
-    getSignal(po::scene::TouchEvent::MOVED_INSIDE).connect(std::bind(&VirtualCard::onTouchDragged, this, std::placeholders::_1));
-    getSignal(po::scene::TouchEvent::MOVED).connect(std::bind(&VirtualCard::onTouchDragged, this, std::placeholders::_1));
-    getSignal(po::scene::TouchEvent::ENDED_INSIDE).connect(std::bind(&VirtualCard::onTouchUp, this, std::placeholders::_1));
-    getSignal(po::scene::TouchEvent::ENDED).connect(std::bind(&VirtualCard::onTouchUp, this, std::placeholders::_1));
-	//buttonFig->getSignal(po::scene::TouchEvent::Type::ENDED_INSIDE).connect(std::bind(&VirtualCard::onTouchUp, this, std::placeholders::_1));
+	getSignal(po::scene::TouchEvent::BEGAN_INSIDE).connect(std::bind(&VirtualCard::onTouchDown, this, std::placeholders::_1));
+	getSignal(po::scene::TouchEvent::MOVED_INSIDE).connect(std::bind(&VirtualCard::onTouchDragged, this, std::placeholders::_1));
+	getSignal(po::scene::TouchEvent::MOVED).connect(std::bind(&VirtualCard::onTouchDragged, this, std::placeholders::_1));
+	getSignal(po::scene::TouchEvent::ENDED_INSIDE).connect(std::bind(&VirtualCard::onTouchUp, this, std::placeholders::_1));
+	getSignal(po::scene::TouchEvent::ENDED).connect(std::bind(&VirtualCard::onTouchUp, this, std::placeholders::_1));
+	//buttonFig->getSignal(po::scene::TouchEvent::Type::ENDED_INSIDE).connect(std::bind(&VirtualCard::onButtonUp, this, std::placeholders::_1));
 
 }
 
-void VirtualCard::onTouchDown(po::scene::TouchEvent &event){
-	
-#ifdef _WIN32
-    start = GetTickCount();
-#endif
-    
-    //ci::app::timeline().reset;
-	//console() << ci::app::timeline().getCurrentTime() << std::endl;
-    if (event.getLocalPos().x <= 100 && event.getLocalPos().y <=100) {
-        std::cout << "hjk" << std::endl;
-    }
-    
-    if (!idInCard(event.getId())) {
-        std::cout << "tryck " << event.getId() << std::endl;
-        mIsPressed = true;
-        touchId.push_back(event.getId());
-        events.push_back(event);
+void VirtualCard::onTouchDown(po::scene::TouchEvent &event) {
+	start = ci::app::getElapsedSeconds();
 
-        pPos.push_back(event.getScenePos());
+	if (!idInCard(event.getId())) {
+		std::cout << "tryck " << event.getId() << std::endl;
+		mIsPressed = true;
+		touchId.push_back(event.getId());
+		events.push_back(event);
 
-        // Moves the card to drawn at the front
-        getParent()->moveChildToFront(getParent()->getChildByName(this->getName()));
+		pPos.push_back(event.getScenePos());
 
-        if(touchId.size() == 1) {
-            // Update the position of the card
-            mInitialPos = getPosition();
-            mStartPos = getParent()->windowToLocal(event.getWindowPos());
-            mEndPos = getParent()->windowToLocal(event.getWindowPos());
-        }
-    }
+		// Moves the card to drawn at the front
+		getParent()->moveChildToFront(getParent()->getChildByName(this->getName()));
+
+		if (touchId.size() == 1) {
+			// Update the position of the card
+			mInitialPos = getPosition();
+			mStartPos = getParent()->windowToLocal(event.getWindowPos());
+			mEndPos = getParent()->windowToLocal(event.getWindowPos());
+		}
+	}
 }
 
 
 //	Touch dragged event handler
-void VirtualCard::onTouchDragged(po::scene::TouchEvent &event){
-    if (idInCard(event.getId()) && touchId[0] == event.getId()) {
-        mEndPos = getParent()->windowToLocal(event.getWindowPos());
-        ci::vec2 newPosition = (mInitialPos + (mEndPos - mStartPos));
-        //newPosition.x *=0.5;
-        //newPosition.y *=0.5;
-        setPosition(newPosition);
-        
-    }
-    if(events.size() >= 2) {
-        scale(events[0].getScenePos(), pPos[0], events[1].getScenePos(), pPos[1]);
-        setScale(_scale);
-    }
-    for (int i = 0; i<events.size(); ++i) {
-        if (events[i].getId() == event.getId()){
-            pPos[i]=events[i].getScenePos();
-            events[i]=event;
-        }
-    }
+void VirtualCard::onTouchDragged(po::scene::TouchEvent &event) {
+	if (idInCard(event.getId()) && touchId[0] == event.getId()) {
+		mEndPos = getParent()->windowToLocal(event.getWindowPos());
+		ci::vec2 newPosition = (mInitialPos + (mEndPos - mStartPos));
+		//newPosition.x *=0.5;
+		//newPosition.y *=0.5;
+		setPosition(newPosition);
+
+	}
+	if (events.size() >= 2) {
+		scale(events[0].getScenePos(), pPos[0], events[1].getScenePos(), pPos[1]);
+		setScale(_scale);
+	}
+	for (int i = 0; i<events.size(); ++i) {
+		if (events[i].getId() == event.getId()) {
+			pPos[i] = events[i].getScenePos();
+			events[i] = event;
+		}
+	}
 
 
 
 }
 
 //	Touch up event handler
-void VirtualCard::onTouchUp(po::scene::TouchEvent &event){
+void VirtualCard::onTouchUp(po::scene::TouchEvent &event) {
 	if (idInCard(event.getId()))
 	{
-		
-#ifdef _WIN32
-        end = GetTickCount();
-#endif
-        
-        long timeTouched = (end - start);
+		end = ci::app::getElapsedSeconds();
+		double timeTouched = (end - start);
 		//console() << "Time card was touched " << timeTouched << std::endl;
-		if (timeTouched < 350) {
+		if (timeTouched < 0.350) {
 			handleButtonTouches(event);
 		}
 
@@ -214,52 +204,52 @@ void VirtualCard::onTouchUp(po::scene::TouchEvent &event){
 	}
 }
 
-bool VirtualCard::idInCard(uint32_t id){
-    for (int i = 0; i<touchId.size(); ++i) {
-        if(touchId[i] == id){
-            //std::cout << id <<" is in card" << std::endl;
-            return true;
-        }
-    }
-    return false;
+bool VirtualCard::idInCard(uint32_t id) {
+	for (int i = 0; i<touchId.size(); ++i) {
+		if (touchId[i] == id) {
+			//std::cout << id <<" is in card" << std::endl;
+			return true;
+		}
+	}
+	return false;
 }
 bool VirtualCard::touchInButton(po::scene::TouchEvent event) {
-	if (event.getLocalPos().x >= border && event.getLocalPos().x <= (border + buttonWidth) &&  event.getLocalPos().y >= border && event.getLocalPos().y <= border + buttonHeigth) {
+	if (event.getLocalPos().x >= buttonPos.x && event.getLocalPos().x <= (buttonPos.x + buttonWidth) && event.getLocalPos().y >= buttonPos.y && event.getLocalPos().y <= buttonPos.y + buttonHeight) {
 		return true;
 	}
 	return false;
 }
 
-void VirtualCard::removeTouchId(uint32_t id){
-    for (int i = 0; i<touchId.size(); ++i) {
-        if(touchId[i] == id){
-            touchId.erase(touchId.begin()+i);
-            std::cout << "removing id " << id << std::endl;
-        }
-    }
+void VirtualCard::removeTouchId(uint32_t id) {
+	for (int i = 0; i<touchId.size(); ++i) {
+		if (touchId[i] == id) {
+			touchId.erase(touchId.begin() + i);
+			std::cout << "removing id " << id << std::endl;
+		}
+	}
 
 }
 
 //removes touch id from card
-void VirtualCard::removeTouchEvent(po::scene::TouchEvent tEvent){
-    for (int i = 0; i<events.size(); ++i) {
-        if(events[i].getId() == tEvent.getId()){
-            events.erase(events.begin()+i);
-            pPos.erase(pPos.begin()+i);
-        }
-    }
+void VirtualCard::removeTouchEvent(po::scene::TouchEvent tEvent) {
+	for (int i = 0; i<events.size(); ++i) {
+		if (events[i].getId() == tEvent.getId()) {
+			events.erase(events.begin() + i);
+			pPos.erase(pPos.begin() + i);
+		}
+	}
 }
 
-void VirtualCard::scale(ci::vec2 pos1, ci::vec2 pPos1, ci::vec2 pos2, ci::vec2 pPos2 ){
-    
-    float currentDistance = sqrt(pow(pos1[0]-pos2[0], 2) + pow(pos1[1]-pos2[1], 2) );
-    float previousDistance = sqrt(pow(pPos1[0]-pPos2[0], 2) + pow(pPos1[1]-pPos2[1], 2) );
-    
-    // Guard against division by zero & nan
-    if (previousDistance != 0 && previousDistance == previousDistance) {
-        _scale *= currentDistance/previousDistance;
-        //setScale(_scale);
-    }
+void VirtualCard::scale(ci::vec2 pos1, ci::vec2 pPos1, ci::vec2 pos2, ci::vec2 pPos2) {
+
+	float currentDistance = sqrt(pow(pos1[0] - pos2[0], 2) + pow(pos1[1] - pos2[1], 2));
+	float previousDistance = sqrt(pow(pPos1[0] - pPos2[0], 2) + pow(pPos1[1] - pPos2[1], 2));
+
+	// Guard against division by zero & nan
+	if (previousDistance != 0 && previousDistance == previousDistance) {
+		_scale *= currentDistance / previousDistance;
+		//setScale(_scale);
+	}
 }
 
 void VirtualCard::handleButtonTouches(po::scene::TouchEvent event) {
