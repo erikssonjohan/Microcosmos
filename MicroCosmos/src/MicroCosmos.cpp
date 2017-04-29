@@ -35,11 +35,14 @@ void MicroCosmos::setup(){
      addChild(rcards[i]);
      }
     
-	//initStandby();
+	
     RealCardRef ref = RealCard::create("");
     ref->setPosition(500, 300);
     addChild(ref);
     
+	initStandby();
+
+	
 }
 
 //Function that finds all the categories and calls RealCard::create()
@@ -75,7 +78,7 @@ bool MicroCosmos::stringInVector(std::string category, std::vector<std::string> 
 
 void MicroCosmos::onTouchDown(po::scene::TouchEvent &event){
     
-    
+	
 	touchId.push_back(event.getId());
 	events.push_back(event);
 
@@ -83,8 +86,11 @@ void MicroCosmos::onTouchDown(po::scene::TouchEvent &event){
 	{
 		rcards[3]->setVisible(true);
 		rcards[3]->setPosition(events[touchId.size() - 1].getWindowPos());
+		invisibleStandby();
 	}
-    
+	else {
+		visibleStandby();
+	}
      
 }
 
@@ -110,28 +116,46 @@ void MicroCosmos::initStandby() {
 
 
 	// Textures
-	auto mbaseShape1 = Shape::createRect(img1->getWidth()*0.2, img1->getHeight()*0.2);
-	mbaseShape1->setTexture(img1);
-	mbaseShape1->setPosition(500, 500);
-	addChild(mbaseShape1);
+	auto mbaseShapex = Shape::createRect(img1->getWidth()*0.2, img1->getHeight()*0.2);
+	mbaseShapex->setTexture(img1);
+	mbaseShapex->setPosition(500, 500);
+	standbyShape1 = mbaseShapex;
+	addChild(standbyShape1);
+
+	auto mbaseShapey = Shape::createRect(img2->getWidth()*0.2, img2->getHeight()*0.2);
+	mbaseShapey->setTexture(img2);
+	mbaseShapey->setPosition(100, 500);
+	standbyShape2 = mbaseShapey;
+	addChild(standbyShape2);
+
+	auto mbaseShapez = Shape::createRect(img4->getWidth()*0.2, img4->getHeight()*0.2);
+	mbaseShapez->setTexture(img1);
+	mbaseShapez->setPosition(1200, 500);
+	standbyShape3 = mbaseShapez;
+	addChild(standbyShape3);
 
 
-	auto mbaseShape2 = Shape::createRect(img2->getWidth()*0.2, img2->getHeight()*0.2);
-	mbaseShape2->setTexture(img2);
-	mbaseShape2->setPosition(100, 500);
-	addChild(mbaseShape2);
 
-	auto mbaseShape4 = Shape::createRect(img4->getWidth()*0.2, img4->getHeight()*0.2);
-	mbaseShape4->setTexture(img1);
-	mbaseShape4->setPosition(1200, 500);
-	addChild(mbaseShape4);
+	ci::app::timeline().apply(&standbyShape1->getPositionAnim(), ci::vec2(-standbyShape1->getPosition().x / 10, standbyShape1->getHeight() / 10), 10.0f).easeFn(ci::EaseInSine()).loop();
+	ci::app::timeline().apply(&standbyShape2->getPositionAnim(), ci::vec2(standbyShape2->getPosition().x, -standbyShape2->getHeight()), 10.0f).easeFn(ci::EaseInSine()).loop();
+	ci::app::timeline().apply(&standbyShape3->getPositionAnim(), ci::vec2(standbyShape3->getPosition().x, standbyShape3->getHeight() / 100), 10.0f).easeFn(ci::EaseInSine()).loop();
 
 
 
-	ci::app::timeline().apply(&mbaseShape4->getPositionAnim(), ci::vec2(-mbaseShape4->getPosition().x / 10, mbaseShape4->getHeight() / 10), 10.0f).easeFn(ci::EaseInSine()).loop();
-	ci::app::timeline().apply(&mbaseShape1->getPositionAnim(), ci::vec2(mbaseShape1->getPosition().x, -mbaseShape1->getHeight()), 10.0f).easeFn(ci::EaseInSine()).loop();
-	ci::app::timeline().apply(&mbaseShape2->getPositionAnim(), ci::vec2(10 * mbaseShape2->getPosition().x, mbaseShape2->getHeight() / 100), 10.0f).easeFn(ci::EaseInSine()).loop();
+}
 
+void MicroCosmos::invisibleStandby() {
+	standbyContent->setVisible(false);
+	standbyShape1->setVisible(false);
+	standbyShape2->setVisible(false);
+	standbyShape3->setVisible(false);
+	
+}
+
+void MicroCosmos::visibleStandby() {
+	standbyShape1->setVisible(true);
+	standbyShape2->setVisible(true);
+	standbyShape3->setVisible(true);
 
 
 }
