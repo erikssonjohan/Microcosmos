@@ -23,8 +23,11 @@ void MicroCosmos::setup(){
      //This works but we have alot of cards!
      //I created a demo2.xml containing all cards with images but no videos, but the images are not added to the repo
      //Good to know: inside RealCard.cpp the you also have to write the name of the xml-file, they are not liked yet
-    
-     
+	bool foundRealCard = true;
+	initStandby();
+	if(foundRealCard)
+	invisibleStandby();
+
      std::vector<std::string> categories;
      uniqueCategories("demo.xml", categories);
      
@@ -41,8 +44,7 @@ void MicroCosmos::setup(){
     ref->setPosition(500, 300);
     addChild(ref);
     
-	initStandby();
-	invisibleStandby();
+	
 	
 
 	 //getSignal(po::scene::TouchEvent::BEGAN).connect(std::bind(&MicroCosmos::onTouchDown, this, std::placeholders::_1));
