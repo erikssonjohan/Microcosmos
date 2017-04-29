@@ -140,6 +140,11 @@ void VirtualCard::setup(ci::Color color)
 
 void VirtualCard::onTouchDown(po::scene::TouchEvent &event) {
 	start = ci::app::getElapsedSeconds();
+	
+	if(doubleTouch(event)) {
+		//.... What should the doubletouch do??
+
+	}
 
 	if (!idInCard(event.getId())) {
 		std::cout << "tryck " << event.getId() << std::endl;
@@ -296,4 +301,37 @@ void VirtualCard::handleButtonTouches(po::scene::TouchEvent event) {
 }
 
 
+
+bool VirtualCard::doubleTouch(po::scene::TouchEvent event) {
+
+	
+	if (timeChecker) {
+		time1 = getElapsedSeconds();
+		
+	}
+	else if (timeChecker != true) {
+		time2 = getElapsedSeconds();
+		
+
+	}
+	if (time2 - time1 < 1 && timeChecker != true) {
+		timeChecker = true;
+		return true;
+
+	}
+
+
+	else
+		if (timeChecker) {
+			timeChecker = false;
+			
+		}
+		else
+			timeChecker = true;
+		
+	return false;
+
+		
+
+}
 

@@ -162,7 +162,7 @@ void MicroCosmos::visibleStandby() {
 
 void MicroCosmos::update() {
 	time2 = getElapsedSeconds();
-	if (time2 - time1 > 10)
+	if (time2 - time1 > 100)
 		visibleStandby();
 
 

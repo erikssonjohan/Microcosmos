@@ -44,7 +44,9 @@ private:
 
 	float border = 10;
 	//timestamps that handle how long an event has been pressed
-	double start, end, timeTouched;
+	double start, end, timeTouched, time1, time2;
+	bool timeChecker = true;
+	bool check = true;
 
 
 	po::scene::ShapeRef mBaseShape;
@@ -109,8 +111,9 @@ private:
 	//Function that handles the visibility of all the text boxes and buttons.
 	void handleButtonTouches(po::scene::TouchEvent event);
 
-
-
+	// Function that checks if a double touch were occured
+	bool doubleTouch(po::scene::TouchEvent event);
+	
 };
 
 
