@@ -48,7 +48,9 @@ private:
 
 	po::scene::ShapeRef standByFig;
 	po::scene::TextBoxRef standbyContent;
-    
+	ci::gl::TextureRef img1 = ci::gl::Texture::create(ci::loadImage(ci::app::loadAsset("10-Ribosome_figure.jpg")));
+	ci::gl::TextureRef img2 = ci::gl::Texture::create(ci::loadImage(ci::app::loadAsset("101-Prions-2rnm.jpg")));
+	ci::gl::TextureRef img4 = ci::gl::Texture::create(ci::loadImage(ci::app::loadAsset("fig2.jpg")));
     
 };
 

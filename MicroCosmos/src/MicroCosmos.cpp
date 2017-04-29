@@ -108,7 +108,29 @@ void MicroCosmos::initStandby() {
 	addChild(standbyContent);
 
 
-	//ci::app::timeline().apply(&standbyContent->getPositionAnim(), ci::vec2(standbyContent->getPosition().x, -standbyContent->getHeight()), 7.0f).easeFn(ci::EaseInSine()).loop();
+
+	// Textures
+	auto mbaseShape1 = Shape::createRect(img1->getWidth()*0.2, img1->getHeight()*0.2);
+	mbaseShape1->setTexture(img1);
+	mbaseShape1->setPosition(500, 500);
+	addChild(mbaseShape1);
+
+
+	auto mbaseShape2 = Shape::createRect(img2->getWidth()*0.2, img2->getHeight()*0.2);
+	mbaseShape2->setTexture(img2);
+	mbaseShape2->setPosition(100, 500);
+	addChild(mbaseShape2);
+
+	auto mbaseShape4 = Shape::createRect(img4->getWidth()*0.2, img4->getHeight()*0.2);
+	mbaseShape4->setTexture(img1);
+	mbaseShape4->setPosition(1200, 500);
+	addChild(mbaseShape4);
+
+
+
+	ci::app::timeline().apply(&mbaseShape4->getPositionAnim(), ci::vec2(-mbaseShape4->getPosition().x / 10, mbaseShape4->getHeight() / 10), 10.0f).easeFn(ci::EaseInSine()).loop();
+	ci::app::timeline().apply(&mbaseShape1->getPositionAnim(), ci::vec2(mbaseShape1->getPosition().x, -mbaseShape1->getHeight()), 10.0f).easeFn(ci::EaseInSine()).loop();
+	ci::app::timeline().apply(&mbaseShape2->getPositionAnim(), ci::vec2(10 * mbaseShape2->getPosition().x, mbaseShape2->getHeight() / 100), 10.0f).easeFn(ci::EaseInSine()).loop();
 
 
 
