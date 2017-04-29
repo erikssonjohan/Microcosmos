@@ -142,6 +142,7 @@ void VirtualCard::onTouchDown(po::scene::TouchEvent &event) {
 	start = ci::app::getElapsedSeconds();
 	
 	if(doubleTouch(event)) {
+		mBaseShape->setVisible(false);
 		//.... What should the doubletouch do??
 
 	}

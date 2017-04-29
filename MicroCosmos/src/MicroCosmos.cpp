@@ -43,6 +43,7 @@ void MicroCosmos::setup(){
     
 	initStandby();
 	invisibleStandby();
+	
 
 	 //getSignal(po::scene::TouchEvent::BEGAN).connect(std::bind(&MicroCosmos::onTouchDown, this, std::placeholders::_1));
 	 //getSignal(po::scene::TouchEvent::ENDED).connect(std::bind(&MicroCosmos::onTouchUp, this, std::placeholders::_1));
@@ -184,7 +185,7 @@ void MicroCosmos::visibleStandby() {
 
 void MicroCosmos::update() {
 	time2 = getElapsedSeconds();
-	if (time2 - time1 > 100)
+	if (time2 - time1 > 10)
 		visibleStandby();
 
 
