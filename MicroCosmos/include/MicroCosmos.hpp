@@ -49,6 +49,10 @@ private:
     //	Touch up event handler
     void onTouchUp(po::scene::TouchEvent &event);
 
+	void removeTouchId(uint32_t id);
+
+	void removeTouchEvent(po::scene::TouchEvent tEvent);
+
 	po::scene::ShapeRef standByFig;
 	po::scene::TextBoxRef standbyContent;
 	ci::gl::TextureRef img1 = ci::gl::Texture::create(ci::loadImage(ci::app::loadAsset("10-Ribosome_figure.jpg")));

@@ -32,6 +32,7 @@ void MicroCosmos::setup(){
      {
      rcards.push_back(RealCard::create(categories[i]));
      rcards[i]->setPosition(i*300, i*100);
+	 //rcards[i]->setVisible(false); //Screne should be empty at the start 
      addChild(rcards[i]);
      }
     
@@ -42,6 +43,9 @@ void MicroCosmos::setup(){
     
 	initStandby();
 	invisibleStandby();
+
+	 //getSignal(po::scene::TouchEvent::BEGAN).connect(std::bind(&MicroCosmos::onTouchDown, this, std::placeholders::_1));
+	 //getSignal(po::scene::TouchEvent::ENDED).connect(std::bind(&MicroCosmos::onTouchUp, this, std::placeholders::_1));
 
 	
 }
@@ -72,9 +76,6 @@ bool MicroCosmos::stringInVector(std::string category, std::vector<std::string> 
     return false;
 }
 
-// getSignal(po::scene::TouchEvent::BEGAN).connect(std::bind(&MicroCosmos::onTouchDown, this, std::placeholders::_1));
-// getSignal(po::scene::TouchEvent::ENDED).connect(std::bind(&MicroCosmos::onTouchUp, this, std::placeholders::_1));
-
 
 
 void MicroCosmos::onTouchDown(po::scene::TouchEvent &event){
@@ -85,8 +86,8 @@ void MicroCosmos::onTouchDown(po::scene::TouchEvent &event){
 
 	if (touchId.size() >= 3)//if three fingers(or more) are placed on the screen, a realcard is shown at that position
 	{
-		rcards[3]->setVisible(true);
-		rcards[3]->setPosition(events[touchId.size() - 1].getWindowPos());
+		rcards[1]->setVisible(true);
+		rcards[1]->setPosition(events[touchId.size() - 1].getWindowPos());
 		invisibleStandby();
 	}
 	
@@ -95,8 +96,29 @@ void MicroCosmos::onTouchDown(po::scene::TouchEvent &event){
 
 void MicroCosmos::onTouchUp(po::scene::TouchEvent &event) {
     
-    // touch up
+		removeTouchId(event.getId());
+		removeTouchEvent(event);
+
+	}
     
+
+
+void MicroCosmos::removeTouchId(uint32_t id) {
+	for (int i = 0; i<touchId.size(); ++i) {
+		if (touchId[i] == id) {
+			touchId.erase(touchId.begin() + i);
+			std::cout << "removing id " << id << std::endl;
+		}
+	}
+
+}
+
+void MicroCosmos::removeTouchEvent(po::scene::TouchEvent tEvent) {
+	for (int i = 0; i<events.size(); ++i) {
+		if (events[i].getId() == tEvent.getId()) {
+			events.erase(events.begin() + i);
+		}
+	}
 }
 
 void MicroCosmos::initStandby() {
