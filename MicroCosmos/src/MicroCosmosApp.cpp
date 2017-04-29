@@ -94,10 +94,29 @@ void MicroCosmosApp::draw()
     //display output from camera
     mTrack.draw();
     
+    /*
+    //Really bad way but it works for now.. sry..
     auto mType = mTrack.getCornerPos();
-    for(auto i = mType.begin(); i != mType.end(); i++)
-        cout << "GetFunction: " << *i << endl;
+    auto t = std::get<0>(mType);
+    auto j = std::get<1>(mType);
+    auto k = std::get<2>(mType);
     
+    for(auto i = t.begin(); i != t.end(); i++) {
+       cout << "Get ID 1: " << *i << endl;
+        for(auto it2 = t.begin(); it2 != t.end(); ++it2)
+            cout << " POS ID 1: " << "[ " << *it2 << " ]"<< endl;
+    }
+    for(auto i = j.begin(); i != j.end(); i++) {
+       cout << "Get ID 2: " << *i << endl;
+        for(auto it2 = j.begin(); it2 != j.end(); ++it2)
+            cout << " POS ID 2: " << "[ " << *it2 << " ]"<< endl;
+    }
+    for(auto i = k.begin(); i != k.end(); i++) {
+       cout << "Get ID 3: " << *i << endl;
+        for(auto it2 = k.begin(); it2 != k.end(); ++it2)
+            cout << " POS ID 3: " << "[ " << *it2 << " ]"<< endl;
+    }
+    */
 
 }
 

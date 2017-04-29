@@ -13,17 +13,24 @@ using namespace ci;
 using namespace ci::app;
 using namespace std;
 
-//get position of specific arucomarker
-vector<double> Tracking::getCornerPos() {
-    //set marker
-    std::map<int, vector<double>>::iterator it = _markerMap.find(1);
-    return it->second;
+//TODO: DONT DO IT THIS WAY AT RELEASE
+//get position of specific arucomarkers (cornerpoints)
+std::tuple<vector<double>, vector<double>, vector<double>> Tracking::getCornerPos() {
+    std::map<int, vector<double>>::iterator it1;
+    std::map<int, vector<double>>::iterator it2;
+    std::map<int, vector<double>>::iterator it3;
+
+    it1 = _markerMap.find(1);
+    it2 = _markerMap.find(2);
+    it3 = _markerMap.find(3);
+    return std::make_tuple(it1->second,it2->second,it3->second);
 }
 
 
 //Save camera coordinates for the corners of the screen
-void Tracking::setCorners(vec3 P0, vec3 P1, vec3 P2) {
-    p0 = P0; p1 = P1; p2 = P2;
+void Tracking::setCorners() {
+    
+    //p0 = P0; p1 = P1; p2 = P2;
     normX = normalize(p1 - p0);
     normY = normalize(p2-p0);
 }
@@ -122,11 +129,12 @@ void Tracking::update() {
     }
     
     for (const auto it : _markerMap) {
-        cout << "ID: " << it.first;
+        cout << "ID: " << it.first << endl;
         for(auto it2 = it.second.begin(); it2 != it.second.end(); ++it2)
             cout << " POS: " << "[ " << *it2 << " ]"<< endl;
     }
-    cout << "Size: " << _markerMap.size();
+    
+    cout << "Size: " << _markerMap.size() << endl;
 }
 
 
