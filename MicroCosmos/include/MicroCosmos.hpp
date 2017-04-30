@@ -62,6 +62,7 @@ private:
 	po::scene::ShapeRef standbyShape2;
 	po::scene::ShapeRef standbyShape3;
 	double time1, time2;
+	bool foundRealCard = false;
     
 };
 

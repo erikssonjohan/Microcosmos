@@ -23,11 +23,9 @@ void MicroCosmos::setup(){
      //This works but we have alot of cards!
      //I created a demo2.xml containing all cards with images but no videos, but the images are not added to the repo
      //Good to know: inside RealCard.cpp the you also have to write the name of the xml-file, they are not liked yet
-	bool foundRealCard = true;
+	
 	initStandby();
-	if(foundRealCard)
-	invisibleStandby();
-
+	
      std::vector<std::string> categories;
      uniqueCategories("demo.xml", categories);
      
@@ -35,7 +33,7 @@ void MicroCosmos::setup(){
      {
      rcards.push_back(RealCard::create(categories[i]));
      rcards[i]->setPosition(i*300, i*100);
-	 //rcards[i]->setVisible(false); //Screne should be empty at the start 
+	 rcards[i]->setVisible(false); //Screen should be empty at the start 
      addChild(rcards[i]);
      }
     
@@ -173,7 +171,7 @@ void MicroCosmos::invisibleStandby() {
 	standbyShape1->setVisible(false);
 	standbyShape2->setVisible(false);
 	standbyShape3->setVisible(false);
-	
+	setVisible(true);
 }
 
 void MicroCosmos::visibleStandby() {
@@ -190,6 +188,7 @@ void MicroCosmos::update() {
 	if (time2 - time1 > 10)
 		visibleStandby();
 
-
+	if (foundRealCard)
+		invisibleStandby();
 
 }
