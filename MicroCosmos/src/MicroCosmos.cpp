@@ -124,6 +124,7 @@ void MicroCosmos::removeTouchEvent(po::scene::TouchEvent tEvent) {
 
 void MicroCosmos::initStandby() {
 
+	// Main Circle
 	std::string standbyText = "WELCOME TO MICROCOSMOS!\n\n PLEASE PUT A CARD ON THE TABLE!";
 	ci::TextBox TextBox = ci::TextBox();
 	TextBox.size(300, 500);
@@ -134,8 +135,35 @@ void MicroCosmos::initStandby() {
 	standbyContent = po::scene::TextBox::create(TextBox);
 	standbyContent->setPosition(600, 50);
 	addChild(standbyContent);
+	standbyContent->setVisible(false);
+	standByFig = Shape::createCircle(400);
+	standByFig->setFillColor(0, 0, 0.7, 0.8);
+	standByFig->setPosition(550, 100);
+	addChild(standByFig);
+	standByFig->setVisible(false);
 
 
+
+	// small Circle
+	
+	std::string standbyText2 = "Project in !\n Media Technology and Engineering!";
+	ci::TextBox TextBox2 = ci::TextBox();
+	TextBox2.size(100, 100);
+	TextBox2.color(ci::Color(1, 1, 1));
+	TextBox2.text(standbyText2);
+	TextBox2.alignment(ci::TextBox::Alignment::CENTER);
+	TextBox2.font(ci::Font("Arial", 15));
+
+	standbyContent2 = po::scene::TextBox::create(TextBox2);
+	standbyContent2->setPosition(1300, 550);
+	addChild(standbyContent2);
+	standbyContent2->setVisible(false);
+	standByFig2 = Shape::createCircle(100);
+	standByFig2->setFillColor(0, 0, 1, 0.8);
+	standByFig2->setPosition(1300, 550);
+	addChild(standByFig2);
+	standByFig2->setVisible(false);
+	
 
 	// Textures
 	auto mbaseShapex = Shape::createRect(img1->getWidth()*0.2, img1->getHeight()*0.2);
@@ -143,19 +171,21 @@ void MicroCosmos::initStandby() {
 	mbaseShapex->setPosition(500, 500);
 	standbyShape1 = mbaseShapex;
 	addChild(standbyShape1);
+	standbyShape1->setVisible(false);
 
 	auto mbaseShapey = Shape::createRect(img2->getWidth()*0.2, img2->getHeight()*0.2);
 	mbaseShapey->setTexture(img2);
 	mbaseShapey->setPosition(100, 500);
 	standbyShape2 = mbaseShapey;
 	addChild(standbyShape2);
+	standbyShape2->setVisible(false);
 
 	auto mbaseShapez = Shape::createRect(img4->getWidth()*0.2, img4->getHeight()*0.2);
 	mbaseShapez->setTexture(img1);
-	mbaseShapez->setPosition(1200, 500);
+	mbaseShapez->setPosition(1000, 500);
 	standbyShape3 = mbaseShapez;
 	addChild(standbyShape3);
-
+	standbyShape3->setVisible(false);
 
 
 	ci::app::timeline().apply(&standbyShape1->getPositionAnim(), ci::vec2(-standbyShape1->getPosition().x / 10, standbyShape1->getHeight() / 10), 10.0f).easeFn(ci::EaseInSine()).loop();
@@ -171,7 +201,9 @@ void MicroCosmos::invisibleStandby() {
 	standbyShape1->setVisible(false);
 	standbyShape2->setVisible(false);
 	standbyShape3->setVisible(false);
-	setVisible(true);
+	standByFig->setVisible(false);
+	standByFig2->setVisible(false);
+	standbyContent2->setVisible(false);
 }
 
 void MicroCosmos::visibleStandby() {
@@ -179,13 +211,16 @@ void MicroCosmos::visibleStandby() {
 	standbyShape1->setVisible(true);
 	standbyShape2->setVisible(true);
 	standbyShape3->setVisible(true);
+	standByFig->setVisible(true);
+	standByFig2->setVisible(true);
+	standbyContent2->setVisible(true);
 
 
 }
 
 void MicroCosmos::update() {
 	time2 = getElapsedSeconds();
-	if (time2 - time1 > 10)
+	if (time2 - time1 > 5)
 		visibleStandby();
 
 	if (foundRealCard)

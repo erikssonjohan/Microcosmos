@@ -315,7 +315,7 @@ bool VirtualCard::doubleTouch(po::scene::TouchEvent event) {
 		
 
 	}
-	if (time2 - time1 < 1 && timeChecker != true) {
+	if (time2 - time1 < 1.5 && timeChecker != true) {
 		timeChecker = true;
 		return true;
 
