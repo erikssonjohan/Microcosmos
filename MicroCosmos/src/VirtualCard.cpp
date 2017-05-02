@@ -140,13 +140,13 @@ void VirtualCard::setup(ci::Color color)
 
 void VirtualCard::onTouchDown(po::scene::TouchEvent &event) {
 	start = ci::app::getElapsedSeconds();
-	
+	/*
 	if(doubleTouch(event)) {
-		mBaseShape->setVisible(false);
+		//mBaseShape->setVisible(false);
 		//.... What should the doubletouch do??
-
+		
 	}
-
+	*/
 	if (!idInCard(event.getId())) {
 		std::cout << "tryck " << event.getId() << std::endl;
 		mIsPressed = true;
@@ -315,7 +315,7 @@ bool VirtualCard::doubleTouch(po::scene::TouchEvent event) {
 		
 
 	}
-	if (time2 - time1 < 1.5 && timeChecker != true) {
+	if (time2 - time1 < 0.5 && timeChecker != true) {
 		timeChecker = true;
 		return true;
 
