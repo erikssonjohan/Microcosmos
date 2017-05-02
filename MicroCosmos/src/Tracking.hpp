@@ -38,6 +38,7 @@ public:
     void calibration();
     std::tuple<vector<double>, vector<double>, vector<double>> getCornerPos();
     void setCorners(); //save camera coordinates for screen corners
+    vec3 getPosMarker(const int &id);
     vec2 getScreenCoordinates(vec3 markerPos); //convert camera coordinates to screen coordinates
 
     
