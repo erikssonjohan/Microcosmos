@@ -82,7 +82,7 @@ void MicroCosmosApp::update()
 
 void MicroCosmosApp::draw()
 {
-    gl::clear(Color(0, 0.5, 0));
+    gl::clear(Color(0.24, 0.255, 0.28));
     scene->draw();
 
     // Draw yellow circles at the active touch points

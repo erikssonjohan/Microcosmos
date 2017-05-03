@@ -51,6 +51,9 @@
     <media path='media/FAdynamics.mov' scale_exp='1'>
         <category name='molekyler'/>
         <category name='celler'/>
+        <category name='livsprocesser'/>
+
+        
         <se>
             <header>Ett biologiskt membran är dynamiskt</header>
             <text>Ett biologiskt membran består till största delen av fett (lipider). Animationen visar hur lipiderna i membranet rör sig och hur de byts ut mot fria lipider av olika slag som finns i omgivningen, eller hur de helt enkelt absorberas av membranet. På detta sätt förändrar membranet sin sammansättning beroende av vilka lipider som finns i omgivningen.[newline][newline]Källa: Janet Iwasa</text>
@@ -60,5 +63,6 @@
             <text>A biological membrane consists to a large proportion of fat (lipids). The animation shows how lipids in the membrane move and interchange positions with surrounding lipids. In this way, the composition of the membrane changes depending on the assembly of lipids in the immediate surroundings.   [newline][newline]Source: Janet Iwasa</text>
         </en>
     </media>
+    
     
 </content>

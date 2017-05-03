@@ -11,6 +11,10 @@
 #include "poVideo.h"
 #include "poShape.h"
 
+#include "cinder/qtime/QuickTimeGl.h"
+#include "cinder/ImageIo.h"
+#include "cinder/Utilities.h"
+
 using namespace po::scene;
 
 
@@ -217,8 +221,8 @@ void VirtualCard::onTouchDragged(po::scene::TouchEvent &event) {
 	if (events.size() >= 2) {
 		scale(events[0].getScenePos(), pPos[0], events[1].getScenePos(), pPos[1]);
 		setScale(_scale);
-        //touchRotate(events[0].getScenePos(), pPos[0], events[1].getScenePos(), pPos[1]);
-        //setRotation(toDegrees( angle));
+        touchRotate(events[0].getScenePos(), pPos[0], events[1].getScenePos(), pPos[1]);
+        setRotation( angle);
 	}
 	for (int i = 0; i<events.size(); ++i) {
 		if (events[i].getId() == event.getId()) {
@@ -297,6 +301,13 @@ void VirtualCard::scale(ci::vec2 pos1, ci::vec2 pPos1, ci::vec2 pos2, ci::vec2 p
 }
 
 void VirtualCard::touchRotate(ci::vec2 pos1, ci::vec2 pPos1, ci::vec2 pos2, ci::vec2 pPos2) {
+    vec2 a = pos1-pos2;
+    vec2 b = pPos1-pPos2;
+    a = normalize(a);
+    b = normalize(b);
+
+    angle += atan2(b.y, b.x)-atan2(a.y, a.x);
+    std::cout << angle << std::endl;
 }
 
 void VirtualCard::handleButtonTouches(po::scene::TouchEvent event) {
