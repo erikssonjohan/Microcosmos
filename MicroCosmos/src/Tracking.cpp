@@ -62,8 +62,8 @@ vec3 Tracking::getPosMarker(const int &id){
             ++std::get<0>(t), std::get<1>(t)++){
             pos[std::get<1>(t)] = * std::get<0>(t);
         }
+        return pos;
     }
-    return pos;
 }
 
 
@@ -72,8 +72,9 @@ vec3 Tracking::getPosMarker(const int &id){
 vec2 Tracking::getScreenCoordinates(vec3 markerPos) {
     vec3 x = glm::dot((markerPos - p0), normX)*normX /glm::length(p1-p0);
     vec3 y = glm::dot((markerPos - p0), normY)*normY /glm::length(p2-p0);
-    
-    //If it is not between 0 and 1 it is wrong! Try dividing with legth of X and Y
+    vec2 result = {glm::length(x),glm::length(y)};
+    //If it is not between 0 and 1 it is wrong! Try dividing with length of X and Y
+    cout << "TEST: " << result << endl;
     return vec2(glm::length(x),glm::length(y));
 }
 
@@ -133,7 +134,7 @@ void Tracking::update() {
     }
 
     //Read in update-loop due to resize() every frame
-    mCamParam.readFromXMLFile("/Users/oscar/Documents/TNM094-Media-navigering/MicroCosmos/assets/camera_results.yml");
+    mCamParam.readFromXMLFile("/Users/DavidTran/Documents/LinkopingUniversitetSkola/TNM094-Kandidat/GitHub/camera_results.yml");
     //mCamParam.readFromXMLFile("/Users/oscar/Documents/TNM094-Media-navigering/MicroCosmos/assets/camera_results.yml");
 
     mTexture->update(*mCapture->getSurface());
@@ -155,6 +156,17 @@ void Tracking::update() {
             _markerMap.insert(pair<int,vector<double>>(i.id,{pos[0],pos[1],pos[2]}));
         else
             _markerMap[i.id] = {pos[0],pos[1],pos[2]};
+    }
+    
+    //Run setCorners only if key 1,2 and 3 exists in map.
+    if(_markerMap.count(1) > 0 && _markerMap.count(2) > 0 && _markerMap.count(3) > 0){
+        setCorners();
+        _markerMap.erase(1);
+        _markerMap.erase(2);
+        _markerMap.erase(3);
+    }
+    else{
+        return;
     }
     
     for (const auto it : _markerMap) {
