@@ -301,12 +301,12 @@ void VirtualCard::scale(ci::vec2 pos1, ci::vec2 pPos1, ci::vec2 pos2, ci::vec2 p
 }
 
 void VirtualCard::touchRotate(ci::vec2 pos1, ci::vec2 pPos1, ci::vec2 pos2, ci::vec2 pPos2) {
-    vec2 a = pos1-pos2;
-    vec2 b = pPos1-pPos2;
+    vec2 a = pos2-pos1;
+    vec2 b = pPos2-pPos1;
     a = normalize(a);
     b = normalize(b);
 
-    angle += atan2(b.y, b.x)-atan2(a.y, a.x);
+    angle += atan2(a.y, a.x)-atan2(b.y, b.x);
     std::cout << angle << std::endl;
 }
 
