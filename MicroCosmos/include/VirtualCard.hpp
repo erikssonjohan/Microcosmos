@@ -42,6 +42,11 @@ protected:
 
 private:
 
+    
+    //media
+    float mediaWidth, mediaHeight;
+    bool mediaMovie;
+    
 	float border = 10;
 	//timestamps that handle how long an event has been pressed
 	double start, end, timeTouched, time1, time2;
@@ -107,6 +112,8 @@ private:
 
 	//Scale
 	void scale(ci::vec2 pos1, ci::vec2 pPos1, ci::vec2 pos2, ci::vec2 pPos2);
+    
+    void touchRotate(ci::vec2 pos1, ci::vec2 pPos1, ci::vec2 pos2, ci::vec2 pPos2);
 
 	//Function that handles the visibility of all the text boxes and buttons.
 	void handleButtonTouches(po::scene::TouchEvent event);

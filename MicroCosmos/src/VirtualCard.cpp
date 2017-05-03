@@ -8,7 +8,7 @@
 
 #include "VirtualCard.hpp"
 
-
+#include "poVideo.h"
 #include "poShape.h"
 
 using namespace po::scene;
@@ -54,29 +54,59 @@ void VirtualCard::setup(ci::Color color)
 	mEndPos = ci::vec2();
 	mInitialPos = ci::vec2();
 	mIsPressed = false;
+    po::scene::ShapeRef textur;
+    po::scene::VideoGlRef poVideo;
+    
+    if(_path.substr(_path.find_last_of(".")+1) == "mov" || _path.substr(_path.find_last_of(".")+1) == "mp4"){
+        
+        mediaMovie = true;
+        
+        poVideo = po::scene::VideoGl::create();
+        
+        try {
+            ci::qtime::MovieGlRef movieRef = ci::qtime::MovieGl::create(ci::app::getAssetPath(_path));
+            
+            poVideo->setMovieRef(movieRef);
+            poVideo->getMovieRef()->setLoop(true);
+            poVideo->getMovieRef()->play();
+        } catch (...) {
+            ci::app::console() << "PlayerNode::setup: Failed to load movie" << std::endl;
+        }
+        
+        poVideo->setPosition(border, border);
+        mediaWidth = poVideo->getWidth();
+        mediaHeight = poVideo->getHeight();
+    }
+    else if(_path.substr(_path.find_last_of(".")+1) == "jpg" || _path.substr(_path.find_last_of(".")+1) == "png" ){
+        mediaMovie = false;
+        ci::gl::TextureRef img = ci::gl::Texture::create(ci::loadImage(ci::app::loadAsset(_path)));
+        //ci::gl::TextureRef buttonImg = ci::gl::Texture::create(ci::loadImage(ci::app::loadAsset("sweeng.png")));
+        mediaWidth = img->getWidth();
+        mediaHeight = img->getHeight();
+        //  create and add the shape to the node container
+        textur = Shape::createRect(img->getWidth(), img->getHeight());
+        textur->setTexture(img);
+        textur->setPosition(border, border);
+    }
+    
+    
+    //border to the media (img or movie)
+    mBaseShape = Shape::createRect(mediaWidth + border * 2, mediaHeight + border * 2);
+    mBaseColor = color;
+    mBaseShape->setFillColor(color);
 
-	ci::gl::TextureRef img = ci::gl::Texture::create(ci::loadImage(ci::app::loadAsset(_path)));
-	//ci::gl::TextureRef buttonImg = ci::gl::Texture::create(ci::loadImage(ci::app::loadAsset("sweeng.png")));
-
-
-	//  create and add the shape to the node container
-	mBaseShape = Shape::createRect(img->getWidth() + border * 2, img->getHeight() + border * 2);
-	mBaseColor = color;
-	mBaseShape->setFillColor(color);
-	auto textur = Shape::createRect(img->getWidth(), img->getHeight());
-	textur->setTexture(img);
-	textur->setPosition(border, border);
-
+    
+    
 	// text
 	// TODO:: make it less static and might need some fixes. just did it to test, not sure if its the best way // JE
-	textFig = Shape::createRect(400, img->getHeight() + border * 2);
+	textFig = Shape::createRect(400, mediaHeight + border * 2);
 	textFig->setFillColor(0, 0, 0, 0.8);
-	textFig->setPosition(img->getWidth() + border * 2, 0);
-	buttonWidth = img->getWidth() / 8;
-	buttonHeight = img->getHeight() / 10;
+	textFig->setPosition(mediaWidth + border * 2, 0);
+	buttonWidth = mediaWidth / 8;
+	buttonHeight = mediaHeight / 10;
 	buttonFig = Shape::createRect(buttonWidth, buttonHeight);
 	buttonFig->setFillColor(0, 0, 0, 0.3);
-	buttonPos = ci::vec2(img->getWidth() + border * 2, img->getHeight() + border * 2 - buttonHeight);
+	buttonPos = ci::vec2(mediaWidth + border * 2, mediaHeight + border * 2 - buttonHeight);
 	buttonFig->setPosition(buttonPos.x, buttonPos.y);
 
 	//Textbox
@@ -95,10 +125,10 @@ void VirtualCard::setup(ci::Color color)
 
 	ciTextBox.text(_text_se);
 	textContentS = po::scene::TextBox::create(ciTextBox);
-	textContentS->setPosition(img->getWidth() + border * 6, 100);
+	textContentS->setPosition(mediaWidth + border * 6, 100);
 	ciTextBox.text(_text_en);
 	textContentE = po::scene::TextBox::create(ciTextBox);
-	textContentE->setPosition(img->getWidth() + border * 6, 100);
+	textContentE->setPosition(mediaWidth + border * 6, 100);
 	ciButtonBox.text("SWE/ENG");
 	SWE = po::scene::TextBox::create(ciButtonBox);
 	SWE->setPosition(buttonPos.x, buttonPos.y);
@@ -112,7 +142,13 @@ void VirtualCard::setup(ci::Color color)
 	setAlignment(po::scene::Alignment::CENTER_CENTER);
 
 	addChild(mBaseShape);
+    
+    if (!mediaMovie){
 	addChild(textur);
+    }
+    if (mediaMovie){
+        addChild(poVideo);
+    }
 	addChild(textFig);
 	addChild(textContentS);
 	addChild(textContentE);
@@ -181,6 +217,8 @@ void VirtualCard::onTouchDragged(po::scene::TouchEvent &event) {
 	if (events.size() >= 2) {
 		scale(events[0].getScenePos(), pPos[0], events[1].getScenePos(), pPos[1]);
 		setScale(_scale);
+        //touchRotate(events[0].getScenePos(), pPos[0], events[1].getScenePos(), pPos[1]);
+        //setRotation(toDegrees( angle));
 	}
 	for (int i = 0; i<events.size(); ++i) {
 		if (events[i].getId() == event.getId()) {
@@ -256,6 +294,9 @@ void VirtualCard::scale(ci::vec2 pos1, ci::vec2 pPos1, ci::vec2 pos2, ci::vec2 p
 		_scale *= currentDistance / previousDistance;
 		//setScale(_scale);
 	}
+}
+
+void VirtualCard::touchRotate(ci::vec2 pos1, ci::vec2 pPos1, ci::vec2 pos2, ci::vec2 pPos2) {
 }
 
 void VirtualCard::handleButtonTouches(po::scene::TouchEvent event) {

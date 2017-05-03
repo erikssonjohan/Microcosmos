@@ -36,7 +36,7 @@ void Tracking::setCorners() {
     //lazy check if we have the first markers
     if (!P0.empty() && !P1.empty() && !P2.empty()) {
         for (auto t = std::make_tuple(P0.begin(), P1.begin(), P2.begin(), 0);
-             std::get<0>(t) != P0.end() && std::get<1>(t) != P1.end() && std::get<2>(t) != P2.end();
+             std::get<0>(t) != P0.end() && std::get<1>(t) != P1.end() && std::get<2>(t) != P2.end() && std::get<3>(t) <= cornerpos;
              ++std::get<0>(t), ++std::get<1>(t), ++std::get<2>(t), std::get<3>(t)++) {
             
             p0[std::get<3>(t)] = *std::get<0>(t);
