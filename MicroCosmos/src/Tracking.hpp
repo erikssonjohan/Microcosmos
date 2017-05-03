@@ -22,9 +22,6 @@
 
 class Tracking {
 public:
-    //Tracking();
-    //~Tracking();
-    
     void setup();
     void update();
     void draw();
@@ -35,7 +32,6 @@ public:
     glm::vec3 getPosMarker(const int &id);
     //convert camera coordinates to screen coordinates
     glm::vec2 getScreenCoordinates(glm::vec3 markerPos);
-
     
 private:
     aruco::CameraParameters mCamParam;
@@ -48,7 +44,7 @@ private:
     cv::Mat input;
     const int cornerpos = 2;
     std::map<int, vector<double>> _markerMap;
-    
+
     //corners of the screen in camera coordinates
     //p0 is (0,0) on screen, p1 is (1,0) and p2 is (0,1)
     glm::vec3 p0,p1,p2;

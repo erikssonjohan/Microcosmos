@@ -61,20 +61,19 @@ glm::vec3 Tracking::getPosMarker(const int &id) {
 }
 
 
-
 //Returns Screen coordinates between 0 and 1
 glm::vec2 Tracking::getScreenCoordinates(glm::vec3 markerPos) {
     glm::vec3 x = glm::dot((markerPos - p0), normX)*normX /glm::length(p1-p0);
     glm::vec3 y = glm::dot((markerPos - p0), normY)*normY /glm::length(p2-p0);
     glm::vec2 result = {glm::length(x),glm::length(y)};
+    
     //If it is not between 0 and 1 it is wrong! Try dividing with length of X and Y
-    //std::cout << "TEST: " << result << endl;
     return glm::vec2(glm::length(x),glm::length(y));
 }
 
 
 void Tracking::printDevices() {
-    for( const auto &device : ci::Capture::getDevices() ) {
+    for(const auto &device : ci::Capture::getDevices()) {
         ci::app::console() << "Device: " << device->getName() << " " << endl;
     }
 }
@@ -83,7 +82,6 @@ void Tracking::setup() {
 
     //print cameras and init camera capture
     printDevices();
-    //calibration();
     try {
         mCapture = ci::Capture::create( 640, 480 );
         mCapture->start();
@@ -96,10 +94,8 @@ void Tracking::setup() {
 
 
 void Tracking::update() {
-    
     static bool firsttime = true;
 
-    
     if( !mCapture || !mCapture->checkNewFrame())
         return;
     
@@ -109,19 +105,17 @@ void Tracking::update() {
         mSurf = ci::Surface(ci::Channel8u(mTexture->createSource()));
     }
 
+    //TODO: Fix this at release
     //Read in update-loop due to resize() every frame
     //mCamParam.readFromXMLFile("/Users/DavidTran/Documents/LinkopingUniversitetSkola/TNM094-Kandidat/GitHub/camera_results.yml");
     mCamParam.readFromXMLFile("/Users/oscar/Documents/TNM094-Media-navigering/MicroCosmos/assets/camera_results.yml");
-
+    
     mTexture->update(*mCapture->getSurface());
     input = toOcv(ci::Surface(ci::Channel8u(mTexture->createSource())));
     mCamParam.resize(input.size());
-
-    //aruco::MarkerDetector mMarkerDetector;
     mMarkerDetector.detect(input, mMarkers, mCamParam, 0.028f);
     
     for (auto i : mMarkers) {
-        
         double pos[3];
         double rot[4];
         
@@ -132,15 +126,17 @@ void Tracking::update() {
             _markerMap.insert(pair<int,vector<double>>(i.id,{pos[0],pos[1],pos[2]}));
         else
             _markerMap[i.id] = {pos[0],pos[1],pos[2]};
-    
     }
    
+    /*
     for (const auto it : _markerMap) {
         std::cout << "ID: " << it.first << std::endl;
         for(auto it2 = it.second.begin(); it2 != it.second.end(); ++it2)
             std::cout << " POS: " << "[ " << *it2 << " ]"<< std::endl;
     }
+    */
     
+    //Check for cornermarkers
     if (_markerMap.count(1) > 0 && _markerMap.count(2) > 0 && _markerMap.count(3) > 0 && firsttime) {
         firsttime = false;
         setCorners();
@@ -148,7 +144,6 @@ void Tracking::update() {
         _markerMap.erase(2);
         _markerMap.erase(3);
     }
-    std::cout << "Size: " << _markerMap.size() << endl;
 }
 
 
