@@ -54,7 +54,7 @@ vec3 Tracking::getPosMarker(const int &id){
     it0 = _markerMap.find(id);
     vec3 pos = {0,0,0};
     vec3 negVec = {-1, -1, -1};
-    if(it0->second.empty()){
+    if(it0 == _markerMap.end()){
         return negVec;
     }
     else{
@@ -138,8 +138,8 @@ void Tracking::update() {
     }
 
     //Read in update-loop due to resize() every frame
-    //mCamParam.readFromXMLFile("/Users/DavidTran/Documents/LinkopingUniversitetSkola/TNM094-Kandidat/GitHub/camera_results.yml");
-    mCamParam.readFromXMLFile("/Users/oscar/Documents/TNM094-Media-navigering/MicroCosmos/assets/camera_results.yml");
+    mCamParam.readFromXMLFile("/Users/DavidTran/Documents/LinkopingUniversitetSkola/TNM094-Kandidat/GitHub/camera_results.yml");
+    //mCamParam.readFromXMLFile("/Users/oscar/Documents/TNM094-Media-navigering/MicroCosmos/assets/camera_results.yml");
 
     mTexture->update(*mCapture->getSurface());
     input = toOcv(Surface(Channel8u(mTexture->createSource())));
