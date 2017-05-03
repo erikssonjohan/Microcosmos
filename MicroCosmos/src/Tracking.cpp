@@ -16,30 +16,62 @@ using namespace std;
 //TODO: DONT DO IT THIS WAY AT RELEASE
 //get position of specific arucomarkers (cornerpoints)
 std::tuple<vector<double>, vector<double>, vector<double>> Tracking::getCornerPos() {
+    std::map<int, vector<double>>::iterator it0;
     std::map<int, vector<double>>::iterator it1;
     std::map<int, vector<double>>::iterator it2;
-    std::map<int, vector<double>>::iterator it3;
 
-    it1 = _markerMap.find(1);
-    it2 = _markerMap.find(2);
-    it3 = _markerMap.find(3);
-    return std::make_tuple(it1->second,it2->second,it3->second);
+    it0 = _markerMap.find(1);
+    it1 = _markerMap.find(2);
+    it2 = _markerMap.find(3);
+    return std::make_tuple(it0->second,it1->second,it2->second);
 }
-
 
 //Save camera coordinates for the corners of the screen
 void Tracking::setCorners() {
-    
-    //p0 = P0; p1 = P1; p2 = P2;
-    normX = normalize(p1 - p0);
-    normY = normalize(p2-p0);
+    auto corners = getCornerPos();
+    auto P0 = std::get<0>(corners);
+    auto P1 = std::get<1>(corners);
+    auto P2 = std::get<2>(corners);
+
+    //lazy check if we have the first markers
+    if (!P0.empty() && !P1.empty() && !P2.empty()) {
+        for (auto t = std::make_tuple(P0.begin(), P1.begin(), P2.begin(), 0);
+             std::get<0>(t) != P0.end() && std::get<1>(t) != P1.end() && std::get<2>(t) != P2.end() && std::get<3>(t) <= cornerpos;
+             ++std::get<0>(t), ++std::get<1>(t), ++std::get<2>(t), std::get<3>(t)++) {
+            
+            p0[std::get<3>(t)] = *std::get<0>(t);
+            p1[std::get<3>(t)] = *std::get<1>(t);
+            p2[std::get<3>(t)] = *std::get<2>(t);
+        }
+        normX = glm::normalize(p1 - p0);
+        normY = glm::normalize(p2 - p0);
+        //cout << "normX: " << normX << " normY: " << normY <<  endl;
+    }
 }
+
+vec3 Tracking::getPosMarker(const int &id){
+    std::map<int, vector<double>>::iterator it0;
+    it0 = _markerMap.find(id);
+    vec3 pos = {0,0,0};
+    vec3 negVec = {-1, -1, -1};
+    if(it0->second.empty()){
+        return negVec;
+    }
+    else{
+        for( auto t = std::make_tuple(it0->second.begin(), 0); std::get<0>(t) != it0->second.end();
+            ++std::get<0>(t), std::get<1>(t)++){
+            pos[std::get<1>(t)] = * std::get<0>(t);
+        }
+    }
+    return pos;
+}
+
 
 
 //Returns Screen coordinates between 0 and 1
 vec2 Tracking::getScreenCoordinates(vec3 markerPos) {
-    vec3 x = glm::dot((markerPos - p0), normX)*normX; // /glm::length(p1-p0);
-    vec3 y = glm::dot((markerPos - p0), normY)*normY; // /glm::length(p2-p0);
+    vec3 x = glm::dot((markerPos - p0), normX)*normX /glm::length(p1-p0);
+    vec3 y = glm::dot((markerPos - p0), normY)*normY /glm::length(p2-p0);
     
     //If it is not between 0 and 1 it is wrong! Try dividing with legth of X and Y
     return vec2(glm::length(x),glm::length(y));
@@ -55,7 +87,6 @@ void Tracking::printDevices() {
 
 void Tracking::calibration() {
     char press;
-    
     cout << "Calibration: y/N" << endl;
     cin >> press;
   
@@ -65,9 +96,7 @@ void Tracking::calibration() {
         //execl("/Users/oscar/Downloads/aruco-2.0.19/cmake-build-debug/utils_calibration/aruco_calibration", "aruco_calibration", "live", "camera_results.yml", "-size", "0.034", "-m", "/Users/oscar/Downloads/aruco-2.0.19/cmake-build-debug/utils_calibration/aruco_calibration_board_a4.yml", (char*)0);
         
         perror("execl() failure!\n\n");
-
     }
-    
     else if(press == 'N') {
         cout << "Continue with program.." << endl;
     }
