@@ -124,6 +124,10 @@ void Tracking::setup() {
 
 
 void Tracking::update() {
+    
+    static bool firsttime = true;
+
+    
     if( !mCapture || !mCapture->checkNewFrame())
         return;
     
@@ -134,8 +138,8 @@ void Tracking::update() {
     }
 
     //Read in update-loop due to resize() every frame
-    mCamParam.readFromXMLFile("/Users/DavidTran/Documents/LinkopingUniversitetSkola/TNM094-Kandidat/GitHub/camera_results.yml");
-    //mCamParam.readFromXMLFile("/Users/oscar/Documents/TNM094-Media-navigering/MicroCosmos/assets/camera_results.yml");
+    //mCamParam.readFromXMLFile("/Users/DavidTran/Documents/LinkopingUniversitetSkola/TNM094-Kandidat/GitHub/camera_results.yml");
+    mCamParam.readFromXMLFile("/Users/oscar/Documents/TNM094-Media-navigering/MicroCosmos/assets/camera_results.yml");
 
     mTexture->update(*mCapture->getSurface());
     input = toOcv(Surface(Channel8u(mTexture->createSource())));
@@ -156,25 +160,23 @@ void Tracking::update() {
             _markerMap.insert(pair<int,vector<double>>(i.id,{pos[0],pos[1],pos[2]}));
         else
             _markerMap[i.id] = {pos[0],pos[1],pos[2]};
-    }
     
-    //Run setCorners only if key 1,2 and 3 exists in map.
-    if(_markerMap.count(1) > 0 && _markerMap.count(2) > 0 && _markerMap.count(3) > 0){
-        setCorners();
-        _markerMap.erase(1);
-        _markerMap.erase(2);
-        _markerMap.erase(3);
     }
-    else{
-        return;
-    }
-    
+   
     for (const auto it : _markerMap) {
         cout << "ID: " << it.first << endl;
         for(auto it2 = it.second.begin(); it2 != it.second.end(); ++it2)
             cout << " POS: " << "[ " << *it2 << " ]"<< endl;
     }
     
+    if (_markerMap.count(1) > 0 && _markerMap.count(2) > 0 && _markerMap.count(3) > 0 && firsttime) {
+        firsttime = false;
+        setCorners();
+        _markerMap.erase(1);
+        _markerMap.erase(2);
+        _markerMap.erase(3);
+        cout << "hejhej" << p0;
+    }
     cout << "Size: " << _markerMap.size() << endl;
 }
 
