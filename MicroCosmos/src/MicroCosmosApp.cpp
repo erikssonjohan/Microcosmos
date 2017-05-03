@@ -90,9 +90,6 @@ void MicroCosmosApp::draw()
     for (const auto &touch : getActiveTouches()) {
         gl::drawStrokedCircle(touch.getPos(), 20);
     }
-
-    //display output from camera
-    //mTrack.draw();
 }
 
 CINDER_APP( MicroCosmosApp, RendererGl, prepareSettings )
