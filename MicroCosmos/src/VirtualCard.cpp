@@ -217,8 +217,8 @@ void VirtualCard::onTouchDragged(po::scene::TouchEvent &event) {
 	if (events.size() >= 2) {
 		scale(events[0].getScenePos(), pPos[0], events[1].getScenePos(), pPos[1]);
 		setScale(_scale);
-        touchRotate(events[0].getScenePos(), pPos[0], events[1].getScenePos(), pPos[1]);
-        setRotation(toDegrees( angle));
+        //touchRotate(events[0].getScenePos(), pPos[0], events[1].getScenePos(), pPos[1]);
+        //setRotation(toDegrees( angle));
 	}
 	for (int i = 0; i<events.size(); ++i) {
 		if (events[i].getId() == event.getId()) {
@@ -297,13 +297,6 @@ void VirtualCard::scale(ci::vec2 pos1, ci::vec2 pPos1, ci::vec2 pos2, ci::vec2 p
 }
 
 void VirtualCard::touchRotate(ci::vec2 pos1, ci::vec2 pPos1, ci::vec2 pos2, ci::vec2 pPos2) {
-    float k1 = (pos1.y-pos2.y)/(pos1.x-pos2.x);
-    float k2 = (pPos1.y-pPos2.y)/(pPos1.x-pPos2.x);
-    float a = atan(((k1-k2)/(1+k1*k2)));
-    if (abs(a) > 0.05) {
-        angle += a;
-    }
-    
 }
 
 void VirtualCard::handleButtonTouches(po::scene::TouchEvent event) {

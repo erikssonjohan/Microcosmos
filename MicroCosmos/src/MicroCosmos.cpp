@@ -38,9 +38,12 @@ void MicroCosmos::setup(){
      }
     */
 	
-    RealCardRef ref = RealCard::create("gener");
+    RealCardRef ref = RealCard::create("livsprocesser");
     ref->setPosition(500, 300);
     addChild(ref);
+    RealCardRef ref2 = RealCard::create("celler");
+    ref2->setPosition(500, 300);
+    addChild(ref2);
     
 	
 	
