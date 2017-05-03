@@ -15,7 +15,7 @@
 #include "VirtualCard.hpp"
 #include "cinder/Xml.h"
 #include "RealCard.h"
-
+#include "Tracking.hpp"
 class MicroCosmos;
 typedef std::shared_ptr<MicroCosmos> MicroCosmosRef;
 
@@ -65,6 +65,9 @@ private:
 	po::scene::ShapeRef standbyShape3;
 	double time1, time2;
 	bool foundRealCard = false;
+	Tracking track;
+	glm::vec3 pos;
+	glm::vec2 realPos;
 	
     
 };

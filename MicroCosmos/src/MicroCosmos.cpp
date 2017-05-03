@@ -25,26 +25,27 @@ void MicroCosmos::setup(){
      //Good to know: inside RealCard.cpp the you also have to write the name of the xml-file, they are not liked yet
 	
 	//initStandby();
-	/*
+	
      std::vector<std::string> categories;
      uniqueCategories("demo.xml", categories);
-     
+	 
      for(int i = 0; i<categories.size(); i++)
      {
-     rcards.push_back(RealCard::create(categories[i]));
+	 
+	 rcards.push_back(RealCard::create(categories[i], i));
      rcards[i]->setPosition(i*300, i*100);
 	 rcards[i]->setVisible(false); //Screen should be empty at the start 
      addChild(rcards[i]);
      }
-    */
-	
-    RealCardRef ref = RealCard::create("livsprocesser");
+    
+	/*
+    RealCardRef ref = RealCard::create("livsprocesser",2);
     ref->setPosition(500, 300);
     addChild(ref);
-    RealCardRef ref2 = RealCard::create("celler");
+    RealCardRef ref2 = RealCard::create("celler",3);
     ref2->setPosition(500, 300);
     addChild(ref2);
-    
+    */
 	
 	
 
@@ -222,11 +223,30 @@ void MicroCosmos::visibleStandby() {
 }
 
 void MicroCosmos::update() {
-	time2 = getElapsedSeconds();
-	//if (time2 - time1 > 5)
+	
+	for (int i = 0; i < rcards.size(); i++) {
+
+		pos = track.getPosMarker(rcards[i]->get_ID()+4);
+		
+		if (pos.x > 0 && pos.y > 0)
+		{
+			realPos = track.getScreenCoordinates(pos);
+			rcards[i]->setVisible(true);
+			rcards[i]->setPosition(realPos.x, realPos.y); /// Puts out the virtual cards inside real cards to realPos.
+
+		}
+		else
+			rcards[i]->setVisible(false);
+	}
+	
+
+
+	
+	/*time2 = getElapsedSeconds();
+	if (time2 - time1 > 5)
 		//visibleStandby();
 
-	//if (foundRealCard)
+	if (foundRealCard)
 		//invisibleStandby();
-
+	*/
 }

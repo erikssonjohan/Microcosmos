@@ -3,20 +3,20 @@
 #include "poShape.h"
 
 
-RealCardRef RealCard::create(std::string category) {
+RealCardRef RealCard::create(std::string category, int id) {
     
     RealCardRef node(new RealCard()); //Using a default constructor for the moment
-    node->setup(category); //Not neccessary to pass var category if member of RealCard
+    node->setup(category,id); //Not neccessary to pass var category if member of RealCard
     return node;
 }
 
-void RealCard::setup(std::string category)
+void RealCard::setup(std::string category, int id)
 {
     
     //creates virtualCards and save the refs to them in the vector vCards
     loadXML("demo.xml", vCards, category);
     int nrOfVirtcards = vCards.size();
-    
+	ID = id;
     float radius = 300;
     
     //position the virtual cards around the real card and add as children
@@ -78,4 +78,11 @@ void RealCard::loadXML(const char *file, std::vector<VirtualCardRef> &cards, std
         }
         
     }
+}
+
+int RealCard::get_ID() {
+
+
+	return ID;
+
 }
