@@ -51,6 +51,7 @@ private:
     Surface mSurf;
     gl::TextureRef mTexture;
     cv::Mat input;
+    const int cornerpos = 3;
     map<int, vector<double>> _markerMap;
     
     //corners of the screen in camera coordinates
