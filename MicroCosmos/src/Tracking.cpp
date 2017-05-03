@@ -53,8 +53,9 @@ vec3 Tracking::getPosMarker(const int &id){
     std::map<int, vector<double>>::iterator it0;
     it0 = _markerMap.find(id);
     vec3 pos = {0,0,0};
+    vec3 negVec = {-1, -1, -1};
     if(it0->second.empty()){
-        exit(1);
+        return negVec;
     }
     else{
         for( auto t = std::make_tuple(it0->second.begin(), 0); std::get<0>(t) != it0->second.end();
@@ -69,8 +70,8 @@ vec3 Tracking::getPosMarker(const int &id){
 
 //Returns Screen coordinates between 0 and 1
 vec2 Tracking::getScreenCoordinates(vec3 markerPos) {
-    vec3 x = glm::dot((markerPos - p0), normX)*normX; // /glm::length(p1-p0);
-    vec3 y = glm::dot((markerPos - p0), normY)*normY; // /glm::length(p2-p0);
+    vec3 x = glm::dot((markerPos - p0), normX)*normX /glm::length(p1-p0);
+    vec3 y = glm::dot((markerPos - p0), normY)*normY /glm::length(p2-p0);
     
     //If it is not between 0 and 1 it is wrong! Try dividing with legth of X and Y
     return vec2(glm::length(x),glm::length(y));
