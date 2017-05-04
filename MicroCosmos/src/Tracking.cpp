@@ -81,16 +81,29 @@ void Tracking::printDevices() {
 
 
 void Tracking::setup() {
-
-    //print cameras and init camera capture
+    //print available devices
     printDevices();
-    try {
-        mCapture = ci::Capture::create(640, 480);
-        mCapture->start();
+    const std::string vr_labCamera = "logitech c930e";
+    
+    if(ci::Capture::findDeviceByName(vr_labCamera)) {
+        try {
+            mCapture = ci::Capture::create(640, 480, ci::Capture::findDeviceByName(vr_labCamera));
+            mCapture->start();
+        }
+        catch( ci::Exception &exc ) {
+            CI_LOG_EXCEPTION("Failed to init capture VR_LAB", exc);
+            exit(1);
+        }
     }
-    catch( ci::Exception &exc ) {
-        CI_LOG_EXCEPTION("Failed to init capture", exc);
-        exit(1);
+    else {
+        try {
+            mCapture = ci::Capture::create(640, 480);
+            mCapture->start();
+        }
+        catch( ci::Exception &exc ) {
+            CI_LOG_EXCEPTION("Failed to init capture", exc);
+            exit(1);
+        }
     }
 }
 
