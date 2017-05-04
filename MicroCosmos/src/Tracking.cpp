@@ -23,7 +23,7 @@ std::tuple<vector<double>, vector<double>, vector<double>> Tracking::getCornerPo
 
 //Save camera coordinates for the corners of the screen
 void Tracking::setCorners() {
-    auto corners = getCornerPos();
+    const auto corners = getCornerPos();
     auto P0 = std::get<0>(corners);
     auto P1 = std::get<1>(corners);
     auto P2 = std::get<2>(corners);
@@ -48,12 +48,13 @@ glm::vec3 Tracking::getPosMarker(const int &id) {
     it0 = _markerMap.find(id);
     glm::vec3 pos = {0,0,0};
     glm::vec3 negVec = {-1, -1, -1};
-    if(it0 == _markerMap.end()){
+    if(it0 == _markerMap.end()) {
         return negVec;
     }
     else{
-        for( auto t = std::make_tuple(it0->second.begin(), 0); std::get<0>(t) != it0->second.end();
-            ++std::get<0>(t), std::get<1>(t)++){
+        for(auto t = std::make_tuple(it0->second.begin(), 0);
+            std::get<0>(t) != it0->second.end(); ++std::get<0>(t), std::get<1>(t)++) {
+            
             pos[std::get<1>(t)] = * std::get<0>(t);
         }
         return pos;
@@ -78,16 +79,17 @@ void Tracking::printDevices() {
     }
 }
 
+
 void Tracking::setup() {
 
     //print cameras and init camera capture
     printDevices();
     try {
-        mCapture = ci::Capture::create( 640, 480 );
+        mCapture = ci::Capture::create(640, 480);
         mCapture->start();
     }
     catch( ci::Exception &exc ) {
-        CI_LOG_EXCEPTION( "Failed to init capture ", exc );
+        CI_LOG_EXCEPTION("Failed to init capture", exc);
         exit(1);
     }
 }
@@ -96,8 +98,9 @@ void Tracking::setup() {
 void Tracking::update() {
     static bool firsttime = true;
 
-    if( !mCapture || !mCapture->checkNewFrame())
+    if(!mCapture || !mCapture->checkNewFrame()) {
         return;
+    }
     
     if(!mTexture) {
         // Capture images
@@ -128,13 +131,12 @@ void Tracking::update() {
             _markerMap[i.id] = {pos[0],pos[1],pos[2]};
     }
    
-    /*
-    for (const auto it : _markerMap) {
+    //print markerinfo
+ /* for (const auto it : _markerMap) {
         std::cout << "ID: " << it.first << std::endl;
         for(auto it2 = it.second.begin(); it2 != it.second.end(); ++it2)
             std::cout << " POS: " << "[ " << *it2 << " ]"<< std::endl;
-    }
-    */
+    } */
     
     //Check for cornermarkers
     if (_markerMap.count(1) > 0 && _markerMap.count(2) > 0 && _markerMap.count(3) > 0 && firsttime) {
