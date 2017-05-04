@@ -193,7 +193,7 @@ void VirtualCard::onTouchDown(po::scene::TouchEvent &event) {
 		touchId.push_back(event.getId());
 		events.push_back(event);
 
-		pPos.push_back(event.getScenePos());
+		pPos.push_back(event.getWindowPos());
 
 		// Moves the card to drawn at the front
 		getParent()->moveChildToFront(getParent()->getChildByName(this->getName()));
@@ -219,14 +219,14 @@ void VirtualCard::onTouchDragged(po::scene::TouchEvent &event) {
 
 	}
 	if (events.size() >= 2) {
-		scale(events[0].getScenePos(), pPos[0], events[1].getScenePos(), pPos[1]);
+		scale(events[0].getWindowPos(), pPos[0], events[1].getWindowPos(), pPos[1]);
 		setScale(_scale);
-        touchRotate(events[0].getScenePos(), pPos[0], events[1].getScenePos(), pPos[1]);
+        touchRotate(events[0].getWindowPos(), pPos[0], events[1].getWindowPos(), pPos[1]);
         setRotation( angle);
 	}
 	for (int i = 0; i<events.size(); ++i) {
 		if (events[i].getId() == event.getId()) {
-			pPos[i] = events[i].getScenePos();
+			pPos[i] = events[i].getWindowPos();
 			events[i] = event;
 		}
 	}
