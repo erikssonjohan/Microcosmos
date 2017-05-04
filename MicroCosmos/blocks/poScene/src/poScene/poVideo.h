@@ -41,6 +41,7 @@
 #include "boost/any.hpp"
 #include "cinder/app/App.h"
 #include "cinder/gl/Texture.h"
+#include "cinder/gl/scoped.h"
 
 namespace po { namespace scene {
     // This class is a generic wrapper for any Cinder based video player
@@ -56,7 +57,6 @@ namespace po { namespace scene {
 	{
     private:
         typedef std::shared_ptr<T> GenericMovieRef;
-        
     public:
         //! Create empty Video node
         static std::shared_ptr< Video<T> > create();
