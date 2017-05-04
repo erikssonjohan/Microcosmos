@@ -34,7 +34,7 @@ void MicroCosmos::setup(){
 	 
 	 rcards.push_back(RealCard::create(categories[i], i));
      rcards[i]->setPosition(i*300, i*100);
-	 rcards[i]->setVisible(false); //Screen should be empty at the start 
+	 //rcards[i]->setVisible(false); //Screen should be empty at the start
      addChild(rcards[i]);
      }
     
@@ -224,7 +224,7 @@ void MicroCosmos::visibleStandby() {
 
 void MicroCosmos::update() {
 	
-	for (int i = 0; i < rcards.size(); i++) {
+	/*for (int i = 0; i < rcards.size(); i++) {
 
 		pos = track.getPosMarker(rcards[i]->get_ID()+4);
 		
@@ -237,7 +237,7 @@ void MicroCosmos::update() {
 		}
 		else
 			rcards[i]->setVisible(false);
-	}
+	}*/
 	
 
 
