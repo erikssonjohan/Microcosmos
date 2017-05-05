@@ -27,7 +27,7 @@ public:
     void update();
     void draw();
     void printDevices();
-    std::tuple<vector<double>, vector<double>, vector<double>> getCornerPos();
+    std::tuple<std::vector<double>, std::vector<double>, std::vector<double>> getCornerPos();
     //save camera coordinates for screen corners
     void setCorners();
     glm::vec3 getPosMarker(const int &id);
@@ -37,14 +37,14 @@ public:
 private:
     aruco::CameraParameters mCamParam;
     aruco::MarkerDetector mMarkerDetector;
-    vector<aruco::Marker> mMarkers;
+    std::vector<aruco::Marker> mMarkers;
     
     ci::CaptureRef mCapture;
     ci::Surface mSurf;
     ci::gl::TextureRef mTexture;
     cv::Mat input;
-    const int cornerpos = 2;
-    std::map<int, vector<double>> _markerMap;
+    const int cornerpos_ = 2;
+    std::map<int, std::vector<double>> markerMap;
 
     //corners of the screen in camera coordinates
     //p0 is (0,0) on screen, p1 is (1,0) and p2 is (0,1)

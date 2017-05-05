@@ -10,14 +10,14 @@
 #include <iostream>
 
 //get position of specific arucomarkers (cornerpoints)
-std::tuple<vector<double>, vector<double>, vector<double>> Tracking::getCornerPos() {
-    std::map<int, vector<double>>::iterator it0;
-    std::map<int, vector<double>>::iterator it1;
-    std::map<int, vector<double>>::iterator it2;
+std::tuple<std::vector<double>, std::vector<double>, std::vector<double>> Tracking::getCornerPos() {
+    std::map<int, std::vector<double>>::iterator it0;
+    std::map<int, std::vector<double>>::iterator it1;
+    std::map<int, std::vector<double>>::iterator it2;
 
-    it0 = _markerMap.find(1);
-    it1 = _markerMap.find(2);
-    it2 = _markerMap.find(3);
+    it0 = markerMap.find(1);
+    it1 = markerMap.find(2);
+    it2 = markerMap.find(3);
     return std::make_tuple(it0->second,it1->second,it2->second);
 }
 
@@ -31,7 +31,7 @@ void Tracking::setCorners() {
     //lazy check if we have the first markers
     if (!P0.empty() && !P1.empty() && !P2.empty()) {
         for (auto t = std::make_tuple(P0.begin(), P1.begin(), P2.begin(), 0);
-             std::get<0>(t) != P0.end() && std::get<1>(t) != P1.end() && std::get<2>(t) != P2.end() && std::get<3>(t) <= cornerpos;
+             std::get<0>(t) != P0.end() && std::get<1>(t) != P1.end() && std::get<2>(t) != P2.end() && std::get<3>(t) <= cornerpos_;
              ++std::get<0>(t), ++std::get<1>(t), ++std::get<2>(t), std::get<3>(t)++) {
             
             p0[std::get<3>(t)] = *std::get<0>(t);
@@ -44,11 +44,11 @@ void Tracking::setCorners() {
 }
 
 glm::vec3 Tracking::getPosMarker(const int &id) {
-    std::map<int, vector<double>>::iterator it0;
-    it0 = _markerMap.find(id);
+    std::map<int, std::vector<double>>::iterator it0;
+    it0 = markerMap.find(id);
     glm::vec3 pos = {0,0,0};
     glm::vec3 negVec = {-1, -1, -1};
-    if(it0 == _markerMap.end()) {
+    if(it0 == markerMap.end()) {
         return negVec;
     }
     else{
@@ -91,7 +91,7 @@ void Tracking::setup() {
             mCapture->start();
         }
         catch( ci::Exception &exc ) {
-            CI_LOG_EXCEPTION("Failed to init capture VR_LAB", exc);
+            CI_LOG_EXCEPTION("Failed to init capture VR-lab camera", exc);
             exit(1);
         }
     }
@@ -137,12 +137,12 @@ void Tracking::update() {
         double rot[4];
         
         i.OgreGetPoseParameters(pos, rot);
-        std::map<int, vector<double>>::iterator iter;
-        iter = _markerMap.begin();
-        if (iter == _markerMap.end())
-            _markerMap.insert(pair<int,vector<double>>(i.id,{pos[0],pos[1],pos[2]}));
+        std::map<int, std::vector<double>>::iterator iter;
+        iter = markerMap.begin();
+        if (iter == markerMap.end())
+            markerMap.insert(pair<int, std::vector<double>>(i.id,{pos[0],pos[1],pos[2]}));
         else
-            _markerMap[i.id] = {pos[0],pos[1],pos[2]};
+            markerMap[i.id] = {pos[0],pos[1],pos[2]};
     }
    
     //print markerinfo
@@ -153,12 +153,12 @@ void Tracking::update() {
     } */
     
     //Check for cornermarkers
-    if (_markerMap.count(1) > 0 && _markerMap.count(2) > 0 && _markerMap.count(3) > 0 && firsttime) {
+    if (markerMap.count(1) > 0 && markerMap.count(2) > 0 && markerMap.count(3) > 0 && firsttime) {
         firsttime = false;
         setCorners();
-        _markerMap.erase(1);
-        _markerMap.erase(2);
-        _markerMap.erase(3);
+        markerMap.erase(2);
+        markerMap.erase(3);
+        markerMap.erase(1);
     }
 }
 
