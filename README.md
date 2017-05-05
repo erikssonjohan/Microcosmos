@@ -1,4 +1,6 @@
-# TNM094-Media-navigering
+# Media Technology - Bachelor Project (TNM094)
+
+
 
 #### Supported platforms:
 * Windows
