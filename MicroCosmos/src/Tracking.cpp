@@ -110,6 +110,8 @@ void Tracking::setup() {
 
 void Tracking::update() {
     static bool firsttime = true;
+    const char* file = "camera_results.yml";
+    string pathToFile = ci::app::getAssetPath(ci::fs::path(file)).string();
 
     if(!mCapture || !mCapture->checkNewFrame()) {
         return;
@@ -123,8 +125,7 @@ void Tracking::update() {
 
     //TODO: Fix this at release
     //Read in update-loop due to resize() every frame
-    //mCamParam.readFromXMLFile("/Users/DavidTran/Documents/LinkopingUniversitetSkola/TNM094-Kandidat/GitHub/camera_results.yml");
-    mCamParam.readFromXMLFile("/Users/oscar/Documents/TNM094-Media-navigering/MicroCosmos/assets/camera_results.yml");
+    mCamParam.readFromXMLFile(pathToFile);
     
     mTexture->update(*mCapture->getSurface());
     input = toOcv(ci::Surface(ci::Channel8u(mTexture->createSource())));

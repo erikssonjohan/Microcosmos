@@ -15,6 +15,7 @@
 #include "cinder/Capture.h"
 #include "cinder/gl/Texture.h"
 #include "cinder/Log.h"
+#include "cinder/Utilities.h"
 
 #include "CinderOpenCV.h"
 #include "aruco/src/cvdrawingutils.h"
