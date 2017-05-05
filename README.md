@@ -5,7 +5,7 @@
 * MacOS
 
 #### Depends on:
-* [Cinder](https://github.com/vnm-interactive/Cinder) as the cross-platform creative coding framework.
+* [Cinder](https://github.com/cinder/Cinder) as the cross-platform creative coding framework.
 * [Cinder-OpenCV3](https://github.com/cinder/Cinder-OpenCV3) for Computer Vision routines.
 * [Cinder-QuickTime](https://github.com/cinder/Cinder/tree/master/blocks/QuickTime) for video playback.
 * [Cinder-PoScene](https://github.com/Potion/Cinder-poScene) 2D SceneGraph for Cinder.
