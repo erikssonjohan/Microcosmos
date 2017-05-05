@@ -1,17 +1,27 @@
 # TNM094-Media-navigering
-OSX: [![Build Status](https://travis-ci.com/erikssonjohan/TNM094-Media-navigering.svg?token=YWiGzNVaCammAsa6b6oD&branch=master)](https://travis-ci.com/erikssonjohan/TNM094-Media-navigering)
+
+#### Supported platforms:
+* Windows
+* MacOS
+
+#### Depends on:
+* [Cinder](https://github.com/vnm-interactive/Cinder) as the cross-platform creative coding framework.
+* [Cinder-OpenCV3](https://github.com/cinder/Cinder-OpenCV3) for Computer Vision routines.
+* [Cinder-QuickTime](https://github.com/cinder/Cinder/tree/master/blocks/QuickTime) for video playback.
+* [Cinder-PoScene](https://github.com/Potion/Cinder-poScene) 2D SceneGraph for Cinder.
+* [Aruco 1.2.5](https://sourceforge.net/projects/aruco/files/OldVersions/) a minimal library for Augmented Reality applications based on OpenCV.
+
+#### Authors:
+- [Simon Corell](https://github.com/Simoncorell)
+- [Johan Eriksson](https://github.com/erikssonjohan)
+- [Tobias Matts](https://github.com/tobma571)
+- [Oscar Nord](https://github.com/Furbee)
+- [Martin Orava](https://github.com/maror757)
+- [Ingela Rossing](https://github.com/IngelaRossing)
+- [David Tran](https://github.com/ddavidtran)
 
 
 
 
-#### If asked to upgrade the vc2013 project to match vc2015 press "OK"
 
-  Right click your project and go to Properties and set Configuration to "All Configurations" and Platform to "x64"
-
-  then go to: C/C++ - General, and set Additional Include Directories to <..\include;"..\..\..\Cinder\include";%  (AdditionalIncludeDirectories)>
-  then go to: Linker - General, and set Additional Library Directories to   <..\..\..\Cinder\lib\msw\$(PlatformTarget);..\..\..\Cinder\lib\msw\$(PlatformTarget)\$(Configuration)\$(PlatformToolset)>
-  then go to: Resources - General, and set Additional Include Directories to <"..\..\..\Cinder\include";..\include;%(AdditionalIncludeDirectories)>
-
-  When adding a new class to a project:
-  Go to Project - Add Existing Item, and add the .cpp and .h files to your project.
 
