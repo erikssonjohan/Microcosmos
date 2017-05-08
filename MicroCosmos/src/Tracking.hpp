@@ -35,22 +35,22 @@ public:
     glm::vec2 getScreenCoordinates(glm::vec3 markerPos);
     
 private:
-    aruco::CameraParameters mCamParam;
-    aruco::MarkerDetector mMarkerDetector;
-    std::vector<aruco::Marker> mMarkers;
+    aruco::CameraParameters cam_param_;
+    aruco::MarkerDetector marker_detector_;
+    std::vector<aruco::Marker> markers_;
     
-    ci::CaptureRef mCapture;
-    ci::Surface mSurf;
-    ci::gl::TextureRef mTexture;
-    cv::Mat input;
+    ci::CaptureRef capture_;
+    ci::Surface surf_;
+    ci::gl::TextureRef texture_;
+    cv::Mat input_;
     const int cornerpos_ = 2;
-    std::map<int, std::vector<double>> markerMap;
+    std::map<int, std::vector<double>> marker_map_;
 
     //corners of the screen in camera coordinates
     //p0 is (0,0) on screen, p1 is (1,0) and p2 is (0,1)
-    glm::vec3 p0,p1,p2;
+    glm::vec3 p0_, p1_, p2_;
     //vectors that makes calculations easier
-    glm::vec3 normX, normY;
+    glm::vec3 normX_, normY_;
 
 };
 

@@ -15,18 +15,18 @@ std::tuple<std::vector<double>, std::vector<double>, std::vector<double>> Tracki
     std::map<int, std::vector<double>>::iterator it1;
     std::map<int, std::vector<double>>::iterator it2;
 
-    it0 = markerMap.find(1);
-    it1 = markerMap.find(2);
-    it2 = markerMap.find(3);
+    it0 = marker_map_.find(1);
+    it1 = marker_map_.find(2);
+    it2 = marker_map_.find(3);
     return std::make_tuple(it0->second,it1->second,it2->second);
 }
 
 //Save camera coordinates for the corners of the screen
 void Tracking::setCorners() {
-    const auto corners = getCornerPos();
-    auto P0 = std::get<0>(corners);
-    auto P1 = std::get<1>(corners);
-    auto P2 = std::get<2>(corners);
+    const auto kCorners = getCornerPos();
+    auto P0 = std::get<0>(kCorners);
+    auto P1 = std::get<1>(kCorners);
+    auto P2 = std::get<2>(kCorners);
 
     //lazy check if we have the first markers
     if (!P0.empty() && !P1.empty() && !P2.empty()) {
@@ -34,28 +34,30 @@ void Tracking::setCorners() {
              std::get<0>(t) != P0.end() && std::get<1>(t) != P1.end() && std::get<2>(t) != P2.end() && std::get<3>(t) <= cornerpos_;
              ++std::get<0>(t), ++std::get<1>(t), ++std::get<2>(t), std::get<3>(t)++) {
             
-            p0[std::get<3>(t)] = *std::get<0>(t);
-            p1[std::get<3>(t)] = *std::get<1>(t);
-            p2[std::get<3>(t)] = *std::get<2>(t);
+            p0_[std::get<3>(t)] = *std::get<0>(t);
+            p1_[std::get<3>(t)] = *std::get<1>(t);
+            p2_[std::get<3>(t)] = *std::get<2>(t);
         }
-        normX = glm::normalize(p1 - p0);
-        normY = glm::normalize(p2 - p0);
+        normX_ = glm::normalize(p1_ - p0_);
+        normY_ = glm::normalize(p2_ - p0_);
     }
 }
 
 glm::vec3 Tracking::getPosMarker(const int &id) {
     std::map<int, std::vector<double>>::iterator it0;
-    it0 = markerMap.find(id);
+    it0 = marker_map_.find(id);
+
     glm::vec3 pos = {0,0,0};
     glm::vec3 negVec = {-1, -1, -1};
-    if(it0 == markerMap.end()) {
+
+    if(it0 == marker_map_.end()) {
         return negVec;
     }
     else{
         for(auto t = std::make_tuple(it0->second.begin(), 0);
             std::get<0>(t) != it0->second.end(); ++std::get<0>(t), std::get<1>(t)++) {
             
-            pos[std::get<1>(t)] = * std::get<0>(t);
+            pos[std::get<1>(t)] = *std::get<0>(t);
         }
         return pos;
     }
@@ -64,8 +66,8 @@ glm::vec3 Tracking::getPosMarker(const int &id) {
 
 //Returns Screen coordinates between 0 and 1
 glm::vec2 Tracking::getScreenCoordinates(glm::vec3 markerPos) {
-    glm::vec3 x = glm::dot((markerPos - p0), normX)*normX /glm::length(p1-p0);
-    glm::vec3 y = glm::dot((markerPos - p0), normY)*normY /glm::length(p2-p0);
+    glm::vec3 x = glm::dot((markerPos - p0_), normX_)*normX_ / glm::length(p1_ - p0_);
+    glm::vec3 y = glm::dot((markerPos - p0_), normY_)*normY_ / glm::length(p2_ - p0_);
     glm::vec2 result = {glm::length(x),glm::length(y)};
     
     //If it is not between 0 and 1 it is wrong! Try dividing with length of X and Y
@@ -83,12 +85,12 @@ void Tracking::printDevices() {
 void Tracking::setup() {
     //print available devices
     printDevices();
-    const std::string vr_labCamera = "logitech c930e";
+    const std::string kVR_labCamera = "logitech c930e";
     
-    if(ci::Capture::findDeviceByName(vr_labCamera)) {
+    if(ci::Capture::findDeviceByName(kVR_labCamera)) {
         try {
-            mCapture = ci::Capture::create(640, 480, ci::Capture::findDeviceByName(vr_labCamera));
-            mCapture->start();
+            capture_ = ci::Capture::create(640, 480, ci::Capture::findDeviceByName(kVR_labCamera));
+            capture_->start();
         }
         catch( ci::Exception &exc ) {
             CI_LOG_EXCEPTION("Failed to init capture VR-lab camera", exc);
@@ -97,8 +99,8 @@ void Tracking::setup() {
     }
     else {
         try {
-            mCapture = ci::Capture::create(640, 480);
-            mCapture->start();
+            capture_ = ci::Capture::create(640, 480);
+            capture_->start();
         }
         catch( ci::Exception &exc ) {
             CI_LOG_EXCEPTION("Failed to init capture", exc);
@@ -110,55 +112,57 @@ void Tracking::setup() {
 
 void Tracking::update() {
     static bool firsttime = true;
-    const char* file = "camera_results.yml";
-    string pathToFile = ci::app::getAssetPath(ci::fs::path(file)).string();
+    const char* kFile = "camera_results.yml";
+    string pathToFile = ci::app::getAssetPath(ci::fs::path(kFile)).string();
 
-    if(!mCapture || !mCapture->checkNewFrame()) {
+    if(!capture_ || !capture_->checkNewFrame()) {
         return;
     }
     
-    if(!mTexture) {
+    if(!texture_) {
         // Capture images
-        mTexture = ci::gl::Texture::create(*mCapture->getSurface(), ci::gl::Texture::Format().loadTopDown());
-        mSurf = ci::Surface(ci::Channel8u(mTexture->createSource()));
+        texture_ = ci::gl::Texture::create(*capture_->getSurface(), ci::gl::Texture::Format().loadTopDown());
+        surf_ = ci::Surface(ci::Channel8u(texture_->createSource()));
     }
 
     //TODO: Fix this at release
     //Read in update-loop due to resize() every frame
-    mCamParam.readFromXMLFile(pathToFile);
+    cam_param_.readFromXMLFile(pathToFile);
     
-    mTexture->update(*mCapture->getSurface());
-    input = toOcv(ci::Surface(ci::Channel8u(mTexture->createSource())));
-    mCamParam.resize(input.size());
-    mMarkerDetector.detect(input, mMarkers, mCamParam, 0.028f);
+    texture_->update(*capture_->getSurface());
+    input_ = toOcv(ci::Surface(ci::Channel8u(texture_->createSource())));
+    cam_param_.resize(input_.size());
+    marker_detector_.detect(input_, markers_, cam_param_, 0.028f);
     
-    for (auto i : mMarkers) {
+    for (auto i : markers_) {
         double pos[3];
         double rot[4];
         
         i.OgreGetPoseParameters(pos, rot);
         std::map<int, std::vector<double>>::iterator iter;
-        iter = markerMap.begin();
-        if (iter == markerMap.end())
-            markerMap.insert(pair<int, std::vector<double>>(i.id,{pos[0],pos[1],pos[2]}));
+        iter = marker_map_.begin();
+        if (iter == marker_map_.end())
+            marker_map_.insert(pair<int, std::vector<double>>(i.id,{pos[0],pos[1],pos[2]}));
         else
-            markerMap[i.id] = {pos[0],pos[1],pos[2]};
+            marker_map_[i.id] = {pos[0],pos[1],pos[2]};
     }
    
     //print markerinfo
- /* for (const auto it : _markerMap) {
+    /*
+    for (const auto it : _markerMap) {
         std::cout << "ID: " << it.first << std::endl;
         for(auto it2 = it.second.begin(); it2 != it.second.end(); ++it2)
             std::cout << " POS: " << "[ " << *it2 << " ]"<< std::endl;
-    } */
+    }
+    */
     
     //Check for cornermarkers
-    if (markerMap.count(1) > 0 && markerMap.count(2) > 0 && markerMap.count(3) > 0 && firsttime) {
+    if (marker_map_.count(1) > 0 && marker_map_.count(2) > 0 && marker_map_.count(3) > 0 && firsttime) {
         firsttime = false;
         setCorners();
-        markerMap.erase(2);
-        markerMap.erase(3);
-        markerMap.erase(1);
+        marker_map_.erase(2);
+        marker_map_.erase(3);
+        marker_map_.erase(1);
     }
 }
 
@@ -167,7 +171,7 @@ void Tracking::draw() {
     ci::gl::enableAlphaBlending();
     ci::gl::color( ci::ColorA(1,1,1,1.0f) );
 
-    if( mTexture ) {
-        ci::gl::draw( mTexture );
+    if(texture_) {
+        ci::gl::draw(texture_);
     }
 }
