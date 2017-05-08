@@ -43,7 +43,8 @@ private:
 
 	std::vector<uint32_t> touchId;
 	std::vector<po::scene::TouchEvent> events;
-    
+	std::map<int,string> idCategories;
+	std::map<glm::vec2, string> categoriesCoordinates;
     void onTouchDown(po::scene::TouchEvent &event);
     
     //	Touch up event handler

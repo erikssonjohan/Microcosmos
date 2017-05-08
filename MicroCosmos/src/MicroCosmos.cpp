@@ -36,7 +36,9 @@ void MicroCosmos::setup(){
      rcards[i]->setPosition(i*300, i*100);
 	 //rcards[i]->setVisible(false); //Screen should be empty at the start
      addChild(rcards[i]);
+	 idCategories.insert(pair<int, string>(i, categories[i]));
      }
+	 
     
 	/*
     RealCardRef ref = RealCard::create("livsprocesser",2);
@@ -238,9 +240,24 @@ void MicroCosmos::update() {
 		else
 			rcards[i]->setVisible(false);
 	}*/
+	/*
+	for (map<int, string>::iterator it = idCategories.begin(); it != idCategories.end(); ++it) {
+		
+		pos = track.getPosMarker(it->first+4);
+
+		if (pos.x > 0 && pos.y > 0) {
+			realPos = track.getScreenCoordinates(pos);
+			categoriesCoordinates.insert(pair<glm::vec2, string>(realPos, it->second));
+				
+		}
+
+
+
+
+
+	}
 	
-
-
+	*/
 	
 	/*time2 = getElapsedSeconds();
 	if (time2 - time1 > 5)
