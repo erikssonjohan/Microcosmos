@@ -32,3 +32,4 @@
 *.xcscheme
 *.xcbkptlist
 /build.log
+/MicroCosmos/xcode/.idea/workspace.xml
