@@ -107,13 +107,18 @@ void Tracking::setup() {
             exit(1);
         }
     }
+
+    //Read camera calibration file
+    const char* kFile = "camera_results.yml";
+    string pathToFile = ci::app::getAssetPath(ci::fs::path(kFile)).string();
+    cam_param_.readFromXMLFile(pathToFile);
 }
 
 
 void Tracking::update() {
     static bool firsttime = true;
-    const char* kFile = "camera_results.yml";
-    string pathToFile = ci::app::getAssetPath(ci::fs::path(kFile)).string();
+    //Set calibration parameters from file
+    cam_param_update_ = cam_param_;
 
     if(!capture_ || !capture_->checkNewFrame()) {
         return;
@@ -125,14 +130,10 @@ void Tracking::update() {
         surf_ = ci::Surface(ci::Channel8u(texture_->createSource()));
     }
 
-    //TODO: Fix this at release
-    //Read in update-loop due to resize() every frame
-    cam_param_.readFromXMLFile(pathToFile);
-    
     texture_->update(*capture_->getSurface());
     input_ = toOcv(ci::Surface(ci::Channel8u(texture_->createSource())));
-    cam_param_.resize(input_.size());
-    marker_detector_.detect(input_, markers_, cam_param_, 0.028f);
+    cam_param_update_.resize(input_.size());
+    marker_detector_.detect(input_, markers_, cam_param_update_, 0.028f);
     
     for (auto i : markers_) {
         double pos[3];
@@ -149,7 +150,7 @@ void Tracking::update() {
    
     //print markerinfo
     /*
-    for (const auto it : _markerMap) {
+    for (const auto it : marker_map_) {
         std::cout << "ID: " << it.first << std::endl;
         for(auto it2 = it.second.begin(); it2 != it.second.end(); ++it2)
             std::cout << " POS: " << "[ " << *it2 << " ]"<< std::endl;

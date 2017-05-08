@@ -36,6 +36,8 @@ public:
     
 private:
     aruco::CameraParameters cam_param_;
+    aruco::CameraParameters cam_param_update_;
+
     aruco::MarkerDetector marker_detector_;
     std::vector<aruco::Marker> markers_;
     
