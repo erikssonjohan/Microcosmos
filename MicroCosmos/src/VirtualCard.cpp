@@ -212,17 +212,18 @@ void VirtualCard::onTouchDown(po::scene::TouchEvent &event) {
 void VirtualCard::onTouchDragged(po::scene::TouchEvent &event) {
 	if (idInCard(event.getId()) && touchId[0] == event.getId()) {
 		mEndPos = getParent()->windowToLocal(event.getWindowPos());
-		ci::vec2 newPosition = (mInitialPos + (mEndPos - mStartPos));
-		//newPosition.x *=0.5;
-		//newPosition.y *=0.5;
+        //ci::vec2 newPosition = (mInitialPos + (mEndPos - mStartPos));
+        ci::vec2 newPosition = getPosition();
+         newPosition.x += events[0].getWindowPos().x-pPos[0].x;
+        newPosition.y += events[0].getWindowPos().y-pPos[0].y;
 		setPosition(newPosition);
 
 	}
 	if (events.size() >= 2) {
 		scale(events[0].getWindowPos(), pPos[0], events[1].getWindowPos(), pPos[1]);
-		setScale(_scale);
+		//setScale(_scale);
         touchRotate(events[0].getWindowPos(), pPos[0], events[1].getWindowPos(), pPos[1]);
-        setRotation( angle);
+        //setRotation( angle);
 	}
 	for (int i = 0; i<events.size(); ++i) {
 		if (events[i].getId() == event.getId()) {
