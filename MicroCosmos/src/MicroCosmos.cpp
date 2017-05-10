@@ -254,7 +254,7 @@ void MicroCosmos::update() {
 	*/
 }
 
-void MicroCosmos::setIdCoordinates() {
+/*void MicroCosmos::setIdCoordinates() {
 
 	bool check = true;
 	for (map<int, string>::iterator it1 = idCategories.begin(); it1 != idCategories.end(); ++it1) {
@@ -292,4 +292,4 @@ void MicroCosmos::setIdCoordinates() {
 
 
 
-}
+}*/
