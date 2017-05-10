@@ -33,6 +33,7 @@ public:
 	void invisibleStandby();
 	void visibleStandby();
 	void update();
+	void setIdCoordinates();
     
 protected:
     

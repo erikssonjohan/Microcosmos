@@ -240,24 +240,10 @@ void MicroCosmos::update() {
 		else
 			rcards[i]->setVisible(false);
 	}*/
-	/*
-	for (map<int, string>::iterator it = idCategories.begin(); it != idCategories.end(); ++it) {
-		
-		pos = track.getPosMarker(it->first+4);
-
-		if (pos.x > 0 && pos.y > 0) {
-			realPos = track.getScreenCoordinates(pos);
-			categoriesCoordinates.insert(pair<glm::vec2, string>(realPos, it->second));
-				
-		}
-
-
-
-
-
-	}
 	
-	*/
+
+	//setIdCoordinates();
+	
 	
 	/*time2 = getElapsedSeconds();
 	if (time2 - time1 > 5)
@@ -266,4 +252,44 @@ void MicroCosmos::update() {
 	if (foundRealCard)
 		//invisibleStandby();
 	*/
+}
+
+void MicroCosmos::setIdCoordinates() {
+
+	bool check = true;
+	for (map<int, string>::iterator it1 = idCategories.begin(); it1 != idCategories.end(); ++it1) {
+
+		pos = track.getPosMarker(it1->first + 4);
+
+		if (pos.x > 0 && pos.y > 0) {
+			for (map<glm::vec2, string>::iterator it2 = categoriesCoordinates.begin(); it2 != categoriesCoordinates.end(); ++it2) 
+			{
+				if (it2->second == it1->second)
+					check = false;
+
+
+			}
+			if (check) {
+				realPos = track.getScreenCoordinates(pos);
+				categoriesCoordinates.insert(pair<glm::vec2, string>(realPos, it1->second));
+
+			}		
+		}
+
+		else {
+
+
+
+
+
+
+		}
+
+
+
+	}
+
+
+
+
 }
