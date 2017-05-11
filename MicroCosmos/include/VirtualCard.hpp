@@ -66,18 +66,18 @@ private:
 	po::scene::ShapeRef textFig;
 	po::scene::TextBoxRef textContentS;
 	po::scene::TextBoxRef textContentE;
-	po::scene::ShapeRef buttonFig;
-	po::scene::TextBoxRef SWE;
-	po::scene::TextBoxRef ENG;
-	float buttonWidth = 0.0f;
-	float buttonHeight = 0.0f;
-	ci::vec2 buttonPos;
+	po::scene::TextBoxRef textHeaderS;
+	po::scene::TextBoxRef textHeaderE;
+	po::scene::ShapeRef buttonTextur;
+	ci::gl::TextureRef buttonImgS;
+	ci::gl::TextureRef buttonImgE;
+	ci::vec2 buttonScale;
 	bool textVisible = false;
 	bool textSWE = true;
 
 	float angle = 0.0f;
 	std::string _path;
-	float _scale = 0.4;
+	float _scale = 0.2;
 	std::vector<std::string> _categories;
 	std::string _header_se;
 	std::string _text_se;
@@ -103,8 +103,7 @@ private:
 	bool mIsPressed;
 
 	void onTouchDown(po::scene::TouchEvent &event);
-
-	//	Touch dragged event handler
+	
 	void onTouchDragged(po::scene::TouchEvent &event);
 
 	//	Touch up event handler
@@ -115,12 +114,26 @@ private:
     
     void touchRotate(ci::vec2 pos1, ci::vec2 pPos1, ci::vec2 pos2, ci::vec2 pPos2);
 
+	//Function that creates the text box with swedish and english content
+	void createTextBox();
+
 	//Function that handles the visibility of all the text boxes and buttons.
 	void handleButtonTouches(po::scene::TouchEvent event);
 
 	// Function that checks if a double touch were occured
 	bool doubleTouch(po::scene::TouchEvent event);
-	
+
+
+
+	//MARTIN ANVÄNDER DETTA NEDANFÖR FÖR ATT TESTA TEXTRUTAN DÅ HANS EMULERING EJ LÄNGRE FUNGERAR
+	/*
+	void onMouseDown(po::scene::MouseEvent &event);
+	//	Touch dragged event handler
+	//Checks if mouse is in button
+	bool mouseInButton(po::scene::MouseEvent event);
+	void handleButtonClicks(po::scene::MouseEvent event);
+	*/
+	//HÄR TAR MARTINS SKIT SLUT
 };
 
 

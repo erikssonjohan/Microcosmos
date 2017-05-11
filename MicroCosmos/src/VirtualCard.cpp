@@ -36,6 +36,10 @@ VirtualCard::VirtualCard(std::string path, float scale, std::vector<std::string>
 
 	x = ci::Rand::randFloat(1, 800);
 	y = ci::Rand::randFloat(1, 800);
+	//x = 400.0f;
+	//y = 400.0f;
+
+
 
 
 }
@@ -59,8 +63,9 @@ void VirtualCard::setup(ci::Color color)
 	mInitialPos = ci::vec2();
 	mIsPressed = false;
     po::scene::ShapeRef textur;
+	
+	
     //po::scene::VideoGlRef poVideo; // VIDEO !!!
-    
     
     // VIDEO !!!
     /*if(_path.substr(_path.find_last_of(".")+1) == "mov" || _path.substr(_path.find_last_of(".")+1) == "mp4"){
@@ -86,13 +91,13 @@ void VirtualCard::setup(ci::Color color)
     else*/ if(_path.substr(_path.find_last_of(".")+1) == "jpg" || _path.substr(_path.find_last_of(".")+1) == "png" ){
         mediaMovie = false;
         ci::gl::TextureRef img = ci::gl::Texture::create(ci::loadImage(ci::app::loadAsset(_path)));
-        //ci::gl::TextureRef buttonImg = ci::gl::Texture::create(ci::loadImage(ci::app::loadAsset("sweeng.png")));
         mediaWidth = img->getWidth();
         mediaHeight = img->getHeight();
         //  create and add the shape to the node container
         textur = Shape::createRect(img->getWidth(), img->getHeight());
         textur->setTexture(img);
         textur->setPosition(border, border);
+
     }
     
     
@@ -101,46 +106,9 @@ void VirtualCard::setup(ci::Color color)
     mBaseColor = color;
     mBaseShape->setFillColor(color);
 
-    
-    
-	// text
-	// TODO:: make it less static and might need some fixes. just did it to test, not sure if its the best way // JE
-	textFig = Shape::createRect(400, mediaHeight + border * 2);
-	textFig->setFillColor(0, 0, 0, 0.8);
-	textFig->setPosition(mediaWidth + border * 2, 0);
-	buttonWidth = mediaWidth / 8;
-	buttonHeight = mediaHeight / 10;
-	buttonFig = Shape::createRect(buttonWidth, buttonHeight);
-	buttonFig->setFillColor(0, 0, 0, 0.3);
-	buttonPos = ci::vec2(mediaWidth + border * 2, mediaHeight + border * 2 - buttonHeight);
-	buttonFig->setPosition(buttonPos.x, buttonPos.y);
-
-	//Textbox
-	ci::TextBox ciTextBox = ci::TextBox();
-	//auto textB = po::scene::TextBox::create(ciTextBox);
-	ciTextBox.size(300, 500);
-	ciTextBox.color(ci::Color(1, 1, 1));
-	ciTextBox.alignment(ci::TextBox::Alignment::LEFT);
-	ciTextBox.font(ci::Font("Arial", 20));
-	//Button box
-	ci::TextBox ciButtonBox = ci::TextBox();
-	ciButtonBox.size(buttonWidth, buttonHeight);
-	ciButtonBox.color(ci::Color(1, 1, 1));
-	ciButtonBox.alignment(ci::TextBox::Alignment::CENTER);
-	ciButtonBox.font(ci::Font("Arial", 25));
-
-	ciTextBox.text(_text_se);
-	textContentS = po::scene::TextBox::create(ciTextBox);
-	textContentS->setPosition(mediaWidth + border * 6, 100);
-	ciTextBox.text(_text_en);
-	textContentE = po::scene::TextBox::create(ciTextBox);
-	textContentE->setPosition(mediaWidth + border * 6, 100);
-	ciButtonBox.text("SWE/ENG");
-	SWE = po::scene::TextBox::create(ciButtonBox);
-	SWE->setPosition(buttonPos.x, buttonPos.y);
-	ciButtonBox.text("ENG/SWE");
-	ENG = po::scene::TextBox::create(ciButtonBox);
-	ENG->setPosition(buttonPos.x, buttonPos.y);
+  
+	// Create the text box and all content relevant to it.
+	createTextBox();
 
 	//Just so it dosent take all of the screen...
 	setScale(_scale);
@@ -152,23 +120,23 @@ void VirtualCard::setup(ci::Color color)
     if (!mediaMovie){
 	addChild(textur);
     }
+	
     /*if (mediaMovie){ // VIDEO !!!
         addChild(poVideo);
     }*/
 	addChild(textFig);
 	addChild(textContentS);
 	addChild(textContentE);
-	setName(_header_se);
-	addChild(buttonFig);
-	addChild(SWE);
-	addChild(ENG);
+	addChild(textHeaderS);
+	addChild(textHeaderE);
+	addChild(buttonTextur);
 
+	buttonTextur->setVisible(false);
 	textFig->setVisible(false);
 	textContentS->setVisible(false);
 	textContentE->setVisible(false);
-	buttonFig->setVisible(false);
-	SWE->setVisible(false);
-	ENG->setVisible(false);
+	textHeaderS->setVisible(false);
+	textHeaderE->setVisible(false);
 
 
 	getSignal(po::scene::TouchEvent::BEGAN_INSIDE).connect(std::bind(&VirtualCard::onTouchDown, this, std::placeholders::_1));
@@ -176,9 +144,10 @@ void VirtualCard::setup(ci::Color color)
 	getSignal(po::scene::TouchEvent::MOVED).connect(std::bind(&VirtualCard::onTouchDragged, this, std::placeholders::_1));
 	getSignal(po::scene::TouchEvent::ENDED_INSIDE).connect(std::bind(&VirtualCard::onTouchUp, this, std::placeholders::_1));
 	getSignal(po::scene::TouchEvent::ENDED).connect(std::bind(&VirtualCard::onTouchUp, this, std::placeholders::_1));
-	//buttonFig->getSignal(po::scene::TouchEvent::Type::ENDED_INSIDE).connect(std::bind(&VirtualCard::onButtonUp, this, std::placeholders::_1));
-
+	//MARTIN ANVÄNDER DENNA FÖR O TESTA//getSignal(po::scene::MouseEvent::DOWN_INSIDE).connect(std::bind(&VirtualCard::onMouseDown, this, std::placeholders::_1));
 }
+
+
 
 void VirtualCard::onTouchDown(po::scene::TouchEvent &event) {
 	start = ci::app::getElapsedSeconds();
@@ -265,11 +234,12 @@ bool VirtualCard::idInCard(uint32_t id) {
 	return false;
 }
 bool VirtualCard::touchInButton(po::scene::TouchEvent event) {
-	if (event.getLocalPos().x >= buttonPos.x && event.getLocalPos().x <= (buttonPos.x + buttonWidth) && event.getLocalPos().y >= buttonPos.y && event.getLocalPos().y <= buttonPos.y + buttonHeight) {
+	if (event.getLocalPos().x >= buttonTextur->getPosition().x && event.getLocalPos().x <= (buttonTextur->getPosition().x + buttonTextur->getScaledWidth()) && event.getLocalPos().y >= buttonTextur->getPosition().y && event.getLocalPos().y <= buttonTextur->getPosition().y + buttonTextur->getScaledHeight()) {
 		return true;
 	}
 	return false;
 }
+
 
 void VirtualCard::removeTouchId(uint32_t id) {
 	for (int i = 0; i<touchId.size(); ++i) {
@@ -313,16 +283,67 @@ void VirtualCard::touchRotate(ci::vec2 pos1, ci::vec2 pPos1, ci::vec2 pos2, ci::
     std::cout << angle << std::endl;
 }
 
+void VirtualCard::createTextBox() {
+
+	// TODO:: make it less static and might need some fixes. just did it to test, not sure if its the best way // JE
+	textFig = Shape::createRect(400, mediaHeight + border*2 );
+	textFig->setFillColor(0, 0, 0, 0.8);
+	textFig->setPosition(mediaWidth + border * 2, 0);
+
+	//Textbox
+	ci::TextBox ciTextBox = ci::TextBox();
+	//auto textB = po::scene::TextBox::create(ciTextBox);
+	ciTextBox.size(300, 500);
+	ciTextBox.color(ci::Color(1, 1, 1));
+	ciTextBox.alignment(ci::TextBox::Alignment::LEFT);
+	ciTextBox.font(ci::Font("Arial", 20));
+	//Headerbox
+	ci::TextBox ciHeaderBox = ci::TextBox();
+	ciHeaderBox.size(300, mediaHeight*0.2);
+	ciHeaderBox.color(ci::Color(1, 1, 1));
+	ciHeaderBox.alignment(ci::TextBox::Alignment::CENTER);
+	ciHeaderBox.font(ci::Font("Arial", 30));
+
+	ciTextBox.text(_text_se);
+	textContentS = po::scene::TextBox::create(ciTextBox);
+	textContentS->setPosition(mediaWidth + border * 6, mediaHeight*0.2 + border);
+	ciTextBox.text(_text_en);
+	textContentE = po::scene::TextBox::create(ciTextBox);
+	textContentE->setPosition(mediaWidth + border * 6, mediaHeight*0.2 + border);
+
+	ciHeaderBox.text(_header_se);
+	textHeaderS = po::scene::TextBox::create(ciHeaderBox);
+	textHeaderS->setPosition(mediaWidth + border * 2, 0);
+	ciHeaderBox.text(_header_en);
+	textHeaderE = po::scene::TextBox::create(ciHeaderBox);
+	textHeaderE->setPosition(mediaWidth + border * 2, 0);
+
+	//Button created from texture.
+	buttonImgS = ci::gl::Texture::create(ci::loadImage(ci::app::loadAsset("swe_eng_button.png")));
+	buttonImgE = ci::gl::Texture::create(ci::loadImage(ci::app::loadAsset("eng_swe_button.png")));
+	float scaleWidth = mediaWidth / (buttonImgS->getWidth() * 8);
+	float scaleHeight = mediaHeight / (buttonImgS->getHeight() * 10);
+	buttonScale = ci::vec2(scaleWidth, scaleHeight);
+	buttonTextur = Shape::createRect(buttonImgS->getWidth(), buttonImgS->getHeight());
+	buttonTextur->setTexture(buttonImgS);
+	buttonTextur->setScale(buttonScale.x, buttonScale.y);
+	//butTextur->setAlpha(0.8f);
+	buttonTextur->setPosition(mediaWidth + border * 2, mediaHeight + border * 2 - buttonTextur->getScaledHeight());
+
+}
+
 void VirtualCard::handleButtonTouches(po::scene::TouchEvent event) {
 	if (touchInButton(event) && textVisible)
 	{
 		//console() << "X = " << event.getLocalPos().x << ", Y =" << event.getLocalPos().y << std::endl;
 		if (textSWE)
 		{
-			textContentE->setVisible(true);
 			textContentS->setVisible(false);
-			ENG->setVisible(true);
-			SWE->setVisible(false);
+			textContentE->setVisible(true);
+			textHeaderS->setVisible(false);
+			textHeaderE->setVisible(true);
+			buttonTextur->setTexture(buttonImgE);
+			
 
 			textSWE = false;
 		}
@@ -330,8 +351,9 @@ void VirtualCard::handleButtonTouches(po::scene::TouchEvent event) {
 		{
 			textContentS->setVisible(true);
 			textContentE->setVisible(false);
-			SWE->setVisible(true);
-			ENG->setVisible(false);
+			textHeaderS->setVisible(true);
+			textHeaderE->setVisible(false);
+			buttonTextur->setTexture(buttonImgS);
 
 			textSWE = true;
 		}
@@ -341,17 +363,19 @@ void VirtualCard::handleButtonTouches(po::scene::TouchEvent event) {
 		textFig->setVisible(false);
 		textContentS->setVisible(false);
 		textContentE->setVisible(false);
-		buttonFig->setVisible(false);
-		SWE->setVisible(false);
-		ENG->setVisible(false);
+		textHeaderS->setVisible(false);
+		textHeaderE->setVisible(false);
+		buttonTextur->setVisible(false);
+
 		textVisible = false;
 	}
 	else
 	{
 		textFig->setVisible(true);
 		textContentS->setVisible(true);
-		buttonFig->setVisible(true);
-		SWE->setVisible(true);
+		textHeaderS->setVisible(true);
+		buttonTextur->setVisible(true);
+
 		textVisible = true;
 	}
 }
@@ -390,4 +414,69 @@ bool VirtualCard::doubleTouch(po::scene::TouchEvent event) {
 		
 
 }
+
+
+//MARTIN ANVÄNDER DETTA NEDANFÖR FÖR ATT TESTA TEXTRUTAN DÅ HANS EMULERINGN INTE LÄNGRE FUNKAR
+/*
+void VirtualCard::onMouseDown(po::scene::MouseEvent &event) {
+setPosition(x, y);
+setScale(0.5f);
+handleButtonTouches(event);
+}
+
+bool VirtualCard::mouseInButton(po::scene::MouseEvent event) {
+if (event.getLocalPos().x >= buttonPos.x && event.getLocalPos().x <= (buttonPos.x + buttonTextur->getScaledWidth()) && event.getLocalPos().y >= buttonPos.y && event.getLocalPos().y <= buttonPos.y + buttonTextur->getScaledHeight()) {
+return true;
+}
+return false;
+}
+
+void VirtualCard::handleButtonTouches(po::scene::MouseEvent event) {
+	if (mouseInButton(event) && textVisible)
+	{
+		//console() << "X = " << event.getLocalPos().x << ", Y =" << event.getLocalPos().y << std::endl;
+		if (textSWE)
+		{
+			textContentS->setVisible(false);
+			textContentE->setVisible(true);
+			textHeaderS->setVisible(false);
+			textHeaderE->setVisible(true);
+			buttonTextur->setTexture(buttonImgE);
+
+
+			textSWE = false;
+		}
+		else
+		{
+			textContentS->setVisible(true);
+			textContentE->setVisible(false);
+			textHeaderS->setVisible(true);
+			textHeaderE->setVisible(false);
+			buttonTextur->setTexture(buttonImgS);
+
+			textSWE = true;
+		}
+	}
+	else if (textVisible)
+	{
+		textFig->setVisible(false);
+		textContentS->setVisible(false);
+		textContentE->setVisible(false);
+		textHeaderS->setVisible(false);
+		textHeaderE->setVisible(false);
+		buttonTextur->setVisible(false);
+
+		textVisible = false;
+	}
+	else
+	{
+		textFig->setVisible(true);
+		textContentS->setVisible(true);
+		textHeaderS->setVisible(true);
+		buttonTextur->setVisible(true);
+
+		textVisible = true;
+	}
+}*/
+//HÄR TAR MARTINS SKIT SLUT
 
