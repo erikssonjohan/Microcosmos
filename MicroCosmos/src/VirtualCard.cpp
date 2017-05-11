@@ -8,10 +8,10 @@
 
 #include "VirtualCard.hpp"
 
-#include "poVideo.h"
+//#include "poVideo.h" // VIDEO !!!
 #include "poShape.h"
 
-#include "cinder/qtime/QuickTimeGl.h"
+// #include "cinder/qtime/QuickTimeGl.h" // VIDEO !!!
 #include "cinder/ImageIo.h"
 #include "cinder/Utilities.h"
 
@@ -59,9 +59,11 @@ void VirtualCard::setup(ci::Color color)
 	mInitialPos = ci::vec2();
 	mIsPressed = false;
     po::scene::ShapeRef textur;
-    po::scene::VideoGlRef poVideo;
+    //po::scene::VideoGlRef poVideo; // VIDEO !!!
     
-    if(_path.substr(_path.find_last_of(".")+1) == "mov" || _path.substr(_path.find_last_of(".")+1) == "mp4"){
+    
+    // VIDEO !!!
+    /*if(_path.substr(_path.find_last_of(".")+1) == "mov" || _path.substr(_path.find_last_of(".")+1) == "mp4"){
         
         mediaMovie = true;
         
@@ -81,7 +83,7 @@ void VirtualCard::setup(ci::Color color)
         mediaWidth = poVideo->getWidth();
         mediaHeight = poVideo->getHeight();
     }
-    else if(_path.substr(_path.find_last_of(".")+1) == "jpg" || _path.substr(_path.find_last_of(".")+1) == "png" ){
+    else*/ if(_path.substr(_path.find_last_of(".")+1) == "jpg" || _path.substr(_path.find_last_of(".")+1) == "png" ){
         mediaMovie = false;
         ci::gl::TextureRef img = ci::gl::Texture::create(ci::loadImage(ci::app::loadAsset(_path)));
         //ci::gl::TextureRef buttonImg = ci::gl::Texture::create(ci::loadImage(ci::app::loadAsset("sweeng.png")));
@@ -150,9 +152,9 @@ void VirtualCard::setup(ci::Color color)
     if (!mediaMovie){
 	addChild(textur);
     }
-    if (mediaMovie){
+    /*if (mediaMovie){ // VIDEO !!!
         addChild(poVideo);
-    }
+    }*/
 	addChild(textFig);
 	addChild(textContentS);
 	addChild(textContentE);

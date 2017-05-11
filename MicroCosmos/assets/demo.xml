@@ -48,21 +48,7 @@
             <text>The image shows a so-called genetic fingerprint, which can be used to create a DNA profile. This technique was invented in 1985, and is used today to identify individuals based on their respective DNA. Although 99.9% of human DNA sequences are identical between persons, there is still enough variation in the DNA to allow individuals to distinguish individuals from each other.[newline][newline]Source: SXC.hu, HAAP Media </text>
         </en>
     </media>
-    <media path='media/FAdynamics.mov' scale_exp='1'>
-        <category name='molekyler'/>
-        <category name='celler'/>
-        <category name='livsprocesser'/>
-
-        
-        <se>
-            <header>Ett biologiskt membran är dynamiskt</header>
-            <text>Ett biologiskt membran består till största delen av fett (lipider). Animationen visar hur lipiderna i membranet rör sig och hur de byts ut mot fria lipider av olika slag som finns i omgivningen, eller hur de helt enkelt absorberas av membranet. På detta sätt förändrar membranet sin sammansättning beroende av vilka lipider som finns i omgivningen.[newline][newline]Källa: Janet Iwasa</text>
-        </se>
-        <en>
-            <header>A biological membran is dynamic</header>
-            <text>A biological membrane consists to a large proportion of fat (lipids). The animation shows how lipids in the membrane move and interchange positions with surrounding lipids. In this way, the composition of the membrane changes depending on the assembly of lipids in the immediate surroundings.   [newline][newline]Source: Janet Iwasa</text>
-        </en>
-    </media>
+    
     
     
 </content>
