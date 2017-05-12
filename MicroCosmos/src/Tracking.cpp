@@ -85,7 +85,7 @@ void Tracking::printDevices() {
 void Tracking::setup() {
     //print available devices
     printDevices();
-    const std::string kVR_labCamera = "logitech c930e";
+    const std::string kVR_labCamera = "Logitech Webcam c930e";
     
     if(ci::Capture::findDeviceByName(kVR_labCamera)) {
         try {
