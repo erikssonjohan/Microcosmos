@@ -110,8 +110,7 @@ void VirtualCard::setup(ci::Color color)
 	// Create the text box and all content relevant to it.
 	createTextBox();
 
-	//Just so it dosent take all of the screen...
-	setScale(_scale);
+	
 
 	setAlignment(po::scene::Alignment::CENTER_CENTER);
 
@@ -137,7 +136,9 @@ void VirtualCard::setup(ci::Color color)
 	textContentE->setVisible(false);
 	textHeaderS->setVisible(false);
 	textHeaderE->setVisible(false);
-
+    
+    //Just so it dosent take all of the screen...
+    setScale(_scale);
 
 	getSignal(po::scene::TouchEvent::BEGAN_INSIDE).connect(std::bind(&VirtualCard::onTouchDown, this, std::placeholders::_1));
 	getSignal(po::scene::TouchEvent::MOVED_INSIDE).connect(std::bind(&VirtualCard::onTouchDragged, this, std::placeholders::_1));
@@ -313,10 +314,10 @@ void VirtualCard::createTextBox() {
 
 	ciHeaderBox.text(_header_se);
 	textHeaderS = po::scene::TextBox::create(ciHeaderBox);
-	textHeaderS->setPosition(mediaWidth + border * 2, 0);
+	textHeaderS->setPosition(mediaWidth + border * 2, mediaHeight*0.08);
 	ciHeaderBox.text(_header_en);
 	textHeaderE = po::scene::TextBox::create(ciHeaderBox);
-	textHeaderE->setPosition(mediaWidth + border * 2, 0);
+	textHeaderE->setPosition(mediaWidth + border * 2, mediaHeight*0.08);
 
 	//Button created from texture.
 	buttonImgS = ci::gl::Texture::create(ci::loadImage(ci::app::loadAsset("swe_eng_button.png")));

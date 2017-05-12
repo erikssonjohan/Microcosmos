@@ -71,7 +71,7 @@ void RealCard::loadXML(const char *file, std::vector<VirtualCardRef> &cards, std
             //console() << track->getChild("en/text").getValue() << endl;
             text_en = track->getChild("en/text").getValue();
             ci::app::console() << text_en << std::endl;
-            VirtualCardRef ref = VirtualCard::create(ci::Color(1, 1, 1), path, 1.0f, categories, header_se, text_se, header_en, text_en);
+            VirtualCardRef ref = VirtualCard::create(ci::Color(1, 1, 1), path, 0.6f, categories, header_se, text_se, header_en, text_en);
             cards.push_back(ref);
             ci::app::console() << std::endl;
             containsCategory = false;
