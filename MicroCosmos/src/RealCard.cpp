@@ -2,6 +2,7 @@
 
 #include "poShape.h"
 
+using namespace po::scene;
 
 RealCardRef RealCard::create(std::string category, int id) {
     
@@ -26,6 +27,13 @@ void RealCard::setup(std::string category, int id)
         addChild(vCards[i]);
     }
     
+
+	circle = Shape::createCircle(400);
+	circle->setFillColor(0, 1, 0, 1);
+	circle->setPosition(0,0);
+	addChild(circle);
+	circle->setVisible(true);
+
     //std::cout << "nrOfVirtcards: " << nrOfVirtcards << std::endl;
     //std::cout << category << std::endl;
 }
