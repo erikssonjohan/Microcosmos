@@ -22,9 +22,8 @@ class RealCard
 {
 public:
     
-    static RealCardRef create(std::string category,int id);
-    void setup(std::string category,int id);
-    void loadXML(const char *file, std::vector<VirtualCardRef> &cards, std::string category);
+    static RealCardRef create(std::string category,int id, std::vector<VirtualCardRef> cards);
+    void setup(std::string category,int id, std::vector<VirtualCardRef> cards);
 	int get_ID();
 private:
     
