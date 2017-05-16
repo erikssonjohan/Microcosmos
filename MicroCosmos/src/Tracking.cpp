@@ -56,7 +56,6 @@ glm::vec3 Tracking::getPosMarker(const int &id) {
     else{
         for(auto t = std::make_tuple(it0->second.begin(), 0);
             std::get<0>(t) != it0->second.end(); ++std::get<0>(t), std::get<1>(t)++) {
-            
             pos[std::get<1>(t)] = *std::get<0>(t);
         }
         return pos;
@@ -149,13 +148,13 @@ void Tracking::update() {
     }
    
     //print markerinfo
-    /*
+    
     for (const auto it : marker_map_) {
-        std::cout << "ID: " << it.first << std::endl;
+        ci::app::console() << "ID: " << it.first << std::endl;
         for(auto it2 = it.second.begin(); it2 != it.second.end(); ++it2)
-            std::cout << " POS: " << "[ " << *it2 << " ]"<< std::endl;
+            ci::app::console() << " POS: " << "[ " << *it2 << " ]"<< std::endl;
     }
-    */
+    
     
     //Check for cornermarkers
     if (marker_map_.count(1) > 0 && marker_map_.count(2) > 0 && marker_map_.count(3) > 0 && firsttime) {
