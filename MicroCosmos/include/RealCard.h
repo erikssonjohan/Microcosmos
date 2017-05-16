@@ -29,6 +29,7 @@ private:
     
     std::vector<VirtualCardRef> vCards;
 	int ID;
+	po::scene::ShapeRef circle;
     
     
     
