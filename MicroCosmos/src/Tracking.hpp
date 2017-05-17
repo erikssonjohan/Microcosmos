@@ -53,6 +53,9 @@ private:
     glm::vec3 p0_, p1_, p2_;
     //vectors that makes calculations easier
     glm::vec3 normX_, normY_;
+    
+    const std::string kVR_labCamera_ = "Logitech Webcam c930e";
+
 
 };
 

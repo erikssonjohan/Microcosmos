@@ -84,12 +84,18 @@ void Tracking::printDevices() {
 void Tracking::setup() {
     //print available devices
     printDevices();
-    const std::string kVR_labCamera = "Logitech Webcam c930e";
+    //get displaysize and set capture size
+    ci::DisplayRef display = ci::Display::getMainDisplay();
+    ci::ivec2 displaySize = display->getSize();
+    ci::app::console() << "main display size: " << displaySize << std::endl;
     
-    if(ci::Capture::findDeviceByName(kVR_labCamera)) {
+    //init capture and load calibration file
+    if(ci::Capture::findDeviceByName(kVR_labCamera_)) {
         try {
-            capture_ = ci::Capture::create(640, 480, ci::Capture::findDeviceByName(kVR_labCamera));
+            capture_ = ci::Capture::create(displaySize.x, displaySize.y, ci::Capture::findDeviceByName(kVR_labCamera_));
             capture_->start();
+            string pathToFile = ci::app::getAssetPath(ci::fs::path("camera_results_logitech")).string();
+            cam_param_.readFromXMLFile(pathToFile);
         }
         catch( ci::Exception &exc ) {
             CI_LOG_EXCEPTION("Failed to init capture VR-lab camera", exc);
@@ -98,8 +104,10 @@ void Tracking::setup() {
     }
     else {
         try {
-            capture_ = ci::Capture::create(640, 480);
+            capture_ = ci::Capture::create(displaySize.x, displaySize.y);
             capture_->start();
+            string pathToFile = ci::app::getAssetPath(ci::fs::path("camera_results.yml")).string();
+            cam_param_.readFromXMLFile(pathToFile);
         }
         catch( ci::Exception &exc ) {
             CI_LOG_EXCEPTION("Failed to init capture", exc);
@@ -108,9 +116,9 @@ void Tracking::setup() {
     }
 
     //Read camera calibration file
-    const char* kFile = "camera_results.yml";
-    string pathToFile = ci::app::getAssetPath(ci::fs::path(kFile)).string();
-    cam_param_.readFromXMLFile(pathToFile);
+    //const char* kFile = "camera_results.yml";
+    //string pathToFile = ci::app::getAssetPath(ci::fs::path(kFile)).string();
+    //cam_param_.readFromXMLFile(pathToFile);
 }
 
 
@@ -148,21 +156,19 @@ void Tracking::update() {
     }
    
     //print markerinfo
-    
     for (const auto it : marker_map_) {
         ci::app::console() << "ID: " << it.first << std::endl;
         for(auto it2 = it.second.begin(); it2 != it.second.end(); ++it2)
             ci::app::console() << " POS: " << "[ " << *it2 << " ]"<< std::endl;
     }
     
-    
     //Check for cornermarkers
     if (marker_map_.count(1) > 0 && marker_map_.count(2) > 0 && marker_map_.count(3) > 0 && firsttime) {
         firsttime = false;
         setCorners();
+        marker_map_.erase(1);
         marker_map_.erase(2);
         marker_map_.erase(3);
-        marker_map_.erase(1);
     }
 }
 
