@@ -63,7 +63,7 @@ void VirtualCard::setup(ci::Color color)
 	mInitialPos = ci::vec2();
 	mIsPressed = false;
     po::scene::ShapeRef textur;
-	
+    setName(_header_se);
 	
     //po::scene::VideoGlRef poVideo; // VIDEO !!!
     
@@ -145,7 +145,7 @@ void VirtualCard::setup(ci::Color color)
 	getSignal(po::scene::TouchEvent::MOVED).connect(std::bind(&VirtualCard::onTouchDragged, this, std::placeholders::_1));
 	getSignal(po::scene::TouchEvent::ENDED_INSIDE).connect(std::bind(&VirtualCard::onTouchUp, this, std::placeholders::_1));
 	getSignal(po::scene::TouchEvent::ENDED).connect(std::bind(&VirtualCard::onTouchUp, this, std::placeholders::_1));
-	//MARTIN ANVÄNDER DENNA FÖR O TESTA//getSignal(po::scene::MouseEvent::DOWN_INSIDE).connect(std::bind(&VirtualCard::onMouseDown, this, std::placeholders::_1));
+	//MARTIN ANVï¿½NDER DENNA Fï¿½R O TESTA//getSignal(po::scene::MouseEvent::DOWN_INSIDE).connect(std::bind(&VirtualCard::onMouseDown, this, std::placeholders::_1));
 }
 
 
@@ -417,7 +417,7 @@ bool VirtualCard::doubleTouch(po::scene::TouchEvent event) {
 }
 
 
-//MARTIN ANVÄNDER DETTA NEDANFÖR FÖR ATT TESTA TEXTRUTAN DÅ HANS EMULERINGN INTE LÄNGRE FUNKAR
+//MARTIN ANVï¿½NDER DETTA NEDANFï¿½R Fï¿½R ATT TESTA TEXTRUTAN Dï¿½ HANS EMULERINGN INTE Lï¿½NGRE FUNKAR
 /*
 void VirtualCard::onMouseDown(po::scene::MouseEvent &event) {
 setPosition(x, y);
@@ -479,5 +479,5 @@ void VirtualCard::handleButtonTouches(po::scene::MouseEvent event) {
 		textVisible = true;
 	}
 }*/
-//HÄR TAR MARTINS SKIT SLUT
+//Hï¿½R TAR MARTINS SKIT SLUT
 
