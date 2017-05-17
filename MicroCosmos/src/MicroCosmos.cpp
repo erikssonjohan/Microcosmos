@@ -36,11 +36,11 @@ void MicroCosmos::setup(){
      for(int i = 0; i<categories.size(); i++)
      {
 	 
-         rcards.push_back(RealCard::create(categories[i], x[i]));
+         rcards.push_back(RealCard::create(categories[i],i, x[i]));
          rcards[i]->setPosition(i*300, i*100);
          rcards[i]->setVisible(false); //Screen should be empty at the start
          addChild(rcards[i]);
-         rcards[i]->setup(categories[i],x[i]);
+         rcards[i]->setup(categories[i],i,x[i]);
          idCategories.insert(pair<int, string>(i, categories[i]));
      }
 	 
