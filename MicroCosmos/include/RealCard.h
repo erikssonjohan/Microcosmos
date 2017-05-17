@@ -30,7 +30,7 @@ private:
     std::vector<VirtualCardRef> vCards;
 	int ID;
 	po::scene::ShapeRef circle;
-    
-    
-    
+
+
+    void setV(bool v);
 };

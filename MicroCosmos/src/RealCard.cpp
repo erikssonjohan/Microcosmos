@@ -58,3 +58,11 @@ int RealCard::get_ID() {
 	return ID;
 
 }
+
+
+void RealCard::setV(bool v){
+    setVisible(v);
+    for (int j = 0; j < vCards.size(); ++j) {
+        vCards[j]->setVisible(v);
+    }
+}
