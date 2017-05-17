@@ -59,12 +59,12 @@ int RealCard::get_ID() {
 
 }
 
-<<<<<<< HEAD
+
 string RealCard::get_Category() {
 
 	return Category;
 }
-=======
+
 
 void RealCard::setV(bool v){
     setVisible(v);
@@ -72,4 +72,4 @@ void RealCard::setV(bool v){
         vCards[j]->setVisible(v);
     }
 }
->>>>>>> origin/master
+

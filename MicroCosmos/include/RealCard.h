@@ -31,13 +31,13 @@ private:
     std::vector<VirtualCardRef> vCards;
 	int ID;
 	po::scene::ShapeRef circle;
-<<<<<<< HEAD
+
 	string Category;
     
     
-=======
+
 
 
     void setV(bool v);
->>>>>>> origin/master
+
 };
