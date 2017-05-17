@@ -59,7 +59,17 @@ int RealCard::get_ID() {
 
 }
 
+<<<<<<< HEAD
 string RealCard::get_Category() {
 
 	return Category;
 }
+=======
+
+void RealCard::setV(bool v){
+    setVisible(v);
+    for (int j = 0; j < vCards.size(); ++j) {
+        vCards[j]->setVisible(v);
+    }
+}
+>>>>>>> origin/master
