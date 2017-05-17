@@ -4,14 +4,14 @@
 
 using namespace po::scene;
 
-RealCardRef RealCard::create(std::string category, int id, std::vector<VirtualCardRef> cards) {
+RealCardRef RealCard::create(std::string category,std::vector<VirtualCardRef> cards) {
     
     RealCardRef node(new RealCard()); //Using a default constructor for the moment
     //node->setup(category,id, cards); //Not neccessary to pass var category if member of RealCard
     return node;
 }
 
-void RealCard::setup(std::string category, int id, std::vector<VirtualCardRef> cards)
+void RealCard::setup(std::string category,std::vector<VirtualCardRef> cards)
 {
     
     
@@ -20,7 +20,6 @@ void RealCard::setup(std::string category, int id, std::vector<VirtualCardRef> c
     //creates virtualCards and save the refs to them in the vector vCards
     vCards = cards;
     int nrOfVirtcards = vCards.size();
-	ID = id;
     float radius = 300;
     setName(category);
 	Category = category;
@@ -52,12 +51,7 @@ void RealCard::setup(std::string category, int id, std::vector<VirtualCardRef> c
 
 }
 
-int RealCard::get_ID() {
 
-
-	return ID;
-
-}
 
 
 string RealCard::get_Category() {
