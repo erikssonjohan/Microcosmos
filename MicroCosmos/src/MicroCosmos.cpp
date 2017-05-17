@@ -324,42 +324,65 @@ void MicroCosmos::loadXML(const char *file, std::vector<std::vector<VirtualCardR
     //cards = rCards;
 }
 
-/*void MicroCosmos::setIdCoordinates() {
+/*
+void MicroCosmos::setIdCoordinates() {
 
-	bool check = true;
-	for (map<int, string>::iterator it1 = idCategories.begin(); it1 != idCategories.end(); ++it1) {
 
+	for (map<int, string>::iterator it1 = idCategories.begin(); it1 != idCategories.end(); ++it1)
+	{
+		bool check = true;
 		pos = track.getPosMarker(it1->first + 4);
 
-		if (pos.x > 0 && pos.y > 0) {
-			for (map<glm::vec2, string>::iterator it2 = categoriesCoordinates.begin(); it2 != categoriesCoordinates.end(); ++it2) 
-			{
-				if (it2->second == it1->second)
-					check = false;
+			if (pos.x > 0 && pos.y > 0)
+	{		realPos = track.getScreenCoordinates(pos);
 
+			
+				for (map<glm::vec2, string>::iterator it2 = categoriesCoordinates.begin(); it2 != categoriesCoordinates.end(); ++it2)
+		{
+				if (it2->second == it1->second)
+			{
+					check = false;
+					assert(it2->first = realPos);
+					break;
+			}
 
 			}
-			if (check) {
-				realPos = track.getScreenCoordinates(pos);
-				categoriesCoordinates.insert(pair<glm::vec2, string>(realPos, it1->second));
+					if (check)
+				{
+					categoriesCoordinates.insert(pair<glm::vec2, string>(realPos, it1->second));
+				}
+			}
 
-			}		
-		}
 
 		else {
+			for (map<glm::vec2, string>::iterator it2 = categoriesCoordinates.begin(); it2 != categoriesCoordinates.end(); ++it2)
+				{
+					if (it2->second == it1->second)
+					{
+						categoriesCoordinates.erase(it2);
+						break;
+
+					} 
+				}
+
+			}
+
+			}
+
+				for (map<glm::vec2, string>::iterator it3 = categoriesCoordinates.begin(); it3 != categoriesCoordinates.end(); ++it3)
+			{
+				for (int i = 0; i < rcards.size(); i++) 
+				{
+					if (it3->second == rcards[i]->get_Category)
+					{
+						rcards[i]->setPosition(it3->first);
+						rcards[i]->setVisible(true);
+
+					}
+				}
+
+			}
 
 
-
-
-
-
-		}
-
-
-
-	}
-
-
-
-
-}*/
+}
+*/

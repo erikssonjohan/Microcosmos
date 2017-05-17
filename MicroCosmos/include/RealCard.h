@@ -25,12 +25,13 @@ public:
     static RealCardRef create(std::string category,int id, std::vector<VirtualCardRef> cards);
     void setup(std::string category,int id, std::vector<VirtualCardRef> cards);
 	int get_ID();
+	string get_Category();
 private:
     
     std::vector<VirtualCardRef> vCards;
 	int ID;
 	po::scene::ShapeRef circle;
-    
+	string Category;
     
     
 };

@@ -23,7 +23,7 @@ void RealCard::setup(std::string category, int id, std::vector<VirtualCardRef> c
 	ID = id;
     float radius = 300;
     setName(category);
-
+	Category = category;
 
 
 
@@ -57,4 +57,9 @@ int RealCard::get_ID() {
 
 	return ID;
 
+}
+
+string RealCard::get_Category() {
+
+	return Category;
 }
