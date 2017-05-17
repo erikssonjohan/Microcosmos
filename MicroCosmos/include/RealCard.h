@@ -22,8 +22,9 @@ class RealCard
 {
 public:
     
-    static RealCardRef create(std::string category,std::vector<VirtualCardRef> cards);
-    void setup(std::string category, std::vector<VirtualCardRef> cards);
+    static RealCardRef create(std::string category,int i,std::vector<VirtualCardRef> cards);
+    void setup(std::string category,int i, std::vector<VirtualCardRef> cards);
+	int get_ID();
 	
 	string get_Category();
 private:

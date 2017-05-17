@@ -1,3 +1,41 @@
 ﻿  MicroCosmos.cpp
-c:\users\simon\onedrive\tnm094-media-navigering\microcosmos\include\VirtualCard.hpp(64): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\simon\onedrive\tnm094-media-navigering\microcosmos\src\aruco\src\cameraparameters.h(58): warning C4290: C++ exception specification ignored except to indicate a function is not __declspec(nothrow)
+c:\users\simon\onedrive\tnm094-media-navigering\microcosmos\src\aruco\src\cameraparameters.h(64): warning C4290: C++ exception specification ignored except to indicate a function is not __declspec(nothrow)
+c:\users\simon\onedrive\tnm094-media-navigering\microcosmos\src\aruco\src\cameraparameters.h(79): warning C4290: C++ exception specification ignored except to indicate a function is not __declspec(nothrow)
+c:\users\simon\onedrive\tnm094-media-navigering\microcosmos\src\aruco\src\cameraparameters.h(82): warning C4290: C++ exception specification ignored except to indicate a function is not __declspec(nothrow)
+c:\users\simon\onedrive\tnm094-media-navigering\microcosmos\src\aruco\src\cameraparameters.h(86): warning C4290: C++ exception specification ignored except to indicate a function is not __declspec(nothrow)
+c:\users\simon\onedrive\tnm094-media-navigering\microcosmos\src\aruco\src\cameraparameters.h(90): warning C4290: C++ exception specification ignored except to indicate a function is not __declspec(nothrow)
+c:\users\simon\onedrive\tnm094-media-navigering\microcosmos\src\aruco\src\cameraparameters.h(107): warning C4290: C++ exception specification ignored except to indicate a function is not __declspec(nothrow)
+c:\users\simon\onedrive\tnm094-media-navigering\microcosmos\src\aruco\src\cameraparameters.h(119): warning C4290: C++ exception specification ignored except to indicate a function is not __declspec(nothrow)
+c:\users\simon\onedrive\tnm094-media-navigering\microcosmos\src\aruco\src\cameraparameters.h(125): warning C4290: C++ exception specification ignored except to indicate a function is not __declspec(nothrow)
+c:\users\simon\onedrive\tnm094-media-navigering\microcosmos\src\aruco\src\cameraparameters.h(126): warning C4290: C++ exception specification ignored except to indicate a function is not __declspec(nothrow)
+c:\users\simon\onedrive\tnm094-media-navigering\microcosmos\src\aruco\src\marker.h(76): warning C4290: C++ exception specification ignored except to indicate a function is not __declspec(nothrow)
+c:\users\simon\onedrive\tnm094-media-navigering\microcosmos\src\aruco\src\marker.h(83): warning C4290: C++ exception specification ignored except to indicate a function is not __declspec(nothrow)
+c:\users\simon\onedrive\tnm094-media-navigering\microcosmos\src\aruco\src\marker.h(88): warning C4290: C++ exception specification ignored except to indicate a function is not __declspec(nothrow)
+c:\users\simon\onedrive\tnm094-media-navigering\microcosmos\src\aruco\src\marker.h(100): warning C4290: C++ exception specification ignored except to indicate a function is not __declspec(nothrow)
+c:\users\simon\onedrive\tnm094-media-navigering\microcosmos\src\aruco\src\markerdetector.h(86): warning C4290: C++ exception specification ignored except to indicate a function is not __declspec(nothrow)
+c:\users\simon\onedrive\tnm094-media-navigering\microcosmos\src\aruco\src\markerdetector.h(97): warning C4290: C++ exception specification ignored except to indicate a function is not __declspec(nothrow)
+c:\users\simon\onedrive\tnm094-media-navigering\microcosmos\src\aruco\src\markerdetector.h(163): warning C4290: C++ exception specification ignored except to indicate a function is not __declspec(nothrow)
+c:\users\simon\onedrive\tnm094-media-navigering\microcosmos\src\aruco\src\markerdetector.h(226): warning C4290: C++ exception specification ignored except to indicate a function is not __declspec(nothrow)
+c:\users\simon\onedrive\tnm094-media-navigering\microcosmos\src\aruco\src\markerdetector.h(246): warning C4290: C++ exception specification ignored except to indicate a function is not __declspec(nothrow)
+c:\users\simon\onedrive\tnm094-media-navigering\microcosmos\src\aruco\src\markerdetector.h(269): warning C4290: C++ exception specification ignored except to indicate a function is not __declspec(nothrow)
+c:\users\simon\onedrive\tnm094-media-navigering\microcosmos\src\aruco\src\markerdetector.h(274): warning C4290: C++ exception specification ignored except to indicate a function is not __declspec(nothrow)
+c:\users\simon\onedrive\tnm094-media-navigering\microcosmos\src\aruco\src\board.h(89): warning C4290: C++ exception specification ignored except to indicate a function is not __declspec(nothrow)
+c:\users\simon\onedrive\tnm094-media-navigering\microcosmos\src\aruco\src\board.h(92): warning C4290: C++ exception specification ignored except to indicate a function is not __declspec(nothrow)
+c:\users\simon\onedrive\tnm094-media-navigering\microcosmos\src\aruco\src\board.h(108): warning C4290: C++ exception specification ignored except to indicate a function is not __declspec(nothrow)
+c:\users\simon\onedrive\tnm094-media-navigering\microcosmos\src\aruco\src\board.h(115): warning C4290: C++ exception specification ignored except to indicate a function is not __declspec(nothrow)
+c:\users\simon\onedrive\tnm094-media-navigering\microcosmos\src\aruco\src\board.h(118): warning C4290: C++ exception specification ignored except to indicate a function is not __declspec(nothrow)
+c:\users\simon\onedrive\tnm094-media-navigering\microcosmos\src\aruco\src\board.h(143): warning C4290: C++ exception specification ignored except to indicate a function is not __declspec(nothrow)
+c:\users\simon\onedrive\tnm094-media-navigering\microcosmos\src\aruco\src\board.h(155): warning C4290: C++ exception specification ignored except to indicate a function is not __declspec(nothrow)
+c:\users\simon\onedrive\tnm094-media-navigering\microcosmos\src\aruco\src\board.h(160): warning C4290: C++ exception specification ignored except to indicate a function is not __declspec(nothrow)
+c:\users\simon\onedrive\tnm094-media-navigering\microcosmos\src\aruco\src\board.h(163): warning C4290: C++ exception specification ignored except to indicate a function is not __declspec(nothrow)
+c:\users\simon\onedrive\tnm094-media-navigering\microcosmos\src\aruco\src\boarddetector.h(83): warning C4290: C++ exception specification ignored except to indicate a function is not __declspec(nothrow)
+c:\users\simon\onedrive\tnm094-media-navigering\microcosmos\src\aruco\src\boarddetector.h(108): warning C4290: C++ exception specification ignored except to indicate a function is not __declspec(nothrow)
+c:\users\simon\onedrive\tnm094-media-navigering\microcosmos\src\aruco\src\boarddetector.h(109): warning C4290: C++ exception specification ignored except to indicate a function is not __declspec(nothrow)
+..\src\MicroCosmos.cpp(40): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+..\src\MicroCosmos.cpp(151): warning C4305: 'argument': truncation from 'double' to 'float'
+..\src\MicroCosmos.cpp(173): warning C4305: 'argument': truncation from 'double' to 'float'
+..\src\MicroCosmos.cpp(180): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+..\src\MicroCosmos.cpp(187): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+..\src\MicroCosmos.cpp(194): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
   MicroCosmos.vcxproj -> C:\Users\simon\OneDrive\TNM094-Media-navigering\MicroCosmos\vc2013\build\x64\Release\MicroCosmos.exe
