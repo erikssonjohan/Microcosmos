@@ -22,11 +22,16 @@ class RealCard
 {
 public:
     
-    static RealCardRef create(std::string category,int id, std::vector<VirtualCardRef> cards);
-    void setup(std::string category,int id, std::vector<VirtualCardRef> cards);
-	int get_ID();
+    static RealCardRef create(std::string category,std::vector<VirtualCardRef> cards);
+    void setup(std::string category, std::vector<VirtualCardRef> cards);
+	
 	string get_Category();
     void setV(bool v);
+	int get_ID();
+
+
+	bool findTouchpoints(); //return true if card touchpoints were found and linked to RealCard
+
 private:
     
     std::vector<VirtualCardRef> vCards;
@@ -34,6 +39,9 @@ private:
 	po::scene::ShapeRef circle;
 
 	string Category;
+    
+    std::vector<uint32_t> touchId; //vector of card legs touchId, first is sharp edge
+    std::vector<po::scene::TouchEvent> events;
     
     
 

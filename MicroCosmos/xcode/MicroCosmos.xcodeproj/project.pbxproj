@@ -25,6 +25,7 @@
 		0C73B5AC1EAF48D300AEBA90 /* arucofidmarkers.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0C73B5A51EAF48D300AEBA90 /* arucofidmarkers.cpp */; };
 		0C73B5AE1EAF48F200AEBA90 /* CMakeLists.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0C73B5AD1EAF48F200AEBA90 /* CMakeLists.txt */; };
 		1B24B4DE94604C479AB8ECE4 /* poEvents.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B4732F7BB49844A5AF3DD17C /* poEvents.cpp */; };
+		1E0F5882798C9CBD73A1F0B3 /* ParticleController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1E0F5409C5A1CF7DC9D15D90 /* ParticleController.cpp */; };
 		23DDFC87866D4CF2AF1EE034 /* poScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0518B6445ABA46AC9CC83591 /* poScene.cpp */; };
 		2D7326670CD54A5CA15A41F7 /* MicroCosmosApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7F27203C0C4F4701A8F87335 /* MicroCosmosApp.cpp */; };
 		3AB136F33D9C4EC483FEACC7 /* QuickTime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6EBAFA76A364DE88C8002B9 /* QuickTime.framework */; };
@@ -66,6 +67,8 @@
 		0C73B5AD1EAF48F200AEBA90 /* CMakeLists.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = CMakeLists.txt; path = ../src/aruco/src/CMakeLists.txt; sourceTree = "<group>"; };
 		0F92591D42CD4A73AFFF372A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
+		1E0F53EEDE3ACD5EE19183F7 /* ParticleController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ParticleController.h; path = ../include/ParticleController.h; sourceTree = "<group>"; };
+		1E0F5409C5A1CF7DC9D15D90 /* ParticleController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ParticleController.cpp; path = ../src/ParticleController.cpp; sourceTree = "<group>"; };
 		2377E19CA4E246B3B5F3898F /* MicroCosmos_Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = "\"\""; path = MicroCosmos_Prefix.pch; sourceTree = "<group>"; };
 		25DBFAD470704A6198BAA340 /* poNode.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; name = poNode.cpp; path = ../blocks/poScene/src/poScene/poNode.cpp; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
@@ -148,6 +151,7 @@
 				DF09D65B1EAF465200C3A946 /* VirtualCard.cpp */,
 				7F27203C0C4F4701A8F87335 /* MicroCosmosApp.cpp */,
 				55C5285C1EAF4EAB00A577CA /* Tracking.cpp */,
+				1E0F5409C5A1CF7DC9D15D90 /* ParticleController.cpp */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -232,6 +236,7 @@
 				57305E184FE14196B5EAA150 /* Resources.h */,
 				2377E19CA4E246B3B5F3898F /* MicroCosmos_Prefix.pch */,
 				55C5285D1EAF4EAB00A577CA /* Tracking.hpp */,
+				1E0F53EEDE3ACD5EE19183F7 /* ParticleController.h */,
 			);
 			name = Headers;
 			sourceTree = "<group>";
@@ -400,6 +405,7 @@
 				DF09D65C1EAF465200C3A946 /* MicroCosmos.cpp in Sources */,
 				4895D6FBBC524357B3B86A1F /* poShape.cpp in Sources */,
 				A8B4C9D28AE44F7E86D55891 /* poTextBox.cpp in Sources */,
+				1E0F5882798C9CBD73A1F0B3 /* ParticleController.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

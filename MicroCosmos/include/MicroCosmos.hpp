@@ -70,6 +70,7 @@ private:
 	Tracking track;
 	glm::vec3 pos;
 	glm::vec2 realPos;
+	int calculateFrame = 10;
     
     void loadXML(const char *file, std::vector<std::vector<VirtualCardRef>> &cards, std::vector<std::string> category);
 
