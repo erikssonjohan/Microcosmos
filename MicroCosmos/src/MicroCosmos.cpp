@@ -36,11 +36,11 @@ void MicroCosmos::setup(){
      for(int i = 0; i<categories.size(); i++)
      {
 	 
-         rcards.push_back(RealCard::create(categories[i],i, x[i]));
+         rcards.push_back(RealCard::create(categories[i], x[i]));
          rcards[i]->setPosition(i*300, i*100);
          //rcards[i]->setVisible(false); //Screen should be empty at the start
          addChild(rcards[i]);
-         rcards[i]->setup(categories[i],i,x[i]);
+         rcards[i]->setup(categories[i],x[i]);
          idCategories.insert(pair<int, string>(i, categories[i]));
      }
 	 
@@ -234,8 +234,7 @@ void MicroCosmos::update() {
 	if (calculateFrame > 10000)
 		calculateFrame = 10;
 	calculateFrame++;
-	if (calculateFrame % 100 == 0)
-	{
+	if (calculateFrame % 100 == 0) {
 		for (map<int, string>::iterator it1 = idCategories.begin(); it1 != idCategories.end(); ++it1)
 		{
 			//pos = track.getPosMarker(it1->first + 4);
@@ -244,25 +243,19 @@ void MicroCosmos::update() {
 				pos = vec3(1, 1, 1);
 			if (pos.x > 0 && pos.y > 0)
 			{
-
-				for (int i = 0; i < rcards.size(); i++)
+				//realPos = track.getScreenCoordinates(pos);
+				realPos = glm::vec2(400, 200);
+				if (it1->second == rcards[it1->first]->get_Category()) 
 				{
-					
-					//realPos = track.getScreenCoordinates(pos);
-					realPos = glm::vec2(400, 200);
-					if (it1->second == rcards[it1->first]->get_Category())
-					{
-						rcards[it1->first]->setVisible(true);
-						rcards[it1->first]->setPosition(realPos.x, realPos.y); /// Puts out the virtual cards inside real cards to realPos.
+					rcards[it1->first]->setVisible(true);
+					rcards[it1->first]->setPosition(realPos.x, realPos.y); /// Puts out the virtual cards inside real cards to realPos.
 
-					}
-
-
-				}	
+				}
+				
 
 			}
-				else
-					rcards[it1->first]->setVisible(false);
+			else
+				rcards[it1->first]->setVisible(false);
 			
 		}
 
