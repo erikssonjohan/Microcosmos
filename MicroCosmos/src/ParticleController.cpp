@@ -28,7 +28,7 @@ void ParticleController::setup()
 		mParticles.push_back(Particle(ci::vec2(ci::Rand::randFloat(ci::app::getWindowWidth()), ci::Rand::randFloat(ci::app::getWindowHeight()))));
 
 	mConservationOfVelocity = 0.9f;
-	mSpeed = 0.2f;
+	mSpeed = 0.08f;
 	mAnimationCounter = 0.0f;
 }
 
@@ -68,11 +68,12 @@ void ParticleController::draw()
 	// Draw all the particles as lines from mPosition to mLastPosition.
 	// We use the convenience methods begin(), color(), vertex() and end() for simplicity,
 	// see the ParticleSphere* samples for a faster method.
-	ci::gl::begin(GL_LINES);
+	//ci::gl::begin(GL_LINES);
+	ci::gl::drawArrays(GL_POINTS, 0, NUM_PARTICLES);
+	ci::gl::color(1.0f, 1.0f, 1.0f);
 	for (auto &particle : mParticles) {
 		// Color according to velocity.
-		//ci::gl::color(0.5f + particle.mVelocity.x / (mSpeed * 2), 0.5f + particle.mVelocity.y / (mSpeed * 2), 0.5f + particle.mZ * 0.5f);
-		ci::gl::color(1.0f, 1.0f, 1.0f);
+		//ci::gl::color(0.5f + particle.mVelocity.x / (mSpeed * 2), 0.5f + particle.mVelocity.y / (mSpeed * 2), 0.5f + particle.mZ * 0.5f);	
 		ci::gl::vertex(particle.mLastPosition);
 		ci::gl::vertex(particle.mPosition);
 	}

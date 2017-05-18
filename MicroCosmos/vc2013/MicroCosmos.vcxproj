@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
@@ -27,7 +27,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
     <WholeProgramOptimization>false</WholeProgramOptimization>
   </PropertyGroup>
@@ -41,7 +41,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
@@ -221,12 +221,14 @@
     <ClCompile Include="..\blocks\poScene\src\poScene\poScene.cpp" />
     <ClCompile Include="..\blocks\poScene\src\poScene\poShape.cpp" />
     <ClCompile Include="..\blocks\poScene\src\poScene\poTextBox.cpp" />
+    <ClCompile Include="..\src\ParticleController.cpp" />
     <ClCompile Include="..\src\RealCard.cpp" />
     <ClCompile Include="..\src\Tracking.cpp" />
     <ClCompile Include="..\src\VirtualCard.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\MicroCosmos.hpp" />
+    <ClInclude Include="..\include\ParticleController.h" />
     <ClInclude Include="..\include\RealCard.h" />
     <ClInclude Include="..\include\Resources.h" />
     <ClInclude Include="..\blocks\OpenCV3\include\CinderOpenCV.h" />
