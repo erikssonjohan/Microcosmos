@@ -4,14 +4,14 @@
 
 using namespace po::scene;
 
-RealCardRef RealCard::create(std::string category,std::vector<VirtualCardRef> cards) {
+RealCardRef RealCard::create(std::string category, int id, std::vector<VirtualCardRef> cards) {
     
     RealCardRef node(new RealCard()); //Using a default constructor for the moment
     //node->setup(category,id, cards); //Not neccessary to pass var category if member of RealCard
     return node;
 }
 
-void RealCard::setup(std::string category,std::vector<VirtualCardRef> cards)
+void RealCard::setup(std::string category,int id,std::vector<VirtualCardRef> cards)
 {
     
     
@@ -23,6 +23,7 @@ void RealCard::setup(std::string category,std::vector<VirtualCardRef> cards)
     float radius = 300;
     setName(category);
 	Category = category;
+    ID = id;
 
 
 
@@ -34,7 +35,6 @@ void RealCard::setup(std::string category,std::vector<VirtualCardRef> cards)
         vCards[i]->setPosition(ci::vec2(radius * cos(6.28 * i/nrOfVirtcards), radius * sin(6.28 * i/nrOfVirtcards)));
         getParent()->addChild(vCards[i]);
         vCards[i]->setName(category+"_"+vCards[i]->getName());
-        std::cout << vCards[i]->getName() << std::endl;
         //vCards[i]->setVisible(false);
         //std::cout << "hgk" << std::endl;
     }
@@ -44,10 +44,12 @@ void RealCard::setup(std::string category,std::vector<VirtualCardRef> cards)
 	circle->setFillColor(0, 1, 0, 1);
 	circle->setPosition(0,0);
 	addChild(circle);
-	circle->setVisible(true);
+	//circle->setVisible(true);
 
     //std::cout << "nrOfVirtcards: " << nrOfVirtcards << std::endl;
     //std::cout << category << std::endl;
+
+    setV(false);
 
 }
 
@@ -63,6 +65,7 @@ string RealCard::get_Category() {
 void RealCard::setV(bool v){
     setVisible(v);
     for (int j = 0; j < vCards.size(); ++j) {
+        //std::cout  << vCards.size() << getName() << " / " << vCards[j]->getName() << std::endl;
         vCards[j]->setVisible(v);
     }
 }
