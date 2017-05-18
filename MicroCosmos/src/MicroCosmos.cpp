@@ -17,7 +17,11 @@ MicroCosmosRef MicroCosmos::create(){
 }
 
 void MicroCosmos::setup(){
-    
+
+    track.setup();
+   // track.update();
+    //track.setCorners();
+
     
      // INFO:
      //This works but we have alot of cards!
@@ -230,33 +234,50 @@ void MicroCosmos::visibleStandby() {
 }
 
 void MicroCosmos::update() {
-	
-	/*for (int i = 0; i < rcards.size(); i++) {
+    track.update();
+    for (int i = 0; i < rcards.size(); ++i) {
+        if(rcards[i]->get_ID() != 0) {
+            rcards[i]->setV(false);
+        }else {
+            rcards[i]->setV(true);
+            std::cout << "pos: " << track.getPosMarker(rcards[i]->get_ID() + 4) << " / real: "
+                      << track.getScreenCoordinates(track.getPosMarker(rcards[i]->get_ID() + 4)) << std::endl;
+            rcards[i]->setPosition(track.getScreenCoordinates(track.getPosMarker(rcards[i]->get_ID() + 4)).x*1577,track.getScreenCoordinates(track.getPosMarker(rcards[i]->get_ID() + 4)).y*1577 );
+        }
 
-		pos = track.getPosMarker(rcards[i]->get_ID()+4);
-		
-		if (pos.x > 0 && pos.y > 0)
-		{
-			realPos = track.getScreenCoordinates(pos);
-			rcards[i]->setVisible(true);
-			rcards[i]->setPosition(realPos.x, realPos.y); /// Puts out the virtual cards inside real cards to realPos.
+    }
 
-		}
-		else
-			rcards[i]->setVisible(false);
-	}*/
-	
 
-	//setIdCoordinates();
-	
-	
-	/*time2 = getElapsedSeconds();
-	if (time2 - time1 > 5)
-		//visibleStandby();
+    //rcards[0]->setV(true);
 
-	if (foundRealCard)
-		//invisibleStandby();
-	*/
+    std::cout << "pos: " << pos << " / real: " << realPos << std::endl;
+    //rcards[0]->setPosition(realPos);
+
+    /*
+    for( int i = 0; i < rcards.size(); i++) {
+        //std::cout << rcards[i]->get_ID();
+        //std::cout << pos << std::endl;
+if(rcards[i]->get_ID()  == 0) {
+    pos = track.getPosMarker(rcards[i]->get_ID() + 4);
+    //std::cout << pos << " / " << rcards[i]->get_ID() + 4 << std::endl;
+
+    if (pos.x > 0 && pos.y > 0) {
+        realPos = track.getScreenCoordinates(pos);
+        rcards[i]->setV(true);
+        rcards[i]->setPosition(realPos.x, realPos.y);
+        //std::cout << "rpos: " << realPos ;
+        //std::cout << " pos: " << rcards[i]->getPosition();
+        //std::cout << "gfghkfghjf " << rcards[i]->getPosition() << std::endl;
+    } else {
+        rcards[i]->setV(false);
+        //std::cout << pos << std::endl;
+    }
+}
+
+     */
+
+
+
 }
 
 
@@ -324,65 +345,3 @@ void MicroCosmos::loadXML(const char *file, std::vector<std::vector<VirtualCardR
     //cards = rCards;
 }
 
-/*
-void MicroCosmos::setIdCoordinates() {
-
-
-	for (map<int, string>::iterator it1 = idCategories.begin(); it1 != idCategories.end(); ++it1)
-	{
-		bool check = true;
-		pos = track.getPosMarker(it1->first + 4);
-
-			if (pos.x > 0 && pos.y > 0)
-	{		realPos = track.getScreenCoordinates(pos);
-
-			
-				for (map<glm::vec2, string>::iterator it2 = categoriesCoordinates.begin(); it2 != categoriesCoordinates.end(); ++it2)
-		{
-				if (it2->second == it1->second)
-			{
-					check = false;
-					assert(it2->first = realPos);
-					break;
-			}
-
-			}
-					if (check)
-				{
-					categoriesCoordinates.insert(pair<glm::vec2, string>(realPos, it1->second));
-				}
-			}
-
-
-		else {
-			for (map<glm::vec2, string>::iterator it2 = categoriesCoordinates.begin(); it2 != categoriesCoordinates.end(); ++it2)
-				{
-					if (it2->second == it1->second)
-					{
-						categoriesCoordinates.erase(it2);
-						break;
-
-					} 
-				}
-
-			}
-
-			}
-
-				for (map<glm::vec2, string>::iterator it3 = categoriesCoordinates.begin(); it3 != categoriesCoordinates.end(); ++it3)
-			{
-				for (int i = 0; i < rcards.size(); i++) 
-				{
-					if (it3->second == rcards[i]->get_Category)
-					{
-						rcards[i]->setPosition(it3->first);
-						rcards[i]->setVisible(true);
-
-					}
-				}
-
-			}
-
-
-}
-*/

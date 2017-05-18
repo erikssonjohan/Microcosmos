@@ -41,22 +41,27 @@ void Tracking::setCorners() {
         normX_ = glm::normalize(p1_ - p0_);
         normY_ = glm::normalize(p2_ - p0_);
     }
+    std::cout << "CORNERS: " << p0_ << " / " << p1_ << " / " << p2_ << std::endl;
 }
 
 glm::vec3 Tracking::getPosMarker(const int &id) {
     std::map<int, std::vector<double>>::iterator it0;
     it0 = marker_map_.find(id);
-
+    //ci::app::console() << "ID: " << id;
     glm::vec3 pos = {0,0,0};
     glm::vec3 negVec = {-1, -1, -1};
 
+    //std::cout << it0->first << "/ ";
+    //std::cout << marker_map_.size() << " ";
     if(it0 == marker_map_.end()) {
+        //std::cout << "jgh" << std::endl;
         return negVec;
     }
     else{
         for(auto t = std::make_tuple(it0->second.begin(), 0);
             std::get<0>(t) != it0->second.end(); ++std::get<0>(t), std::get<1>(t)++) {
             pos[std::get<1>(t)] = *std::get<0>(t);
+            //std::cout << pos << std::endl;
         }
         return pos;
     }
@@ -70,7 +75,7 @@ glm::vec2 Tracking::getScreenCoordinates(glm::vec3 markerPos) {
     glm::vec2 result = {glm::length(x),glm::length(y)};
     
     //If it is not between 0 and 1 it is wrong! Try dividing with length of X and Y
-    return glm::vec2(glm::length(x),glm::length(y));
+    return glm::vec2(result.x, result.y);
 }
 
 
@@ -140,7 +145,7 @@ void Tracking::update() {
     texture_->update(*capture_->getSurface());
     input_ = toOcv(ci::Surface(ci::Channel8u(texture_->createSource())));
     cam_param_update_.resize(input_.size());
-    marker_detector_.detect(input_, markers_, cam_param_update_, 0.028f);
+    marker_detector_.detect(input_, markers_, cam_param_update_, 0.048f);
     
     for (auto i : markers_) {
         double pos[3];
@@ -154,15 +159,17 @@ void Tracking::update() {
         else
             marker_map_[i.id] = {pos[0],pos[1],pos[2]};
     }
-   
+
+
     //print markerinfo
-    for (const auto it : marker_map_) {
+    /*for (const auto it : marker_map_) {
         ci::app::console() << "ID: " << it.first << std::endl;
         for(auto it2 = it.second.begin(); it2 != it.second.end(); ++it2)
             ci::app::console() << " POS: " << "[ " << *it2 << " ]"<< std::endl;
-    }
-    
+    }*/
+
     //Check for cornermarkers
+
     if (marker_map_.count(1) > 0 && marker_map_.count(2) > 0 && marker_map_.count(3) > 0 && firsttime) {
         firsttime = false;
         setCorners();
@@ -170,6 +177,7 @@ void Tracking::update() {
         marker_map_.erase(2);
         marker_map_.erase(3);
     }
+
 }
 
 

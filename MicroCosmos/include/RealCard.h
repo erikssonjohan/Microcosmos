@@ -26,6 +26,7 @@ public:
     void setup(std::string category,int id, std::vector<VirtualCardRef> cards);
 	int get_ID();
 	string get_Category();
+    void setV(bool v);
 private:
     
     std::vector<VirtualCardRef> vCards;
@@ -38,6 +39,6 @@ private:
 
 
 
-    void setV(bool v);
+
 
 };

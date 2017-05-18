@@ -48,7 +48,7 @@ void MicroCosmosApp::setup()
     // cinder::app::setFullScreen();
     scene = Scene::create(MicroCosmos::create());
     //search for and start camerafeed
-    mTrack.setup();
+    //mTrack.setup();
 
     getSignalUpdate().connect( [this](){
         getWindow()->setTitle( to_string( (int) getAverageFps() ) + " fps" );
@@ -77,7 +77,7 @@ void MicroCosmosApp::update()
     //update scene
     scene->update();
     //update tracking
-    mTrack.update();
+    //mTrack.update();
 }
 
 void MicroCosmosApp::draw()
