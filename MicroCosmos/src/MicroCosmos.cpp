@@ -40,11 +40,11 @@ void MicroCosmos::setup(){
      for(int i = 0; i<categories.size(); i++)
      {
 	 
-         rcards.push_back(RealCard::create(categories[i], x[i]));
+         rcards.push_back(RealCard::create(categories[i], i , x[i]));
          rcards[i]->setPosition(i*300, i*100);
          //rcards[i]->setVisible(false); //Screen should be empty at the start
          addChild(rcards[i]);
-         rcards[i]->setup(categories[i],x[i]);
+         rcards[i]->setup(categories[i], i ,x[i]);
          idCategories.insert(pair<int, string>(i, categories[i]));
      }
 	 
@@ -240,8 +240,8 @@ void MicroCosmos::update() {
             rcards[i]->setV(false);
         }else {
             rcards[i]->setV(true);
-            std::cout << "pos: " << track.getPosMarker(rcards[i]->get_ID() + 4) << " / real: "
-                      << track.getScreenCoordinates(track.getPosMarker(rcards[i]->get_ID() + 4)) << std::endl;
+            //std::cout << "pos: " << track.getPosMarker(rcards[i]->get_ID() + 4) << " / real: "
+             //         << track.getScreenCoordinates(track.getPosMarker(rcards[i]->get_ID() + 4)) << std::endl;
             rcards[i]->setPosition(track.getScreenCoordinates(track.getPosMarker(rcards[i]->get_ID() + 4)).x*1577,track.getScreenCoordinates(track.getPosMarker(rcards[i]->get_ID() + 4)).y*1577 );
         }
 
@@ -250,7 +250,7 @@ void MicroCosmos::update() {
 
     //rcards[0]->setV(true);
 
-    std::cout << "pos: " << pos << " / real: " << realPos << std::endl;
+    //std::cout << "pos: " << pos << " / real: " << realPos << std::endl;
     //rcards[0]->setPosition(realPos);
 
     /*
@@ -326,7 +326,7 @@ void MicroCosmos::loadXML(const char *file, std::vector<std::vector<VirtualCardR
 			//ci::app::console() << text_en << std::endl;
 			//VirtualCardRef ref = VirtualCard::create(ci::Color(1, 1, 1), path, 0.6f, categories, header_se, text_se, header_en, text_en);
 			for (int i = 0; i < categories.size() ; ++i) {
-				std::cout << "ca: "<< categories.size() << std::endl;
+				//std::cout << "ca: "<< categories.size() << std::endl;
 				for (int j = 0; j < category.size(); ++j){
 					if( categories[i] == category[j]){
 						//std::cout << "fhg" << std::endl;
@@ -340,7 +340,6 @@ void MicroCosmos::loadXML(const char *file, std::vector<std::vector<VirtualCardR
 			//ci::app::console() << std::endl;
 	}
 
-	std::cout << cards.size() << std::endl;
     //cards = rCards;
 }
 
