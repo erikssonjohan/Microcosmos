@@ -28,21 +28,21 @@ void ParticleController::setup()
 		mParticles.push_back(Particle(ci::vec2(ci::Rand::randFloat(ci::app::getWindowWidth()), ci::Rand::randFloat(ci::app::getWindowHeight()))));
 
 	mConservationOfVelocity = 0.9f;
-	mSpeed = 5.0f;
+	mSpeed = 0.2f;
 	mAnimationCounter = 0.0f;
 }
 
 void ParticleController::update()
 {
 	// Move ahead in time, which becomes the z-axis of our 3D noise.
-	mAnimationCounter += 10.0f;
+	mAnimationCounter += 2.0f;
 
 	for (auto &particle :  mParticles) {
 		// Save off the last position for drawing lines.
 		particle.mLastPosition = particle.mPosition;
 
 		// Add some perlin noise to the velocity.
-		ci::vec3 deriv = mPerlin.dfBm(ci::vec3(particle.mPosition.x, particle.mPosition.y, mAnimationCounter) * 0.001f);
+		ci::vec3 deriv = mPerlin.dfBm(ci::vec3(particle.mPosition.x, particle.mPosition.y, mAnimationCounter) * 0.1f);
 		particle.mZ = deriv.z;
 		ci::vec2 deriv2 = normalize(ci::vec2(deriv.x, deriv.y));
 		particle.mVelocity += deriv2 * mSpeed;
@@ -71,7 +71,8 @@ void ParticleController::draw()
 	ci::gl::begin(GL_LINES);
 	for (auto &particle : mParticles) {
 		// Color according to velocity.
-		ci::gl::color(0.5f + particle.mVelocity.x / (mSpeed * 2), 0.5f + particle.mVelocity.y / (mSpeed * 2), 0.5f + particle.mZ * 0.5f);
+		//ci::gl::color(0.5f + particle.mVelocity.x / (mSpeed * 2), 0.5f + particle.mVelocity.y / (mSpeed * 2), 0.5f + particle.mZ * 0.5f);
+		ci::gl::color(1.0f, 1.0f, 1.0f);
 		ci::gl::vertex(particle.mLastPosition);
 		ci::gl::vertex(particle.mPosition);
 	}

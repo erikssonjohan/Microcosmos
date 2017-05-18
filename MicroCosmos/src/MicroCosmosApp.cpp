@@ -43,6 +43,7 @@ void prepareSettings( MicroCosmosApp::Settings *settings )
     // By default, multi-touch is disabled on desktop and enabled on mobile platforms.
     // You enable multi-touch from the SettingsFn that fires before the app is constructed.
     settings->setMultiTouchEnabled( true );
+	settings->setFullScreen(true);
 }
 
 void MicroCosmosApp::setup()
@@ -88,7 +89,7 @@ void MicroCosmosApp::update()
 
 void MicroCosmosApp::draw()
 {
-    gl::clear(Color(0.24, 0.255, 0.28));
+    gl::clear(Color(0, 0, 0));
     glEnable( GL_LINE_SMOOTH );
     glEnable( GL_MULTISAMPLE_ARB );
     glHint(GL_LINE_SMOOTH_HINT,GL_NICEST);

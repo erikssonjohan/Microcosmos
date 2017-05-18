@@ -46,7 +46,7 @@ public:
 	bool	isOffscreen(const ci::vec2 &v);
 
 public:
-	static const int	NUM_PARTICLES = 1000;
+	static const int	NUM_PARTICLES = 10000;
 
 	float				mConservationOfVelocity;
 	float				mSpeed;
