@@ -14,6 +14,7 @@
 #include "aruco/src/cvdrawingutils.h"
 #include "aruco/src/cameraparameters.h"
 #include "Tracking.hpp"
+#include "ParticleController.h"
 
 #pragma warning( disable : 4290 )
 
@@ -33,6 +34,7 @@ public:
     po::scene::SceneRef scene;
     //tracking
     Tracking mTrack;
+	ParticleController mParticles;
 };
 
 
@@ -49,6 +51,8 @@ void MicroCosmosApp::setup()
     scene = Scene::create(MicroCosmos::create());
     //search for and start camerafeed
     mTrack.setup();
+	//Create particles at random locations and give them a velocity
+	mParticles.setup();
 
     getSignalUpdate().connect( [this](){
         getWindow()->setTitle( to_string( (int) getAverageFps() ) + " fps" );
@@ -78,6 +82,8 @@ void MicroCosmosApp::update()
     scene->update();
     //update tracking
     mTrack.update();
+	//update particles
+	mParticles.update();
 }
 
 void MicroCosmosApp::draw()
@@ -86,6 +92,7 @@ void MicroCosmosApp::draw()
     glEnable( GL_LINE_SMOOTH );
     glEnable( GL_MULTISAMPLE_ARB );
     glHint(GL_LINE_SMOOTH_HINT,GL_NICEST);
+	mParticles.draw();
     scene->draw();
     
     // Draw yellow circles at the active touch points
