@@ -18,8 +18,9 @@
 #include "cinder/Utilities.h"
 
 #include "CinderOpenCV.h"
-#include "aruco/src/cvdrawingutils.h"
-#include "aruco/src/cameraparameters.h"
+#include "../src/aruco/src/cvdrawingutils.h"
+#include "../src/aruco/src/cameraparameters.h"
+
 
 class Tracking {
 public:
@@ -53,7 +54,7 @@ private:
     glm::vec3 normX_, normY_;
     //size of marker, this needs to change if a new markersize is used
     const float kMarker_size_ = 0.048f;
-    const std::string kVR_labCamera_ = "Logitech Webcam c930e";
+    const std::string kVR_labCamera_ = "Logitech Webcam C930e";
 
     //save camera coordinates for screen corners
     void setCorners();

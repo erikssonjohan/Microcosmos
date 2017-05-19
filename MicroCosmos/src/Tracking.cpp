@@ -19,7 +19,7 @@ std::tuple<std::vector<double>, std::vector<double>, std::vector<double>> Tracki
     it0 = marker_map_.find(1);
     it1 = marker_map_.find(2);
     it2 = marker_map_.find(3);
-    return std::make_tuple(it0->second,it1->second,it2->second);
+    return std::make_tuple(marker_map_.find(1)->second,marker_map_.find(2)->second,marker_map_.find(3)->second);
 }
 
 
