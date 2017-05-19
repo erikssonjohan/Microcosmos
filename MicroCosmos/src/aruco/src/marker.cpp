@@ -230,7 +230,7 @@ void Marker::draw(Mat &in, Scalar color, int lineWidth ,bool writeId)const
     cv::rectangle( in,(*this)[2]-Point2f(2,2),(*this)[2]+Point2f(2,2),Scalar(255,0,0,255),lineWidth,CV_AA);
     if (writeId) {
         char cad[100];
-        sprintf(cad,"id=%d",id);
+        //sprintf(cad,"id=%d",id);
         //determine the centroid
         cv::Point cent(0,0);
         for (int i=0;i<4;i++)
@@ -253,7 +253,7 @@ void Marker::calculateExtrinsics(float markerSize,const CameraParameters &CP,boo
 }
 
 void print(cv::Point3f p,string cad){
- cout<<cad<<" "<<p.x<<" "<<p.y<< " "<<p.z<<endl; 
+ cout<<cad<<" "<<p.x<<" "<<p.y<< " "<<p.z<<endl;
 }
 /**
  */

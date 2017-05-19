@@ -28,8 +28,7 @@ public:
     void draw();
     void printDevices();
     std::tuple<std::vector<double>, std::vector<double>, std::vector<double>> getCornerPos();
-    //save camera coordinates for screen corners
-    void setCorners();
+    
     glm::vec3 getPosMarker(const int &id);
     //convert camera coordinates to screen coordinates
     glm::vec2 getScreenCoordinates(glm::vec3 markerPos);
@@ -37,7 +36,6 @@ public:
 private:
     aruco::CameraParameters cam_param_;
     aruco::CameraParameters cam_param_update_;
-
     aruco::MarkerDetector marker_detector_;
     std::vector<aruco::Marker> markers_;
     
@@ -53,9 +51,12 @@ private:
     glm::vec3 p0_, p1_, p2_;
     //vectors that makes calculations easier
     glm::vec3 normX_, normY_;
-    
+    //size of marker, this needs to change if a new markersize is used
+    const float kMarker_size_ = 0.048f;
     const std::string kVR_labCamera_ = "Logitech Webcam c930e";
 
+    //save camera coordinates for screen corners
+    void setCorners();
 
 };
 
