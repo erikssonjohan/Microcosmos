@@ -26,7 +26,9 @@ void RealCard::setup(std::string category,int id,std::vector<VirtualCardRef> car
     ID = id;
 
 
-
+	//Forces
+	G = 1;
+	mass = 20;
 
 
     //position the virtual cards around the real card and add as children
@@ -182,6 +184,48 @@ bool RealCard::findTouchpoints(){
         }
     }
     return false;
+}
+
+
+float RealCard::constrain(float val, float min, float max)
+{
+	if (val > max)
+		return max;
+	else if (val < min)
+		return min;
+	else
+		return val;
+}
+
+ci::vec2 RealCard::attract(VirtualCardRef& c)
+{
+	ci::vec2 force = ci::vec2(getPosition().x - c->getPosition().x, getPosition().y - c->getPosition().y);// Calculate direction of force
+	float d = sqrt(force.x * force.x + force.y * force.y);				// Distance between objects
+	d = constrain(d, 5.0, 25.0);										// Limiting the distance to eliminate "extreme" results for very close or very far objects
+																		//ci::app::console() << d << std::endl;
+	force = normalize(force);											// Normalize vector (distance doesn't matter here, we just want this vector for direction)
+	float strength = (mass*c->mass*G) / (d * d);						// Calculate gravitional force magnitude
+	force *= strength;													// Get force vector --> magnitude * direction
+	return force;
+}
+
+void RealCard::update()
+{
+
+	for (int i = 0; i < vCards.size(); i++)
+	{
+
+
+		ci::vec2 force = attract(vCards[i]);
+
+		vCards[i]->applyForce(force);
+		//ci::app::console() << getPosition() << std::endl;
+		vCards[i]->setRcPos(getPosition());
+		vCards[i]->update();
+
+	}
+
+
 }
 
 

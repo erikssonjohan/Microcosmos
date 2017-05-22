@@ -39,6 +39,13 @@ VirtualCard::VirtualCard(std::string path, float scale, std::vector<std::string>
 	//x = 400.0f;
 	//y = 400.0f;
 
+	//Forces
+	velocity = ci::vec2(0, 0);
+	acceleration = ci::vec2(0, 0);
+	topspeed = (float)10;
+	maxforce = (float)0.3;
+	mass = (float)20;
+
 
 
 
@@ -413,5 +420,109 @@ bool VirtualCard::doubleTouch(po::scene::TouchEvent event) {
 	return false;
 
 		
+
+}
+
+void VirtualCard::applyForce(ci::vec2 force)
+{
+	ci::vec2 f = force / mass;
+	acceleration += f;
+	//ci::app::console() << acceleration.x << "  " << acceleration.y << std::endl;
+}
+
+void VirtualCard::setRcPos(ci::vec2 rcp)
+{
+	realCardPos = rcp;
+}
+
+float VirtualCard::mag(float x, float y)
+{
+	return sqrt(x*x + y*y);
+}
+
+ci::vec2 VirtualCard::limit(ci::vec2 v, float max)
+{
+	if (mag(v.x, v.y) > max)
+	{
+		v = normalize(v);
+		return v*max;
+	}
+	else
+	{
+		return v;
+	}
+}
+
+
+ci::vec2 VirtualCard::separate(std::vector<VirtualCardRef>& v)
+{
+	float desiredSepar = 350;
+	ci::vec2 sum;
+	int counter = 0;
+
+	for (int i = 0; i < v.size(); i++)
+	{
+		float d = mag(getPosition().x - v[i]->getPosition().x, getPosition().y - v[i]->getPosition().y);
+		if (d > 0 && d < desiredSepar)
+		{
+			ci::vec2 diff = getPosition() - v[i]->getPosition();
+			diff = normalize(diff);
+			//diff = diff / d;
+			sum += diff;
+			counter++;
+		}
+
+	}
+
+	if (counter > 0)
+	{
+		sum = limit(sum, topspeed);
+		ci::vec2 steer = sum - velocity;
+		steer = limit(steer, maxforce);
+		return steer;
+	}
+	else
+		velocity *= 0;
+}
+
+
+void VirtualCard::update()
+{
+	time3 = ci::app::getElapsedSeconds();
+	//Attraction v1
+
+
+
+	if (!mIsPressed)
+	{
+		ci::vec2 direction = ci::vec2(getPosition().x - realCardPos.x, getPosition().y - realCardPos.y);
+		//ci::app::console() << direction.x << "  " << direction.y << std::endl;
+
+		if (time3 - end > 3) //When 3 seconds have elapsed the VC will start to move towards the RC again
+		{
+			if (mag(direction.x, direction.y) > 150)
+			{
+				velocity += acceleration;
+				setPosition(getPosition().x + velocity.x, getPosition().y + velocity.y);
+
+			}
+
+			/*else if (mag(direction.x, direction.y) <= 400)
+			{
+			velocity -= acceleration;
+			if (mag(velocity.x, velocity.y) < 0.1)
+			{
+			velocity *= 0;
+			}
+			}*/
+
+		}
+
+	}
+
+	acceleration *= 0;
+
+	if (mIsPressed)
+		velocity *= 0;
 
 }

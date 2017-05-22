@@ -29,8 +29,11 @@ public:
     void setV(bool v);
 	int get_ID();
 
-
 	bool findTouchpoints(); //return true if card touchpoints were found and linked to RealCard
+
+	//Used in calculation of forces
+	void update();
+	float constrain(float val, float min, float max);
 
 private:
     
@@ -42,6 +45,11 @@ private:
     
     std::vector<uint32_t> touchId; //vector of card legs touchId, first is sharp edge
     std::vector<po::scene::TouchEvent> events;
+
+	//Forces
+	ci::vec2 attract(VirtualCardRef& c);
+	float G;
+	float mass;
     
     
 

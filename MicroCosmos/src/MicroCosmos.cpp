@@ -234,7 +234,7 @@ void MicroCosmos::visibleStandby() {
 }
 
 void MicroCosmos::update() {
-    track.update();
+   // track.update();
     for (int i = 0; i < rcards.size(); ++i) {
         if(rcards[i]->get_ID() != 0) {
             rcards[i]->setV(false);
@@ -246,6 +246,11 @@ void MicroCosmos::update() {
         }
 
     }
+
+	for (int i = 0; i < rcards.size(); i++)
+	{
+		rcards[i]->update();
+	}
 
 
     //rcards[0]->setV(true);

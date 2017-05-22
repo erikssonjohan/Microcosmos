@@ -38,11 +38,27 @@ public:
 
 	float x, y;
 
+	//Used for calculating forces
+	float mass;
+	void applyForce(ci::vec2 force);
+	ci::vec2 separate(std::vector<VirtualCardRef>& v);
+	float mag(float x, float y);
+	ci::vec2 limit(ci::vec2 v, float max);
+	void setRcPos(ci::vec2 rcp);
+	void update();
+
 protected:
 
 private:
 
-    
+	//Used for calculating forces
+	double time3;
+	ci::vec2 velocity;
+	ci::vec2 acceleration;
+	ci::vec2 realCardPos;
+	float topspeed;
+	float maxforce;
+
     //media
     float mediaWidth, mediaHeight;
     bool mediaMovie;
