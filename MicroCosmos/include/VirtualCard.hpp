@@ -123,17 +123,6 @@ private:
 	// Function that checks if a double touch were occured
 	bool doubleTouch(po::scene::TouchEvent event);
 
-
-
-	//MARTIN ANVÄNDER DETTA NEDANFÖR FÖR ATT TESTA TEXTRUTAN DÅ HANS EMULERING EJ LÄNGRE FUNGERAR
-	/*
-	void onMouseDown(po::scene::MouseEvent &event);
-	//	Touch dragged event handler
-	//Checks if mouse is in button
-	bool mouseInButton(po::scene::MouseEvent event);
-	void handleButtonClicks(po::scene::MouseEvent event);
-	*/
-	//HÄR TAR MARTINS SKIT SLUT
 };
 
 
