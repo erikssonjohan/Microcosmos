@@ -5,21 +5,15 @@
 //  Created by Oscar Nord on 2017-04-25.
 //
 //
-
 #include "Tracking.hpp"
 #include <iostream>
 
 
 //get position of specific arucomarkers (cornerpoints)
 std::tuple<std::vector<double>, std::vector<double>, std::vector<double>> Tracking::getCornerPos() {
-    std::map<int, std::vector<double>>::iterator it0;
-    std::map<int, std::vector<double>>::iterator it1;
-    std::map<int, std::vector<double>>::iterator it2;
-
-    it0 = marker_map_.find(1);
-    it1 = marker_map_.find(2);
-    it2 = marker_map_.find(3);
-    return std::make_tuple(it0->second,it1->second,it2->second);
+    return std::make_tuple(marker_map_.find(1)->second,
+                           marker_map_.find(2)->second,
+                           marker_map_.find(3)->second);
 }
 
 
@@ -70,8 +64,8 @@ glm::vec3 Tracking::getPosMarker(const int &id) {
 
 //Returns Screen coordinates between 0 and 1
 glm::vec2 Tracking::getScreenCoordinates(glm::vec3 markerPos) {
-    glm::vec3 x = glm::dot((markerPos - p0_), normX_)*normX_ / glm::length(p1_ - p0_);
-    glm::vec3 y = glm::dot((markerPos - p0_), normY_)*normY_ / glm::length(p2_ - p0_);
+    glm::vec3 x = glm::dot((markerPos - p0_), normX_) * normX_ / glm::length(p1_ - p0_);
+    glm::vec3 y = glm::dot((markerPos - p0_), normY_) * normY_ / glm::length(p2_ - p0_);
     
     return glm::vec2(glm::length(x), glm::length(y));
 }
@@ -171,7 +165,7 @@ void Tracking::update() {
     }
     */
     
-    //Check for cornermarkers
+    //Check for cornermarkers 
     if (marker_map_.count(1) > 0 && marker_map_.count(2) > 0 && marker_map_.count(3) > 0 && firsttime) {
         firsttime = false;
         setCorners();
