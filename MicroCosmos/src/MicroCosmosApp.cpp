@@ -4,16 +4,11 @@
 #include "cinder/Capture.h"
 #include "cinder/gl/Texture.h"
 #include "cinder/Log.h"
-
 #include "cinder/Xml.h"
-
 #include "CinderOpenCV.h"
 
 #include "poScene.h"
 #include "MicroCosmos.hpp"
-#include "aruco/src/cvdrawingutils.h"
-#include "aruco/src/cameraparameters.h"
-#include "Tracking.hpp"
 #include "ParticleController.h"
 
 #pragma warning( disable : 4290 )
@@ -29,40 +24,30 @@ public:
     void keyDown(KeyEvent event) override;
     void update() override;
     void draw() override;
-
     //po
     po::scene::SceneRef scene;
-    //tracking
-    Tracking mTrack;
-	ParticleController mParticles;
+    ParticleController mParticles;
 };
 
 
-void prepareSettings( MicroCosmosApp::Settings *settings )
-{
-    // By default, multi-touch is disabled on desktop and enabled on mobile platforms.
-    // You enable multi-touch from the SettingsFn that fires before the app is constructed.
+void prepareSettings(MicroCosmosApp::Settings *settings) {
     settings->setMultiTouchEnabled( true );
-	settings->setFullScreen(true);
+    settings->setFullScreen(true);
 }
 
-void MicroCosmosApp::setup()
-{
+void MicroCosmosApp::setup() {
     // cinder::app::setFullScreen();
     scene = Scene::create(MicroCosmos::create());
-    //search for and start camerafeed
-
-	//Create particles at random locations and give them a velocity
-	mParticles.setup();
+    //Create particles at random locations and give them a velocity
+    mParticles.setup();
 
     getSignalUpdate().connect( [this](){
-        getWindow()->setTitle( to_string( (int) getAverageFps() ) + " fps" );
-    } );
+        getWindow()->setTitle(to_string((int)getAverageFps())+" fps");
+    });
 }
 
 
-void MicroCosmosApp::keyDown(KeyEvent event)
-{
+void MicroCosmosApp::keyDown(KeyEvent event) {
     if (event.getChar() == 'f') {
         // Toggle full screen when the user presses the 'f' key.
         setFullScreen(!isFullScreen());
@@ -77,23 +62,17 @@ void MicroCosmosApp::keyDown(KeyEvent event)
 }
 
 
-void MicroCosmosApp::update()
-{
+void MicroCosmosApp::update() {
     //update scene
     scene->update();
-    //update tracking
-
-	//update particles
-	mParticles.update();
+    //update particles
+    mParticles.update();
 }
 
-void MicroCosmosApp::draw()
-{
+
+void MicroCosmosApp::draw() {
     gl::clear(Color(0, 0, 0));
-    glEnable( GL_LINE_SMOOTH );
-    glEnable( GL_MULTISAMPLE_ARB );
-    glHint(GL_LINE_SMOOTH_HINT,GL_NICEST);
-	mParticles.draw();
+    mParticles.draw();
     scene->draw();
     
     // Draw yellow circles at the active touch points
