@@ -272,6 +272,15 @@ void VirtualCard::scale(ci::vec2 pos1, ci::vec2 pPos1, ci::vec2 pos2, ci::vec2 p
 	// Guard against division by zero & nan
 	if (previousDistance != 0 && previousDistance == previousDistance) {
 		_scale *= currentDistance / previousDistance;
+        
+        //Set boundaries of scale.
+        if(_scale > 1.0){
+            _scale = 1.0;
+        }
+        if(_scale < 0.5){
+            _scale = 0.5;
+        }
+        //std::cout << "TEST " << _scale << std::endl;
 		//setScale(_scale);
 	}
 }
@@ -287,7 +296,7 @@ void VirtualCard::touchRotate(ci::vec2 pos1, ci::vec2 pPos1, ci::vec2 pos2, ci::
 }
 
 void VirtualCard::createTextBox() {
-	// TODO:: make it less static and might need some fixes. just did it to test, not sure if its the best way // JE
+	// TODO:: make it less static and might need some fixes. just did it to test, not sure if its the best way // JEx
 	textFig = Shape::createRect(400, mediaHeight + border*2 );
 	textFig->setFillColor(0, 0, 0, 0.8);
 	textFig->setPosition(mediaWidth + border * 2, 0);
