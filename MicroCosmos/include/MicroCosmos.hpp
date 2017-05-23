@@ -19,27 +19,17 @@
 class MicroCosmos;
 typedef std::shared_ptr<MicroCosmos> MicroCosmosRef;
 
-class MicroCosmos
-: public po::scene::NodeContainer
-{
+class MicroCosmos : public po::scene::NodeContainer {
 public:
     static MicroCosmosRef create();
     
     void setup();
-    
     void uniqueCategories(const char *file, std::vector<std::string> &categories);
     bool stringInVector(std::string category, std::vector<std::string> categories);
-	void initStandby();
-	void invisibleStandby();
-	void visibleStandby();
 	void update();
 	void setIdCoordinates();
     
-protected:
-    
 private:
-    
-    //std::vector<VirtualCardRef> cards;
     std::vector<RealCardRef> rcards;
 
 	std::vector<uint32_t> touchId;
@@ -55,17 +45,6 @@ private:
 
 	void removeTouchEvent(po::scene::TouchEvent tEvent);
 
-	po::scene::ShapeRef standByFig;
-	po::scene::TextBoxRef standbyContent;
-	po::scene::ShapeRef standByFig2;
-	po::scene::TextBoxRef standbyContent2;
-	ci::gl::TextureRef img1 = ci::gl::Texture::create(ci::loadImage(ci::app::loadAsset("10-Ribosome_figure.jpg")));
-	ci::gl::TextureRef img2 = ci::gl::Texture::create(ci::loadImage(ci::app::loadAsset("101-Prions-2rnm.jpg")));
-	ci::gl::TextureRef img4 = ci::gl::Texture::create(ci::loadImage(ci::app::loadAsset("fig2.jpg")));
-	po::scene::ShapeRef standbyShape1;
-	po::scene::ShapeRef standbyShape2;
-	po::scene::ShapeRef standbyShape3;
-	double time1, time2;
 	bool foundRealCard = false;
 	Tracking track;
 	glm::vec3 pos;
@@ -73,9 +52,6 @@ private:
 	int calculateFrame = 10;
     
     void loadXML(const char *file, std::vector<std::vector<VirtualCardRef>> &cards, std::vector<std::string> category);
-
-	
-    
 };
 
 

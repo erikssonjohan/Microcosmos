@@ -11,12 +11,7 @@ RealCardRef RealCard::create(std::string category, int id, std::vector<VirtualCa
     return node;
 }
 
-void RealCard::setup(std::string category,int id,std::vector<VirtualCardRef> cards)
-{
-    
-    
-    
-    
+void RealCard::setup(std::string category,int id,std::vector<VirtualCardRef> cards) {
     //creates virtualCards and save the refs to them in the vector vCards
     vCards = cards;
     int nrOfVirtcards = vCards.size();
@@ -25,15 +20,12 @@ void RealCard::setup(std::string category,int id,std::vector<VirtualCardRef> car
 	Category = category;
     ID = id;
 
-
 	//Forces
 	G = 1;
 	mass = 20;
 
-
     //position the virtual cards around the real card and add as children
-    for (int i = 0; i<nrOfVirtcards; ++i)
-    {
+    for (int i = 0; i<nrOfVirtcards; ++i) {
         vCards[i]->setPosition(ci::vec2(radius * cos(6.28 * i/nrOfVirtcards), radius * sin(6.28 * i/nrOfVirtcards)));
         getParent()->addChild(vCards[i]);
         vCards[i]->setName(category+"_"+vCards[i]->getName());
@@ -41,25 +33,18 @@ void RealCard::setup(std::string category,int id,std::vector<VirtualCardRef> car
         //std::cout << "hgk" << std::endl;
     }
 
-
 	circle = Shape::createCircle(400);
 	circle->setFillColor(0, 1, 0, 1);
 	circle->setPosition(0,0);
 	addChild(circle);
-	//circle->setVisible(true);
-
-    //std::cout << "nrOfVirtcards: " << nrOfVirtcards << std::endl;
-    //std::cout << category << std::endl;
 
     setV(false);
-
 }
 
 
 
 
 string RealCard::get_Category() {
-
 	return Category;
 }
 
@@ -72,11 +57,11 @@ void RealCard::setV(bool v){
     }
 }
 
+
 int RealCard::get_ID() {
-
     return ID;
-
 }
+
 
 bool RealCard::findTouchpoints(){
     
@@ -86,27 +71,22 @@ bool RealCard::findTouchpoints(){
     float CARD_D2 = 66 * SCALE; //two longer (66mm)
     //float CARD_RADIUS = 36.5 * SCALE; //from card center to center of leg (36.5mm)
     float CARD_PRECISSION = 25* SCALE; //distances can differ
-    
     po::scene::TouchEvent event = events.back();
     
-    for(int i=0; i<events.size()-1; i++)
-    {
+    for(int i=0; i<events.size()-1; i++) {
         
         float d1 = length(events[i].getWindowPos() - event.getWindowPos());
         std::cout << "d1 = " << d1 << endl;
         
         //test the rest of the touchpoints to find last point
-        if(abs(d1 - CARD_D1) < CARD_PRECISSION)
-        {
+        if(abs(d1 - CARD_D1) < CARD_PRECISSION) {
             //Shorter distance found -> both point should have longer length to third point
             std::cout << "Found shorter distance!" << std::endl;
-            for(int j=i+1; j<events.size()-1; j++)
-            {
+            for(int j=i+1; j<events.size()-1; j++) {
                 float d2 = length(events[j].getWindowPos() - event.getWindowPos());
                 float d3 = length(events[j].getWindowPos() - events[i].getWindowPos());
                 
-                if(abs(d2 - CARD_D2)<CARD_PRECISSION && abs(d3 - CARD_D2)<CARD_PRECISSION)
-                {
+                if(abs(d2 - CARD_D2)<CARD_PRECISSION && abs(d3 - CARD_D2)<CARD_PRECISSION) {
                     std::cout << "A CARD WAS FOUND!" << std::endl;
                     
                     //One short and one long vector from event
@@ -117,29 +97,25 @@ bool RealCard::findTouchpoints(){
                     vec2 centerpoint = event.getWindowPos() + 0.3f*side1 + 0.4f*side2;
                     
                     //if centerpoint matches that of the marker the touchpoints are the table legs
-                    if(length(getPosition() - centerpoint) < CARD_PRECISSION)
-                    {
+                    if(length(getPosition() - centerpoint) < CARD_PRECISSION) {
                         touchId.push_back(events[j].getId()); //first is sharp edge
                         touchId.push_back(event.getId());
                         touchId.push_back(events[i].getId());
                         return true;
                     }
-                    
                 }
             }
         }
-        else if(abs(d1 - CARD_D1) < CARD_PRECISSION)
-        {
+        
+        else if(abs(d1 - CARD_D1) < CARD_PRECISSION) {
             //one longer distance found -> one short and one long left
             cout << "Found one longer distance!" << endl;
             
-            for(int j=i+1; j<events.size()-1; j++)
-            {
+            for(int j=i+1; j<events.size()-1; j++) {
                 float d2 = length(events[j].getWindowPos() - event.getWindowPos());
                 float d3 = length(events[j].getWindowPos() - events[i].getWindowPos());
                 
-                if(abs(d2 - CARD_D2)<CARD_PRECISSION && abs(d3 - CARD_D1)<CARD_PRECISSION)
-                {
+                if(abs(d2 - CARD_D2)<CARD_PRECISSION && abs(d3 - CARD_D1)<CARD_PRECISSION) {
                     std::cout << "A CARD WAS FOUND!" << std::endl;
                     
                     //One short and one long vector from events[i]
@@ -150,17 +126,14 @@ bool RealCard::findTouchpoints(){
                     vec2 centerpoint = event.getWindowPos() + 0.3f*side1 + 0.4f*side2;
                     
                     //if centerpoint matches that of the marker the touchpoints are the table legs
-                    if(length(getPosition() - centerpoint) < CARD_PRECISSION)
-                    {
+                    if(length(getPosition() - centerpoint) < CARD_PRECISSION) {
                         touchId.push_back(event.getId()); //first is sharp edge
                         touchId.push_back(events[j].getId());
                         touchId.push_back(events[i].getId());
                         return true;
                     }
-                    
                 }
-                else if(abs(d2 - CARD_D1)<CARD_PRECISSION && abs(d3 - CARD_D2)<CARD_PRECISSION)
-                {
+                else if(abs(d2 - CARD_D1)<CARD_PRECISSION && abs(d3 - CARD_D2)<CARD_PRECISSION) {
                     std::cout << "A CARD WAS FOUND!" << std::endl;
                     
                     //One short and one long vector from event
@@ -171,14 +144,12 @@ bool RealCard::findTouchpoints(){
                     vec2 centerpoint = event.getWindowPos() + 0.3f*side1 + 0.4f*side2;
                     
                     //if centerpoint matches that of the marker the touchpoints are the table legs
-                    if(length(getPosition() - centerpoint) < CARD_PRECISSION)
-                    {
+                    if(length(getPosition() - centerpoint) < CARD_PRECISSION) {
                         touchId.push_back(events[i].getId()); //first is sharp edge
                         touchId.push_back(event.getId());
                         touchId.push_back(events[j].getId());
                         return true;
                     }
-                    
                 }
             }
         }
@@ -187,8 +158,7 @@ bool RealCard::findTouchpoints(){
 }
 
 
-float RealCard::constrain(float val, float min, float max)
-{
+float RealCard::constrain(float val, float min, float max) {
 	if (val > max)
 		return max;
 	else if (val < min)
@@ -197,8 +167,7 @@ float RealCard::constrain(float val, float min, float max)
 		return val;
 }
 
-ci::vec2 RealCard::attract(VirtualCardRef& c)
-{
+ci::vec2 RealCard::attract(VirtualCardRef& c) {
 	ci::vec2 force = ci::vec2(getPosition().x - c->getPosition().x, getPosition().y - c->getPosition().y);// Calculate direction of force
 	float d = sqrt(force.x * force.x + force.y * force.y);				// Distance between objects
 	d = constrain(d, 5.0, 25.0);										// Limiting the distance to eliminate "extreme" results for very close or very far objects
@@ -209,11 +178,9 @@ ci::vec2 RealCard::attract(VirtualCardRef& c)
 	return force;
 }
 
-void RealCard::update()
-{
+void RealCard::update() {
 
-	for (int i = 0; i < vCards.size(); i++)
-	{
+	for (int i = 0; i < vCards.size(); i++) {
 
 
 		ci::vec2 force = attract(vCards[i]);
@@ -222,10 +189,5 @@ void RealCard::update()
 		//ci::app::console() << getPosition() << std::endl;
 		vCards[i]->setRcPos(getPosition());
 		vCards[i]->update();
-
 	}
-
-
 }
-
-

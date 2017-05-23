@@ -17,11 +17,8 @@ using namespace std;
 class RealCard;
 typedef std::shared_ptr<RealCard> RealCardRef;
 
-class RealCard
-: public po::scene::NodeContainer
-{
+class RealCard : public po::scene::NodeContainer {
 public:
-    
     static RealCardRef create(std::string category,int id, std::vector<VirtualCardRef> cards);
     void setup(std::string category,int id, std::vector<VirtualCardRef> cards);
 	
@@ -36,7 +33,6 @@ public:
 	float constrain(float val, float min, float max);
 
 private:
-    
     std::vector<VirtualCardRef> vCards;
 	int ID;
 	po::scene::ShapeRef circle;
@@ -50,11 +46,4 @@ private:
 	ci::vec2 attract(VirtualCardRef& c);
 	float G;
 	float mass;
-    
-    
-
-
-
-
-
 };

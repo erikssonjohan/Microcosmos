@@ -23,9 +23,7 @@ using namespace std;
 class VirtualCard;
 typedef std::shared_ptr<VirtualCard> VirtualCardRef;
 
-class VirtualCard
-	: public po::scene::NodeContainer
-{
+class VirtualCard : public po::scene::NodeContainer {
 public:
 
 	static VirtualCardRef create(ci::Color color, std::string path, float scale, std::vector<std::string> categories, std::string header_se, std::string text_se, std::string header_en, std::string text_en);
@@ -46,8 +44,6 @@ public:
 	ci::vec2 limit(ci::vec2 v, float max);
 	void setRcPos(ci::vec2 rcp);
 	void update();
-
-protected:
 
 private:
 
@@ -138,11 +134,5 @@ private:
 
 	// Function that checks if a double touch were occured
 	bool doubleTouch(po::scene::TouchEvent event);
-
 };
-
-
-
-
 #endif /* VirtualCard_hpp */
-

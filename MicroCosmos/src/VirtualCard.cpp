@@ -200,9 +200,9 @@ void VirtualCard::onTouchDragged(po::scene::TouchEvent &event) {
 	}
 	if (events.size() >= 2) {
 		scale(events[0].getWindowPos(), pPos[0], events[1].getWindowPos(), pPos[1]);
-		//setScale(_scale);
+		setScale(_scale);
         touchRotate(events[0].getWindowPos(), pPos[0], events[1].getWindowPos(), pPos[1]);
-        //setRotation( angle);
+        setRotation( angle);
 	}
 	for (int i = 0; i<events.size(); ++i) {
 		if (events[i].getId() == event.getId()) {
@@ -210,9 +210,6 @@ void VirtualCard::onTouchDragged(po::scene::TouchEvent &event) {
 			events[i] = event;
 		}
 	}
-
-
-
 }
 
 //	Touch up event handler
@@ -225,7 +222,6 @@ void VirtualCard::onTouchUp(po::scene::TouchEvent &event) {
 		if (timeTouched < 0.350) {
 			handleButtonTouches(event);
 		}
-
 		mIsPressed = false;
 		removeTouchId(event.getId());
 		removeTouchEvent(event);
@@ -256,7 +252,6 @@ void VirtualCard::removeTouchId(uint32_t id) {
 			std::cout << "removing id " << id << std::endl;
 		}
 	}
-
 }
 
 //removes touch id from card
@@ -292,7 +287,6 @@ void VirtualCard::touchRotate(ci::vec2 pos1, ci::vec2 pPos1, ci::vec2 pos2, ci::
 }
 
 void VirtualCard::createTextBox() {
-
 	// TODO:: make it less static and might need some fixes. just did it to test, not sure if its the best way // JE
 	textFig = Shape::createRect(400, mediaHeight + border*2 );
 	textFig->setFillColor(0, 0, 0, 0.8);
@@ -460,48 +454,38 @@ ci::vec2 VirtualCard::separate(std::vector<VirtualCardRef>& v)
 	ci::vec2 sum;
 	int counter = 0;
 
-	for (int i = 0; i < v.size(); i++)
-	{
+	for (int i = 0; i < v.size(); i++) {
 		float d = mag(getPosition().x - v[i]->getPosition().x, getPosition().y - v[i]->getPosition().y);
-		if (d > 0 && d < desiredSepar)
-		{
+		if (d > 0 && d < desiredSepar) {
 			ci::vec2 diff = getPosition() - v[i]->getPosition();
 			diff = normalize(diff);
 			//diff = diff / d;
 			sum += diff;
 			counter++;
 		}
-
 	}
-
-	if (counter > 0)
-	{
-		sum = limit(sum, topspeed);
-		ci::vec2 steer = sum - velocity;
-		steer = limit(steer, maxforce);
-		return steer;
+	if (counter < 0) {
+        velocity *= 0;
 	}
 	else
-		velocity *= 0;
+        sum = limit(sum, topspeed);
+        ci::vec2 steer = sum - velocity;
+        steer = limit(steer, maxforce);
+        return steer;
 }
 
 
-void VirtualCard::update()
-{
+void VirtualCard::update() {
 	time3 = ci::app::getElapsedSeconds();
 	//Attraction v1
 
-
-
-	if (!mIsPressed)
-	{
+	if (!mIsPressed) {
 		ci::vec2 direction = ci::vec2(getPosition().x - realCardPos.x, getPosition().y - realCardPos.y);
 		//ci::app::console() << direction.x << "  " << direction.y << std::endl;
 
 		if (time3 - end > 3) //When 3 seconds have elapsed the VC will start to move towards the RC again
 		{
-			if (mag(direction.x, direction.y) > 150)
-			{
+			if (mag(direction.x, direction.y) > 150) {
 				velocity += acceleration;
 				setPosition(getPosition().x + velocity.x, getPosition().y + velocity.y);
 
@@ -515,14 +499,10 @@ void VirtualCard::update()
 			velocity *= 0;
 			}
 			}*/
-
 		}
-
 	}
-
 	acceleration *= 0;
 
 	if (mIsPressed)
 		velocity *= 0;
-
 }
