@@ -34,10 +34,6 @@ VirtualCard::VirtualCard(std::string path, float scale, std::vector<std::string>
 	cinder::gl::TextureRef mFrameTexture;
 	cinder::gl::TextureRef texture;
 
-	x = ci::Rand::randFloat(1, 800);
-	y = ci::Rand::randFloat(1, 800);
-	//x = 400.0f;
-	//y = 400.0f;
 
 	//Forces
 	velocity_ = ci::vec2(0, 0);
@@ -139,7 +135,8 @@ void VirtualCard::setup(ci::Color color)
 	text_headerS_->setVisible(false);
 	text_headerE_->setVisible(false);
     
-    //Just so it dosent take all of the screen...
+    //Sets scale to a maximum height of 100 pixels
+	scale_ = 100 / media_height_;
     setScale(scale_);
 
 	getSignal(po::scene::TouchEvent::BEGAN_INSIDE).connect(std::bind(&VirtualCard::onTouchDown, this, std::placeholders::_1));
@@ -147,7 +144,6 @@ void VirtualCard::setup(ci::Color color)
 	getSignal(po::scene::TouchEvent::MOVED).connect(std::bind(&VirtualCard::onTouchDragged, this, std::placeholders::_1));
 	getSignal(po::scene::TouchEvent::ENDED_INSIDE).connect(std::bind(&VirtualCard::onTouchUp, this, std::placeholders::_1));
 	getSignal(po::scene::TouchEvent::ENDED).connect(std::bind(&VirtualCard::onTouchUp, this, std::placeholders::_1));
-	//MARTIN ANV�NDER DENNA F�R O TESTA//getSignal(po::scene::MouseEvent::DOWN_INSIDE).connect(std::bind(&VirtualCard::onMouseDown, this, std::placeholders::_1));
 }
 
 void VirtualCard::onTouchDown(po::scene::TouchEvent &event) {
@@ -265,12 +261,12 @@ void VirtualCard::scale(ci::vec2 pos1, ci::vec2 pPos1, ci::vec2 pos2, ci::vec2 p
 	if (previousDistance != 0 && previousDistance == previousDistance) {
 		scale_ *= currentDistance / previousDistance;
         
-        //Set boundaries of scale.
-        if(scale_ > 0.8){
-            scale_ = 0.8;
+        //Set boundaries of scale for the height of the media between 100 and 500 pixels.
+        if(scale_ * media_height_ > 500){
+            scale_ = 500/media_height_;
         }
-        if(scale_ < 0.5){
-            scale_ = 0.5;
+        if(scale_ * media_height_< 100){
+            scale_ = 100/media_height_;
         }
 	}
 }
@@ -297,13 +293,13 @@ void VirtualCard::createTextBox() {
 	ciTextBox.size(300, 500);
 	ciTextBox.color(ci::Color(1, 1, 1));
 	ciTextBox.alignment(ci::TextBox::Alignment::LEFT);
-	ciTextBox.font(ci::Font("Arial", 20));
+	ciTextBox.font(ci::Font("Arial", 32));
 	//Headerbox
 	ci::TextBox ciHeaderBox = ci::TextBox();
 	ciHeaderBox.size(300, media_height_*0.2);
 	ciHeaderBox.color(ci::Color(1, 1, 1));
 	ciHeaderBox.alignment(ci::TextBox::Alignment::CENTER);
-	ciHeaderBox.font(ci::Font("Arial", 30));
+	ciHeaderBox.font(ci::Font("Arial", 36));
 
 	ciTextBox.text(text_se_);
 	text_contentS_ = po::scene::TextBox::create(ciTextBox);
@@ -314,14 +310,17 @@ void VirtualCard::createTextBox() {
 
 	ciHeaderBox.text(header_se_);
 	text_headerS_ = po::scene::TextBox::create(ciHeaderBox);
-	text_headerS_->setPosition(media_width_ + border_ * 2, media_height_*0.08);
+	text_headerS_->setPosition(media_width_ + border_ * 2, media_height_*0.04);
 	ciHeaderBox.text(header_en_);
 	text_headerE_ = po::scene::TextBox::create(ciHeaderBox);
-	text_headerE_->setPosition(media_width_ + border_ * 2, media_height_*0.08);
+	text_headerE_->setPosition(media_width_ + border_ * 2, media_height_*0.04);
 
 	//Button created from texture.
 	button_imgS_ = ci::gl::Texture::create(ci::loadImage(ci::app::loadAsset("swe_eng_button.png")));
 	button_imgE_ = ci::gl::Texture::create(ci::loadImage(ci::app::loadAsset("eng_swe_button.png")));
+	//float scaleWidth = textFig_->getScaledWidth() / (button_imgS_->getWidth() * 2.0f);
+	//float dimensionalScale = (button_imgS_->getWidth() * scaleWidth) /  button_imgS_->getWidth(); //This variable makes sure that the scaling is according to the buttonImg dimensions, which decreases pixelation
+	//float scaleHeight = button_imgS_->getHeight() *dimensionalScale;
 	float scaleWidth = media_width_ / (button_imgS_->getWidth() * 8);
 	float scaleHeight = media_height_ / (button_imgS_->getHeight() * 10);
 	button_scale_ = ci::vec2(scaleWidth, scaleHeight);
@@ -473,7 +472,7 @@ void VirtualCard::update() {
         
         if (time3_ - end_ > 3) //When 3 seconds have elapsed the VC will start to move towards the RC again
 		{
-			if (mag(direction.x, direction.y) > 150) {
+			if (mag(direction.x, direction.y) > 200) {
 				velocity_ += acceleration_;
 				setPosition(getPosition().x + velocity_.x, getPosition().y + velocity_.y);
 

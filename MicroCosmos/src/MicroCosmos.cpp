@@ -21,9 +21,9 @@ void MicroCosmos::setup(){
     // INFO:
     //Good to know: inside RealCard.cpp the you also have to write the name of the xml-file, they are not liked yet
     std::vector<std::string> categories;
-    uniqueCategories("demo.xml", categories);
+    uniqueCategories("demo2.xml", categories);
     std::vector<std::vector<VirtualCardRef>> x(categories.size());
-    loadXML("demo.xml", x, categories);
+    loadXML("demo2.xml", x, categories);
     
     
     for(int i = 0; i<categories.size(); i++) {
@@ -111,17 +111,26 @@ void MicroCosmos::update() {
 			rcards[i]->setV(false);
 		}
 		else {
+			/*//BASED ON TRACKING [ use this version for VR-LAB]
 			if (track.getPosMarker(rcards[i]->get_ID() + 4)[0] >= 0 && track.getPosMarker(rcards[i]->get_ID() + 4)[1] >= 0) {
 
 				rcards[i]->setV(true);
-
 				//std::cout << "pos: " << track.getPosMarker(rcards[i]->get_ID() + 4) << " / real: "
 				//         << track.getScreenCoordinates(track.getPosMarker(rcards[i]->get_ID() + 4)) << std::endl;
 				rcards[i]->setPosition(track.getScreenCoordinates(track.getPosMarker(rcards[i]->get_ID() + 4)).x * 1577,
 					track.getScreenCoordinates(track.getPosMarker(rcards[i]->get_ID() + 4)).y * 1577);
 				rcards[i]->initVcards(rcards[i]->getPosition());
 
-			}
+			}//BASED ON TRACKING ends here*/
+
+			//HARDCODED CARD VERSION [ use this version when coding not at VR-LAB]	
+			if (true){
+			rcards[i]->setV(true);
+			rcards[i]->setPosition(700, 300);
+			rcards[i]->initVcards(rcards[i]->getPosition());
+			} //HARDCODED CARD VERSION ends here
+
+
 			else {
 				rcards[i]->setV(false);
 				rcards[i]->resetInitiation();
@@ -182,7 +191,7 @@ void MicroCosmos::loadXML(const char *file, std::vector<std::vector<VirtualCardR
                 if( categories[i] == category[j]){
                     //std::cout << "fhg" << std::endl;
                     //std::cout << j <<": " << categories2[j] << std::endl;
-                    VirtualCardRef ref = VirtualCard::create(ci::Color(1, 1, 1), path, 0.6f, categories, header_se, text_se, header_en, text_en);
+                    VirtualCardRef ref = VirtualCard::create(ci::Color(1, 1, 1), path, 0.2f, categories, header_se, text_se, header_en, text_en);
                     cards[j].push_back( ref);
                     break;
                 }

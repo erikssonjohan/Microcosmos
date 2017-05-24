@@ -34,8 +34,6 @@ public:
 	//Constructor for the card
 	VirtualCard(std::string path, float scale, std::vector<std::string> categories, std::string header_se, std::string text_se, std::string header_en, std::string text_en);
 
-	float x, y;
-
 	//Used for calculating forces
 	float mass;
 	void applyForce(ci::vec2 force);

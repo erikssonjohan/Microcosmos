@@ -51,7 +51,7 @@ void RealCard::initVcards(glm::vec2 rCardPos)
 	if (!rCardInitiated)
 	{
 		int nrOfVirtcards = vCards.size();
-		const int radius = 20;
+		const int radius = 200;
 
 		//position the virtual cards around the real card and add as children
 		for (int i = 0; i<nrOfVirtcards; ++i)
