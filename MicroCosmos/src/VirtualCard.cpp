@@ -22,13 +22,13 @@ using namespace po::scene;
 VirtualCard::VirtualCard(std::string path, float scale, std::vector<std::string> categories, std::string header_se,
 	std::string text_se, std::string header_en, std::string text_en)
 {
-	_path = path;
-	_scale = scale;
-	_categories = categories;
-	_header_se = header_se;
-	_text_se = text_se;
-	_header_en = header_en;
-	_text_en = text_en;
+	path_ = path;
+	scale_ = scale;
+	categories_ = categories;
+	header_se_ = header_se;
+	text_se_ = text_se;
+	header_en_ = header_en;
+	text_en_ = text_en;
 
 
 	cinder::gl::TextureRef mFrameTexture;
@@ -40,10 +40,10 @@ VirtualCard::VirtualCard(std::string path, float scale, std::vector<std::string>
 	//y = 400.0f;
 
 	//Forces
-	velocity = ci::vec2(0, 0);
-	acceleration = ci::vec2(0, 0);
-	topspeed = (float)10;
-	maxforce = (float)0.3;
+	velocity_ = ci::vec2(0, 0);
+	acceleration_ = ci::vec2(0, 0);
+	top_speed_ = (float)10;
+	max_force_ = (float)0.3;
 	mass = (float)20;
 
 }
@@ -62,12 +62,12 @@ VirtualCardRef VirtualCard::create(ci::Color color, std::string path, float scal
 
 void VirtualCard::setup(ci::Color color)
 {
-	mStartPos = ci::vec2();
-	mEndPos = ci::vec2();
-	mInitialPos = ci::vec2();
+	mStartPos_ = ci::vec2();
+	mEndPos_ = ci::vec2();
+	mInitialPos_ = ci::vec2();
 	mIsPressed = false;
     po::scene::ShapeRef textur;
-    setName(_header_se);
+    setName(header_se_);
 	
     //po::scene::VideoGlRef poVideo; // VIDEO !!!
     
@@ -92,23 +92,23 @@ void VirtualCard::setup(ci::Color color)
         mediaWidth = poVideo->getWidth();
         mediaHeight = poVideo->getHeight();
     }
-    else*/ if(_path.substr(_path.find_last_of(".")+1) == "jpg" || _path.substr(_path.find_last_of(".")+1) == "png" ){
-        mediaMovie = false;
-        ci::gl::TextureRef img = ci::gl::Texture::create(ci::loadImage(ci::app::loadAsset(_path)));
-        mediaWidth = img->getWidth();
-        mediaHeight = img->getHeight();
+    else*/ if(path_.substr(path_.find_last_of(".")+1) == "jpg" || path_.substr(path_.find_last_of(".")+1) == "png" ){
+        media_movie_ = false;
+        ci::gl::TextureRef img = ci::gl::Texture::create(ci::loadImage(ci::app::loadAsset(path_)));
+        media_width_ = img->getWidth();
+        media_height_ = img->getHeight();
         //  create and add the shape to the node container
         textur = Shape::createRect(img->getWidth(), img->getHeight());
         textur->setTexture(img);
-        textur->setPosition(border, border);
+        textur->setPosition(border_, border_);
 
     }
     
     
     //border to the media (img or movie)
-    mBaseShape = Shape::createRect(mediaWidth + border * 2, mediaHeight + border * 2);
-    mBaseColor = color;
-    mBaseShape->setFillColor(color);
+    mBase_shape_ = Shape::createRect(media_width_ + border_ * 2, media_height_ + border_ * 2);
+    mBase_color_ = color;
+    mBase_shape_->setFillColor(color);
 
   
 	// Create the text box and all content relevant to it.
@@ -116,28 +116,28 @@ void VirtualCard::setup(ci::Color color)
 
 	setAlignment(po::scene::Alignment::CENTER_CENTER);
 
-	addChild(mBaseShape);
+	addChild(mBase_shape_);
     
-    if (!mediaMovie){
+    if (!media_movie_){
 	addChild(textur);
     }
 	
     /*if (mediaMovie){ // VIDEO !!!
         addChild(poVideo);
     }*/
-	addChild(textFig);
-	addChild(textContentS);
-	addChild(textContentE);
-	addChild(textHeaderS);
-	addChild(textHeaderE);
-	addChild(buttonTextur);
+	addChild(textFig_);
+	addChild(text_contentS_);
+	addChild(text_contentE_);
+	addChild(text_headerS_);
+	addChild(text_headerE_);
+	addChild(button_texture_);
 
-	buttonTextur->setVisible(false);
-	textFig->setVisible(false);
-	textContentS->setVisible(false);
-	textContentE->setVisible(false);
-	textHeaderS->setVisible(false);
-	textHeaderE->setVisible(false);
+	button_texture_->setVisible(false);
+	textFig_->setVisible(false);
+	text_contentS_->setVisible(false);
+	text_contentE_->setVisible(false);
+	text_headerS_->setVisible(false);
+	text_headerE_->setVisible(false);
     
     //Just so it dosent take all of the screen...
     setScale(_scale);
@@ -384,22 +384,22 @@ void VirtualCard::handleButtonTouches(po::scene::TouchEvent event) {
 
 bool VirtualCard::doubleTouch(po::scene::TouchEvent event)
 {
-	if (timeChecker) {
+	if (time_checker) {
 		time1 = getElapsedSeconds();
 	}
-	else if (timeChecker != true) {
+	else if (time_checker != true) {
 		time2 = getElapsedSeconds();
 	}
-	if (time2 - time1 < 0.5 && timeChecker != true) {
-		timeChecker = true;
+	if (time2 - time1 < 0.5 && time_checker != true) {
+		time_checker = true;
 		return true;
 	}
 	else
-		if (timeChecker) {
-			timeChecker = false;
+		if (time_checker) {
+			time_checker = false;
 		}
 		else
-			timeChecker = true;
+			time_checker = true;
 		
 	return false;
 }

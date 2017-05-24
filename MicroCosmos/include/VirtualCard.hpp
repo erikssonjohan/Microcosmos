@@ -48,56 +48,56 @@ public:
 private:
 
 	//Used for calculating forces
-	double time3;
-	ci::vec2 velocity;
-	ci::vec2 acceleration;
-	ci::vec2 realCardPos;
-	float topspeed;
-	float maxforce;
+	double time3_;
+	ci::vec2 velocity_;
+	ci::vec2 acceleration_;
+	ci::vec2 real_card_pos_;
+	float top_speed_;
+	float max_force_;
 
     //media
-    float mediaWidth, mediaHeight;
-    bool mediaMovie;
+    float media_width_, media_height_;
+    bool media_movie_;
     
-	float border = 10;
+	float border_ = 10;
 	//timestamps that handle how long an event has been pressed
-	double start, end, timeTouched, time1, time2;
-	bool timeChecker = true;
-	bool check = true;
+	double start_, end_, time_touched_, time1_, time2_;
+	bool time_checker_ = true;
+	bool check_ = true;
 
 
-	po::scene::ShapeRef mBaseShape;
-	ci::vec2            mBasePosition;
-	ci::Color           mBaseColor;
+	po::scene::ShapeRef mBase_shape_;
+	ci::vec2            mBase_position_;
+	ci::Color           mBase_color_;
 
 	//touch vector
-	std::vector<uint32_t> touchId;
-	std::vector<po::scene::TouchEvent> events;
-	std::vector<vec2> pPos;
+    std::vector<uint32_t> touch_id_;
+	std::vector<po::scene::TouchEvent> events_;
+	std::vector<vec2> pPos_;
 
-	po::scene::ShapeRef textFig;
-	po::scene::TextBoxRef textContentS;
-	po::scene::TextBoxRef textContentE;
-	po::scene::TextBoxRef textHeaderS;
-	po::scene::TextBoxRef textHeaderE;
-	po::scene::ShapeRef buttonTextur;
-	ci::gl::TextureRef buttonImgS;
-	ci::gl::TextureRef buttonImgE;
-	ci::vec2 buttonScale;
-	bool textVisible = false;
-	bool textSWE = true;
+	po::scene::ShapeRef textFig_;
+	po::scene::TextBoxRef text_contentS_;
+	po::scene::TextBoxRef text_contentE_;
+	po::scene::TextBoxRef text_headerS_;
+	po::scene::TextBoxRef text_headerE_;
+	po::scene::ShapeRef button_texture_;
+	ci::gl::TextureRef button_imgS_;
+	ci::gl::TextureRef button_imgE_;
+	ci::vec2 button_scale_;
+	bool text_visible_ = false;
+	bool text_SWE_ = true;
 
-	float angle = 0.0f;
-	std::string _path;
-	float _scale;
-	std::vector<std::string> _categories;
-	std::string _header_se;
-	std::string _text_se;
-	std::string _header_en;
-	std::string _text_en;
+	float angle_ = 0.0f;
+	std::string path_;
+	float scale_;
+	std::vector<std::string> categories_;
+	std::string header_se_;
+	std::string text_se_;
+	std::string header_en_;
+	std::string text_en_;
 
 	//	Keep track of the initial, start and end position to use for dragging
-	ci::vec2 mStartPos, mEndPos, mInitialPos;
+	ci::vec2 mStartPos_, mEndPos_, mInitialPos_;
 
 	//removes touch id from card
 	void removeTouchId(uint32_t id);
