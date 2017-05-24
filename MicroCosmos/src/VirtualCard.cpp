@@ -46,9 +46,6 @@ VirtualCard::VirtualCard(std::string path, float scale, std::vector<std::string>
 	maxforce = (float)0.3;
 	mass = (float)20;
 
-
-
-
 }
 
 VirtualCardRef VirtualCard::create(ci::Color color, std::string path, float scale, std::vector<std::string> categories, std::string header_se,
@@ -117,8 +114,6 @@ void VirtualCard::setup(ci::Color color)
 	// Create the text box and all content relevant to it.
 	createTextBox();
 
-	
-
 	setAlignment(po::scene::Alignment::CENTER_CENTER);
 
 	addChild(mBaseShape);
@@ -155,8 +150,6 @@ void VirtualCard::setup(ci::Color color)
 	//MARTIN ANV�NDER DENNA F�R O TESTA//getSignal(po::scene::MouseEvent::DOWN_INSIDE).connect(std::bind(&VirtualCard::onMouseDown, this, std::placeholders::_1));
 }
 
-
-
 void VirtualCard::onTouchDown(po::scene::TouchEvent &event) {
 	start = ci::app::getElapsedSeconds();
 	/*
@@ -185,7 +178,6 @@ void VirtualCard::onTouchDown(po::scene::TouchEvent &event) {
 		}
 	}
 }
-
 
 //	Touch dragged event handler
 void VirtualCard::onTouchDragged(po::scene::TouchEvent &event) {
@@ -274,14 +266,12 @@ void VirtualCard::scale(ci::vec2 pos1, ci::vec2 pPos1, ci::vec2 pos2, ci::vec2 p
 		_scale *= currentDistance / previousDistance;
         
         //Set boundaries of scale.
-        if(_scale > 1.0){
-            _scale = 1.0;
+        if(_scale > 0.8){
+            _scale = 0.8;
         }
         if(_scale < 0.5){
             _scale = 0.5;
         }
-        //std::cout << "TEST " << _scale << std::endl;
-		//setScale(_scale);
 	}
 }
 
@@ -355,7 +345,6 @@ void VirtualCard::handleButtonTouches(po::scene::TouchEvent event) {
 			textHeaderE->setVisible(true);
 			buttonTextur->setTexture(buttonImgE);
 			
-
 			textSWE = false;
 		}
 		else
@@ -393,37 +382,26 @@ void VirtualCard::handleButtonTouches(po::scene::TouchEvent event) {
 
 
 
-bool VirtualCard::doubleTouch(po::scene::TouchEvent event) {
-
-	
+bool VirtualCard::doubleTouch(po::scene::TouchEvent event)
+{
 	if (timeChecker) {
 		time1 = getElapsedSeconds();
-		
 	}
 	else if (timeChecker != true) {
 		time2 = getElapsedSeconds();
-		
-
 	}
 	if (time2 - time1 < 0.5 && timeChecker != true) {
 		timeChecker = true;
 		return true;
-
 	}
-
-
 	else
 		if (timeChecker) {
 			timeChecker = false;
-			
 		}
 		else
 			timeChecker = true;
 		
 	return false;
-
-		
-
 }
 
 void VirtualCard::applyForce(ci::vec2 force)
@@ -432,6 +410,7 @@ void VirtualCard::applyForce(ci::vec2 force)
 	acceleration += f;
 	//ci::app::console() << acceleration.x << "  " << acceleration.y << std::endl;
 }
+
 
 void VirtualCard::setRcPos(ci::vec2 rcp)
 {
@@ -459,13 +438,13 @@ ci::vec2 VirtualCard::limit(ci::vec2 v, float max)
 
 ci::vec2 VirtualCard::separate(std::vector<VirtualCardRef>& v)
 {
-	float desiredSepar = 350;
+	float desired_separate = 350;
 	ci::vec2 sum;
 	int counter = 0;
 
 	for (int i = 0; i < v.size(); i++) {
 		float d = mag(getPosition().x - v[i]->getPosition().x, getPosition().y - v[i]->getPosition().y);
-		if (d > 0 && d < desiredSepar) {
+		if (d > 0 && d < desired_separate) {
 			ci::vec2 diff = getPosition() - v[i]->getPosition();
 			diff = normalize(diff);
 			//diff = diff / d;
@@ -487,19 +466,18 @@ ci::vec2 VirtualCard::separate(std::vector<VirtualCardRef>& v)
 void VirtualCard::update() {
 	time3 = ci::app::getElapsedSeconds();
 	//Attraction v1
-
+    
 	if (!mIsPressed) {
 		ci::vec2 direction = ci::vec2(getPosition().x - realCardPos.x, getPosition().y - realCardPos.y);
 		//ci::app::console() << direction.x << "  " << direction.y << std::endl;
-
-		if (time3 - end > 3) //When 3 seconds have elapsed the VC will start to move towards the RC again
+        
+        if (time3 - end > 3) //When 3 seconds have elapsed the VC will start to move towards the RC again
 		{
 			if (mag(direction.x, direction.y) > 150) {
 				velocity += acceleration;
 				setPosition(getPosition().x + velocity.x, getPosition().y + velocity.y);
 
 			}
-
 			/*else if (mag(direction.x, direction.y) <= 400)
 			{
 			velocity -= acceleration;
