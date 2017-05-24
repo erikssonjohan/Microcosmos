@@ -14,8 +14,6 @@ RealCardRef RealCard::create(std::string category, int id, std::vector<VirtualCa
 void RealCard::setup(std::string category,int id,std::vector<VirtualCardRef> cards) {
     //creates virtualCards and save the refs to them in the vector vCards
     vCards = cards;
-    int nrOfVirtcards = vCards.size();
-    float radius = 300;
     setName(category);
 	Category = category;
     ID = id;
@@ -23,15 +21,6 @@ void RealCard::setup(std::string category,int id,std::vector<VirtualCardRef> car
 	//Forces
 	G = 1;
 	mass = 20;
-
-    //position the virtual cards around the real card and add as children
-    for (int i = 0; i<nrOfVirtcards; ++i) {
-        vCards[i]->setPosition(ci::vec2(radius * cos(6.28 * i/nrOfVirtcards), radius * sin(6.28 * i/nrOfVirtcards)));
-        getParent()->addChild(vCards[i]);
-        vCards[i]->setName(category+"_"+vCards[i]->getName());
-        //vCards[i]->setVisible(false);
-        //std::cout << "hgk" << std::endl;
-    }
 
 	circle = Shape::createCircle(400);
 	circle->setFillColor(0, 1, 0, 1);
@@ -57,6 +46,30 @@ void RealCard::setV(bool v){
     }
 }
 
+void RealCard::initVcards(glm::vec2 rCardPos)
+{
+	if (!rCardInitiated)
+	{
+		int nrOfVirtcards = vCards.size();
+		const int radius = 20;
+
+		//position the virtual cards around the real card and add as children
+		for (int i = 0; i<nrOfVirtcards; ++i)
+		{
+			vCards[i]->setPosition(ci::vec2(rCardPos.x + radius * cos(2 * M_PI * i / nrOfVirtcards), rCardPos.y + radius * sin(2 * M_PI * i / nrOfVirtcards)));
+			getParent()->addChild(vCards[i]);
+			vCards[i]->setName(get_Category() + "_" + vCards[i]->getName());
+		}
+		rCardInitiated = true;
+	}
+
+
+}
+
+void RealCard::resetInitiation()
+{
+	rCardInitiated = false;
+}
 
 int RealCard::get_ID() {
     return ID;

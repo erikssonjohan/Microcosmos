@@ -28,7 +28,7 @@ void MicroCosmos::setup(){
     
     for(int i = 0; i<categories.size(); i++) {
         rcards.push_back(RealCard::create(categories[i], i , x[i]));
-        rcards[i]->setPosition(i*300, i*100);
+        //rcards[i]->setPosition(i*300, i*100);
         //rcards[i]->setVisible(false); //Screen should be empty at the start
         addChild(rcards[i]);
         rcards[i]->setup(categories[i], i ,x[i]);
@@ -69,11 +69,11 @@ void MicroCosmos::onTouchDown(po::scene::TouchEvent &event) {
     touchId.push_back(event.getId());
     events.push_back(event);
     
-    //if three fingers(or more) are placed on the screen, a realcard is shown at that position
+   /* //if three fingers(or more) are placed on the screen, a realcard is shown at that position
     if (touchId.size() >= 3) {
         rcards[1]->setVisible(true);
         rcards[1]->setPosition(events[touchId.size() - 1].getWindowPos());
-    }
+    }*/
 }
 
 
@@ -103,20 +103,32 @@ void MicroCosmos::removeTouchEvent(po::scene::TouchEvent tEvent) {
 
 
 void MicroCosmos::update() {
-    track.update();
-    for (int i = 0; i < rcards.size(); ++i) {
-        if(rcards[i]->get_ID() != 0) {
-            rcards[i]->setV(false);
-        }else {
-            rcards[i]->setV(true);
-            rcards[i]->setPosition(track.getScreenCoordinates(track.getPosMarker(rcards[i]->get_ID() + 4)).x*1577,
-                                   track.getScreenCoordinates(track.getPosMarker(rcards[i]->get_ID() + 4)).y*1577 );
-        }
-    }
-    
-    for (int i = 0; i < rcards.size(); i++) {
-        rcards[i]->update();
-    }
+
+	track.update();
+
+	for (int i = 0; i < rcards.size(); ++i) {
+		if (rcards[i]->get_ID() != 0) {
+			rcards[i]->setV(false);
+		}
+		else {
+			if (track.getPosMarker(rcards[i]->get_ID() + 4)[0] >= 0 && track.getPosMarker(rcards[i]->get_ID() + 4)[1] >= 0) {
+
+				rcards[i]->setV(true);
+
+				//std::cout << "pos: " << track.getPosMarker(rcards[i]->get_ID() + 4) << " / real: "
+				//         << track.getScreenCoordinates(track.getPosMarker(rcards[i]->get_ID() + 4)) << std::endl;
+				rcards[i]->setPosition(track.getScreenCoordinates(track.getPosMarker(rcards[i]->get_ID() + 4)).x * 1577,
+					track.getScreenCoordinates(track.getPosMarker(rcards[i]->get_ID() + 4)).y * 1577);
+				rcards[i]->initVcards(rcards[i]->getPosition());
+
+			}
+			else {
+				rcards[i]->setV(false);
+				rcards[i]->resetInitiation();
+			}
+		}
+	}
+
 }
 
 
