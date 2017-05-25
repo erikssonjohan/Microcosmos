@@ -30,12 +30,12 @@ public:
 	void setIdCoordinates();
     
 private:
-    std::vector<RealCardRef> rcards;
+    std::vector<RealCardRef> realcards_;
 
-	std::vector<uint32_t> touchId;
-	std::vector<po::scene::TouchEvent> events;
-	std::map<int,string> idCategories;
-	std::map<glm::vec2, string> categoriesCoordinates;
+	std::vector<uint32_t> touchid_;
+	std::vector<po::scene::TouchEvent> events_;
+	std::map<int,string> id_categories_;
+	std::map<glm::vec2, string> categories_coordinates_;
     void onTouchDown(po::scene::TouchEvent &event);
     
     //	Touch up event handler
@@ -45,11 +45,11 @@ private:
 
 	void removeTouchEvent(po::scene::TouchEvent tEvent);
 
-	bool foundRealCard = false;
-	Tracking track;
-	glm::vec3 pos;
-	glm::vec2 realPos;
-	int calculateFrame = 10;
+	bool found_realcard_ = false;
+	Tracking tracking_;
+	glm::vec3 pos_;
+	glm::vec2 realpos_;
+	int calculateframe_ = 10;
     
     void loadXML(const char *file, std::vector<std::vector<VirtualCardRef>> &cards, std::vector<std::string> category);
 };

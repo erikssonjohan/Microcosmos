@@ -49,7 +49,7 @@ private:
     glm::vec3 p0_, p1_, p2_;
     //vectors that makes calculations easier
     glm::vec3 normX_, normY_;
-    //size of marker, this needs to change if a new markersize is used
+    //size of marker, this needs to change if a new markersize is used (calibration)
     const float kMarker_size_ = 0.048f;
     const std::string kVR_labCamera_ = "Logitech Webcam C930e";
     
