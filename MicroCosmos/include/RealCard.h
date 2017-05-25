@@ -45,7 +45,7 @@ private:
 
 	std::string category_;
     
-    std::vector<uint32_t> touchid_; //vector of card legs touchid_, first is sharp edge
+    std::vector<uint32_t> touchid_; //vector of card legs touchid, first is sharp edge
     std::vector<po::scene::TouchEvent> events_;
 
 	//False until a realCard has been detected on the screen by tracking

@@ -40,9 +40,7 @@ private:
     
     //	Touch up event handler
     void onTouchUp(po::scene::TouchEvent &event);
-
 	void removeTouchId(uint32_t id);
-
 	void removeTouchEvent(po::scene::TouchEvent tEvent);
 
 	bool found_realcard_ = false;
@@ -53,9 +51,5 @@ private:
     
     void loadXML(const char *file, std::vector<std::vector<VirtualCardRef>> &cards, std::vector<std::string> category);
 };
-
-
-
-
 
 #endif /* MicroCosmos_hpp */

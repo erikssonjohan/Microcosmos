@@ -19,7 +19,7 @@ MicroCosmosRef MicroCosmos::create() {
 void MicroCosmos::setup(){
     tracking_.setup();
     /*
-     *INFO: Good to know: inside RealCard.cpp the you also have to write the name of the xml-file, they are not liked yet
+     *INFO: Good to know: inside RealCard.cpp the you also have to write the name of the XML-file, they are not liked yet
      */
     std::vector<std::string> categories;
     uniqueCategories("demo.xml", categories);

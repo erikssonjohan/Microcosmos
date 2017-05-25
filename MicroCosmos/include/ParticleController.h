@@ -21,8 +21,7 @@ public:
 	Particle(const ci::vec2 &position)
 		: mPosition(position), mLastPosition(position), mVelocity(ci::vec2(0)), mZ(0) {}
 
-	void reset(const ci::vec2 &position)
-	{
+	void reset(const ci::vec2 &position) {
 		mPosition = mLastPosition = position;
 		mVelocity = ci::vec2(0);
 		mZ = 0;
