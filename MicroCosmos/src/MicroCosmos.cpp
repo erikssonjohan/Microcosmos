@@ -17,22 +17,22 @@ MicroCosmosRef MicroCosmos::create() {
 }
 
 void MicroCosmos::setup(){
-    track.setup();
-    // INFO:
-    //Good to know: inside RealCard.cpp the you also have to write the name of the xml-file, they are not liked yet
+    tracking_.setup();
+    /*
+     *INFO: Good to know: inside RealCard.cpp the you also have to write the name of the XML-file, they are not liked yet
+     */
     std::vector<std::string> categories;
     uniqueCategories("demo.xml", categories);
     std::vector<std::vector<VirtualCardRef>> x(categories.size());
     loadXML("demo.xml", x, categories);
-    
-    
+
     for(int i = 0; i<categories.size(); i++) {
-        rcards.push_back(RealCard::create(categories[i], i , x[i]));
-        //rcards[i]->setPosition(i*300, i*100);
-        //rcards[i]->setVisible(false); //Screen should be empty at the start
-        addChild(rcards[i]);
-        rcards[i]->setup(categories[i], i ,x[i]);
-        idCategories.insert(pair<int, string>(i, categories[i]));
+        realcards_.push_back(RealCard::create(categories[i], i , x[i]));
+        //realcards_[i]->setPosition(i*300, i*100);
+        //realcards_[i]->setVisible(false); //Screen should be empty at the start
+        addChild(realcards_[i]);
+        realcards_[i]->setup(categories[i], i ,x[i]);
+        id_categories_.insert(pair<int, string>(i, categories[i]));
     }
 }
 
@@ -41,7 +41,6 @@ void MicroCosmos::setup(){
 void MicroCosmos::uniqueCategories(const char *file, std::vector<std::string> &categories){
     
     ci::XmlTree doc(ci::app::loadAsset(file));
-    
     //std::cout << "Found following categories: " << endl;
     for (ci::XmlTree::Iter track = doc.begin("content/media"); track != doc.end(); ++track) {
         for (ci::XmlTree::Iter cat = track->begin("category"); cat != track->end(); ++cat) {
@@ -66,13 +65,13 @@ bool MicroCosmos::stringInVector(std::string category, std::vector<std::string> 
 
 
 void MicroCosmos::onTouchDown(po::scene::TouchEvent &event) {
-    touchId.push_back(event.getId());
-    events.push_back(event);
+    touchid_.push_back(event.getId());
+    events_.push_back(event);
     
    /* //if three fingers(or more) are placed on the screen, a realcard is shown at that position
-    if (touchId.size() >= 3) {
-        rcards[1]->setVisible(true);
-        rcards[1]->setPosition(events[touchId.size() - 1].getWindowPos());
+    if (touchid_.size() >= 3) {
+        realcards_[1]->setVisible(true);
+        realcards_[1]->setPosition(events_[touchid_.size() - 1].getWindowPos());
     }*/
 }
 
@@ -84,9 +83,9 @@ void MicroCosmos::onTouchUp(po::scene::TouchEvent &event) {
 
 
 void MicroCosmos::removeTouchId(uint32_t id) {
-    for (int i = 0; i<touchId.size(); ++i) {
-        if (touchId[i] == id) {
-            touchId.erase(touchId.begin() + i);
+    for (int i = 0; i<touchid_.size(); ++i) {
+        if (touchid_[i] == id) {
+            touchid_.erase(touchid_.begin() + i);
             std::cout << "removing id " << id << std::endl;
         }
     }
@@ -94,9 +93,9 @@ void MicroCosmos::removeTouchId(uint32_t id) {
 
 
 void MicroCosmos::removeTouchEvent(po::scene::TouchEvent tEvent) {
-    for (int i = 0; i<events.size(); ++i) {
-        if (events[i].getId() == tEvent.getId()) {
-            events.erase(events.begin() + i);
+    for (int i = 0; i<events_.size(); ++i) {
+        if (events_[i].getId() == tEvent.getId()) {
+            events_.erase(events_.begin() + i);
         }
     }
 }
@@ -104,40 +103,39 @@ void MicroCosmos::removeTouchEvent(po::scene::TouchEvent tEvent) {
 
 void MicroCosmos::update() {
 
-	track.update();
+	tracking_.update();
 
-	for (int i = 0; i < rcards.size(); ++i) {
-		if (rcards[i]->get_ID() != 0) {
-			rcards[i]->setV(false);
+	for (int i = 0; i < realcards_.size(); ++i) {
+		if (realcards_[i]->getId() != 0) {
+			realcards_[i]->setV(false);
 		}
 		else {
 			/*//BASED ON TRACKING [ use this version for VR-LAB]
-			if (track.getPosMarker(rcards[i]->get_ID() + 4)[0] >= 0 && track.getPosMarker(rcards[i]->get_ID() + 4)[1] >= 0) {
+			if (tracking_.getPosMarker(realcards_[i]->get_ID() + 4)[0] >= 0 && tracking_.getPosMarker(realcards_[i]->get_ID() + 4)[1] >= 0) {
 
-				rcards[i]->setV(true);
-				//std::cout << "pos: " << track.getPosMarker(rcards[i]->get_ID() + 4) << " / real: "
-				//         << track.getScreenCoordinates(track.getPosMarker(rcards[i]->get_ID() + 4)) << std::endl;
-				rcards[i]->setPosition(track.getScreenCoordinates(track.getPosMarker(rcards[i]->get_ID() + 4)).x,
-					track.getScreenCoordinates(track.getPosMarker(rcards[i]->get_ID() + 4)).y);
-				rcards[i]->initVcards(rcards[i]->getPosition());
+				realcards_[i]->setV(true);
+				//std::cout << "pos_: " << tracking_.getPosMarker(realcards_[i]->get_ID() + 4) << " / real: "
+				//         << tracking_.getScreenCoordinates(tracking_.getPosMarker(realcards_[i]->get_ID() + 4)) << std::endl;
+				realcards_[i]->setPosition(tracking_.getScreenCoordinates(tracking_.getPosMarker(realcards_[i]->get_ID() + 4)).x * 1577,
+					tracking_.getScreenCoordinates(tracking_.getPosMarker(realcards_[i]->getId() + 4)).y * 1577);
+				realcards_[i]->initVcards(realcards_[i]->getPosition());
 
 			}//BASED ON TRACKING ends here*/
 
 			//HARDCODED CARD VERSION [ use this version when coding not at VR-LAB]	
 			if (true){
-			rcards[i]->setV(true);
-			rcards[i]->setPosition(700, 300);
-			rcards[i]->initVcards(rcards[i]->getPosition());
+			realcards_[i]->setV(true);
+			realcards_[i]->setPosition(700, 300);
+			realcards_[i]->initVcards(realcards_[i]->getPosition());
 			} //HARDCODED CARD VERSION ends here
 
 
 			else {
-				rcards[i]->setV(false);
-				rcards[i]->resetInitiation();
+				realcards_[i]->setV(false);
+				realcards_[i]->resetInitiation();
 			}
 		}
 	}
-
 }
 
 
@@ -162,26 +160,26 @@ void MicroCosmos::loadXML(const char *file, std::vector<std::vector<VirtualCardR
     
     for (ci::XmlTree::Iter track = doc.begin("content/media"); track != doc.end(); ++track) {
         categories.clear();
-        //console() << track->getAttribute("path").getValue() << endl;
+        //console() << tracking_->getAttribute("path").getValue() << endl;
         path = track->getAttribute("path").getValue();
         //ci::app::console() << path << std::endl;
-        //ci::app::console() << track->getAttribute("scale_exp").getValue() << std::endl;
-        //scale = std::atof(track->getAttribute("scale_exp").getValue());
+        //ci::app::console() << tracking_->getAttribute("scale_exp").getValue() << std::endl;
+        //scale = std::atof(tracking_->getAttribute("scale_exp").getValue());
         for (ci::XmlTree::Iter cat = track->begin("category"); cat != track->end(); ++cat) {
             //console() << cat->getAttribute("name").getValue() << endl;
             categories.push_back(cat->getAttribute("name").getValue());
             //ci::app::console() << cat->getAttribute("name").getValue() << std::endl;
         }
-        //console() << track->getChild("se/header").getValue() << endl;
+        //console() << tracking_->getChild("se/header").getValue() << endl;
         header_se = track->getChild("se/header").getValue();
         //ci::app::console() << header_se << std::endl;
-        //console() << track->getChild("se/text").getValue() << endl;
+        //console() << tracking_->getChild("se/text").getValue() << endl;
         text_se = track->getChild("se/text").getValue();
         //ci::app::console() << text_se << std::endl;
-        //console() << track->getChild("en/header").getValue() << endl;
+        //console() << tracking_->getChild("en/header").getValue() << endl;
         header_en = track->getChild("en/header").getValue();
         //ci::app::console() << header_en << std::endl;
-        //console() << track->getChild("en/text").getValue() << endl;
+        //console() << tracking_->getChild("en/text").getValue() << endl;
         text_en = track->getChild("en/text").getValue();
         //ci::app::console() << text_en << std::endl;
         //VirtualCardRef ref = VirtualCard::create(ci::Color(1, 1, 1), path, 0.6f, categories, header_se, text_se, header_en, text_en);
@@ -191,7 +189,7 @@ void MicroCosmos::loadXML(const char *file, std::vector<std::vector<VirtualCardR
                 if( categories[i] == category[j]){
                     //std::cout << "fhg" << std::endl;
                     //std::cout << j <<": " << categories2[j] << std::endl;
-                    VirtualCardRef ref = VirtualCard::create(ci::Color(1, 1, 1), path, 0.6f, categories, header_se, text_se, header_en, text_en);
+                    VirtualCardRef ref = VirtualCard::create(ci::Color(1, 1, 1), path, 0.2f, categories, header_se, text_se, header_en, text_en);
                     cards[j].push_back( ref);
                     break;
                 }

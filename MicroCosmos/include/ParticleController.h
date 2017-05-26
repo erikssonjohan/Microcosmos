@@ -21,8 +21,7 @@ public:
 	Particle(const ci::vec2 &position)
 		: mPosition(position), mLastPosition(position), mVelocity(ci::vec2(0)), mZ(0) {}
 
-	void reset(const ci::vec2 &position)
-	{
+	void reset(const ci::vec2 &position) {
 		mPosition = mLastPosition = position;
 		mVelocity = ci::vec2(0);
 		mZ = 0;
@@ -39,21 +38,21 @@ public:
 	static ParticleControllerRef create();
 	ParticleController();
 	~ParticleController();
-	void	setup();
-	void	update();
-	void	draw();
+	void setup();
+	void update();
+	void draw();
 
-	bool	isOffscreen(const ci::vec2 &v);
+	bool isOffscreen(const ci::vec2 &v);
 
 public:
-	static const int	NUM_PARTICLES = 1e3;
+	static const int kNum_particles = 1e3;
 
-	float				mConservationOfVelocity;
-	float				mSpeed;
-	float				mAnimationCounter;
+	float conservation_of_velocity_;
+	float speed_;
+	float animation_counter_;
 
-	ci::Perlin				mPerlin;
-	std::vector<Particle>	mParticles;
+	ci::Perlin perlin_;
+	std::vector<Particle> particles_;
 };
 
 

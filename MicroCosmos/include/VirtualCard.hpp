@@ -16,6 +16,7 @@
 #include "poShape.h"
 #include "cinder/Rand.h"
 #include "poTextBox.h"
+
 using namespace ci;
 using namespace ci::app;
 using namespace std;
@@ -94,7 +95,7 @@ private:
 	std::string header_en_;
 	std::string text_en_;
 
-	//	Keep track of the initial, start and end position to use for dragging
+	//	Keep tracking_ of the initial, start and end position to use for dragging
 	ci::vec2 mStartPos_, mEndPos_, mInitialPos_;
 
 	//removes touch id from card
@@ -109,7 +110,7 @@ private:
 	//removes touch id from card
 	void removeTouchEvent(po::scene::TouchEvent tEvent);
 
-	//	Keep track on pressed for dragging
+	//	Keep tracking_ on pressed for dragging
 	bool mIsPressed;
 
 	void onTouchDown(po::scene::TouchEvent &event);

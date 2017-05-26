@@ -20,38 +20,38 @@ ParticleController::~ParticleController()
 void ParticleController::setup()
 {
 	// Randomize the Perlin noise function.
-	mPerlin.setSeed(clock());
+	perlin_.setSeed(clock());
 
 	// Create particles.
-	mParticles.reserve(NUM_PARTICLES);
-	for (int s = 0; s < NUM_PARTICLES; ++s)
-		mParticles.push_back(Particle(ci::vec2(ci::Rand::randFloat(ci::app::getWindowWidth()), ci::Rand::randFloat(ci::app::getWindowHeight()))));
+	particles_.reserve(kNum_particles);
+	for (int s = 0; s < kNum_particles; ++s)
+		particles_.push_back(Particle(ci::vec2(ci::Rand::randFloat(ci::app::getWindowWidth()), ci::Rand::randFloat(ci::app::getWindowHeight()))));
 
-	mConservationOfVelocity = 0.9f;
-	mSpeed = 0.08f;
-	mAnimationCounter = 0.0f;
+	conservation_of_velocity_ = 0.9f;
+	speed_ = 0.08f;
+	animation_counter_ = 0.0f;
 }
 
 void ParticleController::update()
 {
 	// Move ahead in time, which becomes the z-axis of our 3D noise.
-	mAnimationCounter += 2.0f;
+	animation_counter_ += 2.0f;
 
-	for (auto &particle :  mParticles) {
+	for (auto &particle :  particles_) {
 		// Save off the last position for drawing lines.
 		particle.mLastPosition = particle.mPosition;
 
 		// Add some perlin noise to the velocity.
-		ci::vec3 deriv = mPerlin.dfBm(ci::vec3(particle.mPosition.x, particle.mPosition.y, mAnimationCounter) * 0.1f);
+		ci::vec3 deriv = perlin_.dfBm(ci::vec3(particle.mPosition.x, particle.mPosition.y, animation_counter_) * 0.1f);
 		particle.mZ = deriv.z;
 		ci::vec2 deriv2 = normalize(ci::vec2(deriv.x, deriv.y));
-		particle.mVelocity += deriv2 * mSpeed;
+		particle.mVelocity += deriv2 * speed_;
 
 		// Move the particles according to their velocities.
 		particle.mPosition += particle.mVelocity;
 
 		// Dampen the velocities for the next frame.
-		particle.mVelocity *= mConservationOfVelocity;
+		particle.mVelocity *= conservation_of_velocity_;
 
 		// Replace any particles that have gone offscreen with a random onscreen position.
 		if (isOffscreen(particle.mPosition))
@@ -69,11 +69,11 @@ void ParticleController::draw()
 	// We use the convenience methods begin(), color(), vertex() and end() for simplicity,
 	// see the ParticleSphere* samples for a faster method.
 	//ci::gl::begin(GL_LINES);
-	ci::gl::drawArrays(GL_POINTS, 0, NUM_PARTICLES);
+	ci::gl::drawArrays(GL_POINTS, 0, kNum_particles);
 	ci::gl::color(1.0f, 1.0f, 1.0f);
-	for (auto &particle : mParticles) {
+	for (auto &particle : particles_) {
 		// Color according to velocity.
-		//ci::gl::color(0.5f + particle.mVelocity.x / (mSpeed * 2), 0.5f + particle.mVelocity.y / (mSpeed * 2), 0.5f + particle.mZ * 0.5f);	
+		//ci::gl::color(0.5f + particle.mVelocity.x / (speed_ * 2), 0.5f + particle.mVelocity.y / (speed_ * 2), 0.5f + particle.mZ * 0.5f);
 		ci::gl::vertex(particle.mLastPosition);
 		ci::gl::vertex(particle.mPosition);
 	}

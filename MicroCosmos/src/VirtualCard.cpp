@@ -403,40 +403,33 @@ bool VirtualCard::doubleTouch(po::scene::TouchEvent event)
 	return false;
 }
 
-void VirtualCard::applyForce(ci::vec2 force)
-{
+void VirtualCard::applyForce(ci::vec2 force) {
 	ci::vec2 f = force / mass;
 	acceleration_ += f;
 	//ci::app::console() << acceleration.x << "  " << acceleration.y << std::endl;
 }
 
 
-void VirtualCard::setRcPos(ci::vec2 rcp)
-{
+void VirtualCard::setRcPos(ci::vec2 rcp) {
 	real_card_pos_ = rcp;
 }
 
-float VirtualCard::mag(float x, float y)
-{
+float VirtualCard::mag(float x, float y) {
 	return sqrt(x*x + y*y);
 }
 
-ci::vec2 VirtualCard::limit(ci::vec2 v, float max)
-{
-	if (mag(v.x, v.y) > max)
-	{
+ci::vec2 VirtualCard::limit(ci::vec2 v, float max) {
+	if (mag(v.x, v.y) > max) {
 		v = normalize(v);
 		return v*max;
 	}
-	else
-	{
+	else {
 		return v;
 	}
 }
 
 
-ci::vec2 VirtualCard::separate(std::vector<VirtualCardRef>& v)
-{
+ci::vec2 VirtualCard::separate(std::vector<VirtualCardRef>& v) {
 	float desired_separate = 350;
 	ci::vec2 sum;
 	int counter = 0;
