@@ -67,7 +67,8 @@ glm::vec2 Tracking::getScreenCoordinates(glm::vec3 markerPos) {
     glm::vec3 x = glm::dot((markerPos - p0_), normX_) * normX_ / glm::length(p1_ - p0_);
     glm::vec3 y = glm::dot((markerPos - p0_), normY_) * normY_ / glm::length(p2_ - p0_);
     
-    return glm::vec2(glm::length(x), glm::length(y));
+    //1565.22 px/m height , 1613.4 px/m width for 55inch 1920x1080 16:9 
+    return glm::vec2(glm::length(x)*1613.4, glm::length(y)*1565.22);
 }
 
 
