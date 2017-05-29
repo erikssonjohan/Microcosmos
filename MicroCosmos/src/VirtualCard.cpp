@@ -136,7 +136,7 @@ void VirtualCard::setup(ci::Color color)
 	text_headerE_->setVisible(false);
     
     //Sets scale to a maximum height of 100 pixels
-	scale_ = 100 / media_height_;
+    scale_ = 100 / media_height_;
     setScale(scale_);
 
 	getSignal(po::scene::TouchEvent::BEGAN_INSIDE).connect(std::bind(&VirtualCard::onTouchDown, this, std::placeholders::_1));
@@ -177,27 +177,76 @@ void VirtualCard::onTouchDown(po::scene::TouchEvent &event) {
 
 //	Touch dragged event handler
 void VirtualCard::onTouchDragged(po::scene::TouchEvent &event) {
-	if (idInCard(event.getId()) && touch_id_[0] == event.getId()) {
-		mEndPos_ = getParent()->windowToLocal(event.getWindowPos());
+    
+    for (int i = 0; i<events_.size(); ++i) {
+        if (events_[i].getId() == event.getId()) {
+            pPos_[i] = events_[i].getWindowPos();
+            events_[i] = event;
+        }
+    }
+    
+    if (idInCard(event.getId()) && touch_id_[0] == event.getId() && events_.size() == 1) {
+        mEndPos_ = getParent()->windowToLocal(event.getWindowPos());
         //ci::vec2 newPosition = (mInitialPos + (mEndPos - mStartPos));
         ci::vec2 newPosition = getPosition();
-         newPosition.x += events_[0].getWindowPos().x-pPos_[0].x;
+        newPosition.x += events_[0].getWindowPos().x-pPos_[0].x;
         newPosition.y += events_[0].getWindowPos().y-pPos_[0].y;
-		setPosition(newPosition);
-
-	}
-	if (events_.size() >= 2) {
-		scale(events_[0].getWindowPos(), pPos_[0], events_[1].getWindowPos(), pPos_[1]);
-		setScale(scale_);
-        touchRotate(events_[0].getWindowPos(), pPos_[0], events_[1].getWindowPos(), pPos_[1]);
+        setPosition(newPosition);
+        
+    }
+    else if (events_.size() >= 2) {
+        //scale(events_[0].getWindowPos(), pPos_[0], events_[1].getWindowPos(), pPos_[1]);
+        //setScale(scale_);
+        //touchRotate(events_[0].getWindowPos(), pPos_[0], events_[1].getWindowPos(), pPos_[1]);
+        
+        
+        vec2 pc;
+        pc.x =(events_[0].getScenePos().x+events_[1].getScenePos().x)/2;
+        pc.y =(events_[0].getScenePos().y+events_[1].getScenePos().y)/2;
+        
+        vec2 pc0;
+        pc0.x =(pPos_[0].x+pPos_[1].x)/2;
+        pc0.y =(pPos_[0].y+pPos_[1].y)/2;
+        
+        
+        //std::cout << events_[0].getScenePos() << " / " << events_[1].getScenePos() << " / " << pc << std::endl;
+        
+        vec2 x = getPosition() - pc0 ;
+        
+        //std::cout << getPosition() << pc << x <<  std::endl;
+        
+        
+        vec2 a = events_[1].getWindowPos()-events_[0].getWindowPos();
+        vec2 b = pPos_[1]-pPos_[0];
+        a = normalize(a);
+        b = normalize(b);
+        float deltaAngle = atan2(a.y, a.x)-atan2(b.y, b.x);
+        
+        
+        x = rotate(x, deltaAngle);
+        
+        angle_ += deltaAngle;
+        
+        
+        float currentDistance = sqrt(pow(events_[0].getWindowPos().x - events_[1].getWindowPos().x, 2) + pow(events_[0].getWindowPos().y - events_[1].getWindowPos().y, 2));
+        float previousDistance = sqrt(pow(pPos_[0].x - pPos_[1].x, 2) + pow(pPos_[0].y - pPos_[1].y, 2));
+        
+        
+        
+        if (previousDistance != 0 && previousDistance == previousDistance) {
+            
+            x = x*(currentDistance/previousDistance);
+            scale_ *= currentDistance / previousDistance;
+        }
+        
+        
+        setScale(scale_);
+        setPosition(x+pc);
         setRotation(angle_);
-	}
-	for (int i = 0; i<events_.size(); ++i) {
-		if (events_[i].getId() == event.getId()) {
-			pPos_[i] = events_[i].getWindowPos();
-			events_[i] = event;
-		}
-	}
+        
+        
+    }
+    
 }
 
 //	Touch up event handler
