@@ -1,10 +1,12 @@
-# Media Technology - Bachelor Project (TNM094)
+# Microcosmos
+Media Technology - Bachelor Project 2017 (TNM094)
 
 
 
 #### Supported platforms:
-* Windows
+* Windows (no video suport at the moment)
 * MacOS
+* (Linux, Need to add cmake file: see cinder repo)
 
 #### Depends on:
 * [Cinder](https://github.com/cinder/Cinder) as the cross-platform creative coding framework.

@@ -82,4 +82,4 @@ void MicroCosmosApp::draw() {
     }
 }
 
-CINDER_APP( MicroCosmosApp, RendererGl, prepareSettings )
+CINDER_APP( MicroCosmosApp, RendererGl(RendererGl::Options().msaa(16)), prepareSettings )
