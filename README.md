@@ -3,9 +3,9 @@ B.Sc project in Media Technology 2017
 
 
 #### Supported platforms:
-* Windows (no video suport at the moment)
+* Windows (no video support at the moment)
 * MacOS
-* Linux: For dependencies and CMake file have a look at the official [Cinder repo wiki](https://github.com/cinder/Cinder/wiki/Cinder-for-Linux).
+* Linux (no video support at the moment) For dependencies and CMake file have a look at the official [Cinder repo wiki](https://github.com/cinder/Cinder/wiki/Cinder-for-Linux).
 
 #### Depends on:
 * [Cinder](https://github.com/cinder/Cinder) as the cross-platform creative coding framework.
@@ -22,9 +22,3 @@ B.Sc project in Media Technology 2017
 - [Martin Orava](https://github.com/maror757)
 - [Ingela Rossing](https://github.com/IngelaRossing)
 - [David Tran](https://github.com/ddavidtran)
-
-
-
-
-
-
