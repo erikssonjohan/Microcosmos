@@ -63,6 +63,7 @@ private:
 	double start_, end_, time_touched_, time1_, time2_;
 	bool time_checker_ = true;
 	bool check_ = true;
+	bool doubleCheck = false;
 
 
 	po::scene::ShapeRef mBase_shape_;

@@ -24,6 +24,13 @@ void Tracking::setCorners() {
     auto P1 = std::get<1>(kCorners);
     auto P2 = std::get<2>(kCorners);
 
+	//Values in meters of the screen and corner marker, since they cant be placed in screen coord (0,0),(1,0) and (0,1)
+	//markers 
+	float SCREEN_LENGTH = 1.214;
+	float SCREEN_HEIGHT = 0.684;
+	float P0_XTRANSL = 0.295;
+	float P0_YTRANSL = 0.195;
+
     //lazy check if we have the first markers
     if (!P0.empty() && !P1.empty() && !P2.empty()) {
         for (auto t = std::make_tuple(P0.begin(), P1.begin(), P2.begin(), 0);
@@ -36,6 +43,11 @@ void Tracking::setCorners() {
         }
         normX_ = glm::normalize(p1_ - p0_);
         normY_ = glm::normalize(p2_ - p0_);
+
+		//Move corners to match the screen corners
+		p0_ = p0_ - P0_XTRANSL * normX_ - P0_YTRANSL * normY_;
+		p1_ = p0_ + SCREEN_LENGTH*normX_;
+		p2_ = p0_ + SCREEN_HEIGHT * normY_;
     }
     std::cout << "CORNERS: " << p0_ << " | " << p1_ << " | " << p2_ << std::endl;
 }
@@ -142,7 +154,7 @@ void Tracking::update() {
     texture_->update(*capture_->getSurface());
     input_ = toOcv(ci::Surface(ci::Channel8u(texture_->createSource())));
     cam_param_update_.resize(input_.size());
-    marker_detector_.detect(input_, markers_, cam_param_update_, kMarker_size_);
+	marker_detector_.detect(input_, markers_, cam_param_update_, kMarker_size_);
     
     for (auto i : markers_) {
         double pos[3];
@@ -157,14 +169,14 @@ void Tracking::update() {
             marker_map_[i.id] = {pos[0],pos[1],pos[2]};
     }
 
-    /*
+   
     //print markerinfo
     for (const auto it : marker_map_) {
         ci::app::console() << "ID: " << it.first << std::endl;
         for(auto it2 = it.second.begin(); it2 != it.second.end(); ++it2)
             ci::app::console() << " POS: " << "[ " << *it2 << " ]"<< std::endl;
     }
-    */
+    
     
     //Check for cornermarkers 
     if (marker_map_.count(1) > 0 && marker_map_.count(2) > 0 && marker_map_.count(3) > 0 && firsttime) {

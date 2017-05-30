@@ -37,7 +37,11 @@ public:
 	void initVcards(glm::vec2 rCardPos);
 	//Sets the initiated bool to false when realcard is lifted of the table
 	void resetInitiation();
+	bool legsFound() {
+		return (touchid_.size() == 3);
+	};
 
+	void clearLegEvents();
 private:
     std::vector<VirtualCardRef> virtualcards_;
 	int id_ = 0;
@@ -47,12 +51,19 @@ private:
     
     std::vector<uint32_t> touchid_; //vector of card legs touchid, first is sharp edge
     std::vector<po::scene::TouchEvent> events_;
+	std::vector<po::scene::TouchEvent> leg_events_;
 
 	//False until a realCard has been detected on the screen by tracking
 	bool realcard_initiated_ = false;
 
+	void onTouchDown(po::scene::TouchEvent &event);
+	void onTouchDragged(po::scene::TouchEvent &event);
+	void onTouchUp(po::scene::TouchEvent &event);
+	void removeTouchEvent(po::scene::TouchEvent tEvent);
+	
+
 	//Forces
 	ci::vec2 attract(VirtualCardRef& c);
 	float g_ = 1;
-	float mass_ = 20;
+	float mass_ = 100;
 };

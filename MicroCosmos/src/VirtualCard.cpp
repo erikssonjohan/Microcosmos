@@ -148,11 +148,19 @@ void VirtualCard::setup(ci::Color color)
 
 void VirtualCard::onTouchDown(po::scene::TouchEvent &event) {
 	start_ = ci::app::getElapsedSeconds();
-	/*
-	if(doubleTouch(event)) {
-		//mBaseShape->setVisible(false);
-		//.... What should the doubletouch do??
-		
+	
+	//.... What should the doubletouch do?? Scales down and up the virtual cards to max/min
+	/*if (doubleTouch(event))  {
+
+		if (!doubleCheck) {
+			scale_ = (500 / media_height_);
+			doubleCheck = true;
+		}
+		else {
+			scale_ = (100 / media_height_);
+			doubleCheck = false;
+		}
+		setScale(scale_);
 	}
 	*/
 	if (!idInCard(event.getId())) {
@@ -406,6 +414,7 @@ bool VirtualCard::doubleTouch(po::scene::TouchEvent event)
 void VirtualCard::applyForce(ci::vec2 force) {
 	ci::vec2 f = force / mass;
 	acceleration_ += f;
+	//acceleration_ *= (float)0.6;
 	//ci::app::console() << acceleration.x << "  " << acceleration.y << std::endl;
 }
 
@@ -467,17 +476,18 @@ void VirtualCard::update() {
 		{
 			if (mag(direction.x, direction.y) > 200) {
 				velocity_ += acceleration_;
+				velocity_ *= (float)0.95;
 				setPosition(getPosition().x + velocity_.x, getPosition().y + velocity_.y);
 
 			}
-			/*else if (mag(direction.x, direction.y) <= 400)
+			else //if (mag(direction.x, direction.y) <= 400)
 			{
-			velocity -= acceleration;
-			if (mag(velocity.x, velocity.y) < 0.1)
-			{
-			velocity *= 0;
+			//velocity -= acceleration;
+			//if (mag(velocity.x, velocity.y) < 0.1)
+			//{
+				velocity_ = {0,0};
+			//}
 			}
-			}*/
 		}
 	}
 	acceleration_ *= 0;

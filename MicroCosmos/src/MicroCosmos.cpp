@@ -22,9 +22,9 @@ void MicroCosmos::setup(){
      *INFO: Good to know: inside RealCard.cpp the you also have to write the name of the XML-file, they are not liked yet
      */
     std::vector<std::string> categories;
-    uniqueCategories("demo.xml", categories);
+    uniqueCategories("demo2.xml", categories);
     std::vector<std::vector<VirtualCardRef>> x(categories.size());
-    loadXML("demo.xml", x, categories);
+    loadXML("demo2.xml", x, categories);
 
     for(int i = 0; i<categories.size(); i++) {
         realcards_.push_back(RealCard::create(categories[i], i , x[i]));
@@ -104,35 +104,44 @@ void MicroCosmos::removeTouchEvent(po::scene::TouchEvent tEvent) {
 void MicroCosmos::update() {
 
 	tracking_.update();
-
+	//ci::app::console() << "marker pos: " << tracking_.getScreenCoordinates(tracking_.getPosMarker(0)) << std::endl;
 	for (int i = 0; i < realcards_.size(); ++i) {
 		if (realcards_[i]->getId() != 0) {
 			realcards_[i]->setV(false);
 		}
 		else {
-			/*//BASED ON TRACKING [ use this version for VR-LAB]
-			if (tracking_.getPosMarker(realcards_[i]->get_ID() + 4)[0] >= 0 && tracking_.getPosMarker(realcards_[i]->get_ID() + 4)[1] >= 0) {
+			//BASED ON TRACKING [ use this version for VR-LAB]
+			if (tracking_.getPosMarker(realcards_[i]->getId() + 4)[0] >= 0 && tracking_.getPosMarker(realcards_[i]->getId() + 4)[1] >= 0) {
 
-				realcards_[i]->setV(true);
-				//std::cout << "pos_: " << tracking_.getPosMarker(realcards_[i]->get_ID() + 4) << " / real: "
-				//         << tracking_.getScreenCoordinates(tracking_.getPosMarker(realcards_[i]->get_ID() + 4)) << std::endl;
-				realcards_[i]->setPosition(tracking_.getScreenCoordinates(tracking_.getPosMarker(realcards_[i]->get_ID() + 4)).x * 1577,
-					tracking_.getScreenCoordinates(tracking_.getPosMarker(realcards_[i]->getId() + 4)).y * 1577);
-				realcards_[i]->initVcards(realcards_[i]->getPosition());
+				//Do until we find the card on the table, then we can controll RealCard using touchevents
+				if (realcards_[i]->legsFound() == false) {
+					realcards_[i]->setV(true);
+					//std::cout << "pos_: " << tracking_.getPosMarker(realcards_[i]->get_ID() + 4) << " / real: "
+					//         << tracking_.getScreenCoordinates(tracking_.getPosMarker(realcards_[i]->get_ID() + 4)) << std::endl;
+					realcards_[i]->setPosition(tracking_.getScreenCoordinates(tracking_.getPosMarker(realcards_[i]->getId() + 4)).x,
+						tracking_.getScreenCoordinates(tracking_.getPosMarker(realcards_[i]->getId() + 4)).y);
+					realcards_[i]->initVcards(realcards_[i]->getPosition());
+					//ci::app::console() << "marker pos " << i << tracking_.getScreenCoordinates(tracking_.getPosMarker(realcards_[i]->getId() + 4)) << std::endl;
+					realcards_[i]->findTouchpoints();
+					//if (realcards_[i]->findTouchpoints()) { //not controlled by marker anymore
+						//ci::app::console() << " ben hittade" << std::endl;
+					//}
+				}
 
-			}//BASED ON TRACKING ends here*/
-
+			}//BASED ON TRACKING ends here
+			/*
 			//HARDCODED CARD VERSION [ use this version when coding not at VR-LAB]	
 			if (true){
 			realcards_[i]->setV(true);
 			realcards_[i]->setPosition(700, 300);
 			realcards_[i]->initVcards(realcards_[i]->getPosition());
 			} //HARDCODED CARD VERSION ends here
-
+			*/
 
 			else {
 				realcards_[i]->setV(false);
 				realcards_[i]->resetInitiation();
+				realcards_[i]->clearLegEvents();
 			}
 		}
 	}
@@ -189,7 +198,7 @@ void MicroCosmos::loadXML(const char *file, std::vector<std::vector<VirtualCardR
                 if( categories[i] == category[j]){
                     //std::cout << "fhg" << std::endl;
                     //std::cout << j <<": " << categories2[j] << std::endl;
-                    VirtualCardRef ref = VirtualCard::create(ci::Color(1, 1, 1), path, 0.2f, categories, header_se, text_se, header_en, text_en);
+                    VirtualCardRef ref = VirtualCard::create(ci::Color(1, 1, 1), path, 0.01f, categories, header_se, text_se, header_en, text_en);
                     cards[j].push_back( ref);
                     break;
                 }
